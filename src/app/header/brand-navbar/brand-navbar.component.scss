@@ -2,8 +2,10 @@ $ebony-clay: #2A343F;
 $limed-spruce: #353e49;
 $my-sin: #FFBA27;
 $white: #fff;
+
 .navbar-item,
-.title {
+.title,
+.navbar-burger {
   color: $white;
 }
 .navbar-item:hover {

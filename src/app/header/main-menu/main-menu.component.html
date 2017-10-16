@@ -1,0 +1,15 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-menu is-active">
+      <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable" *ngFor="let item of menuItems">
+              <a class="navbar-item">{{item.category.name.en}}</a>
+              <div class="navbar-dropdown is-boxed" *ngIf="item.subCategories">
+                <a class="navbar-item" *ngFor="let subItem of item.subCategories">
+                  {{subItem.name.en}}
+                </a>
+              </div>
+            </div>
+    </div>
+    </div>
+</nav>
+
