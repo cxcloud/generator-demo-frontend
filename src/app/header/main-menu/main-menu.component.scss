@@ -8,7 +8,26 @@ a {
 }
 
 .navbar-dropdown {
+  a:hover {
+    background-color: rgb(238, 238, 238);
+  }
+}
+
+.navbar-dropdown {
   .navbar-item {
     color: #2A343F;
+  }
+}
+
+.is-active {
+  .has-dropdown a {
+    background-color: #353e49;
+  }
+  .navbar-dropdown a {
+    background-color: transparent;
+    &:hover {
+      background-color: rgb(238, 238, 238);
+    }
+
   }
 }
