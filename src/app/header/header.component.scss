@@ -1,0 +1,16 @@
+// Variables
+$ebony-clay: #2A343F;
+$white: #fff;
+
+.hero-head,
+.hero-foot {
+  background-color: $ebony-clay;
+}
+
+.hero-body {
+  background-color: $white;
+
+  .title {
+    color: $ebony-clay;
+  }
+}
