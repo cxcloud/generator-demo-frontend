@@ -1,32 +1,34 @@
+@import '../../variables.scss';
+
 a {
-  color: #fff;
+  color: $white;
 
   &:hover {
-    background-color: #353e49;
-    color: #FFBA27;
+    background-color: $limed-spruce;
+    color: $yellow;
   }
 }
 
 .navbar-dropdown {
   a:hover {
-    background-color: rgb(238, 238, 238);
+    background-color: $light-grey;
   }
 }
 
 .navbar-dropdown {
   .navbar-item {
-    color: #2A343F;
+    color: $ebony-clay;
   }
 }
 
 .is-active {
   .has-dropdown a {
-    background-color: #353e49;
+    background-color: $limed-spruce;
   }
   .navbar-dropdown a {
     background-color: transparent;
     &:hover {
-      background-color: rgb(238, 238, 238);
+      background-color: $light-grey;
     }
 
   }

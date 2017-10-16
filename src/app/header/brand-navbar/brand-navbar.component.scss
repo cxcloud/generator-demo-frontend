@@ -1,7 +1,4 @@
-$ebony-clay: #2A343F;
-$limed-spruce: #353e49;
-$my-sin: #FFBA27;
-$white: #fff;
+@import '../../variables.scss';
 
 .navbar-item,
 .title,
@@ -15,7 +12,7 @@ $white: #fff;
 .navbar-menu {
   .navbar-item:hover {
     background-color: $limed-spruce;
-    color: $my-sin;
+    color: $yellow;
   }
 }
 
