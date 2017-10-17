@@ -1,9 +1,16 @@
 <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          Footer
-        </p>
+  <div class="container">
+    <div class="content">
+      <div class="columns">
+        <div class="column" *ngFor="let column of columns">
+          <div class="subtitle is-6">{{column.title}}</div>
+          <ul>
+            <li *ngFor="let link of column.links">
+              <a href="{{link.url}}">{{link.name}}</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>

@@ -25,7 +25,7 @@ export class MainMenuComponent implements OnInit {
       // If items do not subcategories
       newObj.push({ category: cat});
       } else {
-        // Sort out subcategories rely on ancestor ids
+        // Sort out subcategories depends on ancestor ids
         category.ancestors.forEach(item => {
           if (item.typeId === 'category') {
             newObj.forEach(obj => {
@@ -43,6 +43,4 @@ export class MainMenuComponent implements OnInit {
       return newObj;
     }, []);
   }
-
-
 }

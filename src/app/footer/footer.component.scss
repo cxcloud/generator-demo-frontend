@@ -1,5 +1,25 @@
 @import '../variables.scss';
+
 footer {
   background-color: $ebony-clay;
   color: $white;
+  padding: 3rem 1.5rem 3rem;
+
+  a {
+    color: $white;
+  }
+  .subtitle {
+    color: $silver;
+  }
+  .column {
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+}
+
+ul, li {
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
 }
