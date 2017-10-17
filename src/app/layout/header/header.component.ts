@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CATEGORIES } from '../mock-data';
+import { CATEGORIES } from '../../mock-data';
 
 @Component({
   selector: 'app-header',
