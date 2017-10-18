@@ -1,15 +1,19 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-menu" id="navMainMenu">
-      <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
-              <a class="navbar-item">{{category.name.en}}</a>
-              <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories.length">
-                <a class="navbar-item" *ngFor="let subCategory of category.subCategories">
-                  {{subCategory.name.en}}
-                </a>
-              </div>
-            </div>
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
+        <a class="navbar-item">{{category.name.en}}</a>
+        <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories.length">
+          <a
+            class="navbar-item"
+            *ngFor="let subCategory of category.subCategories"
+            [routerLink]="['products/', category.slug.en, subCategory.slug.en]"
+          >
+            {{subCategory.name.en}}
+          </a>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </nav>
 

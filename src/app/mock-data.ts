@@ -7,7 +7,7 @@ export const CATEGORIES = [
       'en': 'Men'
     },
     'slug': {
-      'en': 'Men'
+      'en': 'men'
     },
     'description': {
       'en': '<p>Men category description</p>'
