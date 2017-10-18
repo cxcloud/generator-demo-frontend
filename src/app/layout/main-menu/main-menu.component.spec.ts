@@ -1,27 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainMenuComponent } from './main-menu.component';
-
-const CATEGORIES = [
-  {
-    id: 1,
-    name: {
-      en: 'Men'
-    },
-    ancestors: []
-  },
-  {
-    id: 2,
-    name: {
-      en: 'Clothing'
-    },
-    ancestors: [
-      {
-        typeId: 'category',
-        id: 1
-      }
-    ]
-  }
-];
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MainMenuComponent', () => {
   let component: MainMenuComponent;
@@ -29,7 +8,12 @@ describe('MainMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainMenuComponent ]
+      declarations: [
+        MainMenuComponent
+      ],
+      imports: [
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   }));
@@ -37,7 +21,6 @@ describe('MainMenuComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MainMenuComponent);
     component = fixture.componentInstance;
-    component.categories = CATEGORIES;
     fixture.detectChanges();
   });
 
@@ -45,8 +28,7 @@ describe('MainMenuComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain sub Ctegories', () => {
-    const menu = component.getMenuItems();
-    expect(menu[0].subCategories.length).toEqual(1);
+  it('should contain sub Categories', () => {
+    expect(component.categories[0].subCategories.length).toEqual(5);
   });
 });
