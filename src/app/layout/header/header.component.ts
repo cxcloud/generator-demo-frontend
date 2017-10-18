@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CATEGORIES } from '../../mock-data';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +7,6 @@ import { CATEGORIES } from '../../mock-data';
 })
 export class HeaderComponent implements OnInit {
   title = 'CX Cloud';
-  categories = CATEGORIES;
 
   // Brand navbar
   brandMenu = [
