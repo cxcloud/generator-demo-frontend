@@ -1,30 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './layout/header/header.component';
-import { BrandNavbarComponent } from './layout/brand-navbar/brand-navbar.component';
-import { MainMenuComponent } from './layout/main-menu/main-menu.component';
-import { FooterComponent } from './layout/footer/footer.component';
+import { LayoutModule } from './layout/layout.module';
 import { HomeModule } from './home/home.module';
-
+import { CategoriesModule } from './categories/categories.module';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule,
     HomeModule,
+    LayoutModule,
+    CategoriesModule,
     AppRoutingModule
   ],
   declarations: [
-    AppComponent,
-    BrandNavbarComponent,
-    FooterComponent,
-    HeaderComponent,
-    MainMenuComponent
+    AppComponent
   ],
 
   providers: [],
