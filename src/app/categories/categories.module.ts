@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CategoriesRoutingModule } from './categories-routing.module';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductComponent } from './product/product.component';
+
+const DECLARATIONS = [
+  ProductListComponent
+];
 
 @NgModule({
   imports: [
@@ -9,12 +15,11 @@ import { CategoriesRoutingModule } from './categories-routing.module';
     CategoriesRoutingModule
   ],
   declarations: [
-    // ProductListComponent,
-    // ProductComponent
+    ...DECLARATIONS,
+    ProductComponent
   ],
   exports: [
-    // ProductListComponent,
-    // ProductComponent
+    ...DECLARATIONS
   ],
   providers: [
     // ProductListResolver

@@ -1,12 +1,12 @@
 @import '../../common/variables.scss';
 
-.hero-head,
-.hero-foot {
+.hero-head {
   background-color: $ebony-clay;
 }
 
 .hero-body {
   background-color: $white;
+  padding: 1em 0;
 
   .title {
     color: $ebony-clay;

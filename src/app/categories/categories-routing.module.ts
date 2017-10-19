@@ -1,9 +1,15 @@
+import { ProductListComponent } from './product-list/product-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'categories', redirectTo: '/home'
+    path: 'categories',
+    children: [
+      {
+        path: ':id', component: ProductListComponent
+      }
+    ]
   }
 ];
 

@@ -1,35 +1,49 @@
 @import '../../common/variables.scss';
 
 a {
-  color: $white;
+  color: $ebony-clay;
+}
 
-  &:hover {
-    background-color: $limed-spruce;
-    color: $yellow;
+.navbar-menu {
+  border-bottom: 1px solid #D6D6D6;
+}
+
+// Categories menu
+.has-dropdown {
+  a {
+    text-transform: uppercase;
+    font-size: 18px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
+// Subcategories menu
 .navbar-dropdown {
-  a:hover {
-    background-color: $light-grey;
-  }
-}
-
-.navbar-dropdown {
-  .navbar-item {
+  a {
     color: $ebony-clay;
+    font-size: 14px;
+    &:hover {
+      text-decoration: none;
+      background-color: $white-smoke;
+    }
   }
 }
 
+// Menu (mobile view)
 .is-active {
+  // Categories menu
   .has-dropdown a {
     background-color: $limed-spruce;
+    color: $white;
   }
+  // Subcategories menu
   .navbar-dropdown a {
     background-color: transparent;
+    color: $ebony-clay;
     &:hover {
-      background-color: $light-grey;
+      background-color: $white-smoke;
     }
-
   }
 }
