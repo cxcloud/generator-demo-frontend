@@ -1,14 +1,33 @@
 @import '../../common/variables.scss';
+a {
+  text-transform: uppercase;
+}
+
+i {
+  margin-right: 5px;
+}
 
 .navbar-item,
-.title,
 .navbar-burger {
   color: $white;
+  &:hover {
+    background-color: $ebony-clay;
+    color: $white;
 }
-.navbar-item:hover {
-  background-color: $ebony-clay;
-  color: $white;
 }
+
+
+.navbar-brand {
+  a {
+    color: $miscka;
+    font-size: 13px;
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+
 .navbar-menu {
   .navbar-item:hover {
     background-color: $limed-spruce;
