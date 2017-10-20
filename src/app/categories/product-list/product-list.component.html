@@ -7,11 +7,14 @@
 
   <!-- Product list column -->
   <div class="column is-9">
-    <div class="title is-4">Products</div>
-    <div class="tile is-ancestor is-12">
-      <app-product class="tile is-parent"></app-product>
-      <app-product class="tile is-parent"></app-product>
-      <app-product class="tile is-parent"></app-product>
+      <div class="title is-4">Products</div>
+    <div class="columns is-mobile is-multiline is-centered">
+      <ng-container *ngFor="let product of products">
+        <div class="column is-narrow">
+          <app-product [product]="product"></app-product>
+        </div>
+      </ng-container>
     </div>
   </div>
+
 </div>

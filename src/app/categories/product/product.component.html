@@ -1,6 +1,11 @@
-<div class="tile is-child box">
-  <figure class="image is-1by1">
-    <img src="https://bulma.io/images/placeholders/640x480.png">
+<div class="box is-centered">
+  <figure class="image product-image"
+    [style.height.px]="image.dimensions.h"
+    [style.width.px]="image.dimensions.w"
+  >
+    <img src="{{image.url}}">
   </figure>
-  <p class="subtitle">Product</p>
+  <div class="name-headline">{{product.name.en}}</div>
+  <div class="item-price">{{price.centAmount}} {{price.currencyCode}}</div>
 </div>
+

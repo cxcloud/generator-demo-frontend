@@ -1,4 +1,4 @@
-import { LocalizedString } from '../common/i18n.model';
+import { LocalizedString, Reference } from './common.model';
 
 export interface Category {
   id: string;
@@ -6,15 +6,12 @@ export interface Category {
   name: LocalizedString;
   slug: LocalizedString;
   description?: LocalizedString;
-  ancestors?: any[];
+  ancestors: Reference[];
   orderHint: string;
   createdAt: string;
   lastModifiedAt: string;
-  assets?: any[];
-  subCategories?: Category[];
-  parent?: {
-      typeId: string;
-      id: string;
-  };
+  assets: any[];
+  parent?: Reference;
   lastMessageSequenceNumber: number;
+  subCategories?: Category[];
 }
