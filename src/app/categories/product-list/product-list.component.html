@@ -1,4 +1,17 @@
-<p>
-  product-list works!
-  <app-product></app-product>
-</p>
+<div class="columns">
+
+  <!-- Filters column -->
+  <div class="column is-3">
+    <div class="title is-4">Filters</div>
+  </div>
+
+  <!-- Product list column -->
+  <div class="column is-9">
+    <div class="title is-4">Products</div>
+    <div class="tile is-ancestor is-12">
+      <app-product class="tile is-parent"></app-product>
+      <app-product class="tile is-parent"></app-product>
+      <app-product class="tile is-parent"></app-product>
+    </div>
+  </div>
+</div>

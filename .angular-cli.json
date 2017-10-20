@@ -19,9 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
         "../node_modules/bulma/bulma.sass",
-        "../node_modules/mdi/scss/materialdesignicons.scss"
+        "../node_modules/mdi/scss/materialdesignicons.scss",
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
