@@ -2,32 +2,33 @@
 
 a {
   color: $ebony-clay;
+  text-transform: uppercase;
 }
 
 .navbar-menu {
   border-bottom: 1px solid #D6D6D6;
+  margin-bottom: 11px;
 }
 
 // Categories menu
-.has-dropdown {
-  a {
-    text-transform: uppercase;
-    font-size: 18px;
-    &:hover {
-      text-decoration: underline;
-    }
+a.category {
+  font-size: 18px;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  padding: 0 1em;
+  margin: 0.5em 0;
+
+  &:hover {
+    border-bottom-color: $ebony-clay;
   }
 }
 
 // Subcategories menu
-.navbar-dropdown {
-  a {
-    color: $ebony-clay;
-    font-size: 14px;
-    &:hover {
-      text-decoration: none;
-      background-color: $white-smoke;
-    }
+a.sub-category {
+  color: $ebony-clay;
+  font-size: 14px;
+  &:hover {
+    background-color: $white-smoke;
   }
 }
 
