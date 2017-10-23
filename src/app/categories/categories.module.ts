@@ -6,7 +6,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 
 const DECLARATIONS = [
-  ProductListComponent
+  ProductListComponent,
+  ProductComponent
 ];
 
 @NgModule({
@@ -16,7 +17,6 @@ const DECLARATIONS = [
   ],
   declarations: [
     ...DECLARATIONS,
-    ProductComponent
   ],
   exports: [
     ...DECLARATIONS

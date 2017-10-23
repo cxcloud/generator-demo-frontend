@@ -11,7 +11,9 @@
     <div class="columns is-mobile is-multiline is-centered">
       <ng-container *ngFor="let product of products">
         <div class="column is-narrow">
-          <app-product [product]="product"></app-product>
+          <a [routerLink]="['product/', product.id]">
+            <app-product [product]="product"></app-product>
+          </a>
         </div>
       </ng-container>
     </div>
