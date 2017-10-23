@@ -2,12 +2,12 @@
   <div class="navbar-menu" id="navMainMenu">
     <div class="navbar-start">
       <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
-        <a class="navbar-item category">{{category.name.en}}</a>
+        <a class="navbar-item category"  [routerLink]="['categories/', category.id]">{{category.name.en}}</a>
         <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories.length">
           <a
             class="navbar-item sub-category"
             *ngFor="let subCategory of category.subCategories"
-            [routerLink]="['products/', category.slug.en, subCategory.slug.en]"
+            [routerLink]="['categories/', subCategory.id]"
           >
             {{subCategory.name.en}}
           </a>

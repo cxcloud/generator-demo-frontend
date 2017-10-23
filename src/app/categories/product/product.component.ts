@@ -7,14 +7,28 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
   @Input('product') product: any;
-  image: string;
-  price: string;
+  image: any;
+  price: any;
+  centAmount: number;
 
-  constructor() {  }
+  constructor() { }
 
   ngOnInit() {
-    this.image = this.product.variants[0].images[0];
-    this.price = this.product.variants[0].prices[0].value;
+    const masterVariant = this.getMasterVariant();
+    this.image = masterVariant.images[0];
+    this.price = masterVariant.prices[0].value;
+    this.centAmount = this.price.centAmount / 100;
   }
 
+  getMasterVariant() {
+    const masterVariant = {...this.product.masterVariant};
+
+    if (masterVariant.prices.length === 0) {
+      masterVariant.prices = [...this.product.variants[0].prices];
+    }
+    if (masterVariant.images.length === 0) {
+      masterVariant.images = [...this.product.variants[0].images];
+    }
+    return masterVariant;
+  }
 }
