@@ -1,11 +1,53 @@
-<div class="box is-centered">
-  <figure class="image product-image"
-    [style.height.px]="image.dimensions.h"
-    [style.width.px]="image.dimensions.w"
-  >
-    <img src="{{image.url}}">
-  </figure>
-  <div class="name-headline">{{product.name.en}}</div>
-  <div class="item-price">{{centAmount}} {{price.currencyCode}}</div>
-</div>
+<div class="columns">
+    <div class="column is-3 is-offset-2">
+        <figure class="image product-image">
+        <img src="{{product.masterVariant.images[0].url}}">
+      </figure>
+    </div>
+    <div class="column is-offset-1">
+      <div class="subtitle is-3">{{product.name.en}}</div>
+      <div class="subtitle is-6">{{product.masterVariant.sku}}</div>
+      <div class="subtitle is-3">
+        {{product.masterVariant.prices[0].value.currencyCode}}
+        {{product.masterVariant.prices[0].value.centAmount / 100}}.-
+      </div>
+
+      <div class="field">
+        <label>COLOR:</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+            </select>
+          </div>
+        </div>
+        <label>SIZE:</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+          <button class="button add-to-cart">
+            <span class="icon">
+              <i class="mdi mdi-cart mdi-24px"></i>
+            </span>
+            <span>Add to cart</span>
+          </button>
+        </div>
+      </div>
+  </div>
 

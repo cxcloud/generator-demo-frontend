@@ -21,9 +21,32 @@ export const PRODUCTS = [
     },
     'masterVariant': {
       'id': 1,
-      'sku': 'UNC_T-shirt',
-      'prices': [],
-      'images': [],
+      'sku': 'A0E200000001YLU',
+      'prices': [
+        {
+          'value': {
+            'currencyCode': 'EUR',
+            'centAmount': 18000
+          },
+          'id': '9e2f632d-7fc7-499f-8db9-a428ae19b27a'
+        },
+        {
+          'value': {
+            'currencyCode': 'USD',
+            'centAmount': 18000
+          },
+          'id': 'df6614db-4e1e-4da6-b7f0-8bdb38bc4c95'
+        }
+      ],
+      'images': [
+        {
+          'url': 'https://b5fe8f3a5ad76f58ab17-cab4d6a2cd4bfbade5fdf3a9281ccb81.ssl.cf3.rackcdn.com/Screen+Shot+2017-10--FSHi5dsK.png',
+          'dimensions': {
+            'w': 183,
+            'h': 245
+          }
+        }
+      ],
       'attributes': [
         {
           'name': 'product_type',
@@ -185,8 +208,31 @@ export const PRODUCTS = [
     'masterVariant': {
       'id': 1,
       'sku': 'LG_BP199',
-      'prices': [],
-      'images': [],
+      'prices': [
+        {
+          'value': {
+            'currencyCode': 'EUR',
+            'centAmount': 18000
+          },
+          'id': '9e2f632d-7fc7-499f-8db9-a428ae19b27a'
+        },
+        {
+          'value': {
+            'currencyCode': 'USD',
+            'centAmount': 18000
+          },
+          'id': 'df6614db-4e1e-4da6-b7f0-8bdb38bc4c95'
+        }
+      ],
+      'images': [
+        {
+          'url': 'https://b5fe8f3a5ad76f58ab17-cab4d6a2cd4bfbade5fdf3a9281ccb81.ssl.cf3.rackcdn.com/Screen+Shot+2017-10--YpNLCWb6.png',
+          'dimensions': {
+            'w': 183,
+            'h': 263
+          }
+        }
+      ],
       'attributes': [
         {
           'name': 'product_type',
@@ -348,8 +394,31 @@ export const PRODUCTS = [
     'masterVariant': {
       'id': 1,
       'sku': 'LG_BP199',
-      'prices': [],
-      'images': [],
+      'prices': [
+        {
+          'value': {
+            'currencyCode': 'EUR',
+            'centAmount': 18000
+          },
+          'id': '9e2f632d-7fc7-499f-8db9-a428ae19b27a'
+        },
+        {
+          'value': {
+            'currencyCode': 'USD',
+            'centAmount': 18000
+          },
+          'id': 'df6614db-4e1e-4da6-b7f0-8bdb38bc4c95'
+        }
+      ],
+      'images': [
+        {
+          'url': 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081510_1_medium.jpg',
+          'dimensions': {
+            'w': 183,
+            'h': 244
+          }
+        }
+      ],
       'attributes': [
         {
           'name': 'product_type',
@@ -511,8 +580,31 @@ export const PRODUCTS = [
     'masterVariant': {
       'id': 1,
       'sku': 'LG_BP199',
-      'prices': [],
-      'images': [],
+      'prices': [
+        {
+          'value': {
+            'currencyCode': 'EUR',
+            'centAmount': 18000
+          },
+          'id': '9e2f632d-7fc7-499f-8db9-a428ae19b27a'
+        },
+        {
+          'value': {
+            'currencyCode': 'USD',
+            'centAmount': 18000
+          },
+          'id': 'df6614db-4e1e-4da6-b7f0-8bdb38bc4c95'
+        }
+      ],
+      'images': [
+        {
+          'url': 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080177_1_medium.jpg',
+          'dimensions': {
+            'w': 143,
+            'h': 244
+          }
+        }
+      ],
       'attributes': [
         {
           'name': 'product_type',

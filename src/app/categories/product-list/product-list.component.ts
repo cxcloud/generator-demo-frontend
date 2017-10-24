@@ -12,6 +12,16 @@ export class ProductListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.getProductVariants();
+  }
+
+  getProductVariants() {
+    // Add master variant as first item in variants
+    this.products.forEach(product => {
+      if (product.masterVariant) {
+        product.variants.unshift(product.masterVariant);
+      }
+    });
   }
 
 }
