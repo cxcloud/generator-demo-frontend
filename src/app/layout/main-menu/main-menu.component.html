@@ -1,18 +1,15 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-menu" id="navMainMenu">
-    <div class="navbar-start">
-      <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
-        <a class="navbar-item category"  [routerLink]="['categories/', category.id]">{{category.name.en}}</a>
-        <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories.length">
-          <a
-            class="navbar-item sub-category"
-            *ngFor="let subCategory of category.subCategories"
-            [routerLink]="['categories/', subCategory.id]"
-          >
-            {{subCategory.name.en}}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+<!-- List of sub categories-->
+<ng-container *ngFor="let category of categories">
+<div *ngIf="category.ancestors.length <= 2" class="nested level-{{category.ancestors.length}}">
+  <a class="navbar-item sub-category" [routerLink]="['categories/', category.id]">
+    {{category.name.en}}
+  </a>
+  <app-main-menu
+    [categories]="category.subCategories"
+    *ngIf="category.subCategories"
+  >
+  </app-main-menu>
+</div>
+</ng-container>
+
+

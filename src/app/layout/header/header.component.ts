@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Category } from '../../types/category.model';
 
 @Component({
   selector: 'app-header',
@@ -13,11 +15,19 @@ export class HeaderComponent implements OnInit {
     {name: 'LogIn', icon: 'mdi-account'},
     {name: 'Cart', icon: 'mdi-cart'}
   ];
+  categories: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.onToggleMenu();
+    this.getCategories();
+  }
+  getCategories() {
+    this.http.get('https://demo.cxcloud.xyz/api/v1/categories').subscribe(data => {
+      console.log('---->', data);
+      this.categories = data;
+    });
   }
   onToggleMenu() {
     document.addEventListener('DOMContentLoaded', function () {
