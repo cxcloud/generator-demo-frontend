@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { HeaderComponent } from './header/header.component';
 import { BrandNavbarComponent } from './brand-navbar/brand-navbar.component';
@@ -20,7 +21,8 @@ const DECLARATIONS = [
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    HttpModule
   ],
   declarations: [
     ...DECLARATIONS
