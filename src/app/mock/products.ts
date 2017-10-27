@@ -79,6 +79,13 @@ export const PRODUCTS = [
             'w': 0,
             'h': 0
           }
+        },
+        {
+          'url': 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081448_1_medium.jpg',
+          'dimensions': {
+            'w': 0,
+            'h': 0
+          }
         }
       ],
       'attributes': [

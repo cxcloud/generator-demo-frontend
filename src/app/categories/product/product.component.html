@@ -1,8 +1,21 @@
 <div class="columns product-view">
     <div class="column is-3 is-offset-2">
-        <figure class="image product-image">
-        <img src="{{product.masterVariant.images[0].url}}">
+      <figure class="image product-image">
+
+        <!-- Image with magnifying lens -->
+        <img
+          [imageZoom]="image.url"
+          [src]="image.url"
+          [lensWidth]="300"
+          [lensHeight]="500"
+        >
       </figure>
+      <img
+        *ngFor="let image of product.masterVariant.images"
+        class="thumbnail"
+        src="{{image.url}}"
+        (click) ="selectImage(image)"
+      >
     </div>
     <div class="column is-offset-1">
       <h2 class="product-title">{{product.name.en}}</h2>

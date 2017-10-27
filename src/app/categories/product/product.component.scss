@@ -20,3 +20,13 @@ button.add-to-cart {
   background-color: $yellow;
   text-transform: uppercase;
 }
+
+.thumbnail {
+  width: 48px;
+  border: 1px solid $silver;
+  padding: 2px;
+  margin: 3px;
+  &:hover {
+    cursor: pointer;
+  }
+}

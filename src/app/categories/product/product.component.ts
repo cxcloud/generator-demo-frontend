@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PRODUCTS } from '../../mock/products';
-import { Product } from '../../types/product.model';
-import { Variant } from '../../types/product.model';
+import { Product, Variant } from '../../types/product.model';
+import { Image } from '../../types/common.model';
 @Component({
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
@@ -11,12 +11,15 @@ export class ProductComponent implements OnInit {
   variants: Variant[];
   colors: Array<string>;
   sizes: Array<string>;
+  image: Image;
+
   constructor() { }
 
   ngOnInit() {
     this.variants = this.getAllVariants();
     this.colors = this.getAvailableOptions('color');
     this.sizes = this.getAvailableOptions('size');
+    this.image = this.product.masterVariant.images[0];
   }
 
   getAvailableAmount() {
@@ -47,5 +50,9 @@ export class ProductComponent implements OnInit {
     acc.push(variant);
     return acc;
    }, [this.product.masterVariant]);
+  }
+
+  selectImage(image) {
+    this.image = image;
   }
 }
