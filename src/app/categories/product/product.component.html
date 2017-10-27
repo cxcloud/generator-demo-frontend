@@ -1,37 +1,39 @@
-<div class="columns">
+<div class="columns product-view">
     <div class="column is-3 is-offset-2">
         <figure class="image product-image">
         <img src="{{product.masterVariant.images[0].url}}">
       </figure>
     </div>
     <div class="column is-offset-1">
-      <div class="subtitle is-3">{{product.name.en}}</div>
-      <div class="subtitle is-6">{{product.masterVariant.sku}}</div>
+      <h2 class="product-title">{{product.name.en}}</h2>
+      <h3 class="sku">{{product.masterVariant.sku}}</h3>
       <div class="subtitle is-3">
         {{product.masterVariant.prices[0].value.currencyCode}}
-        {{product.masterVariant.prices[0].value.centAmount / 100}}.-
+        {{0.01 * product.masterVariant.prices[0].value.centAmount}}
       </div>
 
-      <div class="field">
-        <label>COLOR:</label>
+      <div class="field is-horizontal">
+
         <div class="control">
-          <div class="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
+            <label>COLOR:</label><br />
+            <div class="select">
+              <select>
+                <option *ngFor="let color of colors">{{color}}</option>
+              </select>
           </div>
         </div>
-        <label>SIZE:</label>
+
         <div class="control">
-          <div class="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
+            <label>SIZE:</label><br />
+            <div class="select">
+              <select>
+                <option *ngFor="let size of sizes">{{size}}</option>
+              </select>
           </div>
         </div>
+
       </div>
+
       <div class="field is-grouped">
         <div class="control">
           <div class="select">

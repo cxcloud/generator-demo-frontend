@@ -1,5 +1,22 @@
 @import '../../../variables.scss';
 
+.product-view {
+  margin: 0.5em 0;
+}
+.product-title {
+  text-transform: uppercase;
+  font-size: 1.6em;
+}
+.sku {
+ color: $silver;
+ margin-bottom: 2em;
+}
+
+.control {
+  margin-right: 1em;
+}
+
 button.add-to-cart {
   background-color: $yellow;
+  text-transform: uppercase;
 }
