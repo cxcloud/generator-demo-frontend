@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-// import { PRODUCTS } from '../../mock/products';
 import { Product } from '../../types/product.model';
 import { CommerceService } from '../../core/commerce/commerce.service';
-import { ActivatedRoute } from '@angular/router';;
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
