@@ -4,4 +4,8 @@
 
 $family-sans-serif: $sans-pro-font;
 
+body {
+  font-family: $family-sans-serif;
+}
+
 @import '~bulma';

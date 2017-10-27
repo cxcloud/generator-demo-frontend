@@ -6,6 +6,9 @@
 
 .hero-body {
   background-color: $white;
+  .container {
+    margin-left: 0;
+  }
 
   .title {
     color: $ebony-clay;

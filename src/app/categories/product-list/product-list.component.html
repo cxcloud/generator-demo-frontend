@@ -2,35 +2,38 @@
 
   <!-- Filters column -->
   <div class="column is-3">
-    <div class="title is-4">Filters</div>
+    <div class="title is-4">Filter products</div>
   </div>
 
   <!-- Product list -->
   <div class="column is-9">
-      <div class="title is-4">Products</div>
+    <div class="hero">
+      <div class="hero-body has-text-centered page-title">
+        <h2 class="title is-2">Products</h2>
+      </div>
+    </div>
     <div class="columns is-mobile is-multiline is-centered">
       <ng-container *ngFor="let product of products">
-        <ng-container *ngFor="let variant of product.variants">
           <div class="column is-narrow">
             <!-- Product item -->
-            <a [routerLink]="['/product', product.id, variant.id]">
-              <div class="box is-centered">
-                <figure class="image product-image"
-                  [style.height.px]="variant.images[0].dimensions.h"
-                  [style.width.px]="variant.images[0].dimensions.w"
-                >
-                  <img src="{{variant.images[0].url}}">
+            <a [routerLink]="['/product', product.id, product.masterVariant.id]">
+              <div class="box has-text-centered">
+                <figure class="image product-image">
+                  <img
+                    src="{{product.masterVariant.images[0].url}}"
+                    *ngIf="product.masterVariant.images.length"
+                  >
                 </figure>
-                <div class="name-headline">{{product.name.en}}</div>
-                <div class="item-price">
-                  {{variant.prices[0].value.centAmount / 100}}
-                  {{variant.prices[0].value.currencyCode}}
+                <div class="product-description">
+                  <div class="name-headline">{{product.name.en}}</div>
+                  <div class="item-price">
+                    {{0.01 * product.masterVariant.prices[0].value.centAmount}}
+                    {{product.masterVariant.prices[0].value.currencyCode}}
+                  </div>
                 </div>
               </div>
             </a>
           </div>
-        </ng-container>
-
       </ng-container>
     </div>
   </div>

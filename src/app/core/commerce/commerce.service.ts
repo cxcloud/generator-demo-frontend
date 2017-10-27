@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Category } from '../../types/category.model';
+import { Product } from '../../types/product.model';
 
 
 
@@ -17,6 +18,12 @@ export class CommerceService {
   getCategories(): Observable<Category[]> {
     return this.http
     .get(`${this.apiUrl}/categories`)
-    .map(res =>  res.json() as Category[]);
+    .map(res => res.json() as Category[]);
+  }
+
+  getProducts(categoryId: string): Observable<Product[]> {
+    return this.http
+    .get(`${this.apiUrl}/products/${categoryId}`)
+    .map(res => res.json().results as Product[]);
   }
 }

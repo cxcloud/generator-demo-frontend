@@ -19,10 +19,13 @@ export class HeaderComponent implements OnInit {
   ];
   categories: Category[];
 
-  constructor(private commerceService: CommerceService) { }
+  constructor(
+    private commerceService: CommerceService
+  ) { }
 
   ngOnInit(): void {
     this.onToggleMenu();
+
     this.commerceService
     .getCategories()
     .subscribe(data => this.categories = data);

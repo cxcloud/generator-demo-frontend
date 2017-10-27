@@ -15,3 +15,28 @@
 image {
   display: block;
 }
+
+.box {
+  max-width: 270px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.page-title {
+  border: 1px solid #D9D7CE;
+
+  .title.is-2 {
+    font-size: 3em;
+  }
+}
+
+.product-description {
+  padding-top: 2em;
+
+  .item-price {
+    font-weight: 600;
+  }
+}
