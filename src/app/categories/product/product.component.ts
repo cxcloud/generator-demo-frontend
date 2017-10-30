@@ -35,6 +35,7 @@ export class ProductComponent implements OnInit {
     .subscribe(product => {
       if (product) {
         this.product = product;
+        console.log(product);
         this.setDefaultVariant(product.masterVariant);
         this.variants = this.getAllVariants(product);
 

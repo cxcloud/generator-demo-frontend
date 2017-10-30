@@ -1,4 +1,6 @@
 <div class="columns product-view">
+
+    <!-- Image column -->
     <div class="column is-3 is-offset-2">
       <figure class="image product-image">
 
@@ -18,10 +20,13 @@
         (click) ="selectImage(image)"
       >
     </div>
+
+    <!-- Description column -->
     <div class="column is-offset-1">
-      <h2 class="product-title">{{product?.name?.en}}</h2>
-      <h3 class="sku">{{variant?.sku}}</h3>
-      <div class="subtitle is-3">
+      <h2 class="pd-title">{{product?.name?.en}}</h2>
+      <h3 class="pd-sku">{{variant?.sku}}</h3>
+      <div class="pd-description column is-8">{{product?.description?.en}}</div>
+      <div class="subtitle is-3 pd-price">
         {{price?.value?.currencyCode}}
         {{0.01 * price?.value?.centAmount}}
       </div>
