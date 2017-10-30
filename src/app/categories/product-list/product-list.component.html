@@ -16,7 +16,7 @@
       <ng-container *ngFor="let product of products">
           <div class="column is-narrow">
             <!-- Product item -->
-            <a [routerLink]="['/product', product.id, product.masterVariant.id]">
+            <a [routerLink]="['/product', product.id]">
               <div class="box has-text-centered">
                 <figure class="image product-image">
                   <img

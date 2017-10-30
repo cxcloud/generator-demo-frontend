@@ -23,7 +23,13 @@ export class CommerceService {
 
   getProducts(categoryId: string): Observable<Product[]> {
     return this.http
-    .get(`${this.apiUrl}/products/${categoryId}`)
+    .get(`${this.apiUrl}/products/byCategory/${categoryId}`)
     .map(res => res.json().results as Product[]);
+  }
+
+  getProduct(productId: string): Observable<Product> {
+    return this.http
+    .get(`${this.apiUrl}/products/${productId}`)
+    .map(res => res.json() as Product);
   }
 }

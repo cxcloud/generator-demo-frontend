@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   products: Product[];
-  categoryId: string;
 
   constructor(
     private commerceService: CommerceService,
@@ -21,17 +20,14 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      // Get category id
-      this.categoryId = params['id'];
-
-      // Get all product from category
-      this.getProducts();
+      // Get all products by category id
+      this.getProducts(params['id']);
     });
   }
 
-  getProducts() {
+  getProducts(categoryId) {
     this.commerceService
-    .getProducts(this.categoryId)
+    .getProducts(categoryId)
     .subscribe(data => this.products = data);
   }
 

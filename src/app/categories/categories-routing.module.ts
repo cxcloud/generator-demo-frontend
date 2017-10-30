@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'product/:id/:id', component: ProductComponent},
+  { path: 'product/:id', component: ProductComponent},
   {
     path: 'categories',
     children: [

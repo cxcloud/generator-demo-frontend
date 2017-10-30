@@ -4,30 +4,31 @@
 
         <!-- Image with magnifying lens -->
         <img
+          *ngIf="image"
           [imageZoom]="image.url"
-          [src]="image.url"
+          [src]="image?.url"
           [lensWidth]="300"
           [lensHeight]="500"
         >
       </figure>
       <img
-        *ngFor="let image of product.masterVariant.images"
+        *ngFor="let image of variant?.images"
         class="thumbnail"
         src="{{image.url}}"
         (click) ="selectImage(image)"
       >
     </div>
     <div class="column is-offset-1">
-      <h2 class="product-title">{{product.name.en}}</h2>
-      <h3 class="sku">{{product.masterVariant.sku}}</h3>
+      <h2 class="product-title">{{product?.name?.en}}</h2>
+      <h3 class="sku">{{variant?.sku}}</h3>
       <div class="subtitle is-3">
-        {{product.masterVariant.prices[0].value.currencyCode}}
-        {{0.01 * product.masterVariant.prices[0].value.centAmount}}
+        {{price?.value?.currencyCode}}
+        {{0.01 * price?.value?.centAmount}}
       </div>
 
       <div class="field is-horizontal">
 
-        <div class="control">
+        <div class="control" *ngIf="colors?.length">
             <label>COLOR:</label><br />
             <div class="select">
               <select>
@@ -36,9 +37,9 @@
           </div>
         </div>
 
-        <div class="control">
+        <div class="control" *ngIf="sizes?.length">
             <label>SIZE:</label><br />
-            <div class="select">
+            <div class="select" (change)="getVariantByAttribute('size', $event)">
               <select>
                 <option *ngFor="let size of sizes">{{size}}</option>
               </select>
