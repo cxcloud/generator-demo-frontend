@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
   price: Price;
   colors: Array<string>;
   sizes: Array<string>;
+  productDetails: Array<any>;
 
   constructor(
     private commerceService: CommerceService,
@@ -41,10 +42,10 @@ export class ProductComponent implements OnInit {
         // Get all variants (including master variant)
         this.variants = this.getAllVariants(product);
 
-        // Get available colors
+        // Get available color options
         this.colors = this.getAvailableVariantOptions('color');
 
-        // Get available sizes
+        // Get available size options
         this.sizes = this.getAvailableVariantOptions('size');
       }
     });
@@ -54,6 +55,11 @@ export class ProductComponent implements OnInit {
     this.selectedVariant = variant;
     this.image = variant.images[0];
     this.price = variant.prices[0];
+
+    this.productDetails = [
+      this.getAttribute('designer'),
+      this.getAttribute('style')
+    ];
   }
 
   getAllVariants(product) {
@@ -63,8 +69,13 @@ export class ProductComponent implements OnInit {
     }, [product.masterVariant]);
    }
 
-  getAvailableVariantOptions(attributeName: string) {
+   getAttribute(name) {
+    return this.selectedVariant.attributes.filter(attr => {
+      return attr.name === name;
+    })[0];
+   }
 
+  getAvailableVariantOptions(attributeName: string) {
     const isOptionAvailable = function(array, property) {
       if (typeof property !== 'object') {
         if (array.indexOf(property) === -1) {
@@ -73,7 +84,9 @@ export class ProductComponent implements OnInit {
         }
       } else {
         Object.keys(property).forEach(key => {
-          isOptionAvailable(array, property[key]);
+          if (key === 'label' || key === 'en') {
+            isOptionAvailable(array, property[key]);
+          }
         });
       }
     };
@@ -88,13 +101,11 @@ export class ProductComponent implements OnInit {
     }, []);
   }
 
-
-  selectImage(image) {
+  changeSelectedImage(image) {
     this.image = image;
   }
 
   getVariantByAttribute(attrName, $event) {
-
     const deepCheck = function(property, value) {
       if (typeof property !== 'object') {
         if (property === value) {
@@ -102,11 +113,13 @@ export class ProductComponent implements OnInit {
         }
       } else {
         Object.keys(property).forEach(key => {
-          deepCheck(property[key], value);
+          if (key === 'label' || key === 'en') {
+            deepCheck(property[key], value);
+          }
         });
       }
     };
-
+    // Updated selected variant
     this.selectedVariant = this.variants.filter(variant => {
       for (let i = 0; i < variant.attributes.length; i += 1) {
         if (variant.attributes[i].name === attrName) {

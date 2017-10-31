@@ -17,7 +17,7 @@
         *ngFor="let image of selectedVariant?.images"
         class="thumbnail"
         src="{{image.url}}"
-        (click) ="selectImage(image)"
+        (click) ="changeSelectedImage(image)"
       >
     </div>
 
@@ -35,7 +35,7 @@
 
         <div class="control" *ngIf="colors?.length">
             <label>COLOR:</label><br />
-            <div class="select">
+            <div class="select" (change)="getVariantByAttribute('color', $event)">
               <select>
                 <option *ngFor="let color of colors">{{color}}</option>
               </select>
@@ -68,6 +68,26 @@
             </span>
             <span>Add to cart</span>
           </button>
+        </div>
+      </div>
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title is-uppercase">
+            Product Details
+          </p>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="mdi mdi-chevron-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
+        <div class="card-content">
+        <ul class="content">
+          <li class="attribute" *ngFor="let attr of productDetails">
+            <span class="attr-name is-uppercase">{{attr?.name}}:</span>
+            <span class="attr-value is-capitalized">{{attr?.value.label}}</span>
+          </li>
+        </ul>
         </div>
       </div>
   </div>
