@@ -31,3 +31,17 @@ export interface Money {
   currencyCode: string;
   centAmount: number;
 }
+
+export interface Address {
+  id?: string;
+  firstName?: string;
+  streetName?: string;
+  postalCode: string;
+  city: string;
+  region?: string;
+  state?: string;
+  country: string;
+  company?: string;
+  phone?: string;
+  additionalAddressInfo?: string;
+}
