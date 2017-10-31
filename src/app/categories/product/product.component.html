@@ -14,7 +14,7 @@
         >
       </figure>
       <img
-        *ngFor="let image of variant?.images"
+        *ngFor="let image of selectedVariant?.images"
         class="thumbnail"
         src="{{image.url}}"
         (click) ="selectImage(image)"
@@ -24,7 +24,7 @@
     <!-- Description column -->
     <div class="column is-offset-1">
       <h2 class="pd-title">{{product?.name?.en}}</h2>
-      <h3 class="pd-sku">{{variant?.sku}}</h3>
+      <h3 class="pd-sku">{{selectedVariant?.sku}}</h3>
       <div class="pd-description column is-8">{{product?.description?.en}}</div>
       <div class="subtitle is-3 pd-price">
         {{price?.value?.currencyCode}}
