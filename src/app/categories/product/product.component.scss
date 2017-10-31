@@ -35,22 +35,10 @@ button.add-to-cart {
     cursor: pointer;
   }
 }
-.card{
-  margin-top: 2em;
-  font-size: 14px;
-  color: $ebony-clay;
 
-  .card-header-title {
-    letter-spacing: 0.1em;
-  }
-  .card-content {
-    padding: 0.9em;
-    .attr-name {
-      color: $grey;
-      margin-right: 5px;
-    }
-  }
-
+.attr-name {
+  color: $grey;
+  margin-right: 5px;
 }
 
 

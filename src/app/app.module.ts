@@ -10,10 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
 import { HomeModule } from './home/home.module';
 import { CategoriesModule } from './categories/categories.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
     BrowserModule,
+    SharedModule,
     HttpClientModule,
     FormsModule,
     RouterModule,

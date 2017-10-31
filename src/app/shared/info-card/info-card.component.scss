@@ -1,0 +1,14 @@
+@import "../../../variables.scss";
+
+.card {
+  margin-top: 2em;
+  font-size: 14px;
+  color: $ebony-clay;
+
+  .card-header-title {
+    letter-spacing: 0.1em;
+  }
+  .card-content {
+    padding: 0.9em;
+  }
+}

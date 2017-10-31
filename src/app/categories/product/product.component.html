@@ -70,25 +70,19 @@
           </button>
         </div>
       </div>
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title is-uppercase">
-            Product Details
-          </p>
-          <a href="#" class="card-header-icon" aria-label="more options">
-            <span class="icon">
-              <i class="mdi mdi-chevron-down" aria-hidden="true"></i>
-            </span>
-          </a>
-        </header>
-        <div class="card-content">
+      <app-info-card title="Product Details">
         <ul class="content">
           <li class="attribute" *ngFor="let attr of productDetails">
             <span class="attr-name is-uppercase">{{attr?.name}}:</span>
             <span class="attr-value is-capitalized">{{attr?.value.label}}</span>
           </li>
         </ul>
-        </div>
-      </div>
+      </app-info-card>
+
+      <app-info-card title="Delivery & Returns">
+          <div class="content">
+              Free return for all orders.
+          </div>
+        </app-info-card>
   </div>
 

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
-
+import { SharedModule } from '../shared/shared.module';
 import {ImageZoomModule} from 'angular2-image-zoom';
 
 const DECLARATIONS = [
@@ -16,6 +16,7 @@ const DECLARATIONS = [
   imports: [
     CommonModule,
     ImageZoomModule,
+    SharedModule,
     CategoriesRoutingModule
   ],
   declarations: [
