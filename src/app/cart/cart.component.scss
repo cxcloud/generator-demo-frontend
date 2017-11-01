@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+.columns {
+  background-color: $romance;
+}
+
+.table {
+  border: 1px solid $light-grey;
+  background-color: $white;
+  th {
+    color: $grey;
+    font-size: 0.9em;
+    border: none;
+    border-bottom: 1px solid$light-grey;
+  }
+}

@@ -9,6 +9,7 @@ import { CART } from '../mock/carts';
 })
 export class CartComponent implements OnInit {
   cart: Cart = CART;
+  columns: Array<string> = ['Description', 'Quantity', 'Price', 'Total'];
 
   constructor() { }
 
