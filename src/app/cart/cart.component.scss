@@ -8,8 +8,15 @@
   background-color: $white;
   th {
     color: $grey;
-    font-size: 0.9em;
+    font-size: 0.8em;
     border: none;
     border-bottom: 1px solid$light-grey;
   }
+}
+.subtitle {
+  color: $ebony-clay;
+}
+.items-total {
+ color: $eastern-blue;
+ margin-left: 5px;
 }

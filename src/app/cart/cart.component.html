@@ -1,19 +1,24 @@
 <div class="columns">
   <div class="column is-10 is-offset-1">
-      <table class="table is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th class="is-uppercase" *ngFor="let title of columns">{{title}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of cart.lineItems">
-            <td class="item description">{{item.name.en}}</td>
-            <td class="item quantity">{{item.quantity}}</td>
-            <td class="item price">{{0.01 * item.price.value.centAmount}} {{item.price.value.currencyCode}}</td>
-            <td class="total-price">{{0.01 * item.totalPrice.centAmount}} {{item.totalPrice.currencyCode}}</td>
-          </tr>
-        </tbody>
+    <div class="subtitle">
+      <i class="mdi mdi-cart-outline mdi-36px"></i>
+      <span class="is-uppercase">Your cart: </span>
+      <span class="items-total">{{totalAmount}} items in total</span>
+    </div>
+    <table class="table is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th class="is-uppercase" *ngFor="let title of columns">{{title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart.lineItems">
+          <td class="cart-item-description">{{item.name.en}}</td>
+          <td class="cart-item-quantity">{{item.quantity}}</td>
+          <td class="cart-item-price">{{0.01 * item.price.value.centAmount}} {{item.price.value.currencyCode}}</td>
+          <td class="cart-item-price">{{0.01 * (item.quantity * item.price.value.centAmount)}} {{item.price.value.currencyCode}}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
