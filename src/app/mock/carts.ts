@@ -72,11 +72,11 @@ export const CART = {
           ],
           'images': [
             {
-                'url': 'https: //s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079375_1_large.jpg',
-                'dimensions': {
-                  'w': 0,
-                  'h': 0
-                }
+              'url': 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079375_1_large.jpg',
+              'dimensions': {
+                'w': 0,
+                'h': 0
+              }
             }
           ],
           'attributes': [

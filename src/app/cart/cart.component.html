@@ -6,7 +6,7 @@
       <div class="subtitle level-left">
         <i class="mdi mdi-cart-outline mdi-36px"></i>
         <span class="is-uppercase">Your cart: </span>
-        <span class="items-total">{{totalAmount}} items in total</span>
+        <span class="items-total">{{totalAmount}} </span> items in total
       </div>
       <!-- Checkout button -->
       <app-checkout-button name="Checkout"></app-checkout-button>
@@ -20,7 +20,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of cart.lineItems">
-          <td class="cart-item-description">{{item.name.en}}</td>
+          <td class="cart-item-description">
+            <app-cart-order-content [item]="item"></app-cart-order-content>
+          </td>
           <td class="cart-item-quantity">{{item.quantity}}</td>
           <td class="cart-item-price">{{0.01 * item.price.value.centAmount}} {{item.price.value.currencyCode}}</td>
           <td class="cart-item-price">{{0.01 * (item.quantity * item.price.value.centAmount)}} {{item.price.value.currencyCode}}</td>

@@ -1,0 +1,29 @@
+@import '../../../variables.scss';
+
+img {
+  max-width: 100px;
+  border: 1px solid $light-grey;
+}
+
+.description div {
+  margin-bottom: 10px;
+  a {
+    color: $night-rider;
+  }
+}
+
+.item-name {
+  font-size: 1.1em;
+}
+
+
+.item-sku,
+.item-attributes {
+  color: $grey;
+  font-size: 14px;
+
+  span {
+    color: $night-rider;
+    font-size: 1.1em;
+  }
+}
