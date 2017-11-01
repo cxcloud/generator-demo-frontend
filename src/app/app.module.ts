@@ -11,6 +11,7 @@ import { LayoutModule } from './layout/layout.module';
 import { HomeModule } from './home/home.module';
 import { CategoriesModule } from './categories/categories.module';
 import { SharedModule } from './shared/shared.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     HomeModule,
     CategoriesModule,
     LayoutModule,
+    CartModule,
     AppRoutingModule
   ],
   declarations: [

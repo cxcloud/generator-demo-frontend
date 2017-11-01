@@ -1,7 +1,6 @@
 import { Variant } from './product.model';
 import { Discount, DiscountCode } from './discounts.model';
 import {
-  Address,
   LocalizedString,
   Money,
   Price,
