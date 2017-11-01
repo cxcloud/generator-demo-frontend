@@ -1,0 +1,8 @@
+@import '../../../variables.scss';
+
+.btn-checkout {
+  background-color: $yellow;
+  &:hover {
+    background-color: $supernova;
+  }
+}

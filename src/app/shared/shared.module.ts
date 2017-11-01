@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InfoCardComponent } from './info-card/info-card.component';
+import { CheckoutButtonComponent } from './checkout-button/checkout-button.component';
 
 
 const DECLARATIONS = [
-  InfoCardComponent
+  InfoCardComponent,
+  CheckoutButtonComponent
 ];
 
 @NgModule({
@@ -13,7 +15,7 @@ const DECLARATIONS = [
     CommonModule
   ],
   declarations: [
-    ...DECLARATIONS,
+    ...DECLARATIONS
   ],
   exports: [
     ...DECLARATIONS
