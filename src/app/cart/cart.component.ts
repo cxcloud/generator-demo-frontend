@@ -44,4 +44,8 @@ export class CartComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
+  updateQuantityValue(value) {
+    console.log('Line item quantity: ', value);
+  }
+
 }

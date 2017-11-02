@@ -1,0 +1,31 @@
+@import '../../../variables.scss';
+.input-number,
+.value-button {
+  border: 1px solid $light-grey;
+  text-align: center;
+}
+
+.input-number {
+  font-size: 1em;
+  height: 40px;
+  width: 40px;
+  padding: 0 10px;
+  margin: 0 5px;
+}
+
+.value-button {
+  width: 30px;
+  line-height: 38px;
+  font-weight: bold;
+  cursor: pointer;
+  &:active {
+    background-color: $yellow;
+  }
+}
+
+.input-number::-webkit-outer-spin-button,
+.input-number::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
