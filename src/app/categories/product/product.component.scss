@@ -41,4 +41,24 @@ button.add-to-cart {
   margin-right: 5px;
 }
 
+.pd-review {
+  margin-bottom: 0;
+  .mdi-star{
+    color: $silver;
+
+    &::before {
+      font-style: normal;
+      cursor: pointer;
+    }
+    &:hover {
+      color: $yellow;
+    }
+  }
+  span {
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 0.5em;
+  }
+}
+
 

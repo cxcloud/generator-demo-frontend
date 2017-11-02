@@ -1,4 +1,4 @@
-<div class="columns">
+<div class="columns cart-page">
   <div class="column is-10 is-offset-1">
 
     <div class="level">
@@ -20,8 +20,20 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of cart.lineItems">
-          <td class="cart-item-description">
-            <app-cart-order-content [item]="item"></app-cart-order-content>
+          <td class="columns cart-item-description">
+            <div class="column">
+                <app-cart-order-content [item]="item"></app-cart-order-content>
+            </div>
+
+            <!-- Delete button -->
+            <div class="column is-4 is-uppercase btn-delete">
+              <div class="level">
+                <div class="level-item">
+                  <i class="mdi mdi-window-close mdi-24px"></i>
+                  <span>Delete</span>
+                </div>
+              </div>
+            </div>
           </td>
           <td class="cart-item-quantity">{{item.quantity}}</td>
           <td class="cart-item-price">{{0.01 * item.price.value.centAmount}} {{item.price.value.currencyCode}}</td>
@@ -30,7 +42,7 @@
       </tbody>
     </table>
     <!-- Button line -->
-    <div class="level button-line">
+    <div class="level navigation">
       <!-- Total amount of items in the cart -->
       <button class="button level-left is-uppercase btn-back">
         <span class="icon">

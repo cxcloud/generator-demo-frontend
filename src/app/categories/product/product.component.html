@@ -23,8 +23,21 @@
 
     <!-- Description column -->
     <div class="column is-offset-1">
+
       <h2 class="pd-title">{{product?.name?.en}}</h2>
       <h3 class="pd-sku">{{selectedVariant?.sku}}</h3>
+
+      <!-- Review placeholder -->
+      <div class="level pd-review">
+        <div class="level-left">
+          <div class="mdi-set  mdi-24px">
+            <i class="mdi-star" *ngFor="let number of [1,2,3,4,5]"></i>
+          </div>
+          <span>Write first review</span>
+        </div>
+      </div>
+
+
       <div class="pd-description column is-8">{{product?.description?.en}}</div>
       <div class="subtitle is-3 pd-price">
         {{price?.value?.currencyCode}}
@@ -57,12 +70,10 @@
         <div class="control">
           <div class="select">
             <select>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              <option *ngFor="let number of [1,2,3,4,5]">{{number}}</option>
             </select>
           </div>
-          <button class="button add-to-cart">
+          <button class="button add-to-cart" (click)="addItemToCart();">
             <span class="icon">
               <i class="mdi mdi-cart mdi-24px"></i>
             </span>

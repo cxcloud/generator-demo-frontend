@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommerceService } from '../../core/commerce/commerce.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Product, Variant } from '../../types/product.model';
 import { Image, Price } from '../../types/common.model';
 
@@ -21,7 +22,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private commerceService: CommerceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -127,5 +129,10 @@ export class ProductComponent implements OnInit {
         }
       }
     })[0];
+  }
+
+  addItemToCart() {
+    // TODO: navigate to cart with cart id
+    this.router.navigateByUrl('/cart/1');
   }
 }

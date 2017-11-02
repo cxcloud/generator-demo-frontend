@@ -1,5 +1,5 @@
 @import '../../variables.scss';
-.columns {
+.cart-page {
   background-color: $romance;
 }
 
@@ -10,7 +10,7 @@
     color: $grey;
     font-size: 0.8em;
     border: none;
-    border-bottom: 1px solid$light-grey;
+    border-bottom: 1px solid $light-grey;
   }
 }
 .subtitle {
@@ -22,7 +22,7 @@
  font-weight: bold;
 }
 
-.button-line {
+.navigation {
   margin-bottom: 1.5em;
 }
 
@@ -30,5 +30,18 @@
   background-color: transparent;
   &:hover {
     background-color: $white;
+  }
+}
+
+.btn-delete {
+  border-left: 1px solid $light-grey;
+  border-right: 1px solid $light-grey;
+  margin-top: 1em;
+  cursor: pointer;
+  i {
+    color: $silver;
+  }
+  span {
+    font-size: 14px;
   }
 }
