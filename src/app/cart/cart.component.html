@@ -19,14 +19,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of cart.lineItems">
+        <tr *ngFor="let item of lineItems">
           <td class="columns cart-item-description">
             <div class="column">
                 <app-cart-order-content [item]="item"></app-cart-order-content>
             </div>
 
             <!-- Delete button -->
-            <div class="column is-4 is-uppercase btn-delete">
+            <div class="column is-4 is-uppercase btn-delete" (click)="removeLineItem(item);">
               <div class="level">
                 <div class="level-item">
                   <i class="mdi mdi-window-close mdi-24px"></i>

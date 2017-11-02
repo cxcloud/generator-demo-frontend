@@ -9,19 +9,26 @@ import { CART } from '../mock/carts';
 })
 export class CartComponent implements OnInit {
   cart: Cart = CART;
+  lineItems: Array<any>;
   columns: Array<string> = ['Description', 'Quantity', 'Price', 'Total'];
   totalAmount: number;
 
   constructor() { }
 
   ngOnInit() {
+    this.lineItems = this.cart.lineItems;
     this.totalAmount = this.getTotalItemsAmount();
   }
 
   getTotalItemsAmount() {
-    return this.cart.lineItems.reduce((acc, item) => {
+    return this.lineItems.reduce((acc, item) => {
       return acc += item.quantity;
     }, 0);
+  }
+
+  removeLineItem(item) {
+    this.lineItems = this.lineItems.filter(lineItem => lineItem !== item);
+    this.totalAmount = this.getTotalItemsAmount();
   }
 
 }
