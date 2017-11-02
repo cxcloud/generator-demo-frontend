@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommerceService } from '../../core/commerce/commerce.service';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product, Variant } from '../../types/product.model';
 import { Image, Price } from '../../types/common.model';
 

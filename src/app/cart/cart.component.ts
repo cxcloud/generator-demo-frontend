@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../types/cart.model';
+import { Router } from '@angular/router';
+
 import { CART } from '../mock/carts';
 
 @Component({
@@ -13,7 +15,9 @@ export class CartComponent implements OnInit {
   columns: Array<string> = ['Description', 'Quantity', 'Price', 'Total'];
   totalAmount: number;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.lineItems = this.cart.lineItems;
@@ -21,14 +25,23 @@ export class CartComponent implements OnInit {
   }
 
   getTotalItemsAmount() {
+    // Get total items amount in the cart
     return this.lineItems.reduce((acc, item) => {
       return acc += item.quantity;
     }, 0);
   }
 
   removeLineItem(item) {
-    this.lineItems = this.lineItems.filter(lineItem => lineItem !== item);
+    // Remove deleted items from cart
+    this.lineItems = this.lineItems
+      .filter(lineItem => lineItem !== item);
+
+    // Update total items amount in the cart
     this.totalAmount = this.getTotalItemsAmount();
+  }
+
+  goBackToHomePage() {
+    this.router.navigateByUrl('/home');
   }
 
 }
