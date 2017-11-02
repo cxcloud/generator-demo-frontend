@@ -6,10 +6,14 @@
 .table {
   border: 1px solid $light-grey;
   background-color: $white;
+
   th {
     color: $grey;
     font-size: 0.8em;
     border: none;
+  }
+
+  tr {
     border-bottom: 1px solid $light-grey;
   }
 }
@@ -37,11 +41,31 @@
   border-left: 1px solid $light-grey;
   border-right: 1px solid $light-grey;
   margin-top: 1em;
+  padding-top: 0;
   cursor: pointer;
   i {
     color: $silver;
   }
   span {
     font-size: 14px;
+  }
+}
+
+.cart-item-price {
+  font-weight: bold;
+}
+
+tfoot {
+  div {
+    text-align: right;
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+    color: $night-rider;
+    font-weight: lighter;
+
+    &.order-total {
+      font-size: 1.2em;
+      font-weight: 900;
+    }
   }
 }

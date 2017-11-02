@@ -182,9 +182,7 @@ export const CART = {
           'id': '4521473e-afdf-44e8-8147-337f855af4cf'
       },
       'quantity': 3,
-      'discountedPricePerQuantity': [
-
-      ],
+      'discountedPricePerQuantity': [],
       'state': [
           {
             'quantity': 3,
