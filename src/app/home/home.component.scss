@@ -39,6 +39,7 @@
       text-transform: none;
       line-height: 1.5;
       font-size: 14px;
+      margin-bottom: 10px;
     }
   }
 
@@ -47,5 +48,23 @@
     color: $white;
     font-weight: lighter;
     line-height: 1.6;
+  }
+}
+
+app-goto-button {
+/deep/ a {
+    border-color: $yellow;
+    padding: 20px;
+    border-radius: 0;
+    width: 200px;
+    margin-bottom: 10px;
+    display: inline-flex;
+  }
+}
+
+.banner-text.vertical {
+  /deep/ a {
+    border: 2px solid $night-rider;
+    background-color: transparent;
   }
 }
