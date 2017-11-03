@@ -7,10 +7,13 @@
   border: 1px solid $light-grey;
   background-color: $white;
 
+  th, td {
+    border: none;
+  }
+
   th {
     color: $grey;
     font-size: 0.8em;
-    border: none;
   }
 
   tr {
