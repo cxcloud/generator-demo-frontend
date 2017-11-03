@@ -6,6 +6,7 @@
 
 .hero-body {
   background-color: $white;
+  padding: 0 1.5em;
   .container {
     margin-left: 0;
   }
@@ -26,6 +27,7 @@
   .navbar-menu {
   border-bottom: 1px solid #D6D6D6;
   margin-bottom: 11px;
+  padding-left: 1.5em;
 
     .category {
       color: $ebony-clay;
