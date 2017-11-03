@@ -4,6 +4,7 @@ a {
   color: $ebony-clay;
   text-transform: uppercase;
 }
+
 // Subcategories menu
 a.sub-category {
   font-size: 14px;
@@ -11,7 +12,10 @@ a.sub-category {
     background-color: $white-smoke;
   }
 }
-
+/* Menu above banner text on main page */
+/deep/ .navbar-dropdown {
+  z-index: 101;
+}
 // Menu (mobile view)
 .is-active {
   // Subcategories menu
