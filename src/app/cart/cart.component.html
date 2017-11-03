@@ -70,7 +70,7 @@
             </div>
           </td>
           <td class="cart-item-quantity">
-            <app-quantity-input [quantity]="item.quantity" (quantityChange)="updateQuantityValue($event)"></app-quantity-input>
+            <app-quantity-input [quantity]="item.quantity" (quantityChange)="updateQuantityValue(item, $event)"></app-quantity-input>
           </td>
           <td class="cart-item-price">{{item.price.value.currencyCode}} {{0.01 * item.price.value.centAmount}} </td>
           <td class="cart-item-price">{{item.price.value.currencyCode}} {{0.01 * (item.quantity * item.price.value.centAmount)}}</td>
