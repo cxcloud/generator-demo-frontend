@@ -11,7 +11,9 @@
   }
 
   .title {
-    color: $ebony-clay;
+    a {
+      color: $ebony-clay;
+    }
   }
 }
 
