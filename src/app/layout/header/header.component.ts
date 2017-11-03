@@ -13,10 +13,6 @@ export class HeaderComponent implements OnInit {
   title = 'CX Cloud';
 
   // Brand navbar
-  brandMenu = [
-    {name: 'LogIn', icon: 'mdi-account'},
-    {name: 'Cart', icon: 'mdi-cart'}
-  ];
   categories: Category[];
 
   constructor(

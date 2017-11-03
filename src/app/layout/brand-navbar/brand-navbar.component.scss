@@ -27,11 +27,21 @@ i {
   }
 }
 
-
 .navbar-menu {
-  .navbar-item:hover {
-    background-color: $limed-spruce;
-    color: $yellow;
+  .navbar-item {
+    &:hover {
+      background-color: $limed-spruce;
+      color: $yellow;
+    }
   }
+
+}
+
+.badge:after {
+  background-color: #D54D4D;
+  box-shadow: 0 0 0 0.1rem #D54D4D;
+  color: $white;
+  font-weight: bold;
+  left:100%;
 }
 

@@ -21,14 +21,15 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.lineItems = this.cart.lineItems;
-    this.totalAmount = this.getTotalItemsAmount();
+    this.getTotalItemsAmount();
   }
 
   getTotalItemsAmount() {
     // Get total items amount in the cart
-    return this.lineItems.reduce((acc, item) => {
+    this.totalAmount = this.lineItems.reduce((acc, item) => {
       return acc += item.quantity;
     }, 0);
+    localStorage.setItem('totalCartItems', this.totalAmount.toString());
   }
 
   removeLineItem(item) {
@@ -37,7 +38,7 @@ export class CartComponent implements OnInit {
       .filter(lineItem => lineItem !== item);
 
     // Update total items amount in the cart
-    this.totalAmount = this.getTotalItemsAmount();
+    this.getTotalItemsAmount();
   }
 
   goBackToHomePage() {
@@ -46,7 +47,7 @@ export class CartComponent implements OnInit {
 
   updateQuantityValue(item, quantity) {
     item.quantity = quantity;
-    this.totalAmount = this.getTotalItemsAmount();
+    this.getTotalItemsAmount();
   }
 
 }

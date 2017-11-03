@@ -6,12 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./brand-navbar.component.scss']
 })
 export class BrandNavbarComponent implements OnInit {
-  @Input('title') title: string;
-  @Input('brandMenu') brandMenu: any;
+  total: string | 0;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.total = this.getTotalOrderedQuantity();
+  }
+
+  getTotalOrderedQuantity() {
+    return (localStorage.getItem('totalCartItems') !== null) ?
+      localStorage.getItem('totalCartItems') :
+      0;
   }
 
 }

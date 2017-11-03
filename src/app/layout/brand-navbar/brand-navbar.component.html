@@ -18,8 +18,14 @@
     </div>
     <div class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" *ngFor="let item of brandMenu">
-          <i class="mdi {{item.icon}} mdi-24px"></i> {{item.name}}
+        <a class="navbar-item">
+          <i class="mdi mdi-account mdi-24px"></i> LogIn
+        </a>
+        <a class="navbar-item">
+          <i class="mdi mdi-cart mdi-24px"></i>
+          <span class="badge" [attr.data-badge]="total">
+            Cart
+          </span>
         </a>
       </div>
     </div>
