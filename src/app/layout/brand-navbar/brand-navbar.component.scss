@@ -38,8 +38,8 @@ i {
 }
 
 .badge:after {
-  background-color: #D54D4D;
-  box-shadow: 0 0 0 0.1rem #D54D4D;
+  background-color: $red;
+  box-shadow: 0 0 0 0.1rem $red;
   color: $white;
   font-weight: bold;
   left:100%;

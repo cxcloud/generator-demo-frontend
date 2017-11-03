@@ -1,0 +1,51 @@
+@import '../../variables.scss';
+
+.tile.is-child {
+  position: relative;
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: $white;
+  background: rgba(0,0,0,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 100;
+  min-height: 50px;
+
+  &.top {
+    top: 0;
+  }
+
+  &.vertical {
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 2%;
+    max-width: 40%;
+    background: rgba(255, 255,255,0.6);
+    color: $night-rider;
+
+    .title,
+    .subtitle,
+    p {
+      color: $night-rider;
+    }
+
+    p {
+      text-transform: none;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+  }
+
+  .title,
+  .subtitle {
+    color: $white;
+    font-weight: lighter;
+    line-height: 1.6;
+  }
+}
