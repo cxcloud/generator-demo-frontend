@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
-import { OrderRoutingModule } from './order-routing.module';
-import { OrderComponent } from './order.component';
+import { CheckoutRoutingModule } from './checkout-routing.module';
+import { CheckoutComponent } from './checkout.component';
 
 const DECLARATIONS = [
-  OrderComponent
+  CheckoutComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    OrderRoutingModule
+    CheckoutRoutingModule
   ],
   declarations: [
     ...DECLARATIONS,
@@ -23,4 +23,4 @@ const DECLARATIONS = [
   ],
   providers: []
 })
-export class OrderModule { }
+export class CheckoutModule { }

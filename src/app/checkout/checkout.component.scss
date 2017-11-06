@@ -1,0 +1,14 @@
+@import '../../variables.scss';
+
+.container {
+  background-color: $romance;
+
+  .title {
+    font-weight: lighter;
+  }
+}
+
+.order {
+  background-color: $white;
+  border: 1px solid $light-grey;
+}

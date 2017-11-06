@@ -1,9 +1,9 @@
-import { OrderComponent } from './order.component';
+import { CheckoutComponent } from './checkout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'order/:id', component: OrderComponent}
+  { path: 'checkout/:id', component: CheckoutComponent}
 ];
 
 @NgModule({
@@ -11,4 +11,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class OrderRoutingModule { }
+export class CheckoutRoutingModule { }
