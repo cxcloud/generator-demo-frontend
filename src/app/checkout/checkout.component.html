@@ -1,12 +1,25 @@
-<div class="container">
-  <h4 class="title is-uppercase is-4">
-    <i class="mdi mdi-credit-card-multiple mdi-36px"></i>
-    <span>Secure checkout - Shipping</span>
-  </h4>
-  <div class="columns">
-    <div class="column order is-10 is-offset-1">
-      <div class="column order-form is-7"></div>
-      <div class="column order-summary is-5"></div>
+<section class="section">
+  <div class="container is-fullhd">
+    <div class="level">
+      <div class="level-left">
+        <h4 class="subtitle is-uppercase is-4 level-left">
+          <i class="mdi mdi-credit-card mdi-36px"></i> Checkout - Shipping - Payment
+        </h4>
+      </div>
+
+      <div class="steps level-right">
+        <div *ngFor="let i of [1,2,3]" class="level-item step">{{i}}</div>
+      </div>
+    </div>
+
+
+    <div class="columns checkout">
+      <div class="column">
+        <div class="columns">
+          <div class="column checkout-form is-7">Shipping information</div>
+          <div class="column checkout-details is-5">Order summary</div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
