@@ -1,41 +1,44 @@
-<div class="columns">
+<div class="section">
+  <div class="columns">
 
-  <!-- Filters column -->
-  <div class="column is-3">
-    <div class="title is-4">Filter products</div>
-  </div>
-
-  <!-- Product list -->
-  <div class="column is-9">
-    <div class="hero">
-      <div class="hero-body has-text-centered page-title">
-        <h2 class="title is-2">Products</h2>
-      </div>
+    <!-- Filters column -->
+    <div class="column is-3">
+      <div class="title is-4">Filter products</div>
     </div>
-    <div class="columns is-mobile is-multiline is-centered">
-      <ng-container *ngFor="let product of products">
-          <div class="column is-narrow">
-            <!-- Product item -->
-            <a [routerLink]="['/product', product.id]">
-              <div class="box has-text-centered">
-                <figure class="image product-image">
-                  <img
-                    src="{{product.masterVariant.images[0].url}}"
-                    *ngIf="product.masterVariant.images.length"
-                  >
-                </figure>
-                <div class="product-description">
-                  <div class="name-headline">{{product.name.en}}</div>
-                  <div class="item-price">
-                    {{0.01 * product.masterVariant.prices[0].value.centAmount}}
-                    {{product.masterVariant.prices[0].value.currencyCode}}
+
+    <!-- Product list -->
+    <div class="column is-9">
+      <div class="hero">
+        <div class="hero-body has-text-centered page-title">
+          <h2 class="title is-2">Products</h2>
+        </div>
+      </div>
+      <div class="columns is-mobile is-multiline is-centered">
+        <ng-container *ngFor="let product of products">
+            <div class="column is-narrow">
+              <!-- Product item -->
+              <a [routerLink]="['/product', product.id]">
+                <div class="box has-text-centered">
+                  <figure class="image product-image">
+                    <img
+                      src="{{product.masterVariant.images[0].url}}"
+                      *ngIf="product.masterVariant.images.length"
+                    >
+                  </figure>
+                  <div class="product-description">
+                    <div class="name-headline">{{product.name.en}}</div>
+                    <div class="item-price">
+                      {{0.01 * product.masterVariant.prices[0].value.centAmount}}
+                      {{product.masterVariant.prices[0].value.currencyCode}}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </div>
-      </ng-container>
+              </a>
+            </div>
+        </ng-container>
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
+
