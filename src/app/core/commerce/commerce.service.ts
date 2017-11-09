@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { Category } from '../../types/category.model';
 import { Product } from '../../types/product.model';
-
+import { Cart } from '../../types/cart.model';
 
 
 @Injectable()
@@ -31,5 +31,11 @@ export class CommerceService {
     return this.http
     .get(`${this.apiUrl}/products/${productId}`)
     .map(res => res.json() as Product);
+  }
+
+  getCart(cartId: string): Observable<Cart> {
+    return this.http
+    .get(`${this.apiUrl}/carts/${cartId}`)
+    .map(res => res.json() as Cart);
   }
 }
