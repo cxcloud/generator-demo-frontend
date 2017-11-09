@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../types/cart.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommerceService } from '../core/commerce/commerce.service';
 
 import { CART } from '../mock/carts';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  providers: [CommerceService]
 })
 export class CartComponent implements OnInit {
   cart: Cart = CART;
@@ -16,12 +18,28 @@ export class CartComponent implements OnInit {
   totalAmount: number;
 
   constructor(
+    private commerceService: CommerceService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.lineItems = this.cart.lineItems;
-    this.getTotalItemsAmount();
+    this.route.params.subscribe(params => {
+      // Get product by its id
+      this.getCart(params['id']);
+    });
+  }
+
+  getCart(cartId) {
+    this.commerceService
+    .getCart(cartId)
+    .subscribe(cart => {
+      if (cart) {
+        this.cart = cart;
+        this.lineItems = this.cart.lineItems;
+        this.getTotalItemsAmount();
+      }
+    });
   }
 
   getTotalItemsAmount() {

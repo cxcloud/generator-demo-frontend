@@ -132,6 +132,6 @@ export class ProductComponent implements OnInit {
 
   addItemToCart() {
     // TODO: navigate to cart with cart id
-    this.router.navigateByUrl('/cart/1');
+    this.router.navigateByUrl('/cart/665aec74-bdd3-4781-810d-e1d9ef262d0f');
   }
 }

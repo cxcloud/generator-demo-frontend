@@ -1,5 +1,9 @@
 @import '../../variables.scss';
 
+.section {
+  padding: 0.5rem 0;
+}
+
 .tile.is-child {
   position: relative;
 }
