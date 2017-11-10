@@ -3,16 +3,11 @@
     <div class="level">
       <div class="level-left">
         <h4 class="subtitle is-uppercase is-4 level-left">
-          <i class="mdi mdi-credit-card mdi-36px"></i> Checkout - Shipping - Payment
+          <i class="mdi mdi-credit-card mdi-36px"></i> Checkout - Shipping
         </h4>
       </div>
-
-      <div class="steps level-right">
-        <div *ngFor="let i of [1,2,3]" class="level-item step">{{i}}</div>
-      </div>
+      <app-steps [steps]="steps"></app-steps>
     </div>
-
-
     <div class="columns checkout">
       <div class="column">
         <div class="columns">

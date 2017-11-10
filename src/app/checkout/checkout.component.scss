@@ -62,17 +62,3 @@
     }
   }
 }
-
-.step {
-  font-size: 1em;
-  border: 1px solid $silver;
-  border-radius: 50%;
-  padding: 4px 12px;
-  background-color: $white;
-
-  &.active {
-    color: $white;
-    background-color: $silver;
-  }
-}
-

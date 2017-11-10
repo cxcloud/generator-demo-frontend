@@ -1,0 +1,36 @@
+@import '../../../variables.scss';
+
+.steps {
+  .step-item {
+    .step-details {
+      margin-left: 2em;
+      margin-right: 2em;
+      &:last-child {
+        margin-right: .5em;
+      }
+
+    }
+    .step-marker {
+      font-size: 14px;
+      font-weight: lighter;
+      background-color: $white;
+      border: 1px solid $silver;
+      color: $silver;
+    }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: lighter;
+      text-transform: uppercase;
+    }
+    &.is-active {
+      .step-marker {
+        background-color: $silver;
+        color: $white;
+        height: 2.3em;
+        width: 2.3em;
+      }
+
+    }
+  }
+}

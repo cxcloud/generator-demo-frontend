@@ -11,6 +11,7 @@ import { CART } from '../mock/carts';
 })
 export class CheckoutComponent implements OnInit {
   cart: Cart = CART;
+  steps: Array<string> = ['Shipping', 'Payment', 'Confirmation'];
 
   constructor() { }
 
