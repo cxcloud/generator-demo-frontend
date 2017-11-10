@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommerceService } from '../../core/commerce/commerce.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product, Variant } from '../../types/product.model';
-import { Image, Price } from '../../types/common.model';
+import { Product, Variant } from '@cxcloud/ct-types/products';
+import { Image, Price } from '@cxcloud/ct-types/common';
 
 @Component({
   templateUrl: './product.component.html',
@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit {
     private commerceService: CommerceService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,9 +33,7 @@ export class ProductComponent implements OnInit {
   }
 
   getProduct(productId) {
-    this.commerceService
-    .getProduct(productId)
-    .subscribe(product => {
+    this.commerceService.getProduct(productId).subscribe(product => {
       if (product) {
         this.product = product;
         this.setDefaultVariant(product.masterVariant);
@@ -64,17 +62,20 @@ export class ProductComponent implements OnInit {
   }
 
   getAllVariants(product) {
-    return product.variants.reduce((acc: Variant[], variant: Variant) => {
-     acc.push(variant);
-     return acc;
-    }, [product.masterVariant]);
-   }
+    return product.variants.reduce(
+      (acc: Variant[], variant: Variant) => {
+        acc.push(variant);
+        return acc;
+      },
+      [product.masterVariant]
+    );
+  }
 
-   getAttribute(name) {
+  getAttribute(name) {
     return this.selectedVariant.attributes.filter(attr => {
       return attr.name === name;
     })[0];
-   }
+  }
 
   getAvailableVariantOptions(attributeName: string) {
     const isOptionAvailable = function(array, property) {

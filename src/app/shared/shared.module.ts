@@ -7,7 +7,6 @@ import { GotoButtonComponent } from './goto-button/goto-button.component';
 import { CartOrderContentComponent } from './cart-order-content/cart-order-content.component';
 import { QuantityInputComponent } from './quantity-input/quantity-input.component';
 
-
 const DECLARATIONS = [
   InfoCardComponent,
   GotoButtonComponent,
@@ -16,17 +15,9 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  declarations: [
-    ...DECLARATIONS,
-  ],
-  exports: [
-    ...DECLARATIONS
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  declarations: [...DECLARATIONS],
+  exports: [...DECLARATIONS],
   providers: []
 })
-export class SharedModule { }
+export class SharedModule {}

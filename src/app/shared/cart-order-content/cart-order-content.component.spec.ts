@@ -6,12 +6,13 @@ describe('CartOrderContentComponent', () => {
   let component: CartOrderContentComponent;
   let fixture: ComponentFixture<CartOrderContentComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CartOrderContentComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [CartOrderContentComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CartOrderContentComponent);

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LineItem } from '../../types/cart.model';
+import { LineItem } from '@cxcloud/ct-types/carts';
 
 @Component({
   selector: 'app-cart-order-content',
@@ -12,7 +12,7 @@ export class CartOrderContentComponent implements OnInit {
   size: any;
   color: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.image = this.item.variant.images[0];
@@ -24,6 +24,5 @@ export class CartOrderContentComponent implements OnInit {
     return this.item.variant.attributes.filter(attr => {
       return attr.name === name;
     })[0].value;
-   }
-
+  }
 }

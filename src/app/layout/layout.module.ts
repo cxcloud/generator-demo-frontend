@@ -16,19 +16,9 @@ const DECLARATIONS = [
   FooterComponent
 ];
 
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    HttpModule
-  ],
-  declarations: [
-    ...DECLARATIONS
-  ],
-  exports: [
-    ...DECLARATIONS
-  ]
+  imports: [CommonModule, FormsModule, RouterModule, HttpModule],
+  declarations: [...DECLARATIONS],
+  exports: [...DECLARATIONS]
 })
-export class LayoutModule { }
+export class LayoutModule {}

@@ -8,9 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class InfoCardComponent implements OnInit {
   @Input('title') title: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

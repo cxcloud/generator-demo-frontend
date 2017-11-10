@@ -16,17 +16,9 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    CheckoutRoutingModule
-  ],
-  declarations: [
-    ...DECLARATIONS
-  ],
-  exports: [
-    ...DECLARATIONS
-  ],
+  imports: [CommonModule, SharedModule, CheckoutRoutingModule],
+  declarations: [...DECLARATIONS],
+  exports: [...DECLARATIONS],
   providers: []
 })
-export class CheckoutModule { }
+export class CheckoutModule {}

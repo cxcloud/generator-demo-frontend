@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
@@ -28,11 +27,9 @@ import { CheckoutModule } from './checkout/checkout.module';
     CheckoutModule,
     AppRoutingModule
   ],
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
 
   providers: [],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -6,12 +6,13 @@ describe('QuantityInputComponent', () => {
   let component: QuantityInputComponent;
   let fixture: ComponentFixture<QuantityInputComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ QuantityInputComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [QuantityInputComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(QuantityInputComponent);

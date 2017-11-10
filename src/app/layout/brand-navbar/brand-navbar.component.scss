@@ -13,9 +13,8 @@ i {
   &:hover {
     background-color: $ebony-clay;
     color: $white;
+  }
 }
-}
-
 
 .navbar-brand {
   a {
@@ -34,7 +33,6 @@ i {
       color: $yellow;
     }
   }
-
 }
 
 .badge:after {
@@ -42,6 +40,5 @@ i {
   box-shadow: 0 0 0 0.1rem $red;
   color: $white;
   font-weight: bold;
-  left:100%;
+  left: 100%;
 }
-

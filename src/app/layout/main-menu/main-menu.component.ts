@@ -1,8 +1,6 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-// import { CATEGORIES } from '../../mock/categories';
-import { Category } from '../../types/category.model';
+import { Category } from '@cxcloud/ct-types/categories';
 
 @Component({
   selector: 'app-main-menu',
@@ -12,7 +10,7 @@ import { Category } from '../../types/category.model';
 export class MainMenuComponent implements OnInit {
   @Input() categories: Category[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 }

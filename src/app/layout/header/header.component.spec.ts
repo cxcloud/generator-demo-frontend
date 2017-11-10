@@ -6,15 +6,14 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
-      schemas: [
-        NO_ERRORS_SCHEMA
-      ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [HeaderComponent],
+        schemas: [NO_ERRORS_SCHEMA]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
@@ -26,9 +25,13 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title in a h1 tag', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.title').textContent).toContain('CX Cloud Demo');
-  }));
-
+  it(
+    'should render title in a h1 tag',
+    async(() => {
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('.title').textContent).toContain(
+        'CX Cloud Demo'
+      );
+    })
+  );
 });

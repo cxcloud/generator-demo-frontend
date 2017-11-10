@@ -6,17 +6,9 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    HomeRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, SharedModule, HomeRoutingModule],
 
-  declarations: [
-    HomeComponent
-  ]
+  declarations: [HomeComponent]
 })
-export class HomeModule { }
+export class HomeModule {}
