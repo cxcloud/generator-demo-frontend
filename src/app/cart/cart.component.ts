@@ -24,10 +24,13 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      // Get product by its id
-      this.getCart(params['id']);
-    });
+    // this.route.params.subscribe(params => {
+    //   // Get product by its id
+    //   this.getCart(params['id']);
+    // });
+
+    this.lineItems = this.cart.lineItems;
+    this.getTotalItemsAmount();
   }
 
   getCart(cartId) {

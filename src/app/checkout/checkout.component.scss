@@ -3,6 +3,12 @@
 .section {
   background-color: $romance;
 
+  h6.title {
+    font-weight: lighter;
+    padding: 5px 2px 1em 2px;
+    margin-bottom: 0;
+  }
+
   .subtitle {
     font-weight: lighter;
   }
@@ -11,6 +17,50 @@
 .checkout {
   background-color: $white;
   border: 1px solid $light-grey;
+
+  .order-summary {
+    text-transform: uppercase;
+
+    .order {
+      border: 1px solid $light-grey;
+      background-color: $white-smoke;
+
+      .order-summary-items {
+        overflow-y: auto;
+        max-height: 35em;
+
+        .line-items {
+          margin-bottom: 1em;
+          padding: 1em;
+
+          .table {
+            font-size: 14px;
+            text-align: right;
+          }
+
+          .prop-name {
+            text-transform: uppercase;
+            color: $silver;
+          }
+        }
+      }
+
+      .checkout-order-price {
+        text-transform: none;
+        font-size: 1em;
+
+        .row {
+          margin: 0;
+          border-top: 1px solid $light-grey;
+        }
+
+        .total-price {
+          font-weight: 900;
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
 }
 
 .step {
@@ -25,3 +75,4 @@
     background-color: $silver;
   }
 }
+

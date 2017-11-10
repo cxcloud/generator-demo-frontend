@@ -1,0 +1,9 @@
+@import '../../../variables.scss';
+
+h6.title {
+  font-weight: lighter;
+  text-transform: uppercase;
+  border-bottom: 1px solid $light-grey;
+  padding: 5px 2px 1em 2px;
+  margin-bottom: 0;
+}
