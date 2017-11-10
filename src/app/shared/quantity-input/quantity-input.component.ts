@@ -1,4 +1,12 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-quantity-input',
@@ -12,7 +20,7 @@ export class QuantityInputComponent implements OnInit, OnChanges {
 
   private currentQuantity = 1;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.quantityChange.emit(this.currentQuantity);
@@ -39,8 +47,9 @@ export class QuantityInputComponent implements OnInit, OnChanges {
   }
 
   decrementAllowed() {
-    return (this.currentQuantity > 1 || (this.allowZeroQuantity && this.currentQuantity > 0));
+    return (
+      this.currentQuantity > 1 ||
+      (this.allowZeroQuantity && this.currentQuantity > 0)
+    );
   }
-
-
 }

@@ -8,17 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BrandNavbarComponent implements OnInit {
   total: string | 0;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     this.total = this.getTotalOrderedQuantity();
   }
 
   getTotalOrderedQuantity() {
-    return (localStorage.getItem('totalCartItems') !== null) ?
-      localStorage.getItem('totalCartItems') :
-      0;
+    return localStorage.getItem('totalCartItems') !== null
+      ? localStorage.getItem('totalCartItems')
+      : 0;
   }
-
 }

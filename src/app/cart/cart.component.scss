@@ -8,7 +8,8 @@
   border: 1px solid $light-grey;
   background-color: $white;
 
-  th, td {
+  th,
+  td {
     border: none;
   }
 
@@ -26,8 +27,8 @@
   margin-bottom: 0;
 }
 .items-total {
- margin: 0 5px 0 10px;
- font-weight: bold;
+  margin: 0 5px 0 10px;
+  font-weight: bold;
 }
 
 .navigation {
