@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Product } from '../../types/product.model';
+import { Product } from '@cxcloud/ct-types/products';
 import { CommerceService } from '../../core/commerce/commerce.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
   getProducts(categoryId) {
     this.commerceService
       .getProducts(categoryId)
-      .subscribe((data: any) => (this.products = data.results));
+      .subscribe(data => (this.products = data.results));
   }
 
   getAllVariants() {

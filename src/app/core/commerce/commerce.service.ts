@@ -5,9 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Category } from '../../types/category.model';
-import { Product } from '../../types/product.model';
-import { Cart } from '../../types/cart.model';
+import { Category } from '@cxcloud/ct-types/categories';
+import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
+import { Cart } from '@cxcloud/ct-types/carts';
 
 @Injectable()
 export class CommerceService {
@@ -19,8 +19,8 @@ export class CommerceService {
     return this.http.get<Category[]>(`${this.apiUrl}/categories`);
   }
 
-  getProducts(categoryId: string): Observable<Product[]> {
-    return this.http.get<Product[]>(
+  getProducts(categoryId: string): Observable<PaginatedProductResult> {
+    return this.http.get<PaginatedProductResult>(
       `${this.apiUrl}/products/byCategory/${categoryId}`
     );
   }

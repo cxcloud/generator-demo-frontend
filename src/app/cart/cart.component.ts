@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../types/cart.model';
+import { Cart } from '@cxcloud/ct-types/carts';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommerceService } from '../core/commerce/commerce.service';
 
@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
     private commerceService: CommerceService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -31,9 +31,7 @@ export class CartComponent implements OnInit {
   }
 
   getCart(cartId) {
-    this.commerceService
-    .getCart(cartId)
-    .subscribe(cart => {
+    this.commerceService.getCart(cartId).subscribe(cart => {
       if (cart) {
         this.cart = cart;
         this.lineItems = this.cart.lineItems;
@@ -45,15 +43,14 @@ export class CartComponent implements OnInit {
   getTotalItemsAmount() {
     // Get total items amount in the cart
     this.totalAmount = this.lineItems.reduce((acc, item) => {
-      return acc += item.quantity;
+      return (acc += item.quantity);
     }, 0);
     localStorage.setItem('totalCartItems', this.totalAmount.toString());
   }
 
   removeLineItem(item) {
     // Remove deleted items from cart
-    this.lineItems = this.lineItems
-      .filter(lineItem => lineItem !== item);
+    this.lineItems = this.lineItems.filter(lineItem => lineItem !== item);
 
     // Update total items amount in the cart
     this.getTotalItemsAmount();
@@ -67,5 +64,4 @@ export class CartComponent implements OnInit {
     item.quantity = quantity;
     this.getTotalItemsAmount();
   }
-
 }
