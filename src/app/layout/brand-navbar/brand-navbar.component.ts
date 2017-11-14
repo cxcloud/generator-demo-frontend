@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CartService } from '../../core/cart/cart.service';
 
 @Component({
   selector: 'app-brand-navbar',
@@ -6,17 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./brand-navbar.component.scss']
 })
 export class BrandNavbarComponent implements OnInit {
-  total: string | 0;
+  private total = 0;
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    this.total = this.getTotalOrderedQuantity();
-  }
-
-  getTotalOrderedQuantity() {
-    return localStorage.getItem('totalCartItems') !== null
-      ? localStorage.getItem('totalCartItems')
-      : 0;
+    this.cartService.cart.subscribe(cart => {
+      if (cart === null) {
+        return;
+      }
+      this.total = cart.lineItems.length;
+    });
   }
 }
