@@ -4,84 +4,160 @@
     (ngSubmit)="save()"
     [formGroup]="addressForm"
   >
-    <div class="field columns">
-      <div class="control column">
-        <label class="field-label is-normal">First Name*</label>
-        <input class="input" type="text" formControlName="firstName" [ngClass]="{'error': firstNameMessage}">
-        <span class="error message" *ngIf="firstNameMessage">{{firstNameMessage}}</span>
-      </div>
-      <div class="control column">
-        <label class="field-label is-normal">Last Name*</label>
-        <input class="input" type="text" formControlName="lastName" [ngClass]="{'error': lastNameMessage}">
-        <span class="error message" *ngIf="lastNameMessage">{{lastNameMessage}}</span>
-      </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <label class="field-label is-normal">Address 1*</label>
-        <input class="input" type="text" formControlName="address1" [ngClass]="{'error': address1Message}">
-        <span class="error message" *ngIf="address1Message">{{address1Message}}</span>
-      </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <label class="field-label is-normal">Address 2</label>
-        <input class="input" type="text" formControlName="address2">
-      </div>
-    </div>
-    <div class="field columns">
-      <div class="control column is-8">
-        <label class="field-label is-normal">City*</label>
-        <input class="input" type="text" formControlName="city" [ngClass]="{'error': cityMessage}">
-        <span class="error message" *ngIf="cityMessage">{{cityMessage}}</span>
-      </div>
-      <div class="control column is-4">
-        <label class="field-label is-normal">Post Code*</label>
-        <input class="input" type="text" formControlName="postcode" [ngClass]="{'error': postcodeMessage}">
-        <span class="error message" *ngIf="postcodeMessage">{{postcodeMessage}}</span>
-      </div>
-    </div>
-    <div class="field columns">
-      <div class="control column">
-        <label class="field-label is-normal">Country*</label><br/>
-        <div class="select">
-          <select formControlName="country" [ngClass]="{'error': countryMessage}">
-            <option *ngFor="let country of countryList">{{country}}</option>
-          </select>
+    <!-- Shipping address -->
+    <div formGroupName="shippingAddress">
+      <div class="field columns">
+        <div class="control column">
+          <label class="field-label is-normal">First Name*</label>
+          <input class="input" type="text" formControlName="firstName" [ngClass]="{'error': firstNameMessage}">
+          <span class="error message" *ngIf="firstNameMessage">{{firstNameMessage}}</span>
         </div>
-        <span class="error message" *ngIf="countryMessage">{{countryMessage}}</span>
+        <div class="control column">
+          <label class="field-label is-normal">Last Name*</label>
+          <input class="input" type="text" formControlName="lastName" [ngClass]="{'error': lastNameMessage}">
+          <span class="error message" *ngIf="lastNameMessage">{{lastNameMessage}}</span>
+        </div>
       </div>
-      <div class="control column">
-        <label class="field-label is-normal">Region</label>
-        <input class="input" type="text" formControlName="region">
+      <div class="field">
+        <div class="control">
+          <label class="field-label is-normal">Address 1*</label>
+          <input class="input" type="text" formControlName="address1" [ngClass]="{'error': address1Message}">
+          <span class="error message" *ngIf="address1Message">{{address1Message}}</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <label class="field-label is-normal">Address 2</label>
+          <input class="input" type="text" formControlName="address2">
+        </div>
+      </div>
+      <div class="field columns">
+        <div class="control column is-8">
+          <label class="field-label is-normal">City*</label>
+          <input class="input" type="text" formControlName="city" [ngClass]="{'error': cityMessage}">
+          <span class="error message" *ngIf="cityMessage">{{cityMessage}}</span>
+        </div>
+        <div class="control column is-4">
+          <label class="field-label is-normal">Post Code*</label>
+          <input class="input" type="text" formControlName="postcode" [ngClass]="{'error': postcodeMessage}">
+          <span class="error message" *ngIf="postcodeMessage">{{postcodeMessage}}</span>
+        </div>
+      </div>
+      <div class="field columns">
+        <div class="control column">
+          <label class="field-label is-normal">Country*</label><br/>
+          <div class="select">
+            <select formControlName="country" [ngClass]="{'error': countryMessage}">
+              <option *ngFor="let country of countryList">{{country}}</option>
+            </select>
+          </div>
+          <span class="error message" *ngIf="countryMessage">{{countryMessage}}</span>
+        </div>
+        <div class="control column">
+          <label class="field-label is-normal">Region</label>
+          <input class="input" type="text" formControlName="region">
+        </div>
+      </div>
+      <div class="field columns">
+        <div class="control column">
+          <label class="field-label is-normal">Phone</label>
+          <input class="input" type="text" formControlName="phone">
+        </div>
+        <div class="control column">
+          <label class="field-label is-normal">Email*</label>
+          <input class="input" type="text" formControlName="email" [ngClass]="{'error': emailMessage}">
+          <span class="error message" *ngIf="emailMessage">{{emailMessage}}</span>
+        </div>
       </div>
     </div>
-    <div class="field columns">
-      <div class="control column">
-        <label class="field-label is-normal">Phone</label>
-        <input class="input" type="text" formControlName="phone">
-      </div>
-      <div class="control column">
-        <label class="field-label is-normal">Email*</label>
-        <input class="input" type="text" formControlName="email" [ngClass]="{'error': emailMessage}">
-        <span class="error message" *ngIf="emailMessage">{{emailMessage}}</span>
-      </div>
-    </div>
+
     <div class="field">
       <label class="checkbox">
-        <input type="checkbox" formControlName="isOtherAddress">
+        <input type="checkbox" formControlName="showBillingAddress">
         Use a different address for billing
       </label>
     </div>
+
+    <!-- Billing address -->
+    <div *ngIf="addressForm.get('showBillingAddress').value">
+      <div formGroupName="billingAddress">
+        <div class="field columns">
+          <div class="control column">
+            <label class="field-label is-normal">First Name*</label>
+            <input class="input" type="text" formControlName="firstName" [ngClass]="{'error': firstNameMessage}">
+            <span class="error message" *ngIf="firstNameMessage">{{firstNameMessage}}</span>
+          </div>
+          <div class="control column">
+            <label class="field-label is-normal">Last Name*</label>
+            <input class="input" type="text" formControlName="lastName" [ngClass]="{'error': lastNameMessage}">
+            <span class="error message" *ngIf="lastNameMessage">{{lastNameMessage}}</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="field-label is-normal">Address 1*</label>
+            <input class="input" type="text" formControlName="address1" [ngClass]="{'error': address1Message}">
+            <span class="error message" *ngIf="address1Message">{{address1Message}}</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="field-label is-normal">Address 2</label>
+            <input class="input" type="text" formControlName="address2">
+          </div>
+        </div>
+        <div class="field columns">
+          <div class="control column is-8">
+            <label class="field-label is-normal">City*</label>
+            <input class="input" type="text" formControlName="city" [ngClass]="{'error': cityMessage}">
+            <span class="error message" *ngIf="cityMessage">{{cityMessage}}</span>
+          </div>
+          <div class="control column is-4">
+            <label class="field-label is-normal">Post Code*</label>
+            <input class="input" type="text" formControlName="postcode" [ngClass]="{'error': postcodeMessage}">
+            <span class="error message" *ngIf="postcodeMessage">{{postcodeMessage}}</span>
+          </div>
+        </div>
+        <div class="field columns">
+          <div class="control column">
+            <label class="field-label is-normal">Country*</label><br/>
+            <div class="select">
+              <select formControlName="country" [ngClass]="{'error': countryMessage}">
+                <option *ngFor="let country of countryList">{{country}}</option>
+              </select>
+            </div>
+            <span class="error message" *ngIf="countryMessage">{{countryMessage}}</span>
+          </div>
+          <div class="control column">
+            <label class="field-label is-normal">Region</label>
+            <input class="input" type="text" formControlName="region">
+          </div>
+        </div>
+        <div class="field columns">
+          <div class="control column">
+            <label class="field-label is-normal">Phone</label>
+            <input class="input" type="text" formControlName="phone">
+          </div>
+          <div class="control column">
+            <label class="field-label is-normal">Email*</label>
+            <input class="input" type="text" formControlName="email" [ngClass]="{'error': emailMessage}">
+            <span class="error message" *ngIf="emailMessage">{{emailMessage}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="columns submit-button">
       <div class="column is-6">
         <app-goto-button
           name="Continue Checkout"
-          [disabled]="addressForm.invalid ? true : false"
+          [disabled]="disableButton()"
           (click)="proceedToPayment()"
         >
         </app-goto-button>
       </div>
     </div>
+
   </form>
+
 

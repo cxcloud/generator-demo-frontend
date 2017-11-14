@@ -1,5 +1,5 @@
 import { Component, group, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from '../../types/common.model';
 
@@ -12,7 +12,6 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class ShippingComponent implements OnInit {
   addressForm: FormGroup;
-  shippingAddress: Address;
   countryList: Array<string> = ['Finland', 'Germany', 'Russia', 'United Kingdom'];
 
   message: string;
@@ -22,6 +21,14 @@ export class ShippingComponent implements OnInit {
     pattern: 'Please enter a valid email address'
   };
 
+  get shippingAddress(): FormGroup {
+    return <FormGroup>this.addressForm.get('shippingAddress');
+  }
+
+  get billingAddress(): FormGroup {
+    return <FormGroup>this.addressForm.get('billingAddress');
+  }
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -30,6 +37,17 @@ export class ShippingComponent implements OnInit {
 
   ngOnInit(): void {
     this.addressForm = this.fb.group({
+      showBillingAddress: false,
+      shippingAddress:  this.buildAddress(),
+      billingAddress:  this.buildAddress()
+    });
+
+    this.runValidation(this.shippingAddress);
+    this.runValidation(this.billingAddress);
+  }
+
+  buildAddress(): FormGroup {
+    return this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address1: ['', Validators.required],
@@ -39,12 +57,13 @@ export class ShippingComponent implements OnInit {
       country: '',
       region: '',
       phone: '',
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
-      isOtherAddress: false
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]]
     });
+  }
 
-    Object.keys(this.addressForm.controls).forEach(key => {
-      const control = this.addressForm.get(key);
+  runValidation(controlGroup: FormGroup) {
+    Object.keys(controlGroup.controls).forEach(key => {
+      const control = controlGroup.get(key);
       control.valueChanges
       .debounceTime(1000)
       .subscribe(value => this.setValidationMessage(control, key));
@@ -58,8 +77,14 @@ export class ShippingComponent implements OnInit {
     }
   }
 
+  disableButton(): boolean {
+    return (this.addressForm.get('showBillingAddress').value &&
+    this.addressForm.invalid === true ||
+    this.shippingAddress.invalid === true);
+  }
+
   proceedToPayment() {
-    if (this.addressForm.invalid === false) {
+    if (this.disableButton() === false) {
       this.router.navigateByUrl('checkout/payment');
     }
   }
