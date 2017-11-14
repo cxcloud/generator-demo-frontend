@@ -5,6 +5,7 @@ import {
   AnonymousSignInResult,
   TokenizedSignInResult
 } from '@cxcloud/ct-types/customers';
+import { CartService } from '../cart/cart.service';
 import { CurrentUserService } from './current-user.service';
 import 'rxjs/add/operator/do';
 
@@ -13,7 +14,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private storage: LocalStorageService,
-    private currentUserService: CurrentUserService
+    private currentUserService: CurrentUserService,
+    private cartService: CartService
   ) {
     const token = this.storage.retrieve('token');
     if (!token) {
@@ -35,7 +37,7 @@ export class AuthService {
       .do(resp => {
         this.currentUserService.customer.next(resp.customer);
         this.currentUserService.token.next(resp.token);
-        // @TODO cart service
+        this.cartService.cart.next(resp.cart);
       })
       .map(resp => resp.customer);
   }
