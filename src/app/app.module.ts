@@ -7,10 +7,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Ng2Webstorage } from 'ngx-webstorage';
 
 import { CoreModule } from './core/core.module';
-// import { AuthInterceptor } from './core/auth/auth.interceptor';
-// import { CurrentUserService } from './core/auth/current-user.service';
-// import { AuthService } from './core/auth/auth.service';
-// import { CartService } from './core/cart/cart.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
