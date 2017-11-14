@@ -75,7 +75,12 @@
     </div>
     <div class="columns submit-button">
       <div class="column is-6">
-        <app-goto-button name="Continue Checkout"></app-goto-button>
+        <app-goto-button
+          name="Continue Checkout"
+          [disabled]="addressForm.invalid ? true : false"
+          (click)="proceedToPayment()"
+        >
+        </app-goto-button>
       </div>
     </div>
   </form>

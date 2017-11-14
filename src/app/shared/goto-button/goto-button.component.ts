@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-goto-button',
@@ -7,9 +7,9 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class GotoButtonComponent implements OnInit {
   @Input('name') name: string;
-  constructor() { }
+  @Input('disabled') disabled: boolean;
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

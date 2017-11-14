@@ -1,5 +1,6 @@
 import { Component, group, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from '../../types/common.model';
 
 import 'rxjs/add/operator/debounceTime';
@@ -21,7 +22,11 @@ export class ShippingComponent implements OnInit {
     pattern: 'Please enter a valid email address'
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.addressForm = this.fb.group({
@@ -31,7 +36,7 @@ export class ShippingComponent implements OnInit {
       address2: '',
       city: ['', Validators.required],
       postcode: ['', Validators.required],
-      country: ['', Validators.required],
+      country: '',
       region: '',
       phone: '',
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
@@ -47,10 +52,15 @@ export class ShippingComponent implements OnInit {
   }
 
   setValidationMessage(c: AbstractControl, name): void {
-    console.log(c);
     this[`${name}Message`] = '';
     if ((c.touched || c.dirty) && c.errors) {
       this[`${name}Message`] = Object.keys(c.errors).map(key => this.validationMessages[key]).join(' ');
+    }
+  }
+
+  proceedToPayment() {
+    if (this.addressForm.invalid === false) {
+      this.router.navigateByUrl('checkout/payment');
     }
   }
 }
