@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4003/api/v1'
+  apiUrl: 'https://demo.cxcloud.xyz/api/v1'
 };
