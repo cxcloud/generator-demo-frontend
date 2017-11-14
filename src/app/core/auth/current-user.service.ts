@@ -3,7 +3,7 @@ import { Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { OAuthToken, Customer } from '@cxcloud/ct-types/customers';
-import { LocalStorageService, LocalStorage } from 'ngx-webstorage';
+import { LocalStorageService } from 'ngx-webstorage';
 
 interface UserData {
   token: OAuthToken;

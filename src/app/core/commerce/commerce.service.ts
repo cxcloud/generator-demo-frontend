@@ -11,25 +11,23 @@ import { Cart } from '@cxcloud/ct-types/carts';
 
 @Injectable()
 export class CommerceService {
-  private apiUrl = 'https://demo.cxcloud.xyz/api/v1';
-
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.apiUrl}/categories`);
+    return this.http.get<Category[]>('/categories');
   }
 
   getProducts(categoryId: string): Observable<PaginatedProductResult> {
     return this.http.get<PaginatedProductResult>(
-      `${this.apiUrl}/products/byCategory/${categoryId}`
+      `/products/byCategory/${categoryId}`
     );
   }
 
   getProduct(productId: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/products/${productId}`);
+    return this.http.get<Product>(`/products/${productId}`);
   }
 
   getCart(cartId: string): Observable<Cart> {
-    return this.http.get<Cart>(`${this.apiUrl}/carts/${cartId}`);
+    return this.http.get<Cart>(`/carts/${cartId}`);
   }
 }
