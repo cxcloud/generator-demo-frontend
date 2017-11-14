@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { OAuthToken, Customer } from '@cxcloud/ct-types/customers';
