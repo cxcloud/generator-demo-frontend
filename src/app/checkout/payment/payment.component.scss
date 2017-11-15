@@ -1,0 +1,26 @@
+@import '../../../variables.scss';
+.section {
+  padding: 0;
+
+  .title {
+    font-weight: lighter;
+    text-transform: uppercase;
+    border-bottom: 1px solid $light-grey;
+    padding: 5px 2px 1em 2px;
+    margin-bottom: 2em;
+  }
+
+  p {
+    font-size: 1.1em;
+  }
+
+  .control {
+    padding: 2em 0;
+    border-bottom: 1px solid $light-grey;
+  }
+
+  .checkout-button {
+    margin-top: 2em;
+  }
+}
+

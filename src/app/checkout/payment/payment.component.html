@@ -1,3 +1,24 @@
-<p>
-  payment works!
-</p>
+<div class="section">
+  <h6 class="title is-6">Payment Details</h6>
+  <p>Please select one of the following payment options:</p>
+
+  <div class="control">
+    <div class="radio">
+      <label class="radio">
+        <input type="radio" checked>
+          Prepaid
+      </label>
+    </div>
+  </div>
+
+  <!-- Checkout button -->
+  <div class="columns checkout-button">
+    <div class="column is-6">
+      <app-goto-button
+        name="Continue Checkout"
+        (click)="checkout()"
+      >
+      </app-goto-button>
+    </div>
+  </div>
+</div>
