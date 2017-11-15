@@ -6,10 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Ng2Webstorage } from 'ngx-webstorage';
 
-import { AuthInterceptor } from './core/auth/auth.interceptor';
-import { CurrentUserService } from './core/auth/current-user.service';
-import { AuthService } from './core/auth/auth.service';
-import { CartService } from './core/cart/cart.service';
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
@@ -27,6 +24,7 @@ import { CheckoutModule } from './checkout/checkout.module';
       separator: '.',
       caseSensitive: true
     }),
+    CoreModule,
     SharedModule,
     HttpClientModule,
     FormsModule,
@@ -40,18 +38,9 @@ import { CheckoutModule } from './checkout/checkout.module';
   ],
   declarations: [AppComponent],
 
-  providers: [
-    CurrentUserService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    CartService,
-    AuthService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private auth: AuthService, private cart: CartService) {}
+  constructor() {}
 }

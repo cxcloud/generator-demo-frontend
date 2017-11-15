@@ -3,6 +3,7 @@ import { CommerceService } from '../../core/commerce/commerce.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product, Variant } from '@cxcloud/ct-types/products';
 import { Image, Price } from '@cxcloud/ct-types/common';
+import { CartService } from '../../core/cart/cart.service';
 
 @Component({
   templateUrl: './product.component.html',
@@ -22,7 +23,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private commerceService: CommerceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -132,7 +134,6 @@ export class ProductComponent implements OnInit {
   }
 
   addItemToCart() {
-    // TODO: navigate to cart with cart id
-    this.router.navigateByUrl('/cart/665aec74-bdd3-4781-810d-e1d9ef262d0f');
+    this.cartService.addLineItem(this.product.id);
   }
 }

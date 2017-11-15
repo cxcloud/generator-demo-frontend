@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section" *ngIf="cart">
   <div class="columns cart-page">
     <div class="column is-10 is-offset-1">
 
@@ -7,7 +7,7 @@
         <div class="subtitle level-left">
           <i class="mdi mdi-cart-outline mdi-36px"></i>
           <span class="is-uppercase">Your cart: </span>
-          <span class="items-total">{{totalAmount}} </span> items in total
+          <span class="items-total">{{totalQuantity}} </span> items in total
         </div>
         <!-- Checkout button -->
         <app-goto-button name="Checkout"></app-goto-button>
@@ -54,10 +54,10 @@
         </tfoot>
 
         <tbody>
-          <tr *ngFor="let item of lineItems">
+          <tr *ngFor="let item of cart.lineItems">
             <td class="columns cart-item-description">
               <div class="column">
-                  <app-cart-order-content [item]="item"></app-cart-order-content>
+                <app-cart-order-content [item]="item"></app-cart-order-content>
               </div>
 
               <!-- Delete button -->
@@ -94,4 +94,3 @@
     </div>
   </div>
 </div>
-

@@ -26,8 +26,4 @@ export class CommerceService {
   getProduct(productId: string): Observable<Product> {
     return this.http.get<Product>(`/products/${productId}`);
   }
-
-  getCart(cartId: string): Observable<Cart> {
-    return this.http.get<Cart>(`/carts/${cartId}`);
-  }
 }

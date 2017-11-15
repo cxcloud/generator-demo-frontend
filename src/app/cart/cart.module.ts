@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 import { CartRoutingModule } from './cart-routing.module';
 import { CartComponent } from './cart.component';
@@ -8,7 +9,7 @@ import { CartComponent } from './cart.component';
 const DECLARATIONS = [CartComponent];
 
 @NgModule({
-  imports: [CommonModule, SharedModule, CartRoutingModule],
+  imports: [CommonModule, CoreModule, SharedModule, CartRoutingModule],
   declarations: [...DECLARATIONS],
   exports: [...DECLARATIONS],
   providers: []

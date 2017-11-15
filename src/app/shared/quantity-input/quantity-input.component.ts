@@ -22,9 +22,7 @@ export class QuantityInputComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit() {
-    this.quantityChange.emit(this.currentQuantity);
-  }
+  ngOnInit() {}
 
   increment() {
     this.currentQuantity += 1;

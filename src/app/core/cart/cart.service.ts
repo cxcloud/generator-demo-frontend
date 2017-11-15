@@ -32,4 +32,32 @@ export class CartService {
   private createCart() {
     this.http.post<Cart>('/carts', {}).subscribe(cart => this.cart.next(cart));
   }
+
+  addLineItem(productId: string, variantId?: number) {
+    const cart = this.cart.getValue();
+    this.http
+      .post<Cart>(`/carts/${cart.id}/${cart.version}/lineItems`, {
+        productId,
+        variantId,
+        quantity: 1
+      })
+      .subscribe(result => this.cart.next(result));
+  }
+
+  changeQuantity(lineItemId: string, quantity: number) {
+    const cart = this.cart.getValue();
+    this.http
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/lineItems`, {
+        lineItemId,
+        quantity
+      })
+      .subscribe(result => this.cart.next(result));
+  }
+
+  removeLineItem(lineItemId: string) {
+    const cart = this.cart.getValue();
+    this.http
+      .delete<Cart>(`/carts/${cart.id}/${cart.version}/lineItems/${lineItemId}`)
+      .subscribe(result => this.cart.next(result));
+  }
 }
