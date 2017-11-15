@@ -1,9 +1,10 @@
-<h6 class="title is-6">Shipping Information</h6>
   <form
     novalidate
     (ngSubmit)="save()"
     [formGroup]="addressForm"
   >
+    <h6 class="title is-6">Shipping Information</h6>
+
     <!-- Shipping address -->
     <div formGroupName="shippingAddress">
       <div class="field columns">
@@ -71,7 +72,7 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field is-checkbox-field">
       <label class="checkbox">
         <input type="checkbox" formControlName="showBillingAddress">
         Use a different address for billing
@@ -147,6 +148,20 @@
       </div>
     </div>
 
+    <div class="section delivery-methods">
+      <h6 class="title is-6">Delivery Methods</h6>
+      <div class="control columns" *ngFor="let method of deliveryMethods">
+        <div class="column is-3">
+          <label class="radio">
+            <input type="radio" name="deliveryMethods" checked> {{method.name}}
+          </label>
+        </div>
+        <div class="column is-6">{{method.description}}</div>
+        <div class="column is-3">{{method.price.currency}} {{method.price.amount}}</div>
+      </div>
+    </div>
+
+    <!-- Checkout button -->
     <div class="columns submit-button">
       <div class="column is-6">
         <app-goto-button
@@ -157,7 +172,8 @@
         </app-goto-button>
       </div>
     </div>
-
   </form>
+
+
 
 

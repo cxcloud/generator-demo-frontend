@@ -5,11 +5,10 @@ h6.title {
   text-transform: uppercase;
   border-bottom: 1px solid $light-grey;
   padding: 5px 2px 1em 2px;
-  margin-bottom: 0;
+  margin-bottom: 2em;
 }
 
 form {
-  margin-top: 1.5em;
   label {
     font-size: 14px;
     text-transform: uppercase;
@@ -22,6 +21,12 @@ form {
 
   select {
     min-width: 15em;
+  }
+
+  .is-checkbox-field {
+    background-color: $white-smoke;
+    margin-top: 2em;
+    padding: 5px;
   }
 
   .checkbox {
@@ -45,5 +50,13 @@ form {
   }
 }
 
-
-
+.delivery-methods {
+  padding: 0;
+  .title {
+    margin-top: 2em;
+  }
+ .control {
+   background-color: $white-smoke;
+   margin: 1px 0;
+  }
+}

@@ -13,6 +13,24 @@ import 'rxjs/add/operator/debounceTime';
 export class ShippingComponent implements OnInit {
   addressForm: FormGroup;
   countryList: Array<string> = ['Finland', 'Germany', 'Russia', 'United Kingdom'];
+  deliveryMethods: Array<any> = [
+    {
+      name: 'Standard',
+      description: 'Delivery in 4-5 days',
+      price: {
+        currency: 'EUR',
+        amount: '0'
+      }
+    },
+    {
+      name: 'Store Pickup',
+      description: '',
+      price: {
+        currency: 'EUR',
+        amount: '0'
+      }
+    }
+  ];
 
   message: string;
 
