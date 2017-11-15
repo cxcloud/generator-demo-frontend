@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../types/cart.model';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { CART } from '../mock/carts';
 
@@ -11,11 +12,22 @@ import { CART } from '../mock/carts';
 })
 export class CheckoutComponent implements OnInit {
   cart: Cart = CART;
-  steps: Array<string> = ['Shipping', 'Payment', 'Confirmation'];
 
-  constructor() { }
+  currentStep: any;
+  steps: Array<any> = [
+    {stage: 1, key: 'shipping', name: 'Shipping'},
+    {stage: 2, key: 'payment', name: 'Payment'},
+    {stage: 3, key: 'confirmation', name: 'Confirmation'}
+  ];
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const routeName = event.url.split('/').pop();
+        this.currentStep = this.steps.filter(step => step.key === routeName)[0];
+      }
+    });
   }
 
+  ngOnInit() {}
 }

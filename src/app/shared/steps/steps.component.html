@@ -1,8 +1,12 @@
 <div class="steps">
-  <div class="step-item" *ngFor="let step of steps; let i=index;">
-    <div class="step-marker">{{i + 1}}</div>
+  <div
+    class="step-item"
+    *ngFor="let step of steps"
+    [ngClass]="{'is-active': step.stage == current}"
+  >
+    <div class="step-marker">{{step.stage}}</div>
     <div class="step-details">
-      <p class="step-title">{{step}}</p>
+      <p class="step-title">{{step.name}}</p>
     </div>
   </div>
 </div>
