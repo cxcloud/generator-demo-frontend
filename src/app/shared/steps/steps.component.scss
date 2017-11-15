@@ -2,6 +2,12 @@
 
 .steps {
   .step-item {
+    &::before {
+      background: linear-gradient(to left, $light-grey 100%, $yellow 0%);
+    }
+    &.is-active::before {
+      background: linear-gradient(to left, $light-grey 100%, $yellow 100%);
+    }
     .step-details {
       margin-left: 2em;
       margin-right: 2em;
