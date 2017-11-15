@@ -19,7 +19,12 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class ShippingComponent implements OnInit {
   addressForm: FormGroup;
-  countryList: Array<string> = ['Finland', 'Germany', 'Russia', 'United Kingdom'];
+  countryList: Array<string> = [
+    'Finland',
+    'Germany',
+    'Russia',
+    'United Kingdom'
+  ];
   deliveryMethods: Array<any> = [
     {
       name: 'Standard',
@@ -63,8 +68,8 @@ export class ShippingComponent implements OnInit {
   ngOnInit(): void {
     this.addressForm = this.fb.group({
       showBillingAddress: false,
-      shippingAddress:  this.buildAddress(),
-      billingAddress:  this.buildAddress()
+      shippingAddress: this.buildAddress(),
+      billingAddress: this.buildAddress()
     });
 
     this.runValidation(this.shippingAddress);
@@ -82,7 +87,10 @@ export class ShippingComponent implements OnInit {
       country: '',
       region: '',
       phone: '',
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]]
+      email: [
+        '',
+        [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
+      ]
     });
   }
 
@@ -90,25 +98,29 @@ export class ShippingComponent implements OnInit {
     Object.keys(controlGroup.controls).forEach(key => {
       const control = controlGroup.get(key);
       control.valueChanges
-      .debounceTime(1000)
-      .subscribe(value => this.setValidationMessage(control, key));
+        .debounceTime(1000)
+        .subscribe(value => this.setValidationMessage(control, key));
     });
   }
 
   setValidationMessage(c: AbstractControl, name): void {
     this[`${name}Message`] = '';
     if ((c.touched || c.dirty) && c.errors) {
-      this[`${name}Message`] = Object.keys(c.errors).map(key => this.validationMessages[key]).join(' ');
+      this[`${name}Message`] = Object.keys(c.errors)
+        .map(key => this.validationMessages[key])
+        .join(' ');
     }
   }
 
   disableButton(): boolean {
-    return (this.addressForm.get('showBillingAddress').value &&
-    this.addressForm.invalid === true ||
-    this.shippingAddress.invalid === true);
+    return (
+      (this.addressForm.get('showBillingAddress').value &&
+        this.addressForm.invalid === true) ||
+      this.shippingAddress.invalid === true
+    );
   }
 
-  proceedToPayment() {
+  checkout() {
     if (this.disableButton() === false) {
       this.router.navigateByUrl('checkout/payment');
     }
