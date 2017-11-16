@@ -38,8 +38,6 @@ export class ProductComponent implements OnInit {
     });
   }
 
-
-
   getProduct(productId) {
     this.commerceService.getProduct(productId).subscribe(product => {
       if (product) {
@@ -137,10 +135,6 @@ export class ProductComponent implements OnInit {
         }
       }
     })[0];
-  }
-
-  getItemQuantity(q) {
-    console.log(q);
   }
 
   addItemToCart(quantity) {
