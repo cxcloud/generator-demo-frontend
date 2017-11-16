@@ -5,24 +5,24 @@
   <div class="column order-summary is-5">
     <h6 class="title is-6">Order summary: </h6>
     <div class="order">
-      <div class="order-summary-items">
+      <div class="order-summary-items" *ngIf="cart">
         <div *ngFor="let item of cart.lineItems" class="line-items">
-            <app-cart-order-content [item]="item"></app-cart-order-content>
-            <div class="columns table">
-              <div class="column is-4">
-                <div class="prop-name">Quantity</div>
-                <div>{{item.quantity}}</div>
-              </div>
-              <div class="column is-4">
-                <div class="prop-name">Price</div>
-                <div>{{item.price.value.currencyCode}} {{0.01 * item.price.value.centAmount}}</div>
-              </div>
-              <div class="column is-4">
-                <div class="prop-name">Total</div>
-                <div>{{item.price.value.currencyCode}} {{0.01 * (item.quantity * item.price.value.centAmount)}}</div>
-              </div>
+          <app-cart-order-content [item]="item"></app-cart-order-content>
+          <div class="columns table">
+            <div class="column is-4">
+              <div class="prop-name">Quantity</div>
+              <div>{{item.quantity}}</div>
+            </div>
+            <div class="column is-4">
+              <div class="prop-name">Price</div>
+              <div>{{item.price.value.currencyCode}} {{0.01 * item.price.value.centAmount}}</div>
+            </div>
+            <div class="column is-4">
+              <div class="prop-name">Total</div>
+              <div>{{item.price.value.currencyCode}} {{0.01 * (item.quantity * item.price.value.centAmount)}}</div>
             </div>
           </div>
+        </div>
       </div>
       <div class="checkout-order-price">
         <div class="columns row">
@@ -31,7 +31,7 @@
             <div>Shipping</div>
           </div>
           <div class="column is-4">
-            <div>{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
+            <div *ngIf="cart">{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
             <div>EUR 0 .-</div>
           </div>
         </div>
@@ -42,7 +42,7 @@
           </div>
           <div class="column is-4">
             <div>EUR 0 .-</div>
-            <div class="total-price">{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
+            <div class="total-price" *ngIf="cart">{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
           </div>
         </div>
       </div>

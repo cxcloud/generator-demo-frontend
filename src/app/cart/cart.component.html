@@ -10,7 +10,7 @@
           <span class="items-total">{{totalQuantity}} </span> items in total
         </div>
         <!-- Checkout button -->
-        <app-goto-button name="Checkout"></app-goto-button>
+        <app-goto-button name="Checkout" (click)="goToCheckout();"></app-goto-button>
       </div>
       <!-- Cart table -->
       <table class="table is-hoverable is-fullwidth">
@@ -89,7 +89,7 @@
         </button>
 
         <!-- Checkout button -->
-        <app-goto-button name="Checkout"></app-goto-button>
+        <app-goto-button name="Checkout" (click)="goToCheckout();"></app-goto-button>
       </div>
     </div>
   </div>

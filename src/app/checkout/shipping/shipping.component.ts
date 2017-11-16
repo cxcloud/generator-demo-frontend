@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  FormArray,
-  Validators
-} from '@angular/forms';
-
-import { ActivatedRoute, Router } from '@angular/router';
-import { Address } from '@cxcloud/ct-types/common';
 import { Cart } from '@cxcloud/ct-types/carts';
+import { CartService } from '../../core/cart/cart.service';
 
-import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-shipping',
@@ -19,8 +9,16 @@ import 'rxjs/add/operator/debounceTime';
   styleUrls: ['./shipping.component.scss']
 })
 export class ShippingComponent implements OnInit {
+  cart: Cart;
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cartService.cart.subscribe(cart => {
+      if (cart === null) {
+        return;
+      }
+      this.cart = cart;
+    });
+  }
 }
