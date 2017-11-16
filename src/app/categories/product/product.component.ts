@@ -27,6 +27,10 @@ export class ProductComponent implements OnInit {
     private cartService: CartService
   ) {}
 
+  get availability(): Array<number> {
+    return Array.from(Array(10).keys()).map(x => x + 1);
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       // Get product by its id
@@ -133,7 +137,7 @@ export class ProductComponent implements OnInit {
     })[0];
   }
 
-  addItemToCart() {
-    this.cartService.addLineItem(this.product.id);
+  addItemToCart(quantity) {
+    this.cartService.addLineItem(this.product.id, undefined, Number(quantity));
   }
 }
