@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -7,9 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 

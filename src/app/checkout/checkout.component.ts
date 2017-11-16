@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../types/cart.model';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { CART } from '../mock/carts';
 
@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
     {stage: 3, key: 'confirmation', name: 'Confirmation'}
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const routeName = event.url.split('/').pop();
