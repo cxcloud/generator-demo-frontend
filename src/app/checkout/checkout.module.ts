@@ -26,12 +26,8 @@ const DECLARATIONS = [
     SharedModule,
     CheckoutRoutingModule
   ],
-  declarations: [
-    ...DECLARATIONS,
-  ],
-  exports: [
-    ...DECLARATIONS
-  ],
+  declarations: [...DECLARATIONS],
+  exports: [...DECLARATIONS],
   providers: []
 })
-export class CheckoutModule { }
+export class CheckoutModule {}

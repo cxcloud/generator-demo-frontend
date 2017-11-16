@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Product } from '../../types/product.model';
+import { Product } from '@cxcloud/ct-types/products';
 import { CommerceService } from '../../core/commerce/commerce.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private commerceService: CommerceService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -27,8 +27,8 @@ export class ProductListComponent implements OnInit {
 
   getProducts(categoryId) {
     this.commerceService
-    .getProducts(categoryId)
-    .subscribe(data => this.products = data);
+      .getProducts(categoryId)
+      .subscribe(data => (this.products = data.results));
   }
 
   getAllVariants() {
@@ -39,5 +39,4 @@ export class ProductListComponent implements OnInit {
       }
     });
   }
-
 }

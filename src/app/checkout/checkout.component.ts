@@ -9,7 +9,6 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-
   currentStep: any;
   steps: Array<any> = [
     {stage: 1, key: 'shipping', name: 'Shipping'},

@@ -1,13 +1,12 @@
 @import '../../../variables.scss';
 
-
 .pd-title {
   text-transform: uppercase;
   font-size: 1.6em;
   margin-top: 0.3em;
 }
 .pd-sku {
- color: $silver;
+  color: $silver;
 }
 
 .pd-description {
@@ -41,7 +40,7 @@ button.add-to-cart {
 
 .pd-review {
   margin-bottom: 0;
-  .mdi-star{
+  .mdi-star {
     color: $silver;
 
     &::before {
@@ -58,5 +57,3 @@ button.add-to-cart {
     margin-left: 0.5em;
   }
 }
-
-

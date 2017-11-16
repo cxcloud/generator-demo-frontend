@@ -8,9 +8,8 @@ import {
 } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { Address } from '../../types/common.model';
-import { Cart } from '../../types/cart.model';
-import { CART } from '../../mock/carts';
+import { Address } from '@cxcloud/ct-types/common';
+import { Cart } from '@cxcloud/ct-types/carts';
 
 import 'rxjs/add/operator/debounceTime';
 
@@ -20,8 +19,8 @@ import 'rxjs/add/operator/debounceTime';
   styleUrls: ['./shipping.component.scss']
 })
 export class ShippingComponent implements OnInit {
-  cart: Cart = CART;
-  ngOnInit() {
 
-  }
+  constructor() {}
+
+  ngOnInit() {}
 }

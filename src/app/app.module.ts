@@ -3,8 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Ng2Webstorage } from 'ngx-webstorage';
 
-
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
@@ -17,6 +19,12 @@ import { CheckoutModule } from './checkout/checkout.module';
 @NgModule({
   imports: [
     BrowserModule,
+    Ng2Webstorage.forRoot({
+      prefix: 'cxcloud-demo',
+      separator: '.',
+      caseSensitive: true
+    }),
+    CoreModule,
     SharedModule,
     HttpClientModule,
     FormsModule,
@@ -28,11 +36,11 @@ import { CheckoutModule } from './checkout/checkout.module';
     CheckoutModule,
     AppRoutingModule
   ],
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
 
   providers: [],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {}
+}

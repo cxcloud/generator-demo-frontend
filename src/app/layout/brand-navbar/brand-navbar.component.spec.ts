@@ -6,12 +6,13 @@ describe('BrandNavbarComponent', () => {
   let component: BrandNavbarComponent;
   let fixture: ComponentFixture<BrandNavbarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BrandNavbarComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [BrandNavbarComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BrandNavbarComponent);

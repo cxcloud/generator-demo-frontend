@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { Address } from '../../../types/common.model';
+import { Address } from '@cxcloud/ct-types/common';
 
 import 'rxjs/add/operator/debounceTime';
 

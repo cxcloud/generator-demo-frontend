@@ -6,12 +6,13 @@ describe('InfoCardComponent', () => {
   let component: InfoCardComponent;
   let fixture: ComponentFixture<InfoCardComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InfoCardComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [InfoCardComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(InfoCardComponent);

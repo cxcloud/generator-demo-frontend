@@ -14,7 +14,7 @@
   width: 100%;
   text-align: center;
   color: $white;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   z-index: 100;
@@ -30,7 +30,7 @@
     height: 100%;
     padding: 2%;
     max-width: 40%;
-    background: rgba(255, 255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
     color: $night-rider;
 
     .title,
@@ -60,7 +60,7 @@
 }
 
 app-goto-button {
-/deep/ a {
+  /deep/ a {
     border-color: $yellow;
     padding: 20px;
     border-radius: 0;

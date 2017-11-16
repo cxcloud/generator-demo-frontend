@@ -6,12 +6,13 @@ describe('CheckoutButtonComponent', () => {
   let component: CheckoutButtonComponent;
   let fixture: ComponentFixture<CheckoutButtonComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CheckoutButtonComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [CheckoutButtonComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CheckoutButtonComponent);
