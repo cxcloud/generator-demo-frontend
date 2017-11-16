@@ -9,59 +9,9 @@
       <app-steps [steps]="steps" [current]="currentStep.stage"></app-steps>
     </div>
     <div class="columns checkout">
-      <div class="column">
-        <div class="columns">
-          <div class="column checkout-form is-7">
-            <router-outlet></router-outlet>
-          </div>
-          <div class="column order-summary is-5">
-            <h6 class="title is-6">Order summary: </h6>
-            <div class="order">
-              <div class="order-summary-items">
-                <div *ngFor="let item of cart.lineItems" class="line-items">
-                    <app-cart-order-content [item]="item"></app-cart-order-content>
-                    <div class="columns table">
-                      <div class="column is-4">
-                        <div class="prop-name">Quantity</div>
-                        <div>{{item.quantity}}</div>
-                      </div>
-                      <div class="column is-4">
-                        <div class="prop-name">Price</div>
-                        <div>{{item.price.value.currencyCode}} {{0.01 * item.price.value.centAmount}}</div>
-                      </div>
-                      <div class="column is-4">
-                        <div class="prop-name">Total</div>
-                        <div>{{item.price.value.currencyCode}} {{0.01 * (item.quantity * item.price.value.centAmount)}}</div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="checkout-order-price">
-                <div class="columns row">
-                  <div class="column is-4 is-offset-4">
-                    <div>Subtotal</div>
-                    <div>Shipping</div>
-                  </div>
-                  <div class="column is-4">
-                    <div>{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
-                    <div>EUR 0 .-</div>
-                  </div>
-                </div>
-                <div class="columns row">
-                  <div class="column is-4 is-offset-4">
-                    <div>Sales Tax</div>
-                    <div class="total-price">Total</div>
-                  </div>
-                  <div class="column is-4">
-                    <div>EUR 0 .-</div>
-                    <div class="total-price">{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="column">
+          <router-outlet></router-outlet>
         </div>
-      </div>
     </div>
   </div>
 </section>

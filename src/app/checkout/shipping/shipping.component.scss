@@ -1,62 +1,45 @@
 @import '../../../variables.scss';
 
-h6.title {
-  font-weight: lighter;
+.order-summary {
   text-transform: uppercase;
-  border-bottom: 1px solid $light-grey;
-  padding: 5px 2px 1em 2px;
-  margin-bottom: 2em;
-}
 
-form {
-  label {
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-  input[type="text"],
-  select {
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  select {
-    min-width: 15em;
-  }
-
-  .is-checkbox-field {
+  .order {
+    border: 1px solid $light-grey;
     background-color: $white-smoke;
-    margin-top: 2em;
-    padding: 5px;
-  }
 
-  .checkbox {
-    text-transform: none;
-  }
-  .error {
-    border-color: $red;
-    &.message {
-      font-size: 12px;
-      color: $red;
-      background-color: transparent;
+    .order-summary-items {
+      overflow-y: auto;
+      max-height: 35em;
+
+      .line-items {
+        margin-bottom: 1em;
+        padding: 1em;
+
+        .table {
+          font-size: 14px;
+          text-align: right;
+        }
+
+        .prop-name {
+          text-transform: uppercase;
+          color: $silver;
+        }
+      }
     }
-  }
 
-  .submit-button {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    /deep/ .btn-checkout {
-      height: 2.7em;
+    .checkout-order-price {
+      text-transform: none;
+      font-size: 1em;
+
+      .row {
+        margin: 0;
+        border-top: 1px solid $light-grey;
+      }
+
+      .total-price {
+        font-weight: 900;
+        font-size: 1.2em;
+      }
     }
-  }
-}
-
-.delivery-methods {
-  padding: 0;
-  .title {
-    margin-top: 2em;
-  }
- .control {
-   background-color: $white-smoke;
-   margin: 1px 0;
   }
 }

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../types/cart.model';
 import { Router, NavigationEnd } from '@angular/router';
 
-import { CART } from '../mock/carts';
 
 
 @Component({
@@ -11,7 +9,6 @@ import { CART } from '../mock/carts';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-  cart: Cart = CART;
 
   currentStep: any;
   steps: Array<any> = [

@@ -6,14 +6,16 @@ import { SharedModule } from '../shared/shared.module';
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutComponent } from './checkout.component';
 import { ShippingComponent } from './shipping/shipping.component';
-import { PaymentComponent } from './payment/payment.component';
+import { PaymentComponent } from './shipping/payment/payment.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { ShippingInfoComponent } from './shipping/shipping-info/shipping-info.component';
 
 const DECLARATIONS = [
   CheckoutComponent,
   ShippingComponent,
   PaymentComponent,
-  ConfirmationComponent
+  ConfirmationComponent,
+  ShippingInfoComponent
 ];
 
 @NgModule({
@@ -25,7 +27,7 @@ const DECLARATIONS = [
     CheckoutRoutingModule
   ],
   declarations: [
-    ...DECLARATIONS
+    ...DECLARATIONS,
   ],
   exports: [
     ...DECLARATIONS
