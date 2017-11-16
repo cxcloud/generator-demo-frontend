@@ -33,6 +33,16 @@ export class CartService {
     this.http.post<Cart>('/carts', {}).subscribe(cart => this.cart.next(cart));
   }
 
+  get totalCount() {
+    const cart = this.cart.getValue();
+    if (cart === null) {
+      return 0;
+    }
+    return cart.lineItems.reduce((acc, item) => {
+      return (acc += item.quantity);
+    }, 0);
+  }
+
   addLineItem(productId: string, variantId?: number, quantity?: number) {
     const cart = this.cart.getValue();
     this.http

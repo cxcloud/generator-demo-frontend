@@ -16,9 +16,7 @@ export class BrandNavbarComponent implements OnInit {
       if (cart === null) {
         return;
       }
-      this.total = cart.lineItems.reduce((acc, item) => {
-        return (acc += item.quantity);
-      }, 0);
+      this.total = this.cartService.totalCount;
     });
   }
 }
