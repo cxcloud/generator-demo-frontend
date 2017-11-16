@@ -27,12 +27,18 @@ export class ProductComponent implements OnInit {
     private cartService: CartService
   ) {}
 
+  get availability(): Array<number> {
+    return Array.from(Array(10).keys()).map(x => x + 1);
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       // Get product by its id
       this.getProduct(params['id']);
     });
   }
+
+
 
   getProduct(productId) {
     this.commerceService.getProduct(productId).subscribe(product => {
@@ -133,7 +139,11 @@ export class ProductComponent implements OnInit {
     })[0];
   }
 
-  addItemToCart() {
-    this.cartService.addLineItem(this.product.id);
+  getItemQuantity(q) {
+    console.log(q);
+  }
+
+  addItemToCart(quantity) {
+    this.cartService.addLineItem(this.product.id, undefined, Number(quantity));
   }
 }

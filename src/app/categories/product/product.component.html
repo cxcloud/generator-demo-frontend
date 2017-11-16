@@ -70,11 +70,11 @@
       <div class="field is-grouped">
         <div class="control">
           <div class="select">
-            <select>
-              <option *ngFor="let number of [1,2,3,4,5]">{{number}}</option>
+            <select #selectedQuantity>
+              <option *ngFor="let number of availability" [value]="number">{{number}}</option>
             </select>
           </div>
-          <button class="button add-to-cart" (click)="addItemToCart();">
+          <button class="button add-to-cart" (click)="addItemToCart(selectedQuantity.value);">
             <span class="icon">
               <i class="mdi mdi-cart mdi-24px"></i>
             </span>

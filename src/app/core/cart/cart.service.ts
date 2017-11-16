@@ -33,13 +33,13 @@ export class CartService {
     this.http.post<Cart>('/carts', {}).subscribe(cart => this.cart.next(cart));
   }
 
-  addLineItem(productId: string, variantId?: number) {
+  addLineItem(productId: string, variantId?: number, quantity?: number) {
     const cart = this.cart.getValue();
     this.http
       .post<Cart>(`/carts/${cart.id}/${cart.version}/lineItems`, {
         productId,
         variantId,
-        quantity: 1
+        quantity
       })
       .subscribe(result => this.cart.next(result));
   }
