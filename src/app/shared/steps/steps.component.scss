@@ -1,42 +1,28 @@
 @import '../../../variables.scss';
 
 .steps {
-  .step-item {
-    &::before {
-      background: linear-gradient(to left, $light-grey 100%, $yellow 0%);
-    }
-    &.is-active::before {
-      background: linear-gradient(to left, $light-grey 100%, $yellow 100%);
-    }
-    .step-details {
-      margin-left: 2em;
-      margin-right: 2em;
-      &:last-child {
-        margin-right: .5em;
-      }
 
-    }
-    .step-marker {
-      font-size: 14px;
-      font-weight: lighter;
-      background-color: $white;
-      border: 1px solid $silver;
-      color: $silver;
-    }
+  .level-item {
+    margin-right: 10px;
+  }
+  .step {
+    border: 1px solid $silver;
+    border-radius: 50%;
+    padding: 4px 12px;
+    font-size: 14px;
+    color: $silver;
+    background-color: $white;
+    font-weight: lighter;
 
-    .step-title {
-      font-size: 14px;
-      font-weight: lighter;
-      text-transform: uppercase;
-    }
     &.is-active {
-      .step-marker {
-        background-color: $silver;
-        color: $white;
-        height: 2.3em;
-        width: 2.3em;
-      }
-
+      background-color: $silver;
+      color: $white;
     }
+  }
+  .step-title {
+    font-size: 14px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    margin-left: 5px;
   }
 }
