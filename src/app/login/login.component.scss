@@ -1,0 +1,36 @@
+@import '../../variables.scss';
+
+.section {
+  background-color: $romance;
+
+  .title {
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 1.8em;
+  }
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .box-wrapper {
+    background-color: $white;
+    border: 1px solid $light-grey;
+    padding: 20px;
+  }
+
+  .form-header {
+    border-bottom: 1px solid $light-grey;
+
+    .title {
+      font-size: 1.1em;
+      padding-bottom: 10px;
+
+    }
+  }
+
+
+}
