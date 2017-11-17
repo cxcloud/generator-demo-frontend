@@ -39,3 +39,14 @@
 .order {
   margin: 2em 0;
 }
+
+app-info-card {
+  /deep/ .card {
+    background-color: $white-smoke;
+    box-shadow: none;
+
+    header {
+      box-shadow: none;
+    }
+  }
+}

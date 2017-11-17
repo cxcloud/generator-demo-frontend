@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class InfoCardComponent implements OnInit {
   @Input('title') title: string;
+  @Input('icon') icon = 'mdi mdi-chevron-down';
+  @Input('label') label: string;
+  @Input('url') url = '#';
 
   constructor() {}
 

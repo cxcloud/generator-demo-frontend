@@ -1,12 +1,9 @@
 <div class="card">
   <header class="card-header">
-    <p class="card-header-title is-uppercase">
-      {{title}}
-    </p>
-    <a href="#" class="card-header-icon" aria-label="more options">
-      <span class="icon">
-        <i class="mdi mdi-chevron-down" aria-hidden="true"></i>
-      </span>
+    <h6 class="card-header-title is-uppercase">{{title}}</h6>
+    <a [href]="url" class="card-header-icon level" aria-label="more options">
+      <i [ngClass]="icon" aria-hidden="true" class="level-item level-right"></i>
+      <span *ngIf="label" class="level-item label">{{label}}</span>
     </a>
   </header>
   <div class="card-content">
