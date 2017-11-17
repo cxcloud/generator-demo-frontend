@@ -10,14 +10,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "deploy": "now && now alias",
     "format": "prettier --write 'src/**/*.{css,scss,js,ts,json}'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{css,scss,js,ts,json}'": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{css,scss,js,ts,json}'": ["prettier --write", "git add"]
   },
   "private": true,
   "dependencies": {
