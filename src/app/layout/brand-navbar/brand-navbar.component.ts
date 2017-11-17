@@ -7,7 +7,7 @@ import { CartService } from '../../core/cart/cart.service';
   styleUrls: ['./brand-navbar.component.scss']
 })
 export class BrandNavbarComponent implements OnInit {
-  private total = 0;
+  total = 0;
 
   constructor(private cartService: CartService) {}
 
