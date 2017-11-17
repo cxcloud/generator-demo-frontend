@@ -5,6 +5,7 @@ import { Cart } from '@cxcloud/ct-types/carts';
 import { LocalStorageService } from 'ngx-webstorage';
 import { CurrentUserService } from '../auth/current-user.service';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/filter';
 
 @Injectable()
 export class CartService {
@@ -24,7 +25,10 @@ export class CartService {
           return this.createCart();
         }
         // otherwise wait until we have a token
-        this.currentUser.token.take(1).subscribe(() => this.createCart());
+        this.currentUser.token
+          .filter(token => token !== null)
+          .take(1)
+          .subscribe(() => this.createCart());
       }
     );
   }
