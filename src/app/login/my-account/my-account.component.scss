@@ -1,0 +1,96 @@
+@import '../../../variables.scss';
+
+.section {
+  background-color: $romance;
+  padding: 1.5em;
+
+  .title {
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 1.8em;
+  }
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .my-account-content {
+    background-color: $white;
+    border: 1px solid $light-grey;
+    padding: 10px;
+  }
+
+  .tab {
+    padding: 5px;
+    border-top: 1px solid $light-grey;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    a {
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    &.active,
+    &:hover,
+    a:hover {
+      background-color: $white-smoke;
+    }
+    &:last-child {
+      border-bottom: 1px solid $light-grey;
+    }
+  }
+
+  .personal-details {
+    font-size: 14px;
+
+    .personal-details-title {
+      text-transform: uppercase;
+      font-size: 18px;
+      letter-spacing: 1px;
+      padding: 30px 0 10px;
+      border-bottom: 1px solid $light-grey;
+    }
+
+    .personal-details-content {
+      background-color: $white-smoke;
+      margin-top: 15px;
+      padding: 15px 10px;
+      color: $silver;
+      position: relative;
+
+      .edit {
+        text-transform: uppercase;
+        font-style: normal;
+        position: absolute;
+        right: 5px;
+        top: 0;
+        cursor: pointer;
+
+        &:hover {
+          color: $grey;
+        }
+
+        i,
+        .text {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .username {
+      font-size: 1em;
+      font-weight: 600;
+    }
+    .customer-id {
+      font-weight: 600;
+    }
+  }
+
+
+}
+
+

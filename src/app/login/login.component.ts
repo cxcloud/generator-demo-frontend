@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -64,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   signUp() {
-    console.log('sign up');
+    this.router.navigateByUrl('/user');
   }
 
   validate(controlGroup: FormGroup) {
