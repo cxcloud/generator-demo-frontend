@@ -20,6 +20,10 @@
     background-color: $white;
     border: 1px solid $light-grey;
     padding: 20px;
+
+    &.sign-up-form {
+      margin-left: 20px;
+    }
   }
 
   .form-header {
@@ -28,9 +32,37 @@
     .title {
       font-size: 1.1em;
       padding-bottom: 10px;
-
     }
   }
 
+  .login-box-description {
+    padding: 20px 0 30px 10px;
+    font-size: 14px;
+  }
+
+  .field-label {
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+
+  .control {
+    margin-top: 10px;
+    input {
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+
+
+  /deep/ app-goto-button {
+    button {
+      margin-top: 2em;
+    }
+    .btn-title {
+      font-weight: bolder;
+    }
+  }
 
 }

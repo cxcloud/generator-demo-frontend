@@ -6,23 +6,73 @@
     </div>
 
     <!-- Forms -->
-    <div class="columns level">
+    <div class="columns">
 
       <!-- Sign in form -->
-      <div class="column is-5 level-left box-wrapper">
-        <form>
+      <div class="column is-6 box-wrapper">
+        <form novalidate [formGroup]="signInForm">
           <div class="form-header">
             <div class="title is-6">Customer Sign In</div>
           </div>
+          <div class="field">
+            <p class="login-box-description">If you have an account, please sign in for a faster checkout</p>
+            <div  class="control">
+              <label class="field-label is-normal">Email*</label>
+              <input class="input" type="text" formControlName="email">
+            </div>
+            <div  class="control">
+              <label class="field-label is-normal">Password*</label>
+              <input class="input" type="password" formControlName="password">
+            </div>
+          </div>
+          <app-goto-button
+            class="signin-button"
+            name="Sign In"
+            (click)="signIn()"
+          >
+          </app-goto-button>
         </form>
       </div>
 
       <!-- Sign up form -->
-      <div class="column is-5 level-right box-wrapper">
-        <form>
+      <div class="column is-6 box-wrapper sign-up-form">
+
+        <form novalidate [formGroup]="signUpForm">
           <div class="form-header">
             <div class="title is-6">New Customer Registration</div>
           </div>
+
+          <div class="field">
+            <p class="login-box-description">
+              Create an account to store your products, easy checkouts, customer discounts, benefits and more.
+            </p>
+            <div  class="control">
+              <label class="field-label is-normal">First Name*</label>
+              <input class="input" type="text" formControlName="firstName">
+            </div>
+            <div  class="control">
+              <label class="field-label is-normal">Surname*</label>
+              <input class="input" type="text" formControlName="surname">
+            </div>
+            <div  class="control">
+              <label class="field-label is-normal">Email*</label>
+              <input class="input" type="text" formControlName="email">
+            </div>
+            <div  class="control">
+              <label class="field-label is-normal">Password*</label>
+              <input class="input" type="password" formControlName="password">
+            </div>
+            <div  class="control">
+              <label class="field-label is-normal">Confirm password*</label>
+              <input class="input" type="password" formControlName="confirmPassword">
+            </div>
+          </div>
+          <app-goto-button
+            class="signup-button"
+            name="Register Now"
+            (click)="signUp()"
+          >
+          </app-goto-button>
         </form>
       </div>
     </div>
