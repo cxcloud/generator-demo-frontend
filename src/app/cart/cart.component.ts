@@ -35,11 +35,16 @@ export class CartComponent implements OnInit {
     this.cartService.removeLineItem(item.id);
   }
 
+  updateQuantityValue(item: LineItem, quantity) {
+    this.cartService.changeQuantity(item.id, quantity);
+  }
+
   goBackToHomePage() {
     this.router.navigateByUrl('/home');
   }
 
-  updateQuantityValue(item: LineItem, quantity) {
-    this.cartService.changeQuantity(item.id, quantity);
+  goToCheckout() {
+    this.router.navigateByUrl('/checkout/shipping');
   }
+
 }

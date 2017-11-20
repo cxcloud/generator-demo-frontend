@@ -18,7 +18,7 @@ export class QuantityInputComponent implements OnInit, OnChanges {
   @Input() allowZeroQuantity = false;
   @Input() quantity = 1;
 
-  private currentQuantity = 1;
+  currentQuantity = 1;
 
   constructor() {}
 

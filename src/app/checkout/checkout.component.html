@@ -3,23 +3,15 @@
     <div class="level">
       <div class="level-left">
         <h4 class="subtitle is-uppercase is-4 level-left">
-          <i class="mdi mdi-credit-card mdi-36px"></i> Checkout - Shipping - Payment
+          <i class="mdi mdi-credit-card mdi-36px"></i> Checkout - {{currentStep.name}}
         </h4>
       </div>
-
-      <div class="steps level-right">
-        <div *ngFor="let i of [1,2,3]" class="level-item step">{{i}}</div>
-      </div>
+      <app-steps [steps]="steps" [current]="currentStep.stage"></app-steps>
     </div>
-
-
     <div class="columns checkout">
-      <div class="column">
-        <div class="columns">
-          <div class="column checkout-form is-7">Shipping information</div>
-          <div class="column checkout-details is-5">Order summary</div>
+        <div class="column">
+          <router-outlet></router-outlet>
         </div>
-      </div>
     </div>
   </div>
 </section>

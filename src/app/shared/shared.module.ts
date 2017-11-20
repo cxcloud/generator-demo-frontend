@@ -6,12 +6,14 @@ import { InfoCardComponent } from './info-card/info-card.component';
 import { GotoButtonComponent } from './goto-button/goto-button.component';
 import { CartOrderContentComponent } from './cart-order-content/cart-order-content.component';
 import { QuantityInputComponent } from './quantity-input/quantity-input.component';
+import { StepsComponent } from './steps/steps.component';
 
 const DECLARATIONS = [
   InfoCardComponent,
   GotoButtonComponent,
   CartOrderContentComponent,
-  QuantityInputComponent
+  QuantityInputComponent,
+  StepsComponent
 ];
 
 @NgModule({

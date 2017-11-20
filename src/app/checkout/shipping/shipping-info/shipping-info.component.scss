@@ -1,0 +1,62 @@
+@import '../../../../variables.scss';
+
+h6.title {
+  font-weight: lighter;
+  text-transform: uppercase;
+  border-bottom: 1px solid $light-grey;
+  padding: 5px 2px 1em 2px;
+  margin-bottom: 2em;
+}
+
+form {
+  label {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  input[type="text"],
+  select {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  select {
+    min-width: 15em;
+  }
+
+  .is-checkbox-field {
+    background-color: $white-smoke;
+    margin-top: 2em;
+    padding: 5px;
+  }
+
+  .checkbox {
+    text-transform: none;
+  }
+  .error {
+    border-color: $red;
+    &.message {
+      font-size: 12px;
+      color: $red;
+      background-color: transparent;
+    }
+  }
+
+  .submit-button {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    /deep/ .btn-checkout {
+      height: 2.7em;
+    }
+  }
+}
+
+.delivery-methods {
+  padding: 0;
+  .title {
+    margin-top: 2em;
+  }
+ .control {
+   background-color: $white-smoke;
+   margin: 1px 0;
+  }
+}

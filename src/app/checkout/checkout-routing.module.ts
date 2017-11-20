@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CheckoutComponent } from './checkout.component';
 import { ShippingComponent } from './shipping/shipping.component';
-import { PaymentComponent } from './payment/payment.component';
+import { ShippingInfoComponent } from './shipping/shipping-info/shipping-info.component';
+import { PaymentComponent } from './shipping/payment/payment.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 const routes: Routes = [
   {
@@ -11,12 +12,18 @@ const routes: Routes = [
     component: CheckoutComponent,
     children: [
       {
-        path: 'shipping',
-        component: ShippingComponent
-      },
-      {
-        path: 'payment',
-        component: PaymentComponent
+        path: '',
+        component: ShippingComponent,
+        children: [
+          {
+            path: 'shipping',
+            component: ShippingInfoComponent
+          },
+          {
+            path: 'payment',
+            component: PaymentComponent
+          },
+        ]
       },
       {
         path: 'confirmation',
