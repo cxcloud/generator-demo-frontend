@@ -7,7 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
 
 import 'rxjs/add/operator/debounceTime';
@@ -61,7 +61,6 @@ export class ShippingInfoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router
   ) {}
 

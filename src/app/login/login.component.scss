@@ -53,8 +53,16 @@
       border-radius: 0;
       box-shadow: none;
     }
-  }
 
+    .error {
+      border-color: $red;
+      &.message {
+        font-size: 12px;
+        color: $red;
+        background-color: transparent;
+      }
+    }
+  }
 
   /deep/ app-goto-button {
     button {

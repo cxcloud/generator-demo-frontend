@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
+import { AuthService } from '../core/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +16,15 @@ export class LoginComponent implements OnInit {
   signInForm: any;
   signUpForm: any;
 
+  private validationMessages = {
+    required: '* required',
+    pattern: 'Please enter a valid email address',
+    minlength: 'Minimum 6 characters'
+  };
+
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -20,25 +33,56 @@ export class LoginComponent implements OnInit {
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
       ],
-      password: ['', Validators.required]
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
     });
 
     this.signUpForm = this.fb.group({
-      title: '',
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: [
+      mail: [
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
       ],
-      password: ['', Validators.required],
-      comfirmPassword: ['', Validators.required],
+      pswd: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       agreeToConditions: false
     });
+
+    this.validate(this.signInForm);
+    this.validate(this.signUpForm);
+  }
+
+  disableButton(form): boolean {
+    return ((form.value && form.invalid === true) || form.invalid === true);
   }
 
   signIn() {
-    console.log('sign in');
+    const username = this.signInForm.get('email').value;
+    const password = this.signInForm.get('password').value;
+
+    this.authService.login(username, password).subscribe();
+  }
+
+  signUp() {
+    console.log('sign up');
+  }
+
+  validate(controlGroup: FormGroup) {
+    Object.keys(controlGroup.controls).forEach(key => {
+      const control = controlGroup.get(key);
+      control.valueChanges
+        .debounceTime(1000)
+        .subscribe(value => this.setValidationMessage(control, key));
+    });
+  }
+
+  setValidationMessage(c: AbstractControl, name): void {
+    this[`${name}Message`] = '';
+    if ((c.touched || c.dirty) && c.errors) {
+      this[`${name}Message`] = Object.keys(c.errors)
+        .map(key => this.validationMessages[key])
+        .join(' ');
+    }
   }
 
 }
