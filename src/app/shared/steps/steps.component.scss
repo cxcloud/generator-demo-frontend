@@ -1,0 +1,28 @@
+@import '../../../variables.scss';
+
+.steps {
+
+  .level-item {
+    margin-right: 10px;
+  }
+  .step {
+    border: 1px solid $silver;
+    border-radius: 50%;
+    padding: 4px 12px;
+    font-size: 14px;
+    color: $silver;
+    background-color: $white;
+    font-weight: lighter;
+
+    &.is-active {
+      background-color: $silver;
+      color: $white;
+    }
+  }
+  .step-title {
+    font-size: 14px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="level steps">
+  <div *ngFor="let step of steps" class="level-item">
+    <div class="step" [ngClass]="{'is-active': step.stage == current}">
+      {{step.stage}}
+    </div>
+    <div class="step-title">{{step.name}}</div>
+  </div>
+
+</div>
