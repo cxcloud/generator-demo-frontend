@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-my-account',
@@ -30,16 +32,27 @@ export class MyAccountComponent implements OnInit {
     }
   ];
 
-  user = {
-    id: 508104,
-    firstName: 'John',
-    lastName: 'Lewis',
-    email: 'jhon.lewis@gmail.com'
-  };
+  user: any;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
-  ngOnInit() {
+  get customerNumber(): string {
+    const hash = this.user.id.split('-');
+    return hash[hash.length - 1];
   }
 
+  ngOnInit() {
+    if (this.loginService.customer) {
+      this.user = this.loginService.customer;
+    } else {
+      this.signOut();
+    }
+  }
+
+  signOut() {
+    this.router.navigateByUrl('/user/login');
+  }
 }

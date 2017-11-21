@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { LoginService } from './login.service';
 
 const DECLARATIONS = [LoginComponent, MyAccountComponent];
 
@@ -21,6 +22,6 @@ const DECLARATIONS = [LoginComponent, MyAccountComponent];
   ],
   declarations: [...DECLARATIONS],
   exports: [...DECLARATIONS],
-  providers: []
+  providers: [LoginService]
 })
 export class LoginModule {}
