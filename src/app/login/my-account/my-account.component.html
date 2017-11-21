@@ -14,7 +14,7 @@
             <ul class="menu-list">
               <ng-container *ngFor="let tab of tabs">
                 <li class="tab" [ngClass]="{'active': tab.active === true}">
-                  <a *ngIf="tab.href === 'signout'; else tabs" (click)="signOut();">
+                  <a *ngIf="tab.href === 'signout'; else tabs" (click)="logOut();">
                     {{tab.name}}
                   </a>
                   <ng-template #tabs>
@@ -27,7 +27,7 @@
           </div>
           <div class="column is-9">
             <div class="personal-details">
-              <p>Welcome back <span class="username">{{user.firstName}}</span></p>
+              <p>Welcome back <span class="username">{{user?.firstName}}</span></p>
               <p>for an even better customer service please provide
                 your customer number <span class="customer-id">{{customerNumber}}</span>
               </p>
@@ -35,8 +35,8 @@
                 Your persona details
               </div>
               <div class="personal-details-content">
-                <div>{{user.firstName}} {{user.lastName}}</div>
-                <div>{{user.email}}</div>
+                <div>{{user?.firstName}} {{user?.lastName}}</div>
+                <div>{{user?.email}}</div>
                   <div class="edit level level-right">
                     <i title="Edit" class="mdi mdi-account-edit mdi-24px"></i>
                     <span class="text">Edit</span>

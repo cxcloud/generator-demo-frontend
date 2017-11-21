@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CurrentUserService } from '../../core/auth/current-user.service';
 
 @Component({
@@ -35,7 +34,6 @@ export class MyAccountComponent implements OnInit {
   user: any;
 
   constructor(
-    private router: Router,
     private currentUserService: CurrentUserService
   ) {}
 
@@ -48,11 +46,11 @@ export class MyAccountComponent implements OnInit {
     if (this.currentUserService.isLoggedIn) {
       this.user = this.currentUserService.customer.getValue();
     } else {
-      this.signOut();
+      this.logOut();
     }
   }
 
-  signOut() {
-    this.router.navigateByUrl('/user/login');
+  logOut() {
+    this.currentUserService.logOut();
   }
 }

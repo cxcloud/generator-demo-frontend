@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Router } from '@angular/router';
 import { OAuthToken, Customer } from '@cxcloud/ct-types/customers';
 import { LocalStorageService } from 'ngx-webstorage';
 
@@ -14,7 +15,7 @@ export class CurrentUserService {
   public token = new BehaviorSubject<OAuthToken>(null);
   public customer = new BehaviorSubject<Customer>(null);
 
-  constructor(private storage: LocalStorageService) {
+  constructor(private storage: LocalStorageService, private router: Router) {
     const token = this.storage.retrieve('token');
     const customer = this.storage.retrieve('customer');
     if (token) {
@@ -28,6 +29,11 @@ export class CurrentUserService {
   }
 
   get isLoggedIn() {
-    return this.customer.getValue() !== null;
+    return this.storage.retrieve('customer') !== null;
+  }
+
+  logOut() {
+    this.storage.clear('customer');
+    this.router.navigateByUrl('/user/login');
   }
 }
