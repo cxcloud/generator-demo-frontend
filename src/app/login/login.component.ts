@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
-import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +27,6 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -64,9 +62,10 @@ export class LoginComponent implements OnInit {
     const username = this.signInForm.get('email').value;
     const password = this.signInForm.get('password').value;
 
-    this.authService.login(username, password).subscribe(customer => {
-      this.loginService.customer = customer;
-      this.router.navigateByUrl('/user');
+    this.authService.login(username, password).subscribe(resp => {
+      if (resp) {
+        this.router.navigateByUrl('/user');
+      }
   });
   }
 
