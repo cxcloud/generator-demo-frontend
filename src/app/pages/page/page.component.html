@@ -1,0 +1,19 @@
+<div *ngIf="pageData">
+  <section class="hero is-large is-primary">
+    <div class="hero-body" [style.background-image]="getBackgroundImage()">
+      <div class="container">
+        <h1 class="title">
+          {{ pageData.title }}
+        </h1>
+        <h2 class="subtitle">
+          {{ pageData.subTitle }}
+        </h2>
+      </div>
+    </div>
+  </section>
+  <div class="section">
+    <div class="container content">
+      <markdown>{{ pageData.content }}</markdown>
+    </div>
+  </div>
+</div>

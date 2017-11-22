@@ -15,7 +15,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{css,scss,js,ts,json}'": ["prettier --write", "git add"]
+    "src/**/*.{css,scss,js,ts,json}'": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -55,6 +58,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "lint-staged": "^4.3.0",
+    "ngx-markdown": "^1.4.0",
     "ngx-webstorage": "^2.0.0",
     "node-sass": "^4.5.3",
     "prettier": "^1.8.2",
