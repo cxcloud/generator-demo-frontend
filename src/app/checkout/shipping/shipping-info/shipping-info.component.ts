@@ -25,6 +25,7 @@ export class ShippingInfoComponent implements OnInit {
     'Russia',
     'United Kingdom'
   ];
+  // TODO: hook up delivery methods
   deliveryMethods: Array<any> = [
     {
       name: 'Standard',
@@ -46,11 +47,6 @@ export class ShippingInfoComponent implements OnInit {
 
   message: string;
 
-  private validationMessages = {
-    required: '* required',
-    pattern: 'Please enter a valid email address'
-  };
-
   get shippingAddress(): FormGroup {
     return <FormGroup>this.addressForm.get('shippingAddress');
   }
@@ -59,24 +55,29 @@ export class ShippingInfoComponent implements OnInit {
     return <FormGroup>this.addressForm.get('billingAddress');
   }
 
+  get isFormValid(): boolean {
+    return (
+      (this.addressForm.get('showBillingAddress').value &&
+        this.addressForm.valid === true) ||
+      this.shippingAddress.valid === true
+    );
+  }
+
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.addressForm = this.fb.group({
+    this.addressForm = this.formBuilder.group({
       showBillingAddress: false,
       shippingAddress: this.buildAddress(),
       billingAddress: this.buildAddress()
     });
-
-    this.runValidation(this.shippingAddress);
-    this.runValidation(this.billingAddress);
   }
 
   buildAddress(): FormGroup {
-    return this.fb.group({
+    return this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address1: ['', Validators.required],
@@ -93,34 +94,9 @@ export class ShippingInfoComponent implements OnInit {
     });
   }
 
-  runValidation(controlGroup: FormGroup) {
-    Object.keys(controlGroup.controls).forEach(key => {
-      const control = controlGroup.get(key);
-      control.valueChanges
-        .debounceTime(1000)
-        .subscribe(value => this.setValidationMessage(control, key));
-    });
-  }
-
-  setValidationMessage(c: AbstractControl, name): void {
-    this[`${name}Message`] = '';
-    if ((c.touched || c.dirty) && c.errors) {
-      this[`${name}Message`] = Object.keys(c.errors)
-        .map(key => this.validationMessages[key])
-        .join(' ');
-    }
-  }
-
-  disableButton(): boolean {
-    return (
-      (this.addressForm.get('showBillingAddress').value &&
-        this.addressForm.invalid === true) ||
-      this.shippingAddress.invalid === true
-    );
-  }
 
   checkout() {
-    if (this.disableButton() === false) {
+    if (this.isFormValid === true) {
       this.router.navigateByUrl('checkout/payment');
     }
   }

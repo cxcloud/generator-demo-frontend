@@ -10,20 +10,20 @@ novalidate
   <div class="field columns">
     <div class="control column">
       <label class="field-label is-normal">First Name*</label>
-      <input class="input" type="text" formControlName="firstName" [ngClass]="{'error': firstNameMessage}">
-      <span class="error message" *ngIf="firstNameMessage">{{firstNameMessage}}</span>
+      <input class="input" type="text" formControlName="firstName">
+      <app-error-display [control]="shippingAddress.controls.firstName"></app-error-display>
     </div>
     <div class="control column">
       <label class="field-label is-normal">Last Name*</label>
-      <input class="input" type="text" formControlName="lastName" [ngClass]="{'error': lastNameMessage}">
-      <span class="error message" *ngIf="lastNameMessage">{{lastNameMessage}}</span>
+      <input class="input" type="text" formControlName="lastName">
+      <app-error-display [control]="shippingAddress.controls.lastName"></app-error-display>
     </div>
   </div>
   <div class="field">
     <div class="control">
       <label class="field-label is-normal">Address 1*</label>
-      <input class="input" type="text" formControlName="address1" [ngClass]="{'error': address1Message}">
-      <span class="error message" *ngIf="address1Message">{{address1Message}}</span>
+      <input class="input" type="text" formControlName="address1">
+      <app-error-display [control]="shippingAddress.controls.address1"></app-error-display>
     </div>
   </div>
   <div class="field">
@@ -35,24 +35,24 @@ novalidate
   <div class="field columns">
     <div class="control column is-8">
       <label class="field-label is-normal">City*</label>
-      <input class="input" type="text" formControlName="city" [ngClass]="{'error': cityMessage}">
-      <span class="error message" *ngIf="cityMessage">{{cityMessage}}</span>
+      <input class="input" type="text" formControlName="city">
+      <app-error-display [control]="shippingAddress.controls.city"></app-error-display>
     </div>
     <div class="control column is-4">
       <label class="field-label is-normal">Post Code*</label>
-      <input class="input" type="text" formControlName="postcode" [ngClass]="{'error': postcodeMessage}">
-      <span class="error message" *ngIf="postcodeMessage">{{postcodeMessage}}</span>
+      <input class="input" type="text" formControlName="postcode">
+      <app-error-display [control]="shippingAddress.controls.postcode"></app-error-display>
     </div>
   </div>
   <div class="field columns">
     <div class="control column">
       <label class="field-label is-normal">Country*</label><br/>
       <div class="select">
-        <select formControlName="country" [ngClass]="{'error': countryMessage}">
+        <select formControlName="country">
           <option *ngFor="let country of countryList">{{country}}</option>
         </select>
       </div>
-      <span class="error message" *ngIf="countryMessage">{{countryMessage}}</span>
+      <app-error-display [control]="shippingAddress.controls.country"></app-error-display>
     </div>
     <div class="control column">
       <label class="field-label is-normal">Region</label>
@@ -66,8 +66,8 @@ novalidate
     </div>
     <div class="control column">
       <label class="field-label is-normal">Email*</label>
-      <input class="input" type="text" formControlName="email" [ngClass]="{'error': emailMessage}">
-      <span class="error message" *ngIf="emailMessage">{{emailMessage}}</span>
+      <input class="input" type="text" formControlName="email">
+      <app-error-display [control]="shippingAddress.controls.email"></app-error-display>
     </div>
   </div>
 </div>
@@ -85,20 +85,20 @@ novalidate
     <div class="field columns">
       <div class="control column">
         <label class="field-label is-normal">First Name*</label>
-        <input class="input" type="text" formControlName="firstName" [ngClass]="{'error': firstNameMessage}">
-        <span class="error message" *ngIf="firstNameMessage">{{firstNameMessage}}</span>
+        <input class="input" type="text" formControlName="firstName">
+        <app-error-display [control]="billingAddress.controls.firstName"></app-error-display>
       </div>
       <div class="control column">
         <label class="field-label is-normal">Last Name*</label>
-        <input class="input" type="text" formControlName="lastName" [ngClass]="{'error': lastNameMessage}">
-        <span class="error message" *ngIf="lastNameMessage">{{lastNameMessage}}</span>
+        <input class="input" type="text" formControlName="lastName">
+        <app-error-display [control]="billingAddress.controls.lastName"></app-error-display>
       </div>
     </div>
     <div class="field">
       <div class="control">
         <label class="field-label is-normal">Address 1*</label>
-        <input class="input" type="text" formControlName="address1" [ngClass]="{'error': address1Message}">
-        <span class="error message" *ngIf="address1Message">{{address1Message}}</span>
+        <input class="input" type="text" formControlName="address1">
+        <app-error-display [control]="billingAddress.controls.address1"></app-error-display>
       </div>
     </div>
     <div class="field">
@@ -110,24 +110,24 @@ novalidate
     <div class="field columns">
       <div class="control column is-8">
         <label class="field-label is-normal">City*</label>
-        <input class="input" type="text" formControlName="city" [ngClass]="{'error': cityMessage}">
-        <span class="error message" *ngIf="cityMessage">{{cityMessage}}</span>
+        <input class="input" type="text" formControlName="city">
+        <app-error-display [control]="billingAddress.controls.city"></app-error-display>
       </div>
       <div class="control column is-4">
         <label class="field-label is-normal">Post Code*</label>
-        <input class="input" type="text" formControlName="postcode" [ngClass]="{'error': postcodeMessage}">
-        <span class="error message" *ngIf="postcodeMessage">{{postcodeMessage}}</span>
+        <input class="input" type="text" formControlName="postcode">
+        <app-error-display [control]="billingAddress.controls.postcode"></app-error-display>
       </div>
     </div>
     <div class="field columns">
       <div class="control column">
         <label class="field-label is-normal">Country*</label><br/>
         <div class="select">
-          <select formControlName="country" [ngClass]="{'error': countryMessage}">
+          <select formControlName="country">
             <option *ngFor="let country of countryList">{{country}}</option>
           </select>
         </div>
-        <span class="error message" *ngIf="countryMessage">{{countryMessage}}</span>
+        <app-error-display [control]="billingAddress.controls.country"></app-error-display>
       </div>
       <div class="control column">
         <label class="field-label is-normal">Region</label>
@@ -141,8 +141,8 @@ novalidate
       </div>
       <div class="control column">
         <label class="field-label is-normal">Email*</label>
-        <input class="input" type="text" formControlName="email" [ngClass]="{'error': emailMessage}">
-        <span class="error message" *ngIf="emailMessage">{{emailMessage}}</span>
+        <input class="input" type="text" formControlName="email">
+        <app-error-display [control]="billingAddress.controls.email"></app-error-display>
       </div>
     </div>
   </div>
@@ -166,7 +166,7 @@ novalidate
   <div class="column is-6">
     <app-goto-button
       name="Continue Checkout"
-      [disabled]="disableButton()"
+      [disabled]="!addressForm.valid"
       (click)="checkout()"
     >
     </app-goto-button>
