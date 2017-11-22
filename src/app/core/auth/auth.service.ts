@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from 'ngx-webstorage';
 import {
   AnonymousSignInResult,
-  TokenizedSignInResult
+  TokenizedSignInResult,
+  CustomerSignupDraft
 } from '@cxcloud/ct-types/customers';
 import { CartService } from '../cart/cart.service';
 import { CurrentUserService } from './current-user.service';
@@ -31,14 +32,23 @@ export class AuthService {
       });
   }
 
+  private handleSignIn(resp: TokenizedSignInResult) {
+    this.currentUserService.customer.next(resp.customer);
+    this.currentUserService.token.next(resp.token);
+    this.cartService.cart.next(resp.cart);
+  }
+
   public login(username: string, password: string) {
     return this.http
       .post<TokenizedSignInResult>('/auth/login', { username, password })
-      .do(resp => {
-        this.currentUserService.customer.next(resp.customer);
-        this.currentUserService.token.next(resp.token);
-        this.cartService.cart.next(resp.cart);
-      })
+      .do(resp => this.handleSignIn(resp))
+      .map(resp => resp.customer);
+  }
+
+  public register(draft: CustomerSignupDraft) {
+    return this.http
+      .post<TokenizedSignInResult>('/auth/register', draft)
+      .do(resp => this.handleSignIn(resp))
       .map(resp => resp.customer);
   }
 }
