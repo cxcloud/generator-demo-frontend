@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
+import { CustomerSignupDraft } from '@cxcloud/ct-types/customers';
 
 @Component({
   selector: 'app-login',
@@ -41,13 +42,12 @@ export class LoginComponent implements OnInit {
     this.signUpForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      mail: [
+      email: [
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
       ],
-      pswd: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      agreeToConditions: false
     });
 
     this.validate(this.signInForm);
@@ -70,7 +70,16 @@ export class LoginComponent implements OnInit {
   }
 
   signUp() {
-    this.router.navigateByUrl('/user');
+    const newCustomer = Object.keys(this.signUpForm.controls).reduce((acc, key) => {
+     acc[key] = this.signUpForm.controls[key].value;
+     return acc;
+   }, {} as CustomerSignupDraft);
+
+   this.authService.register(newCustomer).subscribe(resp => {
+     if (resp) {
+      this.router.navigateByUrl('/user');
+     }
+   });
   }
 
   validate(controlGroup: FormGroup) {
