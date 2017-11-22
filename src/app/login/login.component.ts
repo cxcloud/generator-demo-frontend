@@ -9,95 +9,64 @@ import { Router } from '@angular/router';
 import { AuthService } from '../core/auth/auth.service';
 import { CustomerSignupDraft } from '@cxcloud/ct-types/customers';
 
+import 'rxjs/add/operator/debounceTime';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  signInForm: any;
-  signUpForm: any;
-
-  private validationMessages = {
-    required: '* required',
-    pattern: 'Please enter a valid email address',
-    minlength: 'Minimum 6 characters'
-  };
+  signInForm: FormGroup;
+  signUpForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.signInForm = this.fb.group({
-      email: [
-        '',
-        [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
-      ],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    const pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+';
+
+    this.signInForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.pattern(pattern)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
-    this.signUpForm = this.fb.group({
+    this.signUpForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: [
-        '',
-        [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
-      ],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      email: ['', [Validators.required, Validators.pattern(pattern)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
-
-    this.validate(this.signInForm);
-    this.validate(this.signUpForm);
-  }
-
-  disableButton(form): boolean {
-    return ((form.value && form.invalid === true) || form.invalid === true);
   }
 
   signIn() {
-    const username = this.signInForm.get('email').value;
-    const password = this.signInForm.get('password').value;
-
-    this.authService.login(username, password).subscribe(resp => {
-      if (resp) {
-        this.router.navigateByUrl('/user');
-      }
-  });
-  }
-
-  signUp() {
-    const newCustomer = Object.keys(this.signUpForm.controls).reduce((acc, key) => {
-     acc[key] = this.signUpForm.controls[key].value;
-     return acc;
-   }, {} as CustomerSignupDraft);
-
-   this.authService.register(newCustomer).subscribe(resp => {
-     if (resp) {
-      this.router.navigateByUrl('/user');
-     }
-   });
-  }
-
-  validate(controlGroup: FormGroup) {
-    Object.keys(controlGroup.controls).forEach(key => {
-      const control = controlGroup.get(key);
-      control.valueChanges
-        .debounceTime(1000)
-        .subscribe(value => this.setValidationMessage(control, key));
-    });
-  }
-
-  setValidationMessage(c: AbstractControl, name): void {
-    this[`${name}Message`] = '';
-    if ((c.touched || c.dirty) && c.errors) {
-      this[`${name}Message`] = Object.keys(c.errors)
-        .map(key => this.validationMessages[key])
-        .join(' ');
+    if (this.signInForm.valid) {
+      const username = this.signInForm.get('email').value;
+      const password = this.signInForm.get('password').value;
+      this.authService.login(username, password).subscribe(resp => {
+        if (resp) {
+          this.router.navigateByUrl('/user');
+        }
+      });
     }
   }
 
+  signUp() {
+    if (this.signUpForm.valid) {
+      const newCustomer = Object.keys(this.signUpForm.controls).reduce((acc, key) => {
+        acc[key] = this.signUpForm.controls[key].value;
+        return acc;
+      }, {} as CustomerSignupDraft);
+
+      this.authService.register(newCustomer).subscribe(resp => {
+        if (resp) {
+         this.router.navigateByUrl('/user');
+        }
+      });
+    }
+  }
 }

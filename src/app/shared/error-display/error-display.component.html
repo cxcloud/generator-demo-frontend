@@ -1,0 +1,12 @@
+
+<div *ngIf="control.invalid && (control.dirty || control.touched)" class="error message">
+  <div *ngIf="control.errors.required">
+      * is required
+  </div>
+  <div *ngIf="control.errors.minlength">
+      must be at least 6 characters long
+  </div>
+  <div *ngIf="control.errors.pattern">
+      Please enter a valid email
+  </div>
+</div>
