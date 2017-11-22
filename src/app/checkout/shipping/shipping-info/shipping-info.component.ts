@@ -47,6 +47,19 @@ export class ShippingInfoComponent implements OnInit {
 
   message: string;
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.addressForm = this.formBuilder.group({
+      showBillingAddress: false,
+      shippingAddress: this.buildAddress(),
+      billingAddress: this.buildAddress()
+    });
+  }
+
   get shippingAddress(): FormGroup {
     return <FormGroup>this.addressForm.get('shippingAddress');
   }
@@ -63,20 +76,9 @@ export class ShippingInfoComponent implements OnInit {
     );
   }
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.addressForm = this.formBuilder.group({
-      showBillingAddress: false,
-      shippingAddress: this.buildAddress(),
-      billingAddress: this.buildAddress()
-    });
-  }
-
   buildAddress(): FormGroup {
+    const pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+';
+
     return this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -87,13 +89,9 @@ export class ShippingInfoComponent implements OnInit {
       country: '',
       region: '',
       phone: '',
-      email: [
-        '',
-        [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
-      ]
+      email: ['', [Validators.required, Validators.pattern(pattern)]]
     });
   }
-
 
   checkout() {
     if (this.isFormValid === true) {
