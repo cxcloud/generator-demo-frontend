@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "now && now alias",
+    "deploy": "npm run build && now && now alias",
     "format": "prettier --write 'src/**/*.{css,scss,js,ts,json}'",
     "precommit": "lint-staged"
   },
@@ -58,6 +58,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "lint-staged": "^4.3.0",
+    "ngx-markdown": "^1.4.0",
     "ngx-webstorage": "^2.0.0",
     "node-sass": "^4.5.3",
     "prettier": "^1.8.2",

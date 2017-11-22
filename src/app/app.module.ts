@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { CartModule } from './cart/cart.module';
 import { CheckoutModule } from './checkout/checkout.module';
 import { LoginModule } from './login/login.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { LoginModule } from './login/login.module';
     CartModule,
     CheckoutModule,
     LoginModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PagesModule
   ],
   declarations: [AppComponent],
 
