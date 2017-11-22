@@ -28,6 +28,6 @@ export class PageComponent implements OnInit {
   }
 
   getBackgroundImage() {
-    return `url(${this.pageData.coverPhoto.fields.file.url})`;
+    return `url(https:${this.pageData.coverPhoto.fields.file.url})`;
   }
 }
