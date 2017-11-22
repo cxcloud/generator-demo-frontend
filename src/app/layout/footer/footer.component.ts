@@ -20,7 +20,7 @@ export class FooterComponent implements OnInit {
     {
       title: 'About us',
       links: [
-        { name: 'Our story', url: '/pages/our-story', internal: true },
+        { name: 'Our story', routerLink: ['pages', 'our-story'] },
         { name: 'Careers', url: '#' }
       ]
     },

@@ -6,8 +6,8 @@
           <div class="subtitle is-6">{{column.title}}</div>
           <ul>
             <li *ngFor="let link of column.links">
-              <a *ngIf="link.internal" [routerLink]="link.url">{{link.name}}</a>
-              <a href="{{link.url}}" *ngIf="!link.internal">{{link.name}}</a>
+              <a *ngIf="link.routerLink" [routerLink]="link.routerLink">{{link.name}}</a>
+              <a *ngIf="link.url" href="{{link.url}}">{{link.name}}</a>
             </li>
           </ul>
         </div>
