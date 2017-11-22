@@ -45,8 +45,6 @@ export class ShippingInfoComponent implements OnInit {
     }
   ];
 
-  message: string;
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router
