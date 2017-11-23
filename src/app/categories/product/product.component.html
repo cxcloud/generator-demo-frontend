@@ -1,102 +1,96 @@
 <div class="section">
   <div class="columns product-view">
+    <ng-container *ngIf="product else loading">
 
-    <!-- Image column -->
-    <div class="column is-3 is-offset-2">
-      <figure class="image product-image">
+      <!-- Image column -->
+      <div class="column is-3 is-offset-2">
+        <figure class="image product-image">
 
-        <!-- Image with magnifying lens -->
-        <img
-          *ngIf="image"
-          [imageZoom]="image.url"
-          [src]="image?.url"
-          [lensWidth]="300"
-          [lensHeight]="500"
-        >
-      </figure>
-      <img
-        *ngFor="let image of selectedVariant?.images"
-        class="thumbnail"
-        src="{{image.url}}"
-        (click) ="changeSelectedImage(image)"
-      >
-    </div>
+          <!-- Image with magnifying lens -->
+          <img *ngIf="image" [imageZoom]="image.url" [src]="image?.url" [lensWidth]="300" [lensHeight]="500">
+        </figure>
+        <img *ngFor="let image of selectedVariant?.images" class="thumbnail" src="{{image.url}}" (click)="changeSelectedImage(image)">
+      </div>
 
-    <!-- Description column -->
-    <div class="column is-offset-1">
+      <!-- Description column -->
+      <div class="column is-offset-1">
 
-      <h2 class="pd-title">{{product?.name?.en}}</h2>
-      <h3 class="pd-sku">{{selectedVariant?.sku}}</h3>
+        <h2 class="pd-title">{{product?.name?.en}}</h2>
+        <h3 class="pd-sku">{{selectedVariant?.sku}}</h3>
 
-      <!-- Review placeholder -->
-      <div class="level pd-review">
-        <div class="level-left">
-          <div class="mdi-set  mdi-24px">
-            <i class="mdi-star" *ngFor="let number of [1,2,3,4,5]"></i>
+        <!-- Review placeholder -->
+        <div class="level pd-review">
+          <div class="level-left">
+            <div class="mdi-set  mdi-24px">
+              <i class="mdi-star" *ngFor="let number of [1,2,3,4,5]"></i>
+            </div>
+            <span>Write first review</span>
           </div>
-          <span>Write first review</span>
         </div>
-      </div>
 
 
-      <div class="pd-description column is-8">{{product?.description?.en}}</div>
-      <div class="subtitle is-3 pd-price">
-        {{price?.value?.currencyCode}}
-        {{0.01 * price?.value?.centAmount}}
-      </div>
+        <div class="pd-description column is-8">{{product?.description?.en}}</div>
+        <div class="subtitle is-3 pd-price">
+          {{price?.value?.currencyCode}} {{0.01 * price?.value?.centAmount}}
+        </div>
 
-      <div class="field is-horizontal">
+        <div class="field is-horizontal">
 
-        <div class="control" *ngIf="colors?.length">
-            <label>COLOR:</label><br />
+          <div class="control" *ngIf="colors?.length">
+            <label>COLOR:</label>
+            <br />
             <div class="select" (change)="getVariantByAttribute('color', $event)">
               <select>
                 <option *ngFor="let color of colors">{{color}}</option>
               </select>
+            </div>
           </div>
-        </div>
 
-        <div class="control" *ngIf="sizes?.length">
-            <label>SIZE:</label><br />
+          <div class="control" *ngIf="sizes?.length">
+            <label>SIZE:</label>
+            <br />
             <div class="select" (change)="getVariantByAttribute('size', $event)">
               <select>
                 <option *ngFor="let size of sizes">{{size}}</option>
               </select>
+            </div>
           </div>
+
         </div>
 
-      </div>
-
-      <div class="field is-grouped">
-        <div class="control">
-          <div class="select">
-            <select #selectedQuantity>
-              <option *ngFor="let number of availability" [value]="number">{{number}}</option>
-            </select>
+        <div class="field is-grouped">
+          <div class="control">
+            <div class="select">
+              <select #selectedQuantity>
+                <option *ngFor="let number of availability" [value]="number">{{number}}</option>
+              </select>
+            </div>
+            <button class="button add-to-cart" (click)="addItemToCart(selectedQuantity.value);">
+              <span class="icon">
+                <i class="mdi mdi-cart mdi-24px"></i>
+              </span>
+              <span>Add to cart</span>
+            </button>
           </div>
-          <button class="button add-to-cart" (click)="addItemToCart(selectedQuantity.value);">
-            <span class="icon">
-              <i class="mdi mdi-cart mdi-24px"></i>
-            </span>
-            <span>Add to cart</span>
-          </button>
         </div>
-      </div>
-      <app-info-card title="Product Details">
-        <ul class="content">
-          <li class="attribute" *ngFor="let attr of productDetails">
-            <span class="attr-name is-uppercase">{{attr?.name}}:</span>
-            <span class="attr-value is-capitalized">{{attr?.value.label}}</span>
-          </li>
-        </ul>
-      </app-info-card>
+        <app-info-card title="Product Details">
+          <ul class="content">
+            <li class="attribute" *ngFor="let attr of productDetails">
+              <span class="attr-name is-uppercase">{{attr?.name}}:</span>
+              <span class="attr-value is-capitalized">{{attr?.value.label}}</span>
+            </li>
+          </ul>
+        </app-info-card>
 
         <app-info-card title="Delivery & Returns">
           <div class="content">
-              Free return for all orders.
+            Free return for all orders.
           </div>
         </app-info-card>
-    </div>
+      </div>
+    </ng-container>
+  </div>
+  <ng-template #loading>
+    <app-spinner></app-spinner>
+  </ng-template>
 </div>
-
-
