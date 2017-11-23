@@ -20,7 +20,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.cart.subscribe(cart => {
-      console.log(cart);
       this.cart = cart;
     });
   }
@@ -46,5 +45,4 @@ export class CartComponent implements OnInit {
   goToCheckout() {
     this.router.navigateByUrl('/checkout/shipping');
   }
-
 }

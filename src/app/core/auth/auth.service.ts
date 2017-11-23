@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import {
   AnonymousSignInResult,
@@ -16,7 +17,8 @@ export class AuthService {
     private http: HttpClient,
     private storage: LocalStorageService,
     private currentUserService: CurrentUserService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {
     const token = this.storage.retrieve('token');
     if (!token) {
@@ -29,6 +31,7 @@ export class AuthService {
       .post<AnonymousSignInResult>('/auth/login/anonymous', {})
       .subscribe(result => {
         this.currentUserService.token.next(result.token);
+        this.currentUserService.customer.next(null);
       });
   }
 
@@ -50,5 +53,10 @@ export class AuthService {
       .post<TokenizedSignInResult>('/auth/register', draft)
       .do(resp => this.handleSignIn(resp))
       .map(resp => resp.customer);
+  }
+
+  public logout() {
+    this.loginAnonymously();
+    this.router.navigateByUrl('/user/login');
   }
 }

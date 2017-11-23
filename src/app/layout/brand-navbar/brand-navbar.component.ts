@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../core/cart/cart.service';
 import { CurrentUserService } from '../../core/auth/current-user.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'app-brand-navbar',
@@ -12,7 +13,8 @@ export class BrandNavbarComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private currentUserService: CurrentUserService
+    private currentUserService: CurrentUserService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -32,6 +34,6 @@ export class BrandNavbarComponent implements OnInit {
   }
 
   logOut() {
-    this.currentUserService.logOut();
+    this.authService.logout();
   }
 }

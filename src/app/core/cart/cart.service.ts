@@ -16,21 +16,15 @@ export class CartService {
     private storage: LocalStorageService,
     private currentUser: CurrentUserService
   ) {
-    this.http.get<Cart>('/carts/active').subscribe(
-      cart => this.cart.next(cart),
-      () => {
-        // if we have a token already,
-        // create the cart immediately
-        if (this.currentUser.token.getValue() !== null) {
-          return this.createCart();
-        }
-        // otherwise wait until we have a token
-        this.currentUser.token
-          .filter(token => token !== null)
-          .take(1)
-          .subscribe(() => this.createCart());
-      }
-    );
+    this.currentUser.token
+      .filter(token => token !== null)
+      .subscribe(() => this.initCart());
+  }
+
+  private initCart() {
+    this.http
+      .get<Cart>('/carts/active')
+      .subscribe(cart => this.cart.next(cart), () => this.createCart());
   }
 
   private createCart() {

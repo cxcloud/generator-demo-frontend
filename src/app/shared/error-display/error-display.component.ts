@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
 
 @Component({
@@ -9,8 +9,7 @@ import 'rxjs/add/operator/debounceTime';
 export class ErrorDisplayComponent implements OnInit {
   @Input() control: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
