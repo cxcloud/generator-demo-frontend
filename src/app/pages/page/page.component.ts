@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PagesService } from '../pages.service';
+import { ContentService } from '../../core/content/content.service';
 
 @Component({
   selector: 'app-page',
@@ -13,7 +13,7 @@ export class PageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private pageService: PagesService
+    private contentService: ContentService
   ) {}
 
   ngOnInit() {
@@ -21,8 +21,8 @@ export class PageComponent implements OnInit {
       if (!params.pageId) {
         return this.router.navigateByUrl('/');
       }
-      this.pageService
-        .getPageBySlug('staticPage', params.pageId)
+      this.contentService
+        .getContentBySlug('staticPage', params.pageId)
         .subscribe(page => (this.pageData = page));
     });
   }
