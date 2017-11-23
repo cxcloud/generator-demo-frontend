@@ -31,9 +31,4 @@ export class CurrentUserService {
   get isLoggedIn() {
     return this.customer.getValue() !== null;
   }
-
-  logOut() {
-    this.customer.next(null);
-    this.router.navigateByUrl('/user/login');
-  }
 }
