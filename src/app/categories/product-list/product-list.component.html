@@ -14,7 +14,8 @@
         </div>
       </div>
       <div class="columns is-mobile is-multiline is-centered">
-        <ng-container *ngFor="let product of products">
+        <ng-container *ngIf="products else loading">
+          <div *ngFor="let product of products">
             <div class="column is-narrow">
               <!-- Product item -->
               <a [routerLink]="['/product', product.id]">
@@ -35,7 +36,11 @@
                 </div>
               </a>
             </div>
+          </div>
         </ng-container>
+        <ng-template #loading>
+          <app-spinner></app-spinner>
+        </ng-template>
       </div>
     </div>
 

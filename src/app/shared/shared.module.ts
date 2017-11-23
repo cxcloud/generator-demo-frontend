@@ -8,6 +8,7 @@ import { CartOrderContentComponent } from './cart-order-content/cart-order-conte
 import { QuantityInputComponent } from './quantity-input/quantity-input.component';
 import { StepsComponent } from './steps/steps.component';
 import { ErrorDisplayComponent } from './error-display/error-display.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 const DECLARATIONS = [
   InfoCardComponent,
@@ -15,7 +16,8 @@ const DECLARATIONS = [
   CartOrderContentComponent,
   QuantityInputComponent,
   StepsComponent,
-  ErrorDisplayComponent
+  ErrorDisplayComponent,
+  SpinnerComponent
 ];
 
 @NgModule({
