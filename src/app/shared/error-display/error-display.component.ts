@@ -7,7 +7,7 @@ import 'rxjs/add/operator/debounceTime';
   styleUrls: ['./error-display.component.scss']
 })
 export class ErrorDisplayComponent implements OnInit {
-  @Input() control: string;
+  @Input() control: any;
 
   constructor() { }
 
