@@ -28,16 +28,13 @@
           <figure class="image">
             <img src="https://images.contentful.com/2xzt2k8divi4/1iaEGYEycyAemAw6GwoSai/d470cc4d1a05c9e2b7d2850b1b3c9b4b/man2_large-8to3.jpg">
           </figure>
-          <div class="banner-text vertical">
-            <div class="title is-4">Here comes the sun</div>
-            <div class="subtitle is-6">Fabulous every day - summer chic</div>
+          <div class="banner-text vertical" *ngIf="featured">
+            <div class="title is-4">{{ featured.title }}</div>
+            <div class="subtitle is-6">{{ featured.subTitle }}</div>
             <div class="is-hidden-touch">
-              <p>Between rising temperature outside and cool A/C inside, dressing for the the summer can be a tricky business.
-                Luckily, we pulled together the most inspiring looks for. Check out our must-to-have-it pieces. The weather
-                is heating up, but you don’t have the right outfit yet. Thankfully, we are here to help you out. Spring break
-                is upon us and it's essential to migrate. So whether you're jetting off to Ibiza or Majorca for a party vacation
-                or getting away to greener pastures - here are the fashion pieces we'll be stashing in our favorite getaway
-                bags</p>
+              <markdown>
+                {{ featured.content }}
+              </markdown>
             </div>
             <app-goto-button name="Shop collection"></app-goto-button>
           </div>
