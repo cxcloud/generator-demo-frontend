@@ -13,7 +13,7 @@ export class PageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private pageService: ContentService
+    private contentService: ContentService
   ) {}
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class PageComponent implements OnInit {
       if (!params.pageId) {
         return this.router.navigateByUrl('/');
       }
-      this.pageService
+      this.contentService
         .getContentBySlug('staticPage', params.pageId)
         .subscribe(page => (this.pageData = page));
     });
