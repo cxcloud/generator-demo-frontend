@@ -1,0 +1,68 @@
+@import '../../variables.scss';
+
+.section {
+  background-color: $romance;
+  padding: 1.5em;
+
+  .title {
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 1.8em;
+  }
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .box-wrapper {
+    background-color: $white;
+    border: 1px solid $light-grey;
+    padding: 20px;
+
+    &.sign-up-form {
+      margin-left: 20px;
+    }
+  }
+
+  .form-header {
+    border-bottom: 1px solid $light-grey;
+
+    .title {
+      font-size: 1.1em;
+      padding-bottom: 10px;
+    }
+  }
+
+  .login-box-description {
+    padding: 20px 0 30px 10px;
+    font-size: 14px;
+  }
+
+  .field-label {
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+
+  .control {
+    margin-top: 10px;
+    input {
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+
+  /deep/ app-goto-button {
+    button {
+      margin-top: 2em;
+    }
+    .btn-title {
+      font-weight: bolder;
+    }
+  }
+
+}

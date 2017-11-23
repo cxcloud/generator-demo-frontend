@@ -15,6 +15,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { SharedModule } from './shared/shared.module';
 import { CartModule } from './cart/cart.module';
 import { CheckoutModule } from './checkout/checkout.module';
+import { LoginModule } from './login/login.module';
 import { PagesModule } from './pages/pages.module';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { PagesModule } from './pages/pages.module';
     LayoutModule,
     CartModule,
     CheckoutModule,
+    LoginModule,
     AppRoutingModule,
     PagesModule
   ],

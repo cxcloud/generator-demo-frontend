@@ -7,7 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
 
 import 'rxjs/add/operator/debounceTime';
@@ -25,6 +25,7 @@ export class ShippingInfoComponent implements OnInit {
     'Russia',
     'United Kingdom'
   ];
+  // TODO: hook up delivery methods
   deliveryMethods: Array<any> = [
     {
       name: 'Standard',
@@ -44,12 +45,18 @@ export class ShippingInfoComponent implements OnInit {
     }
   ];
 
-  message: string;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
-  private validationMessages = {
-    required: '* required',
-    pattern: 'Please enter a valid email address'
-  };
+  ngOnInit(): void {
+    this.addressForm = this.formBuilder.group({
+      showBillingAddress: false,
+      shippingAddress: this.buildAddress(),
+      billingAddress: this.buildAddress()
+    });
+  }
 
   get shippingAddress(): FormGroup {
     return <FormGroup>this.addressForm.get('shippingAddress');
@@ -59,25 +66,18 @@ export class ShippingInfoComponent implements OnInit {
     return <FormGroup>this.addressForm.get('billingAddress');
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.addressForm = this.fb.group({
-      showBillingAddress: false,
-      shippingAddress: this.buildAddress(),
-      billingAddress: this.buildAddress()
-    });
-
-    this.runValidation(this.shippingAddress);
-    this.runValidation(this.billingAddress);
+  get isFormValid(): boolean {
+    return (
+      (this.addressForm.get('showBillingAddress').value &&
+        this.addressForm.valid === true) ||
+      this.shippingAddress.valid === true
+    );
   }
 
   buildAddress(): FormGroup {
-    return this.fb.group({
+    const pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+';
+
+    return this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address1: ['', Validators.required],
@@ -87,41 +87,12 @@ export class ShippingInfoComponent implements OnInit {
       country: '',
       region: '',
       phone: '',
-      email: [
-        '',
-        [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]
-      ]
+      email: ['', [Validators.required, Validators.pattern(pattern)]]
     });
-  }
-
-  runValidation(controlGroup: FormGroup) {
-    Object.keys(controlGroup.controls).forEach(key => {
-      const control = controlGroup.get(key);
-      control.valueChanges
-        .debounceTime(1000)
-        .subscribe(value => this.setValidationMessage(control, key));
-    });
-  }
-
-  setValidationMessage(c: AbstractControl, name): void {
-    this[`${name}Message`] = '';
-    if ((c.touched || c.dirty) && c.errors) {
-      this[`${name}Message`] = Object.keys(c.errors)
-        .map(key => this.validationMessages[key])
-        .join(' ');
-    }
-  }
-
-  disableButton(): boolean {
-    return (
-      (this.addressForm.get('showBillingAddress').value &&
-        this.addressForm.invalid === true) ||
-      this.shippingAddress.invalid === true
-    );
   }
 
   checkout() {
-    if (this.disableButton() === false) {
+    if (this.isFormValid === true) {
       this.router.navigateByUrl('checkout/payment');
     }
   }

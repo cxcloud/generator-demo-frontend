@@ -1,0 +1,10 @@
+@import '../../../variables.scss';
+
+.error {
+  border-color: $red;
+  &.message {
+    font-size: 12px;
+    color: $red;
+    background-color: transparent;
+  }
+}
