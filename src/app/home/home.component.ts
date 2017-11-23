@@ -9,10 +9,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class HomeComponent implements OnInit {
   featured: any;
 
-  constructor(private contentSerrvice: ContentService) {}
+  constructor(private contentService: ContentService) {}
 
   ngOnInit() {
-    this.contentSerrvice
+    this.contentService
       .getContentByQuery({
         content_type: 'featuredCollection',
         order: 'sys.createdAt'
