@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../../core/auth/current-user.service';
 import { AuthService } from '../../core/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-account',
@@ -36,7 +37,8 @@ export class MyAccountComponent implements OnInit {
 
   constructor(
     private currentUserService: CurrentUserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   get customerNumber(): string {
@@ -48,7 +50,7 @@ export class MyAccountComponent implements OnInit {
     if (this.currentUserService.isLoggedIn) {
       this.user = this.currentUserService.customer.getValue();
     } else {
-      this.logOut();
+      this.router.navigateByUrl('/user/login');
     }
   }
 

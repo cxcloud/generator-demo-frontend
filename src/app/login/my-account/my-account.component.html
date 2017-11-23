@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section" *ngIf="user">
   <div class="container">
     <!-- Page Title -->
     <div class="title level">
@@ -27,9 +27,11 @@
           </div>
           <div class="column is-9">
             <div class="personal-details">
-              <p>Welcome back <span class="username">{{user?.firstName}}</span></p>
-              <p>for an even better customer service please provide
-                your customer number <span class="customer-id">{{customerNumber}}</span>
+              <p>Welcome back
+                <span class="username">{{user?.firstName}}</span>
+              </p>
+              <p>for an even better customer service please provide your customer number
+                <span class="customer-id">{{customerNumber}}</span>
               </p>
               <div class="personal-details-title">
                 Your persona details
@@ -37,10 +39,10 @@
               <div class="personal-details-content">
                 <div>{{user?.firstName}} {{user?.lastName}}</div>
                 <div>{{user?.email}}</div>
-                  <div class="edit level level-right">
-                    <i title="Edit" class="mdi mdi-account-edit mdi-24px"></i>
-                    <span class="text">Edit</span>
-                  </div>
+                <div class="edit level level-right">
+                  <i title="Edit" class="mdi mdi-account-edit mdi-24px"></i>
+                  <span class="text">Edit</span>
+                </div>
               </div>
             </div>
           </div>
