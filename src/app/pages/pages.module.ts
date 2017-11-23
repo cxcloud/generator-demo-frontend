@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 
 import { PagesRoutingModule } from './pages-routing.module';
-import { PagesService } from './pages.service';
 import { PageComponent } from './page/page.component';
 import { SharedModule } from '../shared/shared.module';
 
@@ -14,7 +13,6 @@ import { SharedModule } from '../shared/shared.module';
     MarkdownModule.forRoot(),
     SharedModule
   ],
-  declarations: [PageComponent],
-  providers: [PagesService]
+  declarations: [PageComponent]
 })
 export class PagesModule {}

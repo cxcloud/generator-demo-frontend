@@ -8,6 +8,7 @@ import { CurrentUserService } from './auth/current-user.service';
 import { AuthService } from './auth/auth.service';
 import { CartService } from './cart/cart.service';
 import { CommerceService } from './commerce/commerce.service';
+import { ContentService } from './content/content.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -22,7 +23,8 @@ import { CommerceService } from './commerce/commerce.service';
     },
     CommerceService,
     CartService,
-    AuthService
+    AuthService,
+    ContentService
   ]
 })
 export class CoreModule {
