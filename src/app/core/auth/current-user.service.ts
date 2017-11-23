@@ -29,11 +29,11 @@ export class CurrentUserService {
   }
 
   get isLoggedIn() {
-    return this.storage.retrieve('customer') !== null;
+    return this.customer.getValue() !== null;
   }
 
   logOut() {
-    this.storage.clear('customer');
+    this.customer.next(null);
     this.router.navigateByUrl('/user/login');
   }
 }
