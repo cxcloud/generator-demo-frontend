@@ -51,4 +51,10 @@ export class AuthService {
       .do(resp => this.handleSignIn(resp))
       .map(resp => resp.customer);
   }
+
+  public logout() {
+    this.currentUserService.customer.next(null);
+    this.currentUserService.token.next(null);
+    this.cartService.cart.next(null);
+  }
 }

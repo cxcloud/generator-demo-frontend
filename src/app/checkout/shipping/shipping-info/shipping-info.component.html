@@ -1,104 +1,25 @@
-<form
-novalidate
-(ngSubmit)="save()"
-[formGroup]="addressForm"
->
-<h6 class="title is-6">Shipping Information</h6>
+<form novalidate [formGroup]="addressForm">
+  <h6 class="title is-6">Shipping Information</h6>
 
-<!-- Shipping address -->
-<div formGroupName="shippingAddress">
-  <div class="field columns">
-    <div class="control column">
-      <label class="field-label is-normal">First Name*</label>
-      <input class="input" type="text" formControlName="firstName">
-      <app-error-display [control]="shippingAddress.controls.firstName"></app-error-display>
-    </div>
-    <div class="control column">
-      <label class="field-label is-normal">Last Name*</label>
-      <input class="input" type="text" formControlName="lastName">
-      <app-error-display [control]="shippingAddress.controls.lastName"></app-error-display>
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
-      <label class="field-label is-normal">Address 1*</label>
-      <input class="input" type="text" formControlName="address1">
-      <app-error-display [control]="shippingAddress.controls.address1"></app-error-display>
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
-      <label class="field-label is-normal">Address 2</label>
-      <input class="input" type="text" formControlName="address2">
-    </div>
-  </div>
-  <div class="field columns">
-    <div class="control column is-8">
-      <label class="field-label is-normal">City*</label>
-      <input class="input" type="text" formControlName="city">
-      <app-error-display [control]="shippingAddress.controls.city"></app-error-display>
-    </div>
-    <div class="control column is-4">
-      <label class="field-label is-normal">Post Code*</label>
-      <input class="input" type="text" formControlName="postcode">
-      <app-error-display [control]="shippingAddress.controls.postcode"></app-error-display>
-    </div>
-  </div>
-  <div class="field columns">
-    <div class="control column">
-      <label class="field-label is-normal">Country*</label><br/>
-      <div class="select">
-        <select formControlName="country">
-          <option *ngFor="let country of countryList">{{country}}</option>
-        </select>
-      </div>
-      <app-error-display [control]="shippingAddress.controls.country"></app-error-display>
-    </div>
-    <div class="control column">
-      <label class="field-label is-normal">Region</label>
-      <input class="input" type="text" formControlName="region">
-    </div>
-  </div>
-  <div class="field columns">
-    <div class="control column">
-      <label class="field-label is-normal">Phone</label>
-      <input class="input" type="text" formControlName="phone">
-    </div>
-    <div class="control column">
-      <label class="field-label is-normal">Email*</label>
-      <input class="input" type="text" formControlName="email">
-      <app-error-display [control]="shippingAddress.controls.email"></app-error-display>
-    </div>
-  </div>
-</div>
-
-<div class="field is-checkbox-field">
-  <label class="checkbox">
-    <input type="checkbox" formControlName="showBillingAddress">
-    Use a different address for billing
-  </label>
-</div>
-
-<!-- Billing address -->
-<div *ngIf="addressForm.get('showBillingAddress').value">
-  <div formGroupName="billingAddress">
+  <!-- Shipping address -->
+  <div formGroupName="shippingAddress">
     <div class="field columns">
       <div class="control column">
         <label class="field-label is-normal">First Name*</label>
         <input class="input" type="text" formControlName="firstName">
-        <app-error-display [control]="billingAddress.controls.firstName"></app-error-display>
+        <app-error-display [control]="shippingAddress.controls.firstName"></app-error-display>
       </div>
       <div class="control column">
         <label class="field-label is-normal">Last Name*</label>
         <input class="input" type="text" formControlName="lastName">
-        <app-error-display [control]="billingAddress.controls.lastName"></app-error-display>
+        <app-error-display [control]="shippingAddress.controls.lastName"></app-error-display>
       </div>
     </div>
     <div class="field">
       <div class="control">
         <label class="field-label is-normal">Address 1*</label>
         <input class="input" type="text" formControlName="address1">
-        <app-error-display [control]="billingAddress.controls.address1"></app-error-display>
+        <app-error-display [control]="shippingAddress.controls.address1"></app-error-display>
       </div>
     </div>
     <div class="field">
@@ -111,23 +32,24 @@ novalidate
       <div class="control column is-8">
         <label class="field-label is-normal">City*</label>
         <input class="input" type="text" formControlName="city">
-        <app-error-display [control]="billingAddress.controls.city"></app-error-display>
+        <app-error-display [control]="shippingAddress.controls.city"></app-error-display>
       </div>
       <div class="control column is-4">
         <label class="field-label is-normal">Post Code*</label>
         <input class="input" type="text" formControlName="postcode">
-        <app-error-display [control]="billingAddress.controls.postcode"></app-error-display>
+        <app-error-display [control]="shippingAddress.controls.postcode"></app-error-display>
       </div>
     </div>
     <div class="field columns">
       <div class="control column">
-        <label class="field-label is-normal">Country*</label><br/>
+        <label class="field-label is-normal">Country*</label>
+        <br/>
         <div class="select">
           <select formControlName="country">
             <option *ngFor="let country of countryList">{{country}}</option>
           </select>
         </div>
-        <app-error-display [control]="billingAddress.controls.country"></app-error-display>
+        <app-error-display [control]="shippingAddress.controls.country"></app-error-display>
       </div>
       <div class="control column">
         <label class="field-label is-normal">Region</label>
@@ -142,34 +64,105 @@ novalidate
       <div class="control column">
         <label class="field-label is-normal">Email*</label>
         <input class="input" type="text" formControlName="email">
-        <app-error-display [control]="billingAddress.controls.email"></app-error-display>
+        <app-error-display [control]="shippingAddress.controls.email"></app-error-display>
       </div>
     </div>
   </div>
-</div>
 
-<div class="section delivery-methods">
-  <h6 class="title is-6">Delivery Methods</h6>
-  <div class="control columns" *ngFor="let method of deliveryMethods">
-    <div class="column is-3">
-      <label class="radio">
-        <input type="radio" name="deliveryMethods" checked> {{method.name}}
-      </label>
+  <div class="field is-checkbox-field">
+    <label class="checkbox">
+      <input type="checkbox" formControlName="showBillingAddress"> Use a different address for billing
+    </label>
+  </div>
+
+  <!-- Billing address -->
+  <div *ngIf="addressForm.get('showBillingAddress').value">
+    <div formGroupName="billingAddress">
+      <div class="field columns">
+        <div class="control column">
+          <label class="field-label is-normal">First Name*</label>
+          <input class="input" type="text" formControlName="firstName">
+          <app-error-display [control]="billingAddress.controls.firstName"></app-error-display>
+        </div>
+        <div class="control column">
+          <label class="field-label is-normal">Last Name*</label>
+          <input class="input" type="text" formControlName="lastName">
+          <app-error-display [control]="billingAddress.controls.lastName"></app-error-display>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <label class="field-label is-normal">Address 1*</label>
+          <input class="input" type="text" formControlName="address1">
+          <app-error-display [control]="billingAddress.controls.address1"></app-error-display>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <label class="field-label is-normal">Address 2</label>
+          <input class="input" type="text" formControlName="address2">
+        </div>
+      </div>
+      <div class="field columns">
+        <div class="control column is-8">
+          <label class="field-label is-normal">City*</label>
+          <input class="input" type="text" formControlName="city">
+          <app-error-display [control]="billingAddress.controls.city"></app-error-display>
+        </div>
+        <div class="control column is-4">
+          <label class="field-label is-normal">Post Code*</label>
+          <input class="input" type="text" formControlName="postcode">
+          <app-error-display [control]="billingAddress.controls.postcode"></app-error-display>
+        </div>
+      </div>
+      <div class="field columns">
+        <div class="control column">
+          <label class="field-label is-normal">Country*</label>
+          <br/>
+          <div class="select">
+            <select formControlName="country">
+              <option *ngFor="let country of countryList">{{country}}</option>
+            </select>
+          </div>
+          <app-error-display [control]="billingAddress.controls.country"></app-error-display>
+        </div>
+        <div class="control column">
+          <label class="field-label is-normal">Region</label>
+          <input class="input" type="text" formControlName="region">
+        </div>
+      </div>
+      <div class="field columns">
+        <div class="control column">
+          <label class="field-label is-normal">Phone</label>
+          <input class="input" type="text" formControlName="phone">
+        </div>
+        <div class="control column">
+          <label class="field-label is-normal">Email*</label>
+          <input class="input" type="text" formControlName="email">
+          <app-error-display [control]="billingAddress.controls.email"></app-error-display>
+        </div>
+      </div>
     </div>
-    <div class="column is-6">{{method.description}}</div>
-    <div class="column is-3">{{method.price.currency}} {{method.price.amount}}</div>
   </div>
-</div>
 
-<!-- Checkout button -->
-<div class="columns submit-button">
-  <div class="column is-6">
-    <app-goto-button
-      name="Continue Checkout"
-      [disabled]="!addressForm.valid"
-      (click)="checkout()"
-    >
-    </app-goto-button>
+  <div class="section delivery-methods">
+    <h6 class="title is-6">Delivery Methods</h6>
+    <div class="control columns" *ngFor="let method of deliveryMethods">
+      <div class="column is-3">
+        <label class="radio">
+          <input type="radio" name="deliveryMethods" checked> {{method.name}}
+        </label>
+      </div>
+      <div class="column is-6">{{method.description}}</div>
+      <div class="column is-3">{{method.price.currency}} {{method.price.amount}}</div>
+    </div>
   </div>
-</div>
+
+  <!-- Checkout button -->
+  <div class="columns submit-button">
+    <div class="column is-6">
+      <app-goto-button name="Continue Checkout" [disabled]="!addressForm.valid" (click)="checkout()">
+      </app-goto-button>
+    </div>
+  </div>
 </form>

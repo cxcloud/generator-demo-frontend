@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../../core/auth/current-user.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'app-my-account',
@@ -34,7 +35,8 @@ export class MyAccountComponent implements OnInit {
   user: any;
 
   constructor(
-    private currentUserService: CurrentUserService
+    private currentUserService: CurrentUserService,
+    private authService: AuthService
   ) {}
 
   get customerNumber(): string {
@@ -51,6 +53,6 @@ export class MyAccountComponent implements OnInit {
   }
 
   logOut() {
-    this.currentUserService.logOut();
+    this.authService.logout();
   }
 }
