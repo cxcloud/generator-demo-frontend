@@ -70,10 +70,19 @@ export class CartService {
       .subscribe(result => this.cart.next(result));
   }
 
-  addAddress(type: string, address: Address) {
+  addShippingAddress(address: Address) {
     const cart = this.cart.getValue();
     this.http
-      .put<Cart>(`/carts/${cart.id}/${cart.version}/${type}`, {
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingAddress`, {
+        address
+      })
+      .subscribe(result => this.cart.next(result));
+  }
+
+  addBillingAddress(address: Address) {
+    const cart = this.cart.getValue();
+    this.http
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/billingAddress`, {
         address
       })
       .subscribe(result => this.cart.next(result));
