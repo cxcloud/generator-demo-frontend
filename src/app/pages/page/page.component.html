@@ -1,4 +1,4 @@
-<div *ngIf="pageData">
+<div *ngIf="pageData else loading">
   <section class="hero is-medium is-primary">
     <div class="hero-body" [style.background-image]="getBackgroundImage()">
       <div class="container">
@@ -17,3 +17,8 @@
     </div>
   </div>
 </div>
+<ng-template #loading>
+  <div class="section">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

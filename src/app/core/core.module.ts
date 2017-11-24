@@ -9,6 +9,7 @@ import { AuthService } from './auth/auth.service';
 import { CartService } from './cart/cart.service';
 import { ShippingService } from './shipping/shipping.service';
 import { CommerceService } from './commerce/commerce.service';
+import { ContentService } from './content/content.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -24,7 +25,8 @@ import { CommerceService } from './commerce/commerce.service';
     CommerceService,
     CartService,
     AuthService,
-    ShippingService
+    ShippingService,
+    ContentService
   ]
 })
 export class CoreModule {

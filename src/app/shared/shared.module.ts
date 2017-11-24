@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { InfoCardComponent } from './info-card/info-card.component';
 import { GotoButtonComponent } from './goto-button/goto-button.component';
@@ -21,9 +22,14 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MarkdownModule.forRoot()
+  ],
   declarations: [...DECLARATIONS],
-  exports: [...DECLARATIONS],
+  exports: [...DECLARATIONS, MarkdownModule],
   providers: []
 })
 export class SharedModule {}
