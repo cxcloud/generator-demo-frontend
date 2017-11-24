@@ -9,6 +9,7 @@ import {
 
 import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
+import { CartService } from '../../../core/cart/cart.service';
 
 import 'rxjs/add/operator/debounceTime';
 
@@ -47,7 +48,8 @@ export class ShippingInfoComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -83,7 +85,7 @@ export class ShippingInfoComponent implements OnInit {
       address1: ['', Validators.required],
       address2: '',
       city: ['', Validators.required],
-      postcode: ['', Validators.required],
+      postalCode: ['', Validators.required],
       country: '',
       region: '',
       phone: '',
@@ -93,6 +95,16 @@ export class ShippingInfoComponent implements OnInit {
 
   checkout() {
     if (this.isFormValid === true) {
+      const shippingAddress = <Address>this.shippingAddress.value;
+      this.cartService.addAddress('shippingAddress', shippingAddress);
+      this.cartService.addAddress('billingAddress', shippingAddress);
+
+      if (this.addressForm.get('showBillingAddress').value) {
+        const billinAddress = <Address>this.billingAddress.value;
+        if (this.billingAddress.valid) {
+          this.cartService.addAddress('billingAddress', billinAddress);
+        }
+      }
       this.router.navigateByUrl('checkout/payment');
     }
   }

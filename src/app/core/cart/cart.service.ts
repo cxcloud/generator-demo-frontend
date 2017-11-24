@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Cart } from '@cxcloud/ct-types/carts';
+import { Address } from '@cxcloud/ct-types/common';
 import { LocalStorageService } from 'ngx-webstorage';
 import { CurrentUserService } from '../auth/current-user.service';
 import 'rxjs/add/operator/take';
@@ -66,6 +67,15 @@ export class CartService {
     const cart = this.cart.getValue();
     this.http
       .delete<Cart>(`/carts/${cart.id}/${cart.version}/lineItems/${lineItemId}`)
+      .subscribe(result => this.cart.next(result));
+  }
+
+  addAddress(type: string, address: Address) {
+    const cart = this.cart.getValue();
+    this.http
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/${type}`, {
+        address
+      })
       .subscribe(result => this.cart.next(result));
   }
 }
