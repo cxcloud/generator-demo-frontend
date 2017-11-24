@@ -9,6 +9,8 @@ import {
 
 import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
+import { ShippingMethod } from '@cxcloud/ct-types/shipping';
+import { ShippingService } from '../../../core/shipping/shipping.service';
 
 import 'rxjs/add/operator/debounceTime';
 
@@ -19,35 +21,18 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class ShippingInfoComponent implements OnInit {
   addressForm: FormGroup;
+  deliveryMethods: ShippingMethod[];
   countryList: Array<string> = [
     'Finland',
     'Germany',
     'Russia',
     'United Kingdom'
   ];
-  // TODO: hook up delivery methods
-  deliveryMethods: Array<any> = [
-    {
-      name: 'Standard',
-      description: 'Delivery in 4-5 days',
-      price: {
-        currency: 'EUR',
-        amount: '0'
-      }
-    },
-    {
-      name: 'Store Pickup',
-      description: '',
-      price: {
-        currency: 'EUR',
-        amount: '0'
-      }
-    }
-  ];
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private shippingService: ShippingService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +41,11 @@ export class ShippingInfoComponent implements OnInit {
       shippingAddress: this.buildAddress(),
       billingAddress: this.buildAddress()
     });
+
+    // Get available shipping methods
+    this.shippingService
+      .getShippingMethods()
+      .subscribe(resp => (this.deliveryMethods = resp));
   }
 
   get shippingAddress(): FormGroup {

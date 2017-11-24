@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 
 import { Category } from '@cxcloud/ct-types/categories';
 import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
-import { Cart } from '@cxcloud/ct-types/carts';
 
 @Injectable()
 export class CommerceService {
