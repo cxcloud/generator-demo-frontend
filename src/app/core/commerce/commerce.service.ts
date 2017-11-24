@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import { Category } from '@cxcloud/ct-types/categories';
 import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
+import { ShippingMethod } from '@cxcloud/ct-types/shipping';
 
 @Injectable()
 export class CommerceService {
@@ -24,5 +25,9 @@ export class CommerceService {
 
   getProduct(productId: string): Observable<Product> {
     return this.http.get<Product>(`/products/${productId}`);
+  }
+
+  getShippingMethods(): Observable<ShippingMethod[]> {
+    return this.http.get<ShippingMethod[]>('/shipping/methods');
   }
 }

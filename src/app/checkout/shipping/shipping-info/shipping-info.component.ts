@@ -10,7 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
 import { ShippingMethod } from '@cxcloud/ct-types/shipping';
-import { ShippingService } from '../../../core/shipping/shipping.service';
+import { CommerceService } from '../../../core/commerce/commerce.service';
 
 import 'rxjs/add/operator/debounceTime';
 
@@ -32,7 +32,7 @@ export class ShippingInfoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private shippingService: ShippingService
+    private commerceService: CommerceService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class ShippingInfoComponent implements OnInit {
     });
 
     // Get available shipping methods
-    this.shippingService
+    this.commerceService
       .getShippingMethods()
       .subscribe(resp => (this.deliveryMethods = resp));
   }
