@@ -13,7 +13,7 @@ form {
     font-size: 14px;
     text-transform: uppercase;
   }
-  input[type="text"],
+  input[type='text'],
   select {
     border-radius: 0;
     box-shadow: none;
@@ -55,8 +55,12 @@ form {
   .title {
     margin-top: 2em;
   }
- .control {
-   background-color: $white-smoke;
-   margin: 1px 0;
+  .control {
+    background-color: $white-smoke;
+    margin: 1px 0;
+
+    .radio input {
+      margin-right: 5px;
+    }
   }
 }
