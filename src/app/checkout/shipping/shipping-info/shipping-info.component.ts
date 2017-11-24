@@ -97,13 +97,15 @@ export class ShippingInfoComponent implements OnInit {
     if (this.isFormValid === true) {
       const shippingAddress = <Address>this.shippingAddress.value;
       this.cartService.addAddress('shippingAddress', shippingAddress);
-      this.cartService.addAddress('billingAddress', shippingAddress);
 
-      if (this.addressForm.get('showBillingAddress').value) {
-        const billinAddress = <Address>this.billingAddress.value;
-        if (this.billingAddress.valid) {
-          this.cartService.addAddress('billingAddress', billinAddress);
-        }
+      if (
+        this.addressForm.get('showBillingAddress').value &&
+        this.billingAddress.valid
+      ) {
+        this.cartService.addAddress('billingAddress', <Address>this
+          .billingAddress.value);
+      } else {
+        this.cartService.addAddress('billingAddress', shippingAddress);
       }
       this.router.navigateByUrl('checkout/payment');
     }
