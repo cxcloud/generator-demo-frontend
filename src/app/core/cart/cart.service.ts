@@ -5,8 +5,10 @@ import { Cart } from '@cxcloud/ct-types/carts';
 import { Address } from '@cxcloud/ct-types/common';
 import { LocalStorageService } from 'ngx-webstorage';
 import { CurrentUserService } from '../auth/current-user.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class CartService {
