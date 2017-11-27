@@ -23,11 +23,11 @@ import 'rxjs/add/operator/debounceTime';
 export class ShippingInfoComponent implements OnInit {
   addressForm: FormGroup;
   deliveryMethods: ShippingMethod[];
-  countryList: Array<string> = [
-    'Finland',
-    'Germany',
-    'Russia',
-    'United Kingdom'
+  countryList: Array<any> = [
+    { countryCode: 'FI', name: 'Finland' },
+    { countryCode: 'DE', name: 'Germany' },
+    { countryCode: 'RU', name: 'Russia' },
+    { countryCode: 'UK', name: 'United Kingdom' }
   ];
 
   constructor(
@@ -72,11 +72,11 @@ export class ShippingInfoComponent implements OnInit {
     return this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      address1: ['', Validators.required],
-      address2: '',
+      streetName: ['', Validators.required],
+      additionalAddressInfo: '',
       city: ['', Validators.required],
       postalCode: ['', Validators.required],
-      country: '',
+      country: ['DE', Validators.required],
       region: '',
       phone: '',
       email: ['', [Validators.required, Validators.pattern(pattern)]]

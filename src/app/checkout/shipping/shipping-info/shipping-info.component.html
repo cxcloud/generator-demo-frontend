@@ -18,14 +18,14 @@
     <div class="field">
       <div class="control">
         <label class="field-label is-normal">Address 1*</label>
-        <input class="input" type="text" formControlName="address1">
-        <app-error-display [control]="shippingAddressForm.controls.address1"></app-error-display>
+        <input class="input" type="text" formControlName="streetName">
+        <app-error-display [control]="shippingAddressForm.controls.streetName"></app-error-display>
       </div>
     </div>
     <div class="field">
       <div class="control">
         <label class="field-label is-normal">Address 2</label>
-        <input class="input" type="text" formControlName="address2">
+        <input class="input" type="text" formControlName="additionalAddressInfo">
       </div>
     </div>
     <div class="field columns">
@@ -46,7 +46,7 @@
         <br/>
         <div class="select">
           <select formControlName="country">
-            <option *ngFor="let country of countryList">{{country}}</option>
+            <option *ngFor="let country of countryList" [value]="country.countryCode">{{country.name}}</option>
           </select>
         </div>
         <app-error-display [control]="shippingAddressForm.controls.country"></app-error-display>
@@ -93,14 +93,14 @@
       <div class="field">
         <div class="control">
           <label class="field-label is-normal">Address 1*</label>
-          <input class="input" type="text" formControlName="address1">
-          <app-error-display [control]="billingAddressForm.controls.address1"></app-error-display>
+          <input class="input" type="text" formControlName="streetName">
+          <app-error-display [control]="billingAddressForm.controls.streetName"></app-error-display>
         </div>
       </div>
       <div class="field">
         <div class="control">
           <label class="field-label is-normal">Address 2</label>
-          <input class="input" type="text" formControlName="address2">
+          <input class="input" type="text" formControlName="additionalAddressInfo">
         </div>
       </div>
       <div class="field columns">
@@ -121,7 +121,7 @@
           <br/>
           <div class="select">
             <select formControlName="country">
-              <option *ngFor="let country of countryList">{{country}}</option>
+              <option *ngFor="let country of countryList" [value]="country.countryCode">{{country.name}}</option>
             </select>
           </div>
           <app-error-display [control]="billingAddressForm.controls.country"></app-error-display>

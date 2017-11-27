@@ -76,7 +76,7 @@ export class CartService {
     const cart = this.cart.getValue();
     return this.http
       .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingAddress`, {
-        address
+        ...address
       })
       .map(result => result);
   }
@@ -84,7 +84,7 @@ export class CartService {
   setBillingAddress(cart: Cart, address: Address) {
     return this.http
       .put<Cart>(`/carts/${cart.id}/${cart.version}/billingAddress`, {
-        address
+        ...address
       })
       .map(result => result);
   }
