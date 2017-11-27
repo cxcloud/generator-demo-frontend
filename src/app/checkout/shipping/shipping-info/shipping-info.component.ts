@@ -39,9 +39,9 @@ export class ShippingInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.addressForm = this.formBuilder.group({
-      showBillingAddress: false,
-      shippingAddress: this.buildAddress(),
-      billingAddress: this.buildAddress()
+      showBillingAddressForm: false,
+      shippingAddressForm: this.buildAddress(),
+      billingAddressForm: this.buildAddress()
     });
 
     // Get available shipping methods
@@ -50,19 +50,19 @@ export class ShippingInfoComponent implements OnInit {
       .subscribe(resp => (this.deliveryMethods = resp));
   }
 
-  get shippingAddress(): FormGroup {
-    return <FormGroup>this.addressForm.get('shippingAddress');
+  get shippingAddressForm(): FormGroup {
+    return <FormGroup>this.addressForm.get('shippingAddressForm');
   }
 
-  get billingAddress(): FormGroup {
-    return <FormGroup>this.addressForm.get('billingAddress');
+  get billingAddressForm(): FormGroup {
+    return <FormGroup>this.addressForm.get('billingAddressForm');
   }
 
   get isFormValid(): boolean {
     return (
-      (this.addressForm.get('showBillingAddress').value &&
+      (this.addressForm.get('showBillingAddressForm').value &&
         this.addressForm.valid === true) ||
-      this.shippingAddress.valid === true
+      this.shippingAddressForm.valid === true
     );
   }
 
@@ -83,20 +83,23 @@ export class ShippingInfoComponent implements OnInit {
     });
   }
 
+  get billingAddress(): Address {
+    return this.addressForm.get('showBillingAddressForm').value &&
+      this.billingAddressForm.valid
+      ? this.billingAddressForm.value
+      : this.shippingAddressForm.value;
+  }
+
+  get shippingAddress(): Address {
+    return this.shippingAddressForm.value;
+  }
+
   checkout() {
     if (this.isFormValid === true) {
-      // Send shipping address
-      this.cartService.addShippingAddress(this.shippingAddress.value);
-      if (
-        this.addressForm.get('showBillingAddress').value &&
-        this.billingAddress.valid
-      ) {
-        // Send billing address
-        this.cartService.addBillingAddress(this.billingAddress.value);
-      } else {
-        // Send billing address and shipping address
-        this.cartService.addBillingAddress(this.shippingAddress.value);
-      }
+      this.cartService.setCartAddresses(
+        this.shippingAddress,
+        this.billingAddress
+      );
       this.router.navigateByUrl('checkout/payment');
     }
   }

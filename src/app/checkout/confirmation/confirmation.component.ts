@@ -11,10 +11,7 @@ import { CartService } from '../../core/cart/cart.service';
 export class ConfirmationComponent implements OnInit {
   cart: Cart;
   columns: Array<string> = ['Description', 'Quantity', 'Price', 'Total'];
-  constructor(
-    private router: Router,
-    private cartService: CartService
-  ) {}
+  constructor(private router: Router, private cartService: CartService) {}
 
   ngOnInit() {
     this.cartService.cart.subscribe(cart => {

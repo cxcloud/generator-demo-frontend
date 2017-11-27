@@ -70,21 +70,26 @@ export class CartService {
       .subscribe(result => this.cart.next(result));
   }
 
-  addShippingAddress(address: Address) {
+  setShippingAddress(address: Address) {
     const cart = this.cart.getValue();
-    this.http
+    return this.http
       .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingAddress`, {
         address
       })
-      .subscribe(result => this.cart.next(result));
+      .map(result => result);
   }
 
-  addBillingAddress(address: Address) {
-    const cart = this.cart.getValue();
-    this.http
+  setBillingAddress(cart: Cart, address: Address) {
+    return this.http
       .put<Cart>(`/carts/${cart.id}/${cart.version}/billingAddress`, {
         address
       })
+      .map(result => result);
+  }
+
+  setCartAddresses(shippingAddress: Address, billingAddress: Address) {
+    this.setShippingAddress(shippingAddress)
+      .flatMap(cart => this.setBillingAddress(cart, billingAddress))
       .subscribe(result => this.cart.next(result));
   }
 }
