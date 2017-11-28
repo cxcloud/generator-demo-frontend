@@ -7,6 +7,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { CurrentUserService } from './auth/current-user.service';
 import { AuthService } from './auth/auth.service';
 import { CartService } from './cart/cart.service';
+import { OrderService } from './order/order.service';
 import { CommerceService } from './commerce/commerce.service';
 import { ContentService } from './content/content.service';
 
@@ -23,6 +24,7 @@ import { ContentService } from './content/content.service';
     },
     CommerceService,
     CartService,
+    OrderService,
     AuthService,
     ContentService
   ]
