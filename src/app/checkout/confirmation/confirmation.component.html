@@ -29,12 +29,12 @@
       <div class="column is-4">
         <app-info-card title="Shipping Method" icon="mdi mdi-lead-pencil" label="Edit" url="checkout/shipping">
           <ul>
-            <li>Standard</li>
+            <li class="is-capitalized">{{shippingInfo.shippingMethodName}}</li>
           </ul>
         </app-info-card>
         <app-info-card title="Payment Details" icon="mdi mdi-lead-pencil" label="Edit" url="checkout/payment">
           <ul>
-            <li>Prepaid</li>
+            <li class="is-capitalized">Prepaid</li>
           </ul>
         </app-info-card>
       </div>
