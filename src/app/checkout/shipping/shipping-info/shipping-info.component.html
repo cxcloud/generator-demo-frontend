@@ -145,12 +145,12 @@
     </div>
   </div>
 
-  <div class="section delivery-methods">
+  <div class="section delivery-methods" formGroupName="deliveryMethodsForm">
     <h6 class="title is-6">Delivery Methods</h6>
     <div class="control columns" *ngFor="let method of deliveryMethods">
       <div class="column is-3">
         <label class="radio">
-          <input type="radio" name="deliveryMethods" checked> {{method.name}}
+          <input type="radio" formControlName="deliveryMethod" [value]="method">{{method.name}}
         </label>
       </div>
       <div class="column is-6">{{method.description}}</div>
@@ -158,6 +158,8 @@
         {{method.zoneRates[0].shippingRates[0].price.currencyCode}} {{method.zoneRates[0].shippingRates[0].price.centAmount * 0.01}}
       </div>
     </div>
+
+
   </div>
 
   <!-- Checkout button -->

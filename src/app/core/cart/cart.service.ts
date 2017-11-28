@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Cart } from '@cxcloud/ct-types/carts';
 import { Address } from '@cxcloud/ct-types/common';
+import { ShippingMethod } from '@cxcloud/ct-types/shipping';
 import { LocalStorageService } from 'ngx-webstorage';
 import { CurrentUserService } from '../auth/current-user.service';
 import { Observable } from 'rxjs/Observable';
@@ -89,9 +90,22 @@ export class CartService {
       .map(result => result);
   }
 
-  setCartAddresses(shippingAddress: Address, billingAddress: Address) {
+  setShippingMethod(cart: Cart, shippingMethodId: string) {
+    return this.http
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingMethod`, {
+        shippingMethodId: shippingMethodId
+      })
+      .map(result => result);
+  }
+
+  setCartInfo(
+    shippingAddress: Address,
+    billingAddress: Address,
+    shippingMethodId: string
+  ) {
     this.setShippingAddress(shippingAddress)
       .flatMap(cart => this.setBillingAddress(cart, billingAddress))
+      .flatMap(cart => this.setShippingMethod(cart, shippingMethodId))
       .subscribe(result => this.cart.next(result));
   }
 }

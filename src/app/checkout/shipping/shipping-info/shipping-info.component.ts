@@ -23,6 +23,7 @@ import 'rxjs/add/operator/debounceTime';
 export class ShippingInfoComponent implements OnInit {
   addressForm: FormGroup;
   deliveryMethods: ShippingMethod[];
+
   countryList: Array<any> = [
     { countryCode: 'FI', name: 'Finland' },
     { countryCode: 'DE', name: 'Germany' },
@@ -38,16 +39,19 @@ export class ShippingInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.addressForm = this.formBuilder.group({
-      showBillingAddressForm: false,
-      shippingAddressForm: this.buildAddress(),
-      billingAddressForm: this.buildAddress()
-    });
-
     // Get available shipping methods
     this.commerceService
       .getShippingMethods()
       .subscribe(resp => (this.deliveryMethods = resp));
+
+    this.addressForm = this.formBuilder.group({
+      showBillingAddressForm: false,
+      shippingAddressForm: this.buildAddress(),
+      billingAddressForm: this.buildAddress(),
+      deliveryMethodsForm: this.formBuilder.group({
+        deliveryMethod: {}
+      })
+    });
   }
 
   get shippingAddressForm(): FormGroup {
@@ -58,11 +62,19 @@ export class ShippingInfoComponent implements OnInit {
     return <FormGroup>this.addressForm.get('billingAddressForm');
   }
 
+  get deliveryMethodsForm(): FormGroup {
+    return <FormGroup>this.addressForm.get('deliveryMethodsForm');
+  }
+
   get isFormValid(): boolean {
+    const deliveryMethod = this.deliveryMethodsForm.get('deliveryMethod');
+    const isDeliveryMethodValid =
+      deliveryMethod.valid && (deliveryMethod.dirty || deliveryMethod.touched);
     return (
+      (this.shippingAddressForm.valid && isDeliveryMethodValid) ||
       (this.addressForm.get('showBillingAddressForm').value &&
-        this.addressForm.valid === true) ||
-      this.shippingAddressForm.valid === true
+        this.addressForm.valid &&
+        isDeliveryMethodValid)
     );
   }
 
@@ -96,9 +108,10 @@ export class ShippingInfoComponent implements OnInit {
 
   checkout() {
     if (this.isFormValid === true) {
-      this.cartService.setCartAddresses(
+      this.cartService.setCartInfo(
         this.shippingAddress,
-        this.billingAddress
+        this.billingAddress,
+        this.deliveryMethodsForm.get('deliveryMethod').value.id
       );
       this.router.navigateByUrl('checkout/payment');
     }
