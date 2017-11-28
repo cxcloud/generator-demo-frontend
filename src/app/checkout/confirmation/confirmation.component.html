@@ -29,7 +29,7 @@
       <div class="column is-4">
         <app-info-card title="Shipping Method" icon="mdi mdi-lead-pencil" label="Edit" url="checkout/shipping">
           <ul>
-            <li class="is-capitalized">{{shippingInfo.shippingMethodName}}</li>
+            <li class="is-capitalized">{{cart?.shippingInfo.shippingMethodName}}</li>
           </ul>
         </app-info-card>
         <app-info-card title="Payment Details" icon="mdi mdi-lead-pencil" label="Edit" url="checkout/payment">
@@ -58,7 +58,7 @@
                 <div>Shipping</div>
               </div>
               <div class="column is-2">
-                <div>{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
+                <div>{{cart?.totalPrice.currencyCode}} {{0.01 * cart?.totalPrice.centAmount}}</div>
                 <div>EUR 0.-</div>
               </div>
             </div>
@@ -74,7 +74,7 @@
               </div>
               <div class="column is-2">
                 <div>EUR 0.-</div>
-                <div class="order-total">{{cart.totalPrice.currencyCode}} {{0.01 * cart.totalPrice.centAmount}}</div>
+                <div class="order-total">{{cart?.totalPrice.currencyCode}} {{0.01 * cart?.totalPrice.centAmount}}</div>
               </div>
             </div>
           </th>

@@ -24,6 +24,7 @@ export class ShippingInfoComponent implements OnInit {
   addressForm: FormGroup;
   deliveryMethods: ShippingMethod[];
 
+  // TODO: Turn list into real from the API
   countryList: Array<any> = [
     { countryCode: 'FI', name: 'Finland' },
     { countryCode: 'DE', name: 'Germany' },
