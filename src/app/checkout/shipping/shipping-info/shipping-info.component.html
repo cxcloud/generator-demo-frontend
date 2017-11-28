@@ -2,42 +2,42 @@
   <h6 class="title is-6">Shipping Information</h6>
 
   <!-- Shipping address -->
-  <div formGroupName="shippingAddress">
+  <div formGroupName="shippingAddressForm">
     <div class="field columns">
       <div class="control column">
         <label class="field-label is-normal">First Name*</label>
         <input class="input" type="text" formControlName="firstName">
-        <app-error-display [control]="shippingAddress.controls.firstName"></app-error-display>
+        <app-error-display [control]="shippingAddressForm.controls.firstName"></app-error-display>
       </div>
       <div class="control column">
         <label class="field-label is-normal">Last Name*</label>
         <input class="input" type="text" formControlName="lastName">
-        <app-error-display [control]="shippingAddress.controls.lastName"></app-error-display>
+        <app-error-display [control]="shippingAddressForm.controls.lastName"></app-error-display>
       </div>
     </div>
     <div class="field">
       <div class="control">
         <label class="field-label is-normal">Address 1*</label>
-        <input class="input" type="text" formControlName="address1">
-        <app-error-display [control]="shippingAddress.controls.address1"></app-error-display>
+        <input class="input" type="text" formControlName="streetName">
+        <app-error-display [control]="shippingAddressForm.controls.streetName"></app-error-display>
       </div>
     </div>
     <div class="field">
       <div class="control">
         <label class="field-label is-normal">Address 2</label>
-        <input class="input" type="text" formControlName="address2">
+        <input class="input" type="text" formControlName="additionalAddressInfo">
       </div>
     </div>
     <div class="field columns">
       <div class="control column is-8">
         <label class="field-label is-normal">City*</label>
         <input class="input" type="text" formControlName="city">
-        <app-error-display [control]="shippingAddress.controls.city"></app-error-display>
+        <app-error-display [control]="shippingAddressForm.controls.city"></app-error-display>
       </div>
       <div class="control column is-4">
         <label class="field-label is-normal">Post Code*</label>
-        <input class="input" type="text" formControlName="postcode">
-        <app-error-display [control]="shippingAddress.controls.postcode"></app-error-display>
+        <input class="input" type="text" formControlName="postalCode">
+        <app-error-display [control]="shippingAddressForm.controls.postalCode"></app-error-display>
       </div>
     </div>
     <div class="field columns">
@@ -46,10 +46,10 @@
         <br/>
         <div class="select">
           <select formControlName="country">
-            <option *ngFor="let country of countryList">{{country}}</option>
+            <option *ngFor="let country of countryList" [value]="country.countryCode">{{country.name}}</option>
           </select>
         </div>
-        <app-error-display [control]="shippingAddress.controls.country"></app-error-display>
+        <app-error-display [control]="shippingAddressForm.controls.country"></app-error-display>
       </div>
       <div class="control column">
         <label class="field-label is-normal">Region</label>
@@ -64,55 +64,55 @@
       <div class="control column">
         <label class="field-label is-normal">Email*</label>
         <input class="input" type="text" formControlName="email">
-        <app-error-display [control]="shippingAddress.controls.email"></app-error-display>
+        <app-error-display [control]="shippingAddressForm.controls.email"></app-error-display>
       </div>
     </div>
   </div>
 
   <div class="field is-checkbox-field">
     <label class="checkbox">
-      <input type="checkbox" formControlName="showBillingAddress"> Use a different address for billing
+      <input type="checkbox" formControlName="showBillingAddressForm"> Use a different address for billing
     </label>
   </div>
 
   <!-- Billing address -->
-  <div *ngIf="addressForm.get('showBillingAddress').value">
-    <div formGroupName="billingAddress">
+  <div *ngIf="addressForm.get('showBillingAddressForm').value">
+    <div formGroupName="billingAddressForm">
       <div class="field columns">
         <div class="control column">
           <label class="field-label is-normal">First Name*</label>
           <input class="input" type="text" formControlName="firstName">
-          <app-error-display [control]="billingAddress.controls.firstName"></app-error-display>
+          <app-error-display [control]="billingAddressForm.controls.firstName"></app-error-display>
         </div>
         <div class="control column">
           <label class="field-label is-normal">Last Name*</label>
           <input class="input" type="text" formControlName="lastName">
-          <app-error-display [control]="billingAddress.controls.lastName"></app-error-display>
+          <app-error-display [control]="billingAddressForm.controls.lastName"></app-error-display>
         </div>
       </div>
       <div class="field">
         <div class="control">
           <label class="field-label is-normal">Address 1*</label>
-          <input class="input" type="text" formControlName="address1">
-          <app-error-display [control]="billingAddress.controls.address1"></app-error-display>
+          <input class="input" type="text" formControlName="streetName">
+          <app-error-display [control]="billingAddressForm.controls.streetName"></app-error-display>
         </div>
       </div>
       <div class="field">
         <div class="control">
           <label class="field-label is-normal">Address 2</label>
-          <input class="input" type="text" formControlName="address2">
+          <input class="input" type="text" formControlName="additionalAddressInfo">
         </div>
       </div>
       <div class="field columns">
         <div class="control column is-8">
           <label class="field-label is-normal">City*</label>
           <input class="input" type="text" formControlName="city">
-          <app-error-display [control]="billingAddress.controls.city"></app-error-display>
+          <app-error-display [control]="billingAddressForm.controls.city"></app-error-display>
         </div>
         <div class="control column is-4">
           <label class="field-label is-normal">Post Code*</label>
-          <input class="input" type="text" formControlName="postcode">
-          <app-error-display [control]="billingAddress.controls.postcode"></app-error-display>
+          <input class="input" type="text" formControlName="postalCode">
+          <app-error-display [control]="billingAddressForm.controls.postalCode"></app-error-display>
         </div>
       </div>
       <div class="field columns">
@@ -121,10 +121,10 @@
           <br/>
           <div class="select">
             <select formControlName="country">
-              <option *ngFor="let country of countryList">{{country}}</option>
+              <option *ngFor="let country of countryList" [value]="country.countryCode">{{country.name}}</option>
             </select>
           </div>
-          <app-error-display [control]="billingAddress.controls.country"></app-error-display>
+          <app-error-display [control]="billingAddressForm.controls.country"></app-error-display>
         </div>
         <div class="control column">
           <label class="field-label is-normal">Region</label>
@@ -139,18 +139,18 @@
         <div class="control column">
           <label class="field-label is-normal">Email*</label>
           <input class="input" type="text" formControlName="email">
-          <app-error-display [control]="billingAddress.controls.email"></app-error-display>
+          <app-error-display [control]="billingAddressForm.controls.email"></app-error-display>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section delivery-methods">
+  <div class="section delivery-methods" formGroupName="deliveryMethodsForm">
     <h6 class="title is-6">Delivery Methods</h6>
     <div class="control columns" *ngFor="let method of deliveryMethods">
       <div class="column is-3">
         <label class="radio">
-          <input type="radio" name="deliveryMethods" checked> {{method.name}}
+          <input type="radio" formControlName="deliveryMethod" [value]="method">{{method.name}}
         </label>
       </div>
       <div class="column is-6">{{method.description}}</div>
@@ -158,6 +158,8 @@
         {{method.zoneRates[0].shippingRates[0].price.currencyCode}} {{method.zoneRates[0].shippingRates[0].price.centAmount * 0.01}}
       </div>
     </div>
+
+
   </div>
 
   <!-- Checkout button -->

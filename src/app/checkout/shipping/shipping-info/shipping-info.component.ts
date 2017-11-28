@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
 import { ShippingMethod } from '@cxcloud/ct-types/shipping';
+import { CartService } from '../../../core/cart/cart.service';
 import { CommerceService } from '../../../core/commerce/commerce.service';
 
 import 'rxjs/add/operator/debounceTime';
@@ -22,45 +23,59 @@ import 'rxjs/add/operator/debounceTime';
 export class ShippingInfoComponent implements OnInit {
   addressForm: FormGroup;
   deliveryMethods: ShippingMethod[];
-  countryList: Array<string> = [
-    'Finland',
-    'Germany',
-    'Russia',
-    'United Kingdom'
+
+  // TODO: Turn list into real from the API
+  countryList: Array<any> = [
+    { countryCode: 'FI', name: 'Finland' },
+    { countryCode: 'DE', name: 'Germany' },
+    { countryCode: 'RU', name: 'Russia' },
+    { countryCode: 'UK', name: 'United Kingdom' }
   ];
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private cartService: CartService,
     private commerceService: CommerceService
   ) {}
 
   ngOnInit(): void {
-    this.addressForm = this.formBuilder.group({
-      showBillingAddress: false,
-      shippingAddress: this.buildAddress(),
-      billingAddress: this.buildAddress()
-    });
-
     // Get available shipping methods
     this.commerceService
       .getShippingMethods()
       .subscribe(resp => (this.deliveryMethods = resp));
+
+    this.addressForm = this.formBuilder.group({
+      showBillingAddressForm: false,
+      shippingAddressForm: this.buildAddress(),
+      billingAddressForm: this.buildAddress(),
+      deliveryMethodsForm: this.formBuilder.group({
+        deliveryMethod: {}
+      })
+    });
   }
 
-  get shippingAddress(): FormGroup {
-    return <FormGroup>this.addressForm.get('shippingAddress');
+  get shippingAddressForm(): FormGroup {
+    return <FormGroup>this.addressForm.get('shippingAddressForm');
   }
 
-  get billingAddress(): FormGroup {
-    return <FormGroup>this.addressForm.get('billingAddress');
+  get billingAddressForm(): FormGroup {
+    return <FormGroup>this.addressForm.get('billingAddressForm');
+  }
+
+  get deliveryMethodsForm(): FormGroup {
+    return <FormGroup>this.addressForm.get('deliveryMethodsForm');
   }
 
   get isFormValid(): boolean {
+    const deliveryMethod = this.deliveryMethodsForm.get('deliveryMethod');
+    const isDeliveryMethodValid =
+      deliveryMethod.valid && (deliveryMethod.dirty || deliveryMethod.touched);
     return (
-      (this.addressForm.get('showBillingAddress').value &&
-        this.addressForm.valid === true) ||
-      this.shippingAddress.valid === true
+      (this.shippingAddressForm.valid && isDeliveryMethodValid) ||
+      (this.addressForm.get('showBillingAddressForm').value &&
+        this.addressForm.valid &&
+        isDeliveryMethodValid)
     );
   }
 
@@ -70,19 +85,35 @@ export class ShippingInfoComponent implements OnInit {
     return this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      address1: ['', Validators.required],
-      address2: '',
+      streetName: ['', Validators.required],
+      additionalAddressInfo: '',
       city: ['', Validators.required],
-      postcode: ['', Validators.required],
-      country: '',
+      postalCode: ['', Validators.required],
+      country: ['DE', Validators.required],
       region: '',
       phone: '',
       email: ['', [Validators.required, Validators.pattern(pattern)]]
     });
   }
 
+  get billingAddress(): Address {
+    return this.addressForm.get('showBillingAddressForm').value &&
+      this.billingAddressForm.valid
+      ? this.billingAddressForm.value
+      : this.shippingAddressForm.value;
+  }
+
+  get shippingAddress(): Address {
+    return this.shippingAddressForm.value;
+  }
+
   checkout() {
     if (this.isFormValid === true) {
+      this.cartService.setCartInfo(
+        this.shippingAddress,
+        this.billingAddress,
+        this.deliveryMethodsForm.get('deliveryMethod').value.id
+      );
       this.router.navigateByUrl('checkout/payment');
     }
   }

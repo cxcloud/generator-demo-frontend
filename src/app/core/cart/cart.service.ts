@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Cart } from '@cxcloud/ct-types/carts';
+import { Address } from '@cxcloud/ct-types/common';
+import { ShippingMethod } from '@cxcloud/ct-types/shipping';
 import { LocalStorageService } from 'ngx-webstorage';
 import { CurrentUserService } from '../auth/current-user.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class CartService {
@@ -66,6 +70,42 @@ export class CartService {
     const cart = this.cart.getValue();
     this.http
       .delete<Cart>(`/carts/${cart.id}/${cart.version}/lineItems/${lineItemId}`)
+      .subscribe(result => this.cart.next(result));
+  }
+
+  setShippingAddress(address: Address) {
+    const cart = this.cart.getValue();
+    return this.http
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingAddress`, {
+        ...address
+      })
+      .map(result => result);
+  }
+
+  setBillingAddress(cart: Cart, address: Address) {
+    return this.http
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/billingAddress`, {
+        ...address
+      })
+      .map(result => result);
+  }
+
+  setShippingMethod(cart: Cart, shippingMethodId: string) {
+    return this.http
+      .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingMethod`, {
+        shippingMethodId: shippingMethodId
+      })
+      .map(result => result);
+  }
+
+  setCartInfo(
+    shippingAddress: Address,
+    billingAddress: Address,
+    shippingMethodId: string
+  ) {
+    this.setShippingAddress(shippingAddress)
+      .flatMap(cart => this.setBillingAddress(cart, billingAddress))
+      .flatMap(cart => this.setShippingMethod(cart, shippingMethodId))
       .subscribe(result => this.cart.next(result));
   }
 }
