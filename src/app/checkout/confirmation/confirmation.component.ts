@@ -34,7 +34,7 @@ export class ConfirmationComponent implements OnInit {
   }
 
   goToCheckout() {
-    this.orderService.convertCartToOrder(this.cart);
-    this.router.navigateByUrl('');
+    this.orderService.initOrder(this.cart);
+    this.router.navigateByUrl('/order');
   }
 }
