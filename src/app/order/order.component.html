@@ -1,3 +1,131 @@
-<p>
-  order works!
-</p>
+<section class="section">
+  <div class="container is-fullhd">
+    <div class="level">
+      <div class="level-left">
+        <h4 class="subtitle is-uppercase is-4 level-left">
+          Thank you for your order!
+        </h4>
+      </div>
+    </div>
+    <div class="columns order-content">
+      <div class="column">
+        <div class="email-sent">
+          <p>An email has been sent to
+            <a>{{order.customerEmail}}</a>
+          </p>
+          <p>as a copy of this confirmation purchase</p>
+        </div>
+        <div>
+          <h6 class="title is-6">Your order details</h6>
+          <div class="order-details columns">
+            <div class="column is-2 item-title">
+              <p class="is-capitalized">Order number</p>
+              <p class="is-capitalized">Order date</p>
+            </div>
+            <div class="column is-2">
+              <p>{{order.orderNumber}}</p>
+              <p>{{order.createdAt | date:'longDate'}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Address and delivery details -->
+        <div class="columns">
+          <div class="column is-4">
+            <app-info-card title="Shipping Address" icon="mdi mdi-check">
+              <ul *ngIf="shippingAddress">
+                <li>{{shippingAddress.firstName}} {{shippingAddress.lastName}}</li>
+                <li>{{shippingAddress.streetName}} {{shippingAddress.additionalAddressInfo}}</li>
+                <li>{{shippingAddress.city}} {{shippingAddress.country}} {{shippingAddress.postalCode}}</li>
+                <li>{{shippingAddress.region}}</li>
+                <li>{{shippingAddress.phone}}</li>
+                <li>{{shippingAddress.email}}</li>
+              </ul>
+            </app-info-card>
+          </div>
+          <div class="column is-4">
+            <app-info-card title="Billing Address" icon="mdi mdi-check">
+              <ul *ngIf="billingAddress">
+                <li>{{billingAddress.firstName}} {{billingAddress.lastName}}</li>
+                <li>{{billingAddress.streetName}} {{billingAddress.additionalAddressInfo}}</li>
+                <li>{{billingAddress.city}} {{billingAddress.country}} {{billingAddress.postalCode}}</li>
+                <li>{{billingAddress.region}}</li>
+                <li>{{billingAddress.phone}}</li>
+                <li>{{billingAddress.email}}</li>
+              </ul>
+            </app-info-card>
+          </div>
+          <div class="column is-4">
+            <app-info-card title="Shipping Method" icon="mdi mdi-check">
+              <ul>
+                <li class="is-capitalized">{{order?.shippingInfo.shippingMethodName}}</li>
+              </ul>
+            </app-info-card>
+            <app-info-card title="Payment Details" icon="mdi mdi-check">
+              <ul>
+                <li class="is-capitalized">Prepaid</li>
+              </ul>
+            </app-info-card>
+          </div>
+        </div>
+
+
+        <!-- Cart table -->
+        <table class="table is-hoverable is-fullwidth" *ngIf="order">
+          <thead>
+            <tr>
+              <th class="is-uppercase" *ngFor="let title of columns">{{title}}</th>
+            </tr>
+          </thead>
+
+          <tfoot>
+            <!-- Line with subtotal and shipping costs -->
+            <tr class="subtotal">
+              <th colspan="4">
+                <div class="columns">
+                  <div class="column is-2 is-offset-8">
+                    <div>Subtotal</div>
+                    <div>Shipping</div>
+                  </div>
+                  <div class="column is-2">
+                    <div>{{order?.totalPrice.currencyCode}} {{0.01 * order?.totalPrice.centAmount}}</div>
+                    <div>EUR 0.-</div>
+                  </div>
+                </div>
+
+            </tr>
+            <!-- Line with sales tax and total costs -->
+            <tr class="total">
+              <th colspan="4">
+                <div class="columns">
+                  <div class="column is-2 is-offset-8">
+                    <div>Sales Tax</div>
+                    <div class="order-total">Total</div>
+                  </div>
+                  <div class="column is-2">
+                    <div>EUR 0.-</div>
+                    <div class="order-total">{{order?.totalPrice.currencyCode}} {{0.01 * order?.totalPrice.centAmount}}</div>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </tfoot>
+
+          <tbody>
+            <tr *ngFor="let item of order.lineItems">
+              <td class="columns cart-item-description">
+                <div class="column">
+                  <app-cart-order-content [item]="item"></app-cart-order-content>
+                </div>
+              </td>
+              <td class="cart-item-quantity">{{item.quantity}}</td>
+              <td class="cart-item-price">{{item.price.value.currencyCode}} {{0.01 * item.price.value.centAmount}} </td>
+              <td class="cart-item-price">{{item.price.value.currencyCode}} {{0.01 * (item.quantity * item.price.value.centAmount)}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,85 @@
+@import '../../variables.scss';
+
+.section {
+  background-color: $romance;
+
+  .subtitle {
+    font-weight: lighter;
+  }
+}
+
+.order-content {
+  background-color: $white;
+  border: 1px solid $light-grey;
+
+  h6.title {
+    font-weight: lighter;
+    text-transform: uppercase;
+    border-bottom: 1px solid $light-grey;
+    padding: 5px 2px 1em 2px;
+    margin-bottom: 2em;
+  }
+
+  .email-sent {
+    margin-bottom: 1em;
+    line-height: 1.2em;
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .order-details {
+    font-size: 14px;
+    .item-title p {
+      margin-right: 10px;
+      color: $grey;
+    }
+  }
+
+  app-info-card {
+    /deep/ .card {
+      background-color: $white-smoke;
+      box-shadow: none;
+
+      header {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .table {
+    border: 1px solid $light-grey;
+    background-color: $white;
+    border-left: none;
+    border-right: none;
+
+    th,
+    td {
+      border: none;
+    }
+
+    th {
+      color: $grey;
+      font-size: 0.8em;
+    }
+
+    tr {
+      border-bottom: 1px solid $light-grey;
+    }
+
+    tfoot {
+      div {
+        text-align: right;
+        font-size: 1.05em;
+        letter-spacing: 0.1em;
+        color: $night-rider;
+        font-weight: lighter;
+
+        &.order-total {
+          font-size: 1.1em;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+}

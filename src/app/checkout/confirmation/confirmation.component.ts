@@ -33,8 +33,15 @@ export class ConfirmationComponent implements OnInit {
     });
   }
 
-  goToCheckout() {
-    this.orderService.initOrder(this.cart);
+  completeCheckout() {
+    this.orderService.createOrder(this.cart);
+
+    this.cartService.cart.subscribe(cart => {
+      if (cart === null) {
+        return;
+      }
+      console.log(cart);
+    });
     this.router.navigateByUrl('/order');
   }
 }

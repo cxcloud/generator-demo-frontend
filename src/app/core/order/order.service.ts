@@ -12,21 +12,18 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   createOrder(cart: Cart) {
-    return this.http
+    this.http
       .post<Order>(`/orders`, {
         cartId: cart.id,
         cartVersion: cart.version
       })
-      .map(order => order);
+      .subscribe(order => this.order.next(order));
   }
 
-  getOrder(order: Order) {
-    return this.http.get<Order>(`/orders/${order.id}`).map(res => res);
-  }
-
-  initOrder(cart: Cart) {
-    this.createOrder(cart)
-      .flatMap(order => this.getOrder(order))
+  getOrder() {
+    const order = this.order.getValue();
+    this.http
+      .get<Order>(`/orders/${order.id}`)
       .subscribe(result => this.order.next(result));
   }
 }
