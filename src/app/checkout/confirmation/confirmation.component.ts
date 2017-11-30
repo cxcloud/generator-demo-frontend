@@ -35,12 +35,6 @@ export class ConfirmationComponent implements OnInit {
 
   completeCheckout() {
     this.orderService.createOrder(this.cart);
-
-    this.cartService.cart.subscribe(cart => {
-      if (cart === null) {
-        return;
-      }
-    });
     this.router.navigateByUrl('/order');
   }
 }
