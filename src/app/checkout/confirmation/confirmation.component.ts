@@ -40,7 +40,6 @@ export class ConfirmationComponent implements OnInit {
       if (cart === null) {
         return;
       }
-      console.log(cart);
     });
     this.router.navigateByUrl('/order');
   }
