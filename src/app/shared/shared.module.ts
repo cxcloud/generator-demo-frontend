@@ -10,6 +10,7 @@ import { QuantityInputComponent } from './quantity-input/quantity-input.componen
 import { StepsComponent } from './steps/steps.component';
 import { ErrorDisplayComponent } from './error-display/error-display.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const DECLARATIONS = [
   InfoCardComponent,
@@ -18,7 +19,8 @@ const DECLARATIONS = [
   QuantityInputComponent,
   StepsComponent,
   ErrorDisplayComponent,
-  SpinnerComponent
+  SpinnerComponent,
+  OrderDetailsComponent
 ];
 
 @NgModule({

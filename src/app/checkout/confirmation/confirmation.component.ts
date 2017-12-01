@@ -14,7 +14,6 @@ export class ConfirmationComponent implements OnInit {
   cart: Cart;
   shippingAddress: Address;
   billingAddress: Address;
-  columns: Array<string> = ['Description', 'Quantity', 'Price', 'Total'];
 
   constructor(
     private router: Router,

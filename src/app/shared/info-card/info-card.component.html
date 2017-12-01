@@ -1,10 +1,16 @@
 <div class="card">
   <header class="card-header">
     <h6 class="card-header-title is-uppercase">{{title}}</h6>
-    <a [href]="url" class="card-header-icon level" aria-label="more options">
+    <a *ngIf="url; else noUrl" [href]="url" class="card-header-icon level" aria-label="more options">
       <i [ngClass]="icon" aria-hidden="true" class="level-item level-right"></i>
       <span *ngIf="label" class="level-item label">{{label}}</span>
     </a>
+    <ng-template #noUrl>
+      <span class="card-header-icon level">
+        <i [ngClass]="icon" aria-hidden="true" class="level-item level-right"></i>
+        <span *ngIf="label" class="level-item label">{{label}}</span>
+      </span>
+    </ng-template>
   </header>
   <div class="card-content">
     <ng-content></ng-content>
