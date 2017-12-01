@@ -1,0 +1,94 @@
+<!-- Addresses, delivery method and payment info -->
+<div class="columns">
+  <div class="column is-4">
+    <app-info-card title="Shipping Address" [icon]="icon" [label]="label" [url]="isUrl ? checkout/shipping : false">
+      <ul *ngIf="shippingAddress">
+        <li>{{shippingAddress.firstName}} {{shippingAddress.lastName}}</li>
+        <li>{{shippingAddress.streetName}} {{shippingAddress.additionalAddressInfo}}</li>
+        <li>{{shippingAddress.city}} {{shippingAddress.country}} {{shippingAddress.postalCode}}</li>
+        <li>{{shippingAddress.region}}</li>
+        <li>{{shippingAddress.phone}}</li>
+        <li>{{shippingAddress.email}}</li>
+      </ul>
+    </app-info-card>
+  </div>
+  <div class="column is-4">
+    <app-info-card title="Billing Address" [icon]="icon" [label]="label" [url]="isUrl ? checkout/shipping : false">
+      <ul *ngIf="billingAddress">
+        <li>{{billingAddress.firstName}} {{billingAddress.lastName}}</li>
+        <li>{{billingAddress.streetName}} {{billingAddress.additionalAddressInfo}}</li>
+        <li>{{billingAddress.city}} {{billingAddress.country}} {{billingAddress.postalCode}}</li>
+        <li>{{billingAddress.region}}</li>
+        <li>{{billingAddress.phone}}</li>
+        <li>{{billingAddress.email}}</li>
+      </ul>
+    </app-info-card>
+  </div>
+  <div class="column is-4">
+    <app-info-card title="Shipping Method" [icon]="icon" [label]="label" [url]="isUrl ? checkout/shipping : false">
+      <ul>
+        <li class="is-capitalized">{{source?.shippingInfo.shippingMethodName}}</li>
+      </ul>
+    </app-info-card>
+    <app-info-card title="Payment Details" [icon]="icon" [label]="label" [url]="isUrl ? checkout/payment : false">
+      <ul>
+        <li class="is-capitalized">Prepaid</li>
+      </ul>
+    </app-info-card>
+  </div>
+</div>
+
+<!-- Order's content -->
+<table class="table is-hoverable is-fullwidth" *ngIf="source">
+  <thead>
+    <tr>
+      <th class="is-uppercase" *ngFor="let title of columns">{{title}}</th>
+    </tr>
+  </thead>
+
+  <tfoot>
+    <!-- Subtotal and shipping costs -->
+    <tr class="subtotal">
+      <th colspan="4">
+        <div class="columns">
+          <div class="column is-2 is-offset-8">
+            <div>Subtotal</div>
+            <div>Shipping</div>
+          </div>
+          <div class="column is-2">
+            <div>{{source?.totalPrice.currencyCode}} {{0.01 * source?.totalPrice.centAmount}}</div>
+            <div>EUR 0.-</div>
+          </div>
+        </div>
+
+    </tr>
+    <!-- Sales tax and total costs -->
+    <tr class="total">
+      <th colspan="4">
+        <div class="columns">
+          <div class="column is-2 is-offset-8">
+            <div>Sales Tax</div>
+            <div class="order-total">Total</div>
+          </div>
+          <div class="column is-2">
+            <div>EUR 0.-</div>
+            <div class="order-total">{{source?.totalPrice.currencyCode}} {{0.01 * source?.totalPrice.centAmount}}</div>
+          </div>
+        </div>
+      </th>
+    </tr>
+  </tfoot>
+
+  <tbody>
+    <tr *ngFor="let item of source.lineItems">
+      <td class="columns cart-item-description">
+        <div class="column">
+          <app-cart-order-content [item]="item"></app-cart-order-content>
+        </div>
+      </td>
+      <td class="cart-item-quantity">{{item.quantity}}</td>
+      <td class="cart-item-price">{{item.price.value.currencyCode}} {{0.01 * item.price.value.centAmount}} </td>
+      <td class="cart-item-price">{{item.price.value.currencyCode}} {{0.01 * (item.quantity * item.price.value.centAmount)}}</td>
+    </tr>
+  </tbody>
+</table>
