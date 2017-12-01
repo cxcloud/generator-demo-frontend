@@ -6,33 +6,39 @@
   .subtitle {
     font-weight: lighter;
   }
-}
 
-.order-content {
-  background-color: $white;
-  border: 1px solid $light-grey;
+  .order-content {
+    background-color: $white;
+    border: 1px solid $light-grey;
 
-  h6.title {
-    font-weight: lighter;
-    text-transform: uppercase;
-    border-bottom: 1px solid $light-grey;
-    padding: 5px 2px 1em 2px;
-    margin-bottom: 2em;
-  }
+    h6.title {
+      font-weight: lighter;
+      text-transform: uppercase;
+      border-bottom: 1px solid $light-grey;
+      padding: 5px 2px 1em 2px;
+      margin-bottom: 2em;
+    }
 
-  .email-sent {
-    margin-bottom: 1em;
-    line-height: 1.2em;
-    p {
+    .email-sent {
+      margin-bottom: 1em;
+      line-height: 1.2em;
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .order-details {
       font-size: 14px;
+      .item-title p {
+        margin-right: 10px;
+        color: $grey;
+      }
     }
   }
 
-  .order-details {
-    font-size: 14px;
-    .item-title p {
-      margin-right: 10px;
-      color: $grey;
+  /deep/ app-goto-button {
+    button {
+      font-weight: 800;
     }
   }
 }

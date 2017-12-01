@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Order } from '@cxcloud/ct-types/orders';
 import { Address } from '@cxcloud/ct-types/common';
 import { CartService } from '../core/cart/cart.service';
@@ -16,6 +17,7 @@ export class OrderComponent implements OnInit {
   billingAddress: Address;
 
   constructor(
+    private router: Router,
     private cartService: CartService,
     private orderService: OrderService
   ) {}
@@ -29,5 +31,9 @@ export class OrderComponent implements OnInit {
       this.shippingAddress = this.order.shippingAddress;
       this.billingAddress = this.order.billingAddress;
     });
+  }
+
+  goToHomePage() {
+    this.router.navigateByUrl('/');
   }
 }

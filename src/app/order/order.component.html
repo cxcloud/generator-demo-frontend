@@ -6,6 +6,9 @@
           Thank you for your order!
         </h4>
       </div>
+      <div class="level-item level-right">
+        <app-goto-button name="Continue Shopping" (click)="goToHomePage();"></app-goto-button>
+      </div>
     </div>
     <div class="columns order-content">
       <div class="column">
@@ -30,6 +33,12 @@
         </div>
         <!-- Order details -->
         <app-order-details *ngIf="order" [source]="order" icon="mdi mdi-check"></app-order-details>
+        <div class="level">
+          <!-- Continue button -->
+          <div class="level-item level-right">
+            <app-goto-button name="Continue Shopping" (click)="goToHomePage();"></app-goto-button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
