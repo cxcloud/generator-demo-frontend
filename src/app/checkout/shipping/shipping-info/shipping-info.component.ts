@@ -64,15 +64,17 @@ export class ShippingInfoComponent implements OnInit {
   }
 
   get defautShippingAddress(): Address {
-    return this.customer.addresses.filter(
-      address => address.id === this.customer.defaultShippingAddressId
-    )[0];
+    return this.getDefaultAddress(this.customer.defaultShippingAddressId);
   }
 
   get defautBillingAddress(): Address {
-    return this.customer.addresses.filter(
-      address => address.id === this.customer.defaultBillingAddressId
-    )[0];
+    return this.getDefaultAddress(this.customer.defaultBillingAddressId);
+  }
+
+  getDefaultAddress(id) {
+    if (this.customer) {
+      return this.customer.addresses.filter(address => address.id === id)[0];
+    }
   }
 
   get shippingAddressForm(): FormGroup {
