@@ -25,10 +25,6 @@ export class OrderService {
   }
 
   getOrder() {
-    //   const order = this.order.getValue();
-    //   this.http
-    //     .get<Order>(`/orders/${order.id}`)
-    //     .subscribe(result => this.order.next(result));
     return this.order.getValue();
   }
 }
