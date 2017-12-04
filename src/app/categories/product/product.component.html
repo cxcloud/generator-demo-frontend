@@ -31,7 +31,7 @@
 
         <div class="pd-description column is-8">{{product?.description?.en}}</div>
         <div class="subtitle is-3 pd-price">
-          {{price?.value?.currencyCode}} {{0.01 * price?.value?.centAmount}}
+          {{ 0.01 * price?.value?.centAmount | currency: price?.value?.currencyCode}}
         </div>
 
         <div class="field is-horizontal">

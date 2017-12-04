@@ -155,7 +155,7 @@
       </div>
       <div class="column is-6">{{method.description}}</div>
       <div class="column is-3">
-        {{method.zoneRates[0].shippingRates[0].price.currencyCode}} {{method.zoneRates[0].shippingRates[0].price.centAmount * 0.01}}
+        {{ 0.01 * method.zoneRates[0].shippingRates[0].price.centAmount | currency: method.zoneRates[0].shippingRates[0].price.currencyCode}}
       </div>
     </div>
 
