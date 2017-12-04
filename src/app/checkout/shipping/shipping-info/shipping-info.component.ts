@@ -10,8 +10,10 @@ import {
 import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
 import { ShippingMethod } from '@cxcloud/ct-types/shipping';
+import { Customer } from '@cxcloud/ct-types/customers';
 import { CartService } from '../../../core/cart/cart.service';
 import { CommerceService } from '../../../core/commerce/commerce.service';
+import { CurrentUserService } from '../../../core/auth/current-user.service';
 
 import 'rxjs/add/operator/debounceTime';
 
@@ -23,6 +25,7 @@ import 'rxjs/add/operator/debounceTime';
 export class ShippingInfoComponent implements OnInit {
   addressForm: FormGroup;
   deliveryMethods: ShippingMethod[];
+  customer: Customer;
 
   // TODO: Turn list into real from the API
   countryList: Array<any> = [
@@ -36,7 +39,8 @@ export class ShippingInfoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private cartService: CartService,
-    private commerceService: CommerceService
+    private commerceService: CommerceService,
+    private currentUserService: CurrentUserService
   ) {}
 
   ngOnInit(): void {
@@ -45,14 +49,30 @@ export class ShippingInfoComponent implements OnInit {
       .getShippingMethods()
       .subscribe(resp => (this.deliveryMethods = resp));
 
+    this.currentUserService.customer.subscribe(
+      customer => (this.customer = customer)
+    );
+
     this.addressForm = this.formBuilder.group({
       showBillingAddressForm: false,
-      shippingAddressForm: this.buildAddress(),
-      billingAddressForm: this.buildAddress(),
+      shippingAddressForm: this.buildAddress(this.defautShippingAddress),
+      billingAddressForm: this.buildAddress(this.defautBillingAddress),
       deliveryMethodsForm: this.formBuilder.group({
         deliveryMethod: {}
       })
     });
+  }
+
+  get defautShippingAddress(): Address {
+    return this.customer.addresses.filter(
+      address => address.id === this.customer.defaultShippingAddressId
+    )[0];
+  }
+
+  get defautBillingAddress(): Address {
+    return this.customer.addresses.filter(
+      address => address.id === this.customer.defaultBillingAddressId
+    )[0];
   }
 
   get shippingAddressForm(): FormGroup {
@@ -79,20 +99,22 @@ export class ShippingInfoComponent implements OnInit {
     );
   }
 
-  buildAddress(): FormGroup {
+  buildAddress(address): FormGroup {
     const pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+';
-
     return this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      streetName: ['', Validators.required],
-      additionalAddressInfo: '',
-      city: ['', Validators.required],
-      postalCode: ['', Validators.required],
-      country: ['DE', Validators.required],
-      region: '',
-      phone: '',
-      email: ['', [Validators.required, Validators.pattern(pattern)]]
+      firstName: [address.firstName || '', Validators.required],
+      lastName: [address.lastName || '', Validators.required],
+      streetName: [address.streetName || '', Validators.required],
+      additionalAddressInfo: address.additionalAddressInfo || '',
+      city: [address.city || '', Validators.required],
+      postalCode: [address.postalCode || '', Validators.required],
+      country: [address.country || 'DE', Validators.required],
+      region: address.region || '',
+      phone: address.phone || '',
+      email: [
+        address.email || '',
+        [Validators.required, Validators.pattern(pattern)]
+      ]
     });
   }
 
