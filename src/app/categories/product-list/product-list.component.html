@@ -26,7 +26,7 @@
                   <div class="product-description">
                     <div class="name-headline">{{product.name.en}}</div>
                     <div class="item-price">
-                      {{0.01 * product.masterVariant.prices[0].value.centAmount}} {{product.masterVariant.prices[0].value.currencyCode}}
+                      {{ 0.01 * product.masterVariant.prices[0].value.centAmount | currency: product.masterVariant.prices[0].value.currencyCode}}
                     </div>
                   </div>
                 </div>
