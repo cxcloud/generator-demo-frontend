@@ -13,21 +13,22 @@ export class OrderService {
   constructor(private http: HttpClient, private cartService: CartService) {}
 
   createOrder(cart: Cart) {
-    this.http
+    return this.http
       .post<Order>(`/orders`, {
         cartId: cart.id,
         cartVersion: cart.version
       })
-      .subscribe(order => {
+      .do(order => {
         this.order.next(order);
         this.cartService.createCart();
       });
   }
 
   getOrder() {
-    const order = this.order.getValue();
-    this.http
-      .get<Order>(`/orders/${order.id}`)
-      .subscribe(result => this.order.next(result));
+    //   const order = this.order.getValue();
+    //   this.http
+    //     .get<Order>(`/orders/${order.id}`)
+    //     .subscribe(result => this.order.next(result));
+    return this.order.getValue();
   }
 }

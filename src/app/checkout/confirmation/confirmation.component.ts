@@ -33,7 +33,11 @@ export class ConfirmationComponent implements OnInit {
   }
 
   completeCheckout() {
-    this.orderService.createOrder(this.cart);
-    this.router.navigateByUrl('/order');
+    // this.orderService.createOrder(this.cart);
+    this.orderService.createOrder(this.cart).subscribe(order => {
+      if (order) {
+        this.router.navigateByUrl('/order');
+      }
+    });
   }
 }
