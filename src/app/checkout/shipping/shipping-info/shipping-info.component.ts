@@ -109,12 +109,17 @@ export class ShippingInfoComponent implements OnInit {
 
   checkout() {
     if (this.isFormValid === true) {
-      this.cartService.setCartInfo(
-        this.shippingAddress,
-        this.billingAddress,
-        this.deliveryMethodsForm.get('deliveryMethod').value.id
-      );
-      this.router.navigateByUrl('checkout/payment');
+      this.cartService
+        .setCartInfo(
+          this.shippingAddress,
+          this.billingAddress,
+          this.deliveryMethodsForm.get('deliveryMethod').value.id
+        )
+        .subscribe(cart => {
+          if (cart) {
+            this.router.navigateByUrl('checkout/payment');
+          }
+        });
     }
   }
 }

@@ -103,9 +103,9 @@ export class CartService {
     billingAddress: Address,
     shippingMethodId: string
   ) {
-    this.setShippingAddress(shippingAddress)
+    return this.setShippingAddress(shippingAddress)
       .flatMap(cart => this.setBillingAddress(cart, billingAddress))
       .flatMap(cart => this.setShippingMethod(cart, shippingMethodId))
-      .subscribe(result => this.cart.next(result));
+      .do(result => this.cart.next(result));
   }
 }
