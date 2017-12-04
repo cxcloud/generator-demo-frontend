@@ -31,7 +31,7 @@ export class CartService {
       .subscribe(cart => this.cart.next(cart), () => this.createCart());
   }
 
-  private createCart() {
+  public createCart() {
     this.http.post<Cart>('/carts', {}).subscribe(cart => this.cart.next(cart));
   }
 

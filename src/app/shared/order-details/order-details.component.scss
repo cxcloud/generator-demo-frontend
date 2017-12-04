@@ -1,5 +1,16 @@
 @import '../../../variables.scss';
 
+app-info-card {
+  /deep/ .card {
+    background-color: $white-smoke;
+    box-shadow: none;
+
+    header {
+      box-shadow: none;
+    }
+  }
+}
+
 .table {
   border: 1px solid $light-grey;
   background-color: $white;

@@ -17,6 +17,7 @@ import { CartModule } from './cart/cart.module';
 import { CheckoutModule } from './checkout/checkout.module';
 import { LoginModule } from './login/login.module';
 import { PagesModule } from './pages/pages.module';
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { PagesModule } from './pages/pages.module';
     CartModule,
     CheckoutModule,
     LoginModule,
+    OrderModule,
     AppRoutingModule,
     PagesModule
   ],

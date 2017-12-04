@@ -1,0 +1,45 @@
+<section class="section">
+  <div class="container is-fullhd">
+    <div class="level">
+      <div class="level-left">
+        <h4 class="subtitle is-uppercase is-4 level-left">
+          Thank you for your order!
+        </h4>
+      </div>
+      <div class="level-item level-right">
+        <app-goto-button name="Continue Shopping" (click)="goToHomePage();"></app-goto-button>
+      </div>
+    </div>
+    <div class="columns order-content">
+      <div class="column">
+        <div class="email-sent">
+          <p>An email has been sent to
+            <a>{{order?.customerEmail}}</a>
+          </p>
+          <p>as a copy of this confirmation purchase</p>
+        </div>
+        <div>
+          <h6 class="title is-6">Your order details</h6>
+          <div class="order-details columns">
+            <div class="column is-2 item-title">
+              <p class="is-capitalized">Order number</p>
+              <p class="is-capitalized">Order date</p>
+            </div>
+            <div class="column is-2">
+              <p>{{order?.orderNumber}}</p>
+              <p>{{order?.createdAt | date:'longDate'}}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Order details -->
+        <app-order-details *ngIf="order" [source]="order" icon="mdi mdi-check"></app-order-details>
+        <div class="level">
+          <!-- Continue button -->
+          <div class="level-item level-right">
+            <app-goto-button name="Continue Shopping" (click)="goToHomePage();"></app-goto-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
