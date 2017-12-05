@@ -1,7 +1,7 @@
 <!-- Addresses, delivery method and payment info -->
 <div class="columns">
   <div class="column is-4">
-    <app-info-card title="Shipping Address" [icon]="icon" [label]="label" [url]="isUrl ? checkout/shipping : false">
+    <app-info-card title="Shipping Address" [icon]="icon" [label]="label" [url]="isUrl ? 'checkout/shipping' : false">
       <ul *ngIf="shippingAddress">
         <li>{{shippingAddress.firstName}} {{shippingAddress.lastName}}</li>
         <li>{{shippingAddress.streetName}} {{shippingAddress.additionalAddressInfo}}</li>
@@ -13,7 +13,7 @@
     </app-info-card>
   </div>
   <div class="column is-4">
-    <app-info-card title="Billing Address" [icon]="icon" [label]="label" [url]="isUrl ? checkout/shipping : false">
+    <app-info-card title="Billing Address" [icon]="icon" [label]="label" [url]="isUrl ? 'checkout/shipping' : false">
       <ul *ngIf="billingAddress">
         <li>{{billingAddress.firstName}} {{billingAddress.lastName}}</li>
         <li>{{billingAddress.streetName}} {{billingAddress.additionalAddressInfo}}</li>
@@ -25,12 +25,12 @@
     </app-info-card>
   </div>
   <div class="column is-4">
-    <app-info-card title="Shipping Method" [icon]="icon" [label]="label" [url]="isUrl ? checkout/shipping : false">
+    <app-info-card title="Shipping Method" [icon]="icon" [label]="label" [url]="isUrl ? 'checkout/shipping' : false">
       <ul>
         <li class="is-capitalized">{{source?.shippingInfo.shippingMethodName}}</li>
       </ul>
     </app-info-card>
-    <app-info-card title="Payment Details" [icon]="icon" [label]="label" [url]="isUrl ? checkout/payment : false">
+    <app-info-card title="Payment Details" [icon]="icon" [label]="label" [url]="isUrl ? 'checkout/payment' : false">
       <ul>
         <li class="is-capitalized">Prepaid</li>
       </ul>
