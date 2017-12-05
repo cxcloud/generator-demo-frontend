@@ -1,6 +1,6 @@
 {
   "name": "cxcloud-demo",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -15,10 +15,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{css,scss,js,ts,json}'": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{css,scss,js,ts,json}'": ["prettier --write", "git add"]
   },
   "private": true,
   "dependencies": {

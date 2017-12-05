@@ -1,5 +1,5 @@
 # CxcloudDemo
 
-![](https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoieG5GL1V3emV5SW1YSExpWHpTRmJ6bFhtU0NOTlljcG1lK1MxMkVxYVJBRGJXNkNxZUgxcWV4dFZnQW5mTW0rZDVic3BaT3h3YlZOVUdvdERHTUhxeDhFPSIsIml2UGFyYW1ldGVyU3BlYyI6IlgybW5XMTR5WmxtNVZkNW8iLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[![Build Status](https://travis-ci.org/cxcloud/frontend-accelerator.svg?branch=master)](https://travis-ci.org/cxcloud/frontend-accelerator)
 
 This project is a demo of CXCloud capabilities.
