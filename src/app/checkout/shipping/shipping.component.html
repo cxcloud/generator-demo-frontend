@@ -31,8 +31,8 @@
             <div>Shipping</div>
           </div>
           <div class="column is-4">
-            <div *ngIf="cart">{{ 0.01 * cart.totalPrice.centAmount | currency: cart.totalPrice.currencyCode}}</div>
-            <div>{{ 0 | currency: cart.totalPrice.currencyCode}}</div>
+            <div *ngIf="cart">{{ 0.01 * cart?.totalPrice.centAmount | currency: cart?.totalPrice.currencyCode}}</div>
+            <div>{{ 0 | currency: cart?.totalPrice.currencyCode}}</div>
           </div>
         </div>
         <div class="columns row">
@@ -41,8 +41,8 @@
             <div class="total-price">Total</div>
           </div>
           <div class="column is-4">
-            <div>{{ 0 | currency: cart.totalPrice.currencyCode}}</div>
-            <div class="total-price" *ngIf="cart">{{ 0.01 * cart.totalPrice.centAmount | currency: cart.totalPrice.currencyCode}}</div>
+            <div>{{ 0 | currency: cart?.totalPrice.currencyCode}}</div>
+            <div class="total-price" *ngIf="cart">{{ 0.01 * cart?.totalPrice.centAmount | currency: cart?.totalPrice.currencyCode}}</div>
           </div>
         </div>
       </div>
