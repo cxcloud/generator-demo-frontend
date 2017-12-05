@@ -7,38 +7,52 @@ i {
   margin-right: 5px;
 }
 
-.navbar-item,
-.navbar-burger {
-  color: $white;
-  &:hover {
-    background-color: $ebony-clay;
-    color: $white;
-  }
-}
+.container {
+  display: inline-flex;
 
-.navbar-brand {
-  a {
-    color: $miscka;
-    font-size: 13px;
+  .navbar-item,
+  .navbar-burger {
+    color: $white;
     &:hover {
+      background-color: $ebony-clay;
       color: $white;
     }
   }
-}
 
-.navbar-menu {
-  .navbar-item {
-    &:hover {
-      background-color: $limed-spruce;
-      color: $yellow;
+  .navbar-brand {
+    a {
+      color: $miscka;
+      font-size: 13px;
+      &:hover {
+        color: $white;
+      }
     }
   }
-}
 
-.badge:after {
-  background-color: $red;
-  box-shadow: 0 0 0 0.1rem $red;
-  color: $white;
-  font-weight: bold;
-  left: 100%;
+  .navbar-menu {
+    background-color: $ebony-clay;
+    padding: 0;
+    .navbar-item {
+      display: inline-flex;
+      &:hover {
+        background-color: $limed-spruce;
+        color: $yellow;
+      }
+    }
+  }
+
+  .badge[data-badge]:after {
+    background-color: $red;
+    box-shadow: 0 0 0 0.1rem $red;
+    color: $white;
+    font-weight: bold;
+    left: 100%;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .badge[data-badge]:after {
+      top: calc(3px - (1em / 2));
+      left: calc(3px + 100%);
+    }
+  }
 }

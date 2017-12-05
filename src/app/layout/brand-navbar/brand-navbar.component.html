@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="container">
-    <div class="navbar-start navbar-brand">
+    <div class="navbar-start navbar-brand is-hidden-touch">
       <a class="navbar-item" routerLink="/">
         <i class="mdi mdi-map-marker mdi-24px"></i> Stores
       </a>
@@ -10,13 +10,8 @@
       <a class="navbar-item" routerLink="/">
         <i class="mdi mdi-phone mdi-24px"></i> +358 40 123 45 67
       </a>
-      <span class="navbar-burger burger" data-target="navMainMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
     </div>
-    <div class="navbar-menu">
+    <div class="navbar-menu brand-menu is-inline-flex">
       <div class="navbar-end">
         <ng-container *ngIf="currentUser; else anonymous">
           <a class="navbar-item" routerLink="/user">
@@ -37,8 +32,11 @@
         </a>
 
       </div>
-
-
     </div>
+    <span class="navbar-burger burger is-flex-touch" data-target="navMainMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
   </div>
 </nav>

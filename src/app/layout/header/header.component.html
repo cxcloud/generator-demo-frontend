@@ -3,11 +3,12 @@
     <app-brand-navbar></app-brand-navbar>
   </div>
   <div class="hero-body">
-      <div class="container level">
-        <h1 class="title">
-          <a class="level-item" routerLink="/"><i class="mdi mdi-cloud-outline mdi-48px"></i>{{title}} Demo</a>
-        </h1>
-      </div>
+    <div class="container level">
+      <h1 class="title">
+        <a class="level-item" routerLink="/">
+          <i class="mdi mdi-cloud-outline mdi-48px"></i>{{title}} Demo</a>
+      </h1>
+    </div>
   </div>
   <!-- Main menu -->
   <div class="hero-foot">
@@ -19,14 +20,13 @@
             <a class="navbar-item category" [routerLink]="['categories/', category.id]">
               {{category.name.en}}
             </a>
-           <!-- Dropdown with sub categories -->
-          <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories">
-            <app-main-menu [categories]="category.subCategories"></app-main-menu>
+            <!-- Dropdown with sub categories -->
+            <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories">
+              <app-main-menu [categories]="category.subCategories"></app-main-menu>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </nav>
   </div>
 </section>
-
