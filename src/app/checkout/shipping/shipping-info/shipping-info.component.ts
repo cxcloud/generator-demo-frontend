@@ -64,17 +64,19 @@ export class ShippingInfoComponent implements OnInit {
   }
 
   get defautShippingAddress(): Address {
-    return this.getDefaultAddress(this.customer.defaultShippingAddressId);
+    if (this.customer) {
+      return this.getDefaultAddress(this.customer.defaultShippingAddressId);
+    }
   }
 
   get defautBillingAddress(): Address {
-    return this.getDefaultAddress(this.customer.defaultBillingAddressId);
+    if (this.customer) {
+      return this.getDefaultAddress(this.customer.defaultBillingAddressId);
+    }
   }
 
   getDefaultAddress(id) {
-    if (this.customer) {
-      return this.customer.addresses.filter(address => address.id === id)[0];
-    }
+    return this.customer.addresses.filter(address => address.id === id)[0];
   }
 
   get shippingAddressForm(): FormGroup {
@@ -104,17 +106,17 @@ export class ShippingInfoComponent implements OnInit {
   buildAddress(address): FormGroup {
     const pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+';
     return this.formBuilder.group({
-      firstName: [address.firstName || '', Validators.required],
-      lastName: [address.lastName || '', Validators.required],
-      streetName: [address.streetName || '', Validators.required],
-      additionalAddressInfo: address.additionalAddressInfo || '',
-      city: [address.city || '', Validators.required],
-      postalCode: [address.postalCode || '', Validators.required],
-      country: [address.country || 'DE', Validators.required],
-      region: address.region || '',
-      phone: address.phone || '',
+      firstName: [address ? address.firstName : '', Validators.required],
+      lastName: [address ? address.lastName : '', Validators.required],
+      streetName: [address ? address.streetName : '', Validators.required],
+      additionalAddressInfo: address ? address.additionalAddressInfo : '',
+      city: [address ? address.city : '', Validators.required],
+      postalCode: [address ? address.postalCode : '', Validators.required],
+      country: [address ? address.contry : 'DE', Validators.required],
+      region: address ? address.region : '',
+      phone: address ? address.phone : '',
       email: [
-        address.email || '',
+        address ? address.email : '',
         [Validators.required, Validators.pattern(pattern)]
       ]
     });
