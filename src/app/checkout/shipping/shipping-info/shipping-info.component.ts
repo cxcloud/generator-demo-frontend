@@ -14,7 +14,10 @@ import { Customer } from '@cxcloud/ct-types/customers';
 import { CartService } from '../../../core/cart/cart.service';
 import { CommerceService } from '../../../core/commerce/commerce.service';
 import { CurrentUserService } from '../../../core/auth/current-user.service';
-import { getCountryList, getCountryName } from '../../../utils/countries';
+import {
+  getCountryList,
+  getCountryName
+} from '../../../utils/countries/countries';
 
 import 'rxjs/add/operator/debounceTime';
 

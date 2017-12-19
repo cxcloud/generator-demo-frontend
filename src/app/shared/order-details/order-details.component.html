@@ -5,7 +5,7 @@
       <ul *ngIf="shippingAddress">
         <li>{{shippingAddress.firstName}} {{shippingAddress.lastName}}</li>
         <li>{{shippingAddress.streetName}} {{shippingAddress.additionalAddressInfo}}</li>
-        <li>{{shippingAddress.city}} {{shippingAddress.country}} {{shippingAddress.postalCode}}</li>
+        <li>{{shippingAddress.city}}, {{shippingAddress.country | country}}, {{shippingAddress.postalCode}}</li>
         <li>{{shippingAddress.region}}</li>
         <li>{{shippingAddress.phone}}</li>
         <li>{{shippingAddress.email}}</li>
@@ -17,7 +17,7 @@
       <ul *ngIf="billingAddress">
         <li>{{billingAddress.firstName}} {{billingAddress.lastName}}</li>
         <li>{{billingAddress.streetName}} {{billingAddress.additionalAddressInfo}}</li>
-        <li>{{billingAddress.city}} {{billingAddress.country}} {{billingAddress.postalCode}}</li>
+        <li>{{billingAddress.city}}, {{billingAddress.country | country}}, {{billingAddress.postalCode}}</li>
         <li>{{billingAddress.region}}</li>
         <li>{{billingAddress.phone}}</li>
         <li>{{billingAddress.email}}</li>

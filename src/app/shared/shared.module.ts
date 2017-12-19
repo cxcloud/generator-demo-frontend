@@ -11,6 +11,7 @@ import { StepsComponent } from './steps/steps.component';
 import { ErrorDisplayComponent } from './error-display/error-display.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { CountryPipe } from '../utils/countries/country.pipe';
 
 const DECLARATIONS = [
   InfoCardComponent,
@@ -30,7 +31,7 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     MarkdownModule.forRoot()
   ],
-  declarations: [...DECLARATIONS],
+  declarations: [...DECLARATIONS, CountryPipe],
   exports: [...DECLARATIONS, MarkdownModule],
   providers: []
 })
