@@ -46,7 +46,7 @@
         <br/>
         <div class="select">
           <select formControlName="country">
-            <option *ngFor="let country of countryList" [value]="country.countryCode">{{country.name}}</option>
+            <option *ngFor="let country of countryList" [value]="country.key">{{country.name}}</option>
           </select>
         </div>
         <app-error-display [control]="shippingAddressForm.controls.country"></app-error-display>
@@ -121,7 +121,7 @@
           <br/>
           <div class="select">
             <select formControlName="country">
-              <option *ngFor="let country of countryList" [value]="country.countryCode">{{country.name}}</option>
+              <option *ngFor="let country of countryList" [value]="country.key">{{country.name}}</option>
             </select>
           </div>
           <app-error-display [control]="billingAddressForm.controls.country"></app-error-display>
