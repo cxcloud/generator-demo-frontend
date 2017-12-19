@@ -14,6 +14,7 @@ import { Customer } from '@cxcloud/ct-types/customers';
 import { CartService } from '../../../core/cart/cart.service';
 import { CommerceService } from '../../../core/commerce/commerce.service';
 import { CurrentUserService } from '../../../core/auth/current-user.service';
+import { getCountryList, getCountryName } from '../../../utils/countries';
 
 import 'rxjs/add/operator/debounceTime';
 
@@ -26,14 +27,6 @@ export class ShippingInfoComponent implements OnInit {
   addressForm: FormGroup;
   deliveryMethods: ShippingMethod[];
   customer: Customer;
-
-  // TODO: Turn list into real from the API
-  countryList: Array<any> = [
-    { countryCode: 'FI', name: 'Finland' },
-    { countryCode: 'DE', name: 'Germany' },
-    { countryCode: 'RU', name: 'Russia' },
-    { countryCode: 'UK', name: 'United Kingdom' }
-  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -61,6 +54,10 @@ export class ShippingInfoComponent implements OnInit {
         deliveryMethod: {}
       })
     });
+  }
+
+  get countryList() {
+    return getCountryList();
   }
 
   get defautShippingAddress(): Address {
@@ -112,7 +109,7 @@ export class ShippingInfoComponent implements OnInit {
       additionalAddressInfo: address ? address.additionalAddressInfo : '',
       city: [address ? address.city : '', Validators.required],
       postalCode: [address ? address.postalCode : '', Validators.required],
-      country: [address ? address.contry : 'DE', Validators.required],
+      country: [address ? address.country : 'DE', Validators.required],
       region: address ? address.region : '',
       phone: address ? address.phone : '',
       email: [
