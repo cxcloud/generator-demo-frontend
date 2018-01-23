@@ -1,0 +1,10 @@
+@import '../../../../node_modules/bulma/sass/utilities/initial-variables';
+@import '../partials/_typography';
+
+/**
+* Update default bulma font
+*/
+$family-sans-serif: $sans-pro-font;
+
+@import '../../../../node_modules/bulma/bulma.sass';
+@import '../../../../node_modules/bulma-badge/badge.sass';
