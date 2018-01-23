@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   }
 
   goBackToHomePage() {
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/');
   }
 
   goToCheckout() {

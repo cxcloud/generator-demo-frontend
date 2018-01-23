@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import '~assets/scss/styles';
 
 a {
   color: $ebony-clay;
@@ -12,10 +12,7 @@ a.sub-category {
     background-color: $white-smoke;
   }
 }
-/* Menu above banner text on main page */
-/deep/ .navbar-dropdown {
-  z-index: 101;
-}
+
 // Menu (mobile view)
 .is-active {
   // Subcategories menu
@@ -28,10 +25,12 @@ a.sub-category {
   }
 }
 
-.nested.level-1 {
-  font-weight: bold;
-}
-.nested.level-2 {
-  font-weight: normal;
-  padding-left: 10px;
+.nested {
+  &.level-1 {
+    font-weight: bold;
+  }
+  &.level-2 {
+    font-weight: normal;
+    padding-left: 10px;
+  }
 }

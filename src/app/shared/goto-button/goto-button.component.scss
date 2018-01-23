@@ -1,6 +1,6 @@
-@import '../../../variables.scss';
+@import '~assets/scss/styles';
 
-.btn-checkout {
+.button.btn-checkout {
   background-color: $yellow;
   justify-content: center;
   min-height: 2.5em;

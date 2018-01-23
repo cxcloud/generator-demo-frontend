@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '~assets/scss/styles';
 
 .section {
   padding: 0.5rem 0;
@@ -17,7 +17,7 @@
   background: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
-  z-index: 100;
+  z-index: 15;
   min-height: 50px;
 
   &.top {
