@@ -41,7 +41,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "^1.6.0",
+    "@angular/cli": "^1.6.4",
     "@angular/compiler-cli": "^5.0.1",
     "@angular/language-service": "^5.0.1",
     "@cxcloud/ct-types": "^0.1.6",
