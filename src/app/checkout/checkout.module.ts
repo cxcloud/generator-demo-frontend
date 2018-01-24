@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared';
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutComponent } from './checkout.component';
-import { ShippingComponent } from './shipping/shipping.component';
-import { PaymentComponent } from './shipping/payment/payment.component';
-import { ConfirmationComponent } from './confirmation/confirmation.component';
-import { ShippingInfoComponent } from './shipping/shipping-info/shipping-info.component';
+import { ShippingComponent } from './shipping';
+import { PaymentComponent } from './shipping/payment';
+import { ConfirmationComponent } from './confirmation';
+import { ShippingInfoComponent } from './shipping/shipping-info';
 
 const DECLARATIONS = [
   CheckoutComponent,

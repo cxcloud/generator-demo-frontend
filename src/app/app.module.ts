@@ -6,18 +6,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Ng2Webstorage } from 'ngx-webstorage';
 
-import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LayoutModule } from './layout/layout.module';
-import { HomeModule } from './home/home.module';
-import { CategoriesModule } from './categories/categories.module';
-import { SharedModule } from './shared/shared.module';
-import { CartModule } from './cart/cart.module';
-import { CheckoutModule } from './checkout/checkout.module';
-import { LoginModule } from './login/login.module';
-import { PagesModule } from './pages/pages.module';
-import { OrderModule } from './order/order.module';
+import { CartModule } from './cart';
+import { CoreModule } from './core';
+import { CategoriesModule } from './categories';
+import { HomeModule } from './home';
+import { LayoutModule } from './layout';
+import { SharedModule } from './shared';
+import { CheckoutModule } from './checkout';
+import { LoginModule } from './login';
+import { PagesModule } from './pages';
+import { OrderModule } from './order';
 
 @NgModule({
   imports: [

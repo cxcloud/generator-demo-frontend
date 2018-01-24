@@ -17,7 +17,7 @@
       "prefix": "app",
       "styles": [
         "../node_modules/mdi/scss/materialdesignicons.scss",
-        "styles.scss"
+        "assets/scss/styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

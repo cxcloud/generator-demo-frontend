@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CoreModule } from '../core/core.module';
-import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core';
+import { SharedModule } from '../shared';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
-import { MyAccountComponent } from './my-account/my-account.component';
+import { MyAccountComponent } from './my-account';
 
 const DECLARATIONS = [LoginComponent, MyAccountComponent];
 

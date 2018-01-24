@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 
-import { InfoCardComponent } from './info-card/info-card.component';
-import { GotoButtonComponent } from './goto-button/goto-button.component';
-import { CartOrderContentComponent } from './cart-order-content/cart-order-content.component';
-import { QuantityInputComponent } from './quantity-input/quantity-input.component';
-import { StepsComponent } from './steps/steps.component';
-import { ErrorDisplayComponent } from './error-display/error-display.component';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { InfoCardComponent } from './info-card';
+import { GotoButtonComponent } from './goto-button';
+import { CartOrderContentComponent } from './cart-order-content';
+import { QuantityInputComponent } from './quantity-input';
+import { StepsComponent } from './steps';
+import { ErrorDisplayComponent } from './error-display';
+import { SpinnerComponent } from './spinner';
+import { OrderDetailsComponent } from './order-details';
 import { CountryPipe } from '../utils/countries/country.pipe';
 
 const DECLARATIONS = [
