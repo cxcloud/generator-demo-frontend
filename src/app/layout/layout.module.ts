@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-import { HeaderComponent } from './header/header.component';
-import { BrandNavbarComponent } from './brand-navbar/brand-navbar.component';
-import { MainMenuComponent } from './main-menu/main-menu.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header';
+import { BrandNavbarComponent } from './brand-navbar';
+import { MainMenuComponent } from './main-menu';
+import { FooterComponent } from './footer';
 
 const DECLARATIONS = [
   HeaderComponent,
