@@ -18,6 +18,7 @@ import { CheckoutModule } from './checkout';
 import { LoginModule } from './login';
 import { PagesModule } from './pages';
 import { OrderModule } from './order';
+import { SearchModule } from './search';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { OrderModule } from './order';
     LoginModule,
     OrderModule,
     AppRoutingModule,
-    PagesModule
+    PagesModule,
+    SearchModule
   ],
   declarations: [AppComponent],
 
