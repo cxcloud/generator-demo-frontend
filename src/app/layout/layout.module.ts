@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
@@ -17,7 +17,13 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule, HttpModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    HttpModule
+  ],
   declarations: [...DECLARATIONS],
   exports: [...DECLARATIONS]
 })

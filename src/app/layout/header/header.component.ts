@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Category } from '@cxcloud/ct-types/categories';
 import { CommerceService } from '../../core/commerce/commerce.service';
@@ -14,8 +20,9 @@ export class HeaderComponent implements OnInit {
 
   // Brand navbar
   categories: Category[];
+  searchForm: FormGroup;
 
-  constructor(private commerceService: CommerceService) {}
+  constructor(private commerceService: CommerceService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.onToggleMenu();
@@ -23,6 +30,10 @@ export class HeaderComponent implements OnInit {
     this.commerceService
       .getCategories()
       .subscribe(data => (this.categories = data));
+
+    this.searchForm = this.formBuilder.group({
+      search: ['']
+    });
   }
 
   onToggleMenu() {

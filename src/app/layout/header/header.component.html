@@ -2,12 +2,28 @@
   <div class="hero-head">
     <app-brand-navbar></app-brand-navbar>
   </div>
-  <div class="hero-body">
-    <div class="container level">
+  <div class="hero-body columns">
+
+    <!-- Shop title -->
+    <div class="column is-8">
       <h1 class="title">
-        <a class="level-item" routerLink="/">
+        <a routerLink="/">
           <i class="mdi mdi-cloud-outline mdi-48px"></i>{{title}} Demo</a>
       </h1>
+    </div>
+
+    <!-- Search -->
+    <div class="column is-4 search">
+      <form novalidate [formGroup]="searchForm">
+        <div class="field">
+          <div class="control has-icons-right">
+            <input class="input" type="text" formControlName="search" placeholder="Search">
+            <span class="icon is-small is-right">
+              <i class="mdi mdi-magnify"></i>
+            </span>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
   <!-- Main menu -->
