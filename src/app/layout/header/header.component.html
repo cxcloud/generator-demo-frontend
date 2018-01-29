@@ -15,12 +15,14 @@
     <!-- Search -->
     <div class="column is-4 search">
       <form novalidate [formGroup]="searchForm">
-        <div class="field">
-          <div class="control has-icons-right">
-            <input class="input" type="text" formControlName="search" placeholder="Search">
-            <span class="icon is-small is-right">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup.enter)="onSearch(search.value)">
+          </div>
+          <div class="control">
+            <a class="icon button" (click)="onSearch(search.value)">
               <i class="mdi mdi-magnify"></i>
-            </span>
+            </a>
           </div>
         </div>
       </form>
