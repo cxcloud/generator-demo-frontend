@@ -67,7 +67,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearch(value: string) {
-    console.log('-- Search -->', value);
     this.router.navigateByUrl('search');
   }
 }
