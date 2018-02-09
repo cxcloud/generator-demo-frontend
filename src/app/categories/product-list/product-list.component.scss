@@ -23,11 +23,20 @@ image {
 
 .title {
   text-transform: uppercase;
-  font-weight: normal;
+  font-weight: lighter;
+  font-size: 2.5em;
+  &::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    display: block;
+    margin: 10px auto;
+    background: $grey;
+  }
 }
 
 .page-title {
-  border: 1px solid #d9d7ce;
+  border: 1px solid $timberwolf;
 
   .title.is-2 {
     font-size: 3em;
