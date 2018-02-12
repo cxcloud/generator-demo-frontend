@@ -18,6 +18,7 @@ import { CommerceService } from '../../core/commerce/commerce.service';
 })
 export class HeaderComponent implements OnInit {
   title = 'CX Cloud';
+  showSearch = false;
 
   // Brand navbar
   categories: Category[];
@@ -68,5 +69,9 @@ export class HeaderComponent implements OnInit {
 
   onSearch(value: string) {
     this.router.navigateByUrl('search');
+  }
+
+  openSearchPopover(event) {
+    this.showSearch = event.target.value.length > 0;
   }
 }

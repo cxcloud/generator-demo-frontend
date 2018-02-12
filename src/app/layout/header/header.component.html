@@ -17,7 +17,8 @@
       <form novalidate [formGroup]="searchForm">
         <div class="field has-addons">
           <div class="control is-expanded">
-            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup.enter)="onSearch(search.value)">
+            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup)="openSearchPopover($event);"
+              (keyup.enter)="onSearch(search.value)">
           </div>
           <div class="control">
             <a class="icon button" (click)="onSearch(search.value)">
@@ -25,27 +26,26 @@
             </a>
           </div>
         </div>
-        <!-- Search popover -->
-        <app-popover>
-          <p>Content here</p>
-        </app-popover>
       </form>
-
+      <!-- Search popover -->
+      <app-popover *ngIf="showSearch">
+        <p>Content here</p>
+      </app-popover>
     </div>
   </div>
   <!-- Main menu -->
-  <div class=" hero-foot ">
-    <nav class="navbar " role="navigation " aria-label="dropdown navigation ">
-      <div class="navbar-menu " id="navMainMenu ">
+  <div class="hero-foot">
+    <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+      <div class="navbar-menu" id="navMainMenu">
         <div class="navbar-start ">
           <!-- List of categories -->
-          <div class="navbar-item has-dropdown is-hoverable " *ngFor="let category of categories ">
-            <a class="navbar-item category " [routerLink]="[ 'categories/', category.id] ">
+          <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
+            <a class="navbar-item category" [routerLink]="['categories/', category.id]">
               {{category.name.en}}
             </a>
             <!-- Dropdown with sub categories -->
-            <div class="navbar-dropdown is-boxed " *ngIf="category.subCategories ">
-              <app-main-menu [categories]="category.subCategories "></app-main-menu>
+            <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories">
+              <app-main-menu [categories]="category.subCategories"></app-main-menu>
             </div>
           </div>
         </div>

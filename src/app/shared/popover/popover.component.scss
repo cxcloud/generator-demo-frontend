@@ -10,11 +10,12 @@ $arrow-height: 12px;
 }
 
 .popover {
+  border: 1px solid $light-grey;
   position: absolute;
+  top: calc(40px + #{$arrow-height}*2);
   padding: 5px;
-  border: 1px solid $miscka;
-  z-index: 100;
   width: calc(100% - 24px);
+  z-index: 100;
 }
 
 .popover-inner {
@@ -35,5 +36,5 @@ $arrow-height: 12px;
 
 .arrow-border {
   top: calc(#{-$arrow-height} - 1px);
-  border-bottom-color: $miscka;
+  border-bottom-color: $light-grey;
 }
