@@ -1,23 +1,61 @@
-.mt-half {
-  margin-top: 0.5rem !important;
+/**
+* Usage example:
+* ------------------
+*  .m-none {
+*    margin: 0;
+*  }
+*  .p-none {
+*    margin: 0;
+*  }
+*  mt-half {
+*    margin-top: 0.5rem !important;
+*  }
+*  .pb-1 {
+*   padding-bottom: 1rem !important;
+*  }
+*/
+
+$sizeUnit: rem;
+$marginKey: 'm';
+$paddingKey: 'p';
+$separator: '-';
+
+$sizes: (
+   ('none', 0),
+   ('half', 0.5),
+   ('1', 1),
+   ('2', 2)
+);
+$positions: (
+   ('t', 'top'),
+   ('l', 'left'),
+   ('b', 'bottom'),
+   ('r', 'right')
+);
+
+@function sizeValue($key, $value) {
+  @return if($key == 'none', 0, $value + $sizeUnit !important);
 }
 
-.mt-1 {
-  margin-top: 1rem !important;
-}
+@each $size in $sizes {
+  $sizeKey: nth($size, 1);
+  $sizeValue: nth($size, 2);
 
-.mt-2 {
-  margin-top: 2rem !important;
-}
+  .#{$marginKey}#{$separator}#{$sizeKey} {
+    margin: sizeValue($sizeKey, $sizeValue);
+  }
+  .#{$paddingKey}#{$separator}#{$sizeKey} {
+    padding: sizeValue($sizeKey, $sizeValue);
+  }
 
-.mb-half {
-  margin-bottom: 0.5rem !important;
-}
-
-.mb-1 {
-  margin-bottom: 1rem !important;
-}
-
-.mb-2 {
-  margin-bottom: 2rem !important;
+  @each $position in $positions {
+    $posKey: nth($position, 1);
+    $posValue: nth($position, 2);
+    .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey} {
+      margin-#{$posValue}: sizeValue($sizeKey, $sizeValue);
+    }
+    .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey} {
+      padding-#{$posValue}: sizeValue($sizeKey, $sizeValue);
+    }
+  }
 }

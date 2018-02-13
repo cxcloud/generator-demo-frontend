@@ -44,6 +44,27 @@
         font-size: 30px;
       }
     }
+
+    .search-section {
+      .section-title {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 1px solid $light-grey;
+      }
+      li {
+        cursor: pointer;
+        &:hover {
+          background-color: #f0f0f0;
+        }
+        .search-item {
+          display: inline-flex;
+          .image {
+            width: 48px;
+            border: 1px solid $light-grey;
+          }
+        }
+      }
+    }
   }
 }
 
