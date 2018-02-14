@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SearchPopoverComponent implements OnInit {
   @Input('searchResults') searchResults: any;
+
   constructor(private router: Router) {}
 
   ngOnInit() {}

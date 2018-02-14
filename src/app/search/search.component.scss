@@ -1,9 +1,26 @@
 @import '~assets/scss/styles';
 
-.section {
-  background-color: $romance;
+section {
+  // background-color: $romance;
 
-  .subtitle {
-    font-weight: lighter;
+  .page-title {
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+}
+
+li {
+  cursor: pointer;
+  &:hover {
+    background-color: $white-smoke;
+  }
+  .search-item {
+    display: inline-flex;
+    .image {
+      width: 48px;
+      border: 1px solid $light-grey;
+    }
   }
 }

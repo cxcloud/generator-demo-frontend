@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   showSearch = false;
 
   // TODO: temp data
-  searchData = SEARCH_DATA;
+  searchResults = SEARCH_DATA;
 
   constructor(
     private router: Router,
