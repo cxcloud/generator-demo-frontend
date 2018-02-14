@@ -23,18 +23,15 @@ export const SEARCH_DATA = [
     section: 'Content',
     items: [
       {
-        url:
-          'https://images.contentful.com/fo9twyrwpveg/2GvUzjRc4wu6E4YCoYgCu4/617bdb4e0fc2d7ba3e6e4bbd9010837d/_features-architecture.svg',
+        url: './assets/images/placeholder.png',
         title: 'Our story'
       },
       {
-        url:
-          'https://images.contentful.com/fo9twyrwpveg/2GvUzjRc4wu6E4YCoYgCu4/617bdb4e0fc2d7ba3e6e4bbd9010837d/_features-architecture.svg',
+        url: './assets/images/placeholder.png',
         title: 'Size Guide'
       },
       {
-        url:
-          'https://images.contentful.com/fo9twyrwpveg/2GvUzjRc4wu6E4YCoYgCu4/617bdb4e0fc2d7ba3e6e4bbd9010837d/_features-architecture.svg',
+        url: './assets/images/placeholder.png',
         title: 'Careers'
       }
     ]

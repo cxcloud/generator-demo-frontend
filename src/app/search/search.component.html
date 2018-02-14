@@ -1,20 +1,22 @@
 <section>
-  <div class="container is-fullhd">
-    <h3 class="page-title is-3">
-      <div class="icon-books icon"></div>
-      Search results:
-    </h3>
-    <div class="search-results" *ngFor="let search of searchResults">
-      <ul>
-        <li *ngFor="let item of search.items">
-          <div class=" search-item ml-half mr-1 pt-half pb-half ">
-            <figure class="image ">
-              <img src="{{item.url}} ">
-            </figure>
-            <div class="ml-1 ">{{item.title}}</div>
-          </div>
-        </li>
-      </ul>
+  <div class="container is-fullhd pl-2 pr-2 columns">
+    <div class="column is-9">
+      <h3 class="page-title is-3 m-1 mb-2 mt-2">
+        <span class="icon-books icon"></span>
+        <div class="ml-1">Search results:</div>
+      </h3>
+      <div class="search-results" *ngFor="let search of searchResults">
+        <ul>
+          <li *ngFor="let item of search.items">
+            <div class=" search-item ml-1 mr-1 pt-half pb-half">
+              <figure class="image ">
+                <img src="{{item.url}} ">
+              </figure>
+              <div class="ml-1 ">{{item.title}}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
