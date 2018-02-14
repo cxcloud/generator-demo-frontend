@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://demo.cxcloud.xyz/api/v1'
+  apiUrl: '//demo.cxcloud.com/api/v1'
 };
