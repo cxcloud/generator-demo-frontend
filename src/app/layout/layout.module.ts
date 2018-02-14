@@ -9,12 +9,14 @@ import { HeaderComponent } from './header';
 import { BrandNavbarComponent } from './brand-navbar';
 import { MainMenuComponent } from './main-menu';
 import { FooterComponent } from './footer';
+import { SearchPopoverComponent } from './search-popover';
 
 const DECLARATIONS = [
   HeaderComponent,
   BrandNavbarComponent,
   MainMenuComponent,
-  FooterComponent
+  FooterComponent,
+  SearchPopoverComponent
 ];
 
 @NgModule({
