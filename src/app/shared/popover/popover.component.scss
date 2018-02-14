@@ -1,0 +1,39 @@
+@import '~assets/scss/styles';
+
+$arrow-height: 12px;
+
+.popover,
+.popover-inner {
+  background-color: $white;
+  min-height: 100px;
+  min-width: 250px;
+}
+
+.popover {
+  border: 1px solid $light-grey;
+  position: absolute;
+  top: calc(40px + #{$arrow-height}*2);
+  padding: 5px;
+  width: calc(100% - 24px);
+  z-index: 100;
+}
+
+.popover-inner {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: -$arrow-height;
+  left: 50%;
+  border-left: $arrow-height solid transparent;
+  border-right: $arrow-height solid transparent;
+  border-bottom: $arrow-height solid $white;
+  width: 0;
+  height: 0;
+}
+
+.arrow-border {
+  top: calc(#{-$arrow-height} - 1px);
+  border-bottom-color: $light-grey;
+}

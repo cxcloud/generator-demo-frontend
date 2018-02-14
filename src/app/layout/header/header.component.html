@@ -17,7 +17,8 @@
       <form novalidate [formGroup]="searchForm">
         <div class="field has-addons">
           <div class="control is-expanded">
-            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup.enter)="onSearch(search.value)">
+            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup)="showSearchPopover($event);"
+              (keyup.enter)="onSearch(search.value)">
           </div>
           <div class="control">
             <a class="icon button" (click)="onSearch(search.value)">
@@ -26,6 +27,25 @@
           </div>
         </div>
       </form>
+      <!-- Search popover -->
+      <app-popover *ngIf="showSearch">
+        <div class="search-section" *ngFor="let search of searchData">
+          <div class="section-title mt-half mb-1 p-half level">
+            <div class="level-left">{{search.section}}</div>
+            <div class="is-uppercase level-right more">More</div>
+          </div>
+          <ul>
+            <li *ngFor="let item of search.items" (click)="onSearch();">
+              <div class="search-item ml-half mr-1 pt-half pb-half">
+                <figure class="image">
+                  <img src="{{item.url}}">
+                </figure>
+                <div class="ml-1">{{item.title}}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </app-popover>
     </div>
   </div>
   <!-- Main menu -->

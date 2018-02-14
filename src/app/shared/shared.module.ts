@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 
+import { CountryPipe } from '../utils/countries/country.pipe';
 import { InfoCardComponent } from './info-card';
 import { GotoButtonComponent } from './goto-button';
 import { CartOrderContentComponent } from './cart-order-content';
@@ -11,7 +12,7 @@ import { StepsComponent } from './steps';
 import { ErrorDisplayComponent } from './error-display';
 import { SpinnerComponent } from './spinner';
 import { OrderDetailsComponent } from './order-details';
-import { CountryPipe } from '../utils/countries/country.pipe';
+import { PopoverComponent } from './popover';
 
 const DECLARATIONS = [
   InfoCardComponent,
@@ -21,7 +22,8 @@ const DECLARATIONS = [
   StepsComponent,
   ErrorDisplayComponent,
   SpinnerComponent,
-  OrderDetailsComponent
+  OrderDetailsComponent,
+  PopoverComponent
 ];
 
 @NgModule({

@@ -21,6 +21,7 @@
   }
 
   .search {
+    position: relative;
     input,
     .button {
       height: 40px;
@@ -43,13 +44,42 @@
         font-size: 30px;
       }
     }
+
+    .search-section {
+      .section-title {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 1px solid $light-grey;
+
+        .more {
+          color: $miscka;
+          cursor: pointer;
+          &:hover {
+            color: $grey;
+          }
+        }
+      }
+      li {
+        cursor: pointer;
+        &:hover {
+          background-color: $white-smoke;
+        }
+        .search-item {
+          display: inline-flex;
+          .image {
+            width: 48px;
+            border: 1px solid $light-grey;
+          }
+        }
+      }
+    }
   }
 }
 
 .hero-foot {
   // Categories menu
   .navbar-menu {
-    border-bottom: 1px solid #d6d6d6;
+    border-bottom: 1px solid $light-grey;
     padding-left: 1.5em;
 
     .category {

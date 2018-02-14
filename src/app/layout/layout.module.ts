@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+import { SharedModule } from '../shared';
 import { HeaderComponent } from './header';
 import { BrandNavbarComponent } from './brand-navbar';
 import { MainMenuComponent } from './main-menu';
@@ -18,6 +19,7 @@ const DECLARATIONS = [
 
 @NgModule({
   imports: [
+    SharedModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
