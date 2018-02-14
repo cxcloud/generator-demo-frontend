@@ -9,19 +9,19 @@ import { HeaderComponent } from './header';
 import { BrandNavbarComponent } from './brand-navbar';
 import { MainMenuComponent } from './main-menu';
 import { FooterComponent } from './footer';
-import { SearchPopoverComponent } from './search-popover';
+import { SearchModule } from '../search';
 
 const DECLARATIONS = [
   HeaderComponent,
   BrandNavbarComponent,
   MainMenuComponent,
-  FooterComponent,
-  SearchPopoverComponent
+  FooterComponent
 ];
 
 @NgModule({
   imports: [
     SharedModule,
+    SearchModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
