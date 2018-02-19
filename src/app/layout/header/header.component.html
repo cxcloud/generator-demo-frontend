@@ -17,8 +17,7 @@
       <form novalidate [formGroup]="searchForm">
         <div class="field has-addons">
           <div class="control is-expanded">
-            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup)="showSearchPopover($event);"
-              (keyup.enter)="onSearch(search.value)">
+            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup)="showSearchPopover($event);">
           </div>
           <div class="control">
             <a class="button" (click)="onSearch(search.value)">
@@ -28,7 +27,7 @@
         </div>
       </form>
       <!-- Search popover -->
-      <app-search-popover *ngIf="showSearch" [searchResults]="searchResults"></app-search-popover>
+      <app-search-popover [searchQuery]="searchQuery"></app-search-popover>
     </div>
   </div>
   <!-- Main menu -->

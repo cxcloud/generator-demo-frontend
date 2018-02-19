@@ -1,4 +1,4 @@
-<app-popover>
+<app-popover [ngClass]="(isPopoverShown) ? 'active' : 'hidden'">
   <div class="search-section" *ngFor="let search of searchResults">
     <div class="section-title mt-half mb-1 p-half level">
       <div class="level-left">{{search.section}}</div>

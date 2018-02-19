@@ -1,5 +1,13 @@
 @import '~assets/scss/styles';
 
+.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 .search-section {
   .section-title {
     text-transform: uppercase;

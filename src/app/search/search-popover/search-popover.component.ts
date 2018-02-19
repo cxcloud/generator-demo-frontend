@@ -1,19 +1,36 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input,
+  SimpleChanges
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { SEARCH_DATA } from '../../mock/search-data';
 
 @Component({
   selector: 'app-search-popover',
   templateUrl: './search-popover.component.html',
   styleUrls: ['./search-popover.component.scss']
 })
-export class SearchPopoverComponent implements OnInit {
-  @Input('searchResults') searchResults: any;
+export class SearchPopoverComponent implements OnInit, OnChanges {
+  @Input('searchQuery') searchQuery: string;
+  isPopoverShown = false;
+
+  // TODO: temp data
+  searchResults = SEARCH_DATA;
 
   constructor(private router: Router) {}
 
   ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.searchQuery) {
+      this.isPopoverShown = changes.searchQuery.currentValue.length > 0;
+    }
+  }
 
   onSearch() {
     this.router.navigateByUrl('search');
+    this.isPopoverShown = false;
   }
 }

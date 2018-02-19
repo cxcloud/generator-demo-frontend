@@ -9,7 +9,6 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Category } from '@cxcloud/ct-types/categories';
 import { CommerceService } from '../../core/commerce/commerce.service';
-import { SEARCH_DATA } from '../../mock/search-data';
 
 @Component({
   selector: 'app-header',
@@ -22,10 +21,7 @@ export class HeaderComponent implements OnInit {
   categories: Category[];
 
   searchForm: FormGroup;
-  showSearch = false;
-
-  // TODO: temp data
-  searchResults = SEARCH_DATA;
+  searchQuery = '';
 
   constructor(
     private router: Router,
@@ -70,11 +66,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  onSearch(value: string) {
-    this.router.navigateByUrl('search');
-  }
-
   showSearchPopover(event) {
-    this.showSearch = event.target.value.length > 0;
+    this.searchQuery = event.target.value;
   }
 }
