@@ -5,18 +5,16 @@
       <div class="ml-1">Search results:</div>
     </h3>
     <div class="search-results">
-      <div *ngFor="let search of searchResults">
-        <ul class="mr-2 ml-2">
-          <li *ngFor="let item of search.items">
-            <div class=" search-item ml-1 mr-1 pt-half pb-half">
-              <figure class="image ">
-                <img src="{{item.url}} ">
-              </figure>
-              <div class="ml-1">{{item.title}}</div>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <ul *ngFor="let search of searchResults" class="mr-2 ml-2">
+        <li *ngFor="let item of search.items">
+          <div class=" search-item ml-1 mr-1 pt-half pb-half">
+            <figure class="image ">
+              <img src="{{item.url}} ">
+            </figure>
+            <div class="ml-1 ">{{item.title}}</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </section>

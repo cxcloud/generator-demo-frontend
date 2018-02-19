@@ -18,6 +18,14 @@ section {
 .search-results {
   background: $white;
   border: 1px solid rgba(0, 0, 0, 0.05);
+
+  ul:first-child li:first-child {
+    margin-top: 0.5rem;
+  }
+
+  ul:last-child li:last-child {
+    margin-bottom: 0.5rem;
+  }
 }
 
 li {
