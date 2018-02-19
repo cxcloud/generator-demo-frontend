@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
 
   searchForm: FormGroup;
   searchQuery = '';
+  event: any;
 
   constructor(
     private router: Router,
@@ -37,7 +38,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(data => (this.categories = data));
 
     this.searchForm = this.formBuilder.group({
-      search: ['']
+      query: ['']
     });
   }
 
@@ -66,7 +67,12 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  showSearchPopover(event) {
-    this.searchQuery = event.target.value;
+  setSearchQuery() {
+    // Seach input value
+    this.searchQuery = this.searchForm.get('query').value;
+  }
+
+  onSearch(event) {
+    this.event = event;
   }
 }

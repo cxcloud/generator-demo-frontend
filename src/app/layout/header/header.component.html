@@ -17,17 +17,17 @@
       <form novalidate [formGroup]="searchForm">
         <div class="field has-addons">
           <div class="control is-expanded">
-            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup)="showSearchPopover($event);">
+            <input type="text" class="input" formControlName="query" placeholder="Search" (keyup)="setSearchQuery();" (keyup.enter)="onSearch($event);">
           </div>
           <div class="control">
-            <a class="button">
+            <a class="button" (click)="onSearch($event);">
               <span class="icon-search icon"></span>
             </a>
           </div>
         </div>
       </form>
       <!-- Search popover -->
-      <app-search-popover [searchQuery]="searchQuery"></app-search-popover>
+      <app-search-popover [searchEvent]="event" [searchQuery]="searchQuery"></app-search-popover>
     </div>
   </div>
   <!-- Main menu -->

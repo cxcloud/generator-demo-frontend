@@ -15,6 +15,7 @@ import { SEARCH_DATA } from '../../mock/search-data';
 })
 export class SearchPopoverComponent implements OnInit, OnChanges {
   @Input('searchQuery') searchQuery: string;
+  @Input('searchEvent') searchEvent: string;
   isPopoverShown = false;
 
   // TODO: temp data
@@ -23,9 +24,13 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
   constructor(private router: Router) {}
 
   ngOnInit() {}
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes.searchQuery) {
       this.isPopoverShown = changes.searchQuery.currentValue.length > 0;
+    }
+    if (changes.searchEvent) {
+      this.onSearch();
     }
   }
 
