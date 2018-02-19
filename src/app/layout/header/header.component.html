@@ -2,69 +2,58 @@
   <div class="hero-head">
     <app-brand-navbar></app-brand-navbar>
   </div>
-  <div class="hero-body columns">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
 
-    <!-- Shop title -->
-    <div class="column is-8">
-      <h1 class="title">
-        <a routerLink="/">
-          <i class="mdi mdi-cloud-outline mdi-48px"></i>{{title}} Demo</a>
-      </h1>
-    </div>
-
-    <!-- Search -->
-    <div class="column is-4 search">
-      <form novalidate [formGroup]="searchForm">
-        <div class="field has-addons">
-          <div class="control is-expanded">
-            <input #search type="text" class="input" formControlName="search" placeholder="Search" (keyup)="showSearchPopover($event);"
-              (keyup.enter)="onSearch(search.value)">
-          </div>
-          <div class="control">
-            <a class="icon button" (click)="onSearch(search.value)">
-              <i class="mdi mdi-magnify"></i>
-            </a>
-          </div>
+        <!-- Shop title -->
+        <div class="column is-8">
+          <h1 class="title">
+            <a routerLink="/">
+              <i class="mdi mdi-cloud-outline mdi-48px"></i>{{title}} Demo</a>
+          </h1>
         </div>
-      </form>
-      <!-- Search popover -->
-      <app-popover *ngIf="showSearch">
-        <div class="search-section" *ngFor="let search of searchData">
-          <div class="section-title mt-half mb-1 p-half level">
-            <div class="level-left">{{search.section}}</div>
-            <div class="is-uppercase level-right more">More</div>
-          </div>
-          <ul>
-            <li *ngFor="let item of search.items" (click)="onSearch();">
-              <div class="search-item ml-half mr-1 pt-half pb-half">
-                <figure class="image">
-                  <img src="{{item.url}}">
-                </figure>
-                <div class="ml-1">{{item.title}}</div>
+
+        <!-- Search -->
+        <div class="column is-4 search mt-1">
+          <form novalidate [formGroup]="searchForm">
+            <div class="field has-addons">
+              <div class="control is-expanded">
+                <input type="text" class="input" formControlName="query" placeholder="Search" (keyup)="setSearchQuery();" (keyup.enter)="onSearch($event);">
               </div>
-            </li>
-          </ul>
+              <div class="control">
+                <a class="button" (click)="onSearch($event);">
+                  <span class="icon-search icon"></span>
+                </a>
+              </div>
+            </div>
+          </form>
+          <!-- Search popover -->
+          <app-search-popover [searchEvent]="event" [searchQuery]="searchQuery"></app-search-popover>
         </div>
-      </app-popover>
+      </div>
     </div>
   </div>
+
   <!-- Main menu -->
   <div class="hero-foot">
-    <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-      <div class="navbar-menu" id="navMainMenu">
-        <div class="navbar-start">
-          <!-- List of categories -->
-          <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
-            <a class="navbar-item category" [routerLink]="['categories/', category.id]">
-              {{category.name.en}}
-            </a>
-            <!-- Dropdown with sub categories -->
-            <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories">
-              <app-main-menu [categories]="category.subCategories"></app-main-menu>
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+        <div class="navbar-menu" id="navMainMenu">
+          <div class="navbar-start">
+            <!-- List of categories -->
+            <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
+              <a class="navbar-item category" [routerLink]="['categories/', category.id]">
+                {{category.name.en}}
+              </a>
+              <!-- Dropdown with sub categories -->
+              <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories">
+                <app-main-menu [categories]="category.subCategories"></app-main-menu>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </div>
 </section>

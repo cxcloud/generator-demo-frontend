@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SEARCH_DATA } from '../mock/search-data';
 
 @Component({
   selector: 'app-search',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  // TODO: temp data
+  searchResults = SEARCH_DATA;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

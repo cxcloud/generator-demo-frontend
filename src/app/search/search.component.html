@@ -1,11 +1,20 @@
 <section class="section">
   <div class="container is-fullhd">
-    <div class="level">
-      <div class="level-left">
-        <h4 class="subtitle is-uppercase is-4 level-left">
-          <i class="mdi mdi-file-find mdi-36px"></i> Search results:
-        </h4>
-      </div>
+    <h3 class="page-title is-3 m-1 mb-2">
+      <span class="icon-books icon"></span>
+      <div class="ml-1">Search results:</div>
+    </h3>
+    <div class="search-results">
+      <ul *ngFor="let search of searchResults" class="mr-2 ml-2">
+        <li *ngFor="let item of search.items">
+          <div class=" search-item ml-1 mr-1 pt-half pb-half">
+            <figure class="image ">
+              <img src="{{item.url}} ">
+            </figure>
+            <div class="ml-1 ">{{item.title}}</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </section>

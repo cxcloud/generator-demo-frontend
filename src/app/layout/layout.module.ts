@@ -9,6 +9,7 @@ import { HeaderComponent } from './header';
 import { BrandNavbarComponent } from './brand-navbar';
 import { MainMenuComponent } from './main-menu';
 import { FooterComponent } from './footer';
+import { SearchModule } from '../search';
 
 const DECLARATIONS = [
   HeaderComponent,
@@ -20,6 +21,7 @@ const DECLARATIONS = [
 @NgModule({
   imports: [
     SharedModule,
+    SearchModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
