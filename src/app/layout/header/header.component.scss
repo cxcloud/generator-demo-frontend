@@ -63,5 +63,13 @@
         border-bottom-color: $ebony-clay;
       }
     }
+    .navbar-dropdown.is-boxed {
+      border-radius: 0 !important;
+    }
+
+    // display dropdown menu in several columns
+    .main-menu {
+      display: flex;
+    }
   }
 }
