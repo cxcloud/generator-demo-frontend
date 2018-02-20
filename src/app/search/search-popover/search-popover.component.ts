@@ -29,7 +29,10 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
     if (changes.searchQuery) {
       this.isPopoverShown = changes.searchQuery.currentValue.length > 0;
     }
-    if (changes.searchEvent) {
+    if (
+      changes.searchEvent &&
+      changes.searchEvent.currentValue instanceof Event
+    ) {
       this.onSearch();
     }
   }
