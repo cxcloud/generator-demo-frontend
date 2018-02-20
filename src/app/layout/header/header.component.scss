@@ -68,8 +68,11 @@
     }
 
     // display dropdown menu in several columns
-    .main-menu {
-      display: flex;
+
+    @media (min-width: 768px) {
+      .main-menu {
+        display: flex;
+      }
     }
   }
 }
