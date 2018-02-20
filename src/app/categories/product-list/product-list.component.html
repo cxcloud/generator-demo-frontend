@@ -17,9 +17,6 @@
       </div>
       <div class="columns is-mobile is-multiline is-centered">
         <ng-container *ngIf="products else loading">
-          <div class="no-found" *ngIf="products.length == 0">
-            No products found
-          </div>
           <div *ngFor="let product of products">
             <div class="column is-narrow">
               <!-- Product item -->
@@ -38,6 +35,15 @@
               </a>
             </div>
           </div>
+
+          <!-- No product found -->
+          <div *ngIf="products.length == 0">
+            <figure class="image mt-4 is-2by1">
+              <img src="./assets/images/empty-cart.png">
+            </figure>
+            <figcaption class="no-found mt-3 mb-3"> No products found</figcaption>
+          </div>
+
         </ng-container>
 
         <!-- Loading ... -->
