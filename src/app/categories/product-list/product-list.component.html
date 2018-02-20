@@ -17,6 +17,9 @@
       </div>
       <div class="columns is-mobile is-multiline is-centered">
         <ng-container *ngIf="products else loading">
+          <div class="no-found" *ngIf="products.length == 0">
+            No products found
+          </div>
           <div *ngFor="let product of products">
             <div class="column is-narrow">
               <!-- Product item -->
@@ -36,8 +39,10 @@
             </div>
           </div>
         </ng-container>
+
+        <!-- Loading ... -->
         <ng-template #loading>
-          <app-spinner></app-spinner>
+          <app-spinner class="spinner"></app-spinner>
         </ng-template>
       </div>
     </div>

@@ -66,7 +66,13 @@ image {
   }
 }
 
-/deep/ app-spinner {
+.no-found {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  font-size: 2rem;
+}
+
+.spinner {
   margin-top: 4em;
   margin-bottom: 4em;
 }
