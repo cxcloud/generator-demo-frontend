@@ -19,7 +19,7 @@ section {
   background: $white;
   border: 1px solid rgba(0, 0, 0, 0.05);
 
-  ul:first-child li:first-child {
+  > ul:nth-child(3) li:first-child {
     margin-top: 0.5rem;
   }
 
@@ -47,12 +47,12 @@ section {
 
   .search-filter {
     display: flex;
-
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     .filter-section {
       color: $ebony-clay;
       padding-bottom: 3px;
       &:hover {
-        border-bottom: 1px solid $ebony-clay;
+        color: $silver;
       }
     }
   }

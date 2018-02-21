@@ -9,6 +9,8 @@ import { SEARCH_DATA } from '../mock/search-data';
 export class SearchComponent implements OnInit {
   // TODO: temp data
   searchResults = SEARCH_DATA;
+  default = 'All';
+  section = this.default;
 
   get searchSections() {
     return SEARCH_DATA.reduce(
@@ -16,7 +18,7 @@ export class SearchComponent implements OnInit {
         arr.push(item.section);
         return arr;
       },
-      ['All']
+      [this.default]
     );
   }
 
@@ -25,11 +27,12 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   filterSearchContent(section) {
+    this.section = section;
     this.searchResults = SEARCH_DATA.filter(
       result => result.section === section
     );
 
-    if (section === 'All') {
+    if (section === this.default) {
       this.searchResults = SEARCH_DATA;
     }
   }
