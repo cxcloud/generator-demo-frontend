@@ -5,6 +5,12 @@
       <div class="ml-1">Search results:</div>
     </h3>
     <div class="search-results">
+      <div class="search-filter mt-1 mb-1 pb-1">
+        <div *ngFor="let section of searchSections" class="ml-2">
+          <a class="filter-section" (click)="filterSearchContent(section);">{{section}}</a>
+        </div>
+      </div>
+      <div class="ml-2 mt-1 is-uppercase">{{section}}</div>
       <ul *ngFor="let search of searchResults" class="mr-1 ml-1">
         <li *ngFor="let item of search.items">
           <div class=" search-item ml-1 mr-1 pt-half pb-half">
