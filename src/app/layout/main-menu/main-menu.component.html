@@ -1,10 +1,10 @@
 <!-- List of sub categories-->
-<ng-container *ngFor="let category of categories">
-  <div *ngIf="category.ancestors.length <= 2" class="nested level-{{category.ancestors.length}}">
+<ul *ngFor="let category of categories">
+  <li *ngIf="category.ancestors.length <= 2" class="nested level-{{category.ancestors.length}}">
     <a class="navbar-item sub-category" [routerLink]="['categories/', category.id]">
       {{category.name.en}}
     </a>
     <app-main-menu [categories]="category.subCategories" *ngIf="category.subCategories">
     </app-main-menu>
-  </div>
-</ng-container>
+  </li>
+</ul>
