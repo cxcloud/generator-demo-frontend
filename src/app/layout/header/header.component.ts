@@ -33,13 +33,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.onToggleMenu();
 
-    this.commerceService.getCategories().subscribe(categories => {
-      // Sort categories by sorting array
-      const order = ['women', 'men', 'accessories', 'new', 'brands', 'sale'];
-      this.categories = categories.sort(function(a, b) {
-        return order.indexOf(a.slug.en) > order.indexOf(b.slug.en) ? 1 : -1;
-      });
-    });
+    this.commerceService
+      .getCategories()
+      .subscribe(categories => (this.categories = categories));
 
     this.searchForm = this.formBuilder.group({
       query: ['']
