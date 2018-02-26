@@ -65,7 +65,7 @@ button.add-to-cart {
 }
 
 // display dropdown menu in several columns
-@media (max-width: 767px) {
+@media (max-width: $sm-max) {
   .reverse-column-order {
     flex-direction: column-reverse;
     display: flex;
