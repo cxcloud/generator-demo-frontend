@@ -20,12 +20,27 @@
   padding-left: 0;
 }
 
+.pd-attributes {
+  display: flex;
+}
+
+.pd-price {
+  font-size: 2em;
+}
+
 .control {
   margin-right: 1em;
+
+  .select,
+  .select select,
+  button {
+    height: 3rem;
+  }
 }
 
 button.add-to-cart {
   background-color: $yellow;
+  margin-left: 1rem;
   text-transform: uppercase;
 }
 
@@ -61,13 +76,5 @@ button.add-to-cart {
     cursor: pointer;
     text-decoration: underline;
     margin-left: 0.5em;
-  }
-}
-
-// display dropdown menu in several columns
-@media (max-width: $sm-max) {
-  .reverse-column-order {
-    flex-direction: column-reverse;
-    display: flex;
   }
 }
