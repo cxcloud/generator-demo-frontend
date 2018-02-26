@@ -63,3 +63,11 @@ button.add-to-cart {
     margin-left: 0.5em;
   }
 }
+
+// display dropdown menu in several columns
+@media (max-width: 767px) {
+  .reverse-column-order {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
