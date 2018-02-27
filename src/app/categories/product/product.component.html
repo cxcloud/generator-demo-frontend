@@ -40,7 +40,7 @@
           <div class="control" *ngIf="sizes?.length">
             <label>SIZE:</label>
             <br />
-            <div class="select" (change)="getVariantByAttribute( 'size', $event)">
+            <div class="select" (change)="getVariantByAttribute('size', $event)">
               <select>
                 <option *ngFor="let size of sizes">{{size}}</option>
               </select>
@@ -50,7 +50,7 @@
           <div class="control" *ngIf="colors?.length">
             <label>COLOR:</label>
             <br />
-            <div class="select" (change)="getVariantByAttribute( 'color', $event)">
+            <div class="select" (change)="getVariantByAttribute('color', $event)">
               <select>
                 <option *ngFor="let color of colors">{{color}}</option>
               </select>
