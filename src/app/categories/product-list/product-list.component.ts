@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   products: Product[];
+  defaultImage = './assets/images/comingsoon.png';
 
   constructor(
     private commerceService: CommerceService,
