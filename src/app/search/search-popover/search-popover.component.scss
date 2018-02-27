@@ -8,6 +8,18 @@
   display: none;
 }
 
+.search-query {
+  color: $grey;
+  font-size: 0.9rem;
+
+  .icon-search {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+}
+
 .section-title {
   text-transform: uppercase;
   letter-spacing: 2px;

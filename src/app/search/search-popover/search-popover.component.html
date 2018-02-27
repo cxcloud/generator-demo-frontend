@@ -1,4 +1,8 @@
 <app-popover [ngClass]="(isPopoverShown) ? 'active' : 'hidden'">
+  <div class="mt-half ml-half search-query">
+    <span class="icon-search icon"></span>
+    Search for '{{searchQuery}}'
+  </div>
   <ng-container *ngIf="searchResults?.length; else nomatch">
     <div class="section-title mt-half mb-1 p-half level">
       <div class="level-left">Products</div>
@@ -15,7 +19,4 @@
       </li>
     </ul>
   </ng-container>
-  <ng-template #nomatch>
-    <div>Search for '{{searchQuery}}'</div>
-  </ng-template>
 </app-popover>
