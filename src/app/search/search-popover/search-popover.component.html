@@ -1,16 +1,16 @@
 <app-popover [ngClass]="(isPopoverShown) ? 'active' : 'hidden'">
-  <ng-container *ngIf="hits?.length; else nomatch">
+  <ng-container *ngIf="searchResults?.length; else nomatch">
     <div class="section-title mt-half mb-1 p-half level">
       <div class="level-left">Products</div>
       <div class="is-uppercase level-right more">More</div>
     </div>
     <ul>
-      <li *ngFor="let hit of hits" (click)="onSearch();">
+      <li *ngFor="let item of searchResults" (click)="navigateToSearchedItem(item);">
         <div class="search-item ml-half mr-1 pt-half pb-half">
           <figure class="image">
-            <img src="{{hit.images}}" (error)="img.src=defaultImage" #img>
+            <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
           </figure>
-          <div class="ml-1">{{hit["name.en"]}}</div>
+          <div class="ml-1">{{item["name.en"]}}</div>
         </div>
       </li>
     </ul>
