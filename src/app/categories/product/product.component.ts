@@ -20,6 +20,8 @@ export class ProductComponent implements OnInit {
   sizes: Array<string>;
   productDetails: Array<any>;
 
+  defaultImage = './assets/images/comingsoon.png';
+
   constructor(
     private commerceService: CommerceService,
     private route: ActivatedRoute,
@@ -139,5 +141,9 @@ export class ProductComponent implements OnInit {
 
   addItemToCart(quantity) {
     this.cartService.addLineItem(this.product.id, undefined, Number(quantity));
+  }
+
+  setDefaultImage() {
+    this.image.url = this.defaultImage;
   }
 }

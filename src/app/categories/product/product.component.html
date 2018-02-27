@@ -7,9 +7,12 @@
         <figure class="image product-image">
           <img *ngIf="image" [src]="image?.url" class="is-hidden-desktop">
           <!-- Image with magnifying lens (if desktop)-->
-          <img *ngIf="image" [imageZoom]="image.url" [src]="image?.url" [lensWidth]="300" [lensHeight]="500" class="is-hidden-touch">
+          <img *ngIf="image" [imageZoom]="image.url" [src]="image?.url" [lensWidth]="300" [lensHeight]="500" class="is-hidden-touch"
+            (error)="setDefaultImage()">
         </figure>
-        <img *ngFor="let image of selectedVariant?.images" class="thumbnail" src="{{image.url}}" (click)="changeSelectedImage(image)">
+        <ng-container *ngFor="let image of selectedVariant?.images">
+          <img class="thumbnail" src="{{image.url}}" (click)="changeSelectedImage(image)" *ngIf="image.url !== defaultImage">
+        </ng-container>
       </div>
 
       <!-- Description column -->

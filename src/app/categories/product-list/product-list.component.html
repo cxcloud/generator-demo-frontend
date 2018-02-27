@@ -23,7 +23,8 @@
               <a [routerLink]="['/product', product.id]">
                 <div class="box has-text-centered">
                   <figure class="image product-image">
-                    <img src="{{product.masterVariant.images[0].url}}" *ngIf="product.masterVariant.images.length">
+                    <img src="{{product.masterVariant.images[0].url}}" *ngIf="product.masterVariant.images.length" (error)="img.src=defaultImage"
+                      #img>
                   </figure>
                   <div class="product-description">
                     <div class="name-headline">{{product.name.en}}</div>
