@@ -19,3 +19,9 @@ export function resolveProperty(obj, path) {
     return prev ? prev[curr] : undefined;
   }, obj || self);
 }
+
+export function buildUrlQuery(query) {
+  return Object.keys(query)
+    .map(key => `${key}=${query[key]}`)
+    .join('&');
+}

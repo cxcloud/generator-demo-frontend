@@ -8,31 +8,30 @@
   display: none;
 }
 
-.search-section {
-  .section-title {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 1px solid $light-grey;
+.section-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 1px solid $light-grey;
 
-    .more {
-      color: $miscka;
-      cursor: pointer;
-      &:hover {
-        color: $grey;
-      }
-    }
-  }
-  li {
+  .more {
+    color: $miscka;
     cursor: pointer;
     &:hover {
-      background-color: $white-smoke;
+      color: $grey;
     }
-    .search-item {
-      display: inline-flex;
-      .image {
-        width: 48px;
-        border: 1px solid $light-grey;
-      }
+  }
+}
+
+li {
+  cursor: pointer;
+  &:hover {
+    background-color: $white-smoke;
+  }
+  .search-item {
+    display: inline-flex;
+    .image {
+      width: 48px;
+      border: 1px solid $light-grey;
     }
   }
 }

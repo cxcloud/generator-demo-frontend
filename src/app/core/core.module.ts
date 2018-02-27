@@ -10,6 +10,7 @@ import { CartService } from './cart/cart.service';
 import { OrderService } from './order/order.service';
 import { CommerceService } from './commerce/commerce.service';
 import { ContentService } from './content/content.service';
+import { SearchService } from './search/search.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -26,7 +27,8 @@ import { ContentService } from './content/content.service';
     CartService,
     OrderService,
     AuthService,
-    ContentService
+    ContentService,
+    SearchService
   ]
 })
 export class CoreModule {

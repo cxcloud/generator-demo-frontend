@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { SEARCH_DATA } from '../../mock/search-data';
+import { SearchService } from '../../core/search/search.service';
 
 @Component({
   selector: 'app-search-popover',
@@ -18,16 +18,18 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
   @Input('searchEvent') searchEvent: string;
   isPopoverShown = false;
 
-  // TODO: temp data
-  searchResults = SEARCH_DATA;
+  hits: any;
+  defaultImage = './assets/images/comingsoon.png';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private searchService: SearchService) {}
 
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.searchQuery) {
-      this.isPopoverShown = changes.searchQuery.currentValue.length > 0;
+      const currentValue = changes.searchQuery.currentValue;
+      this.isPopoverShown = currentValue.length > 0;
+      this.displayHits(currentValue);
     }
     if (
       changes.searchEvent &&
@@ -35,6 +37,18 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
     ) {
       this.onSearch();
     }
+  }
+
+  displayHits(query) {
+    this.searchService
+      .searchByQuery({
+        query: query,
+        hitsPerPage: '5',
+        attributesToRetrieve: 'id,name.en,description.en,images'
+      })
+      .subscribe((result: any) => {
+        this.hits = result.hits;
+      });
   }
 
   onSearch() {
