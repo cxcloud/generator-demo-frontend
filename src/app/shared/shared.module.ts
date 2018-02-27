@@ -13,6 +13,7 @@ import { ErrorDisplayComponent } from './error-display';
 import { SpinnerComponent } from './spinner';
 import { OrderDetailsComponent } from './order-details';
 import { PopoverComponent } from './popover';
+import { StarsComponent } from './stars/stars.component';
 
 const DECLARATIONS = [
   InfoCardComponent,
@@ -23,7 +24,8 @@ const DECLARATIONS = [
   ErrorDisplayComponent,
   SpinnerComponent,
   OrderDetailsComponent,
-  PopoverComponent
+  PopoverComponent,
+  StarsComponent
 ];
 
 @NgModule({

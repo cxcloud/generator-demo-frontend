@@ -45,7 +45,7 @@
       left: 100%;
     }
 
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: $md-max) {
       .badge[data-badge]:after {
         top: calc(3px - (1em / 2));
         left: calc(3px + 100%);

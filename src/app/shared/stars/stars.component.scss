@@ -1,0 +1,17 @@
+@import '~assets/scss/styles';
+
+.mdi-star {
+  color: $silver;
+
+  &::before {
+    font-style: normal;
+    cursor: pointer;
+  }
+  &:hover {
+    color: $yellow;
+  }
+
+  .highlight {
+    color: $yellow;
+  }
+}

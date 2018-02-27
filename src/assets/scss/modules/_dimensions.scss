@@ -1,0 +1,18 @@
+//  Extra small devices (portrait phones, less than 576px)
+$xs-min: 0px;
+$xs-max: 575.98px;
+
+// Small devices (landscape phones, 576px and up)
+$sm-min: 576px;
+$sm-max: 767.98px;
+
+// Medium devices (tablets, 768px and up)
+$md-min: 768px;
+$md-max: 991.98px;
+
+// Large devices (desktops, 992px and up)
+$lg-min: 992px;
+$lg-max: 1199.98px;
+
+// Extra large devices (wide screen devices, 1200px and up)
+$xl-min: 1200px;

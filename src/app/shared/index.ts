@@ -6,4 +6,5 @@ export * from './order-details';
 export * from './quantity-input';
 export * from './spinner';
 export * from './steps';
+export * from './stars';
 export * from './shared.module';

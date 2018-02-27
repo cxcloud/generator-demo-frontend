@@ -5,9 +5,9 @@
       <!-- Image column -->
       <div class="column is-3 is-offset-2">
         <figure class="image product-image">
-
-          <!-- Image with magnifying lens -->
-          <img *ngIf="image" [imageZoom]="image.url" [src]="image?.url" [lensWidth]="300" [lensHeight]="500">
+          <img *ngIf="image" [src]="image?.url" class="is-hidden-desktop">
+          <!-- Image with magnifying lens (if desktop)-->
+          <img *ngIf="image" [imageZoom]="image.url" [src]="image?.url" [lensWidth]="300" [lensHeight]="500" class="is-hidden-touch">
         </figure>
         <img *ngFor="let image of selectedVariant?.images" class="thumbnail" src="{{image.url}}" (click)="changeSelectedImage(image)">
       </div>
@@ -21,30 +21,18 @@
         <!-- Review placeholder -->
         <div class="level pd-review">
           <div class="level-left">
-            <div class="mdi-set  mdi-24px">
-              <i class="mdi-star" *ngFor="let number of [1,2,3,4,5]"></i>
-            </div>
+            <app-stars></app-stars>
             <span>Write first review</span>
           </div>
         </div>
 
 
         <div class="pd-description column is-8">{{product?.description?.en}}</div>
-        <div class="subtitle is-3 pd-price">
+        <div class="subtitle pd-price">
           {{ 0.01 * price?.value?.centAmount | currency: price?.value?.currencyCode}}
         </div>
 
-        <div class="field is-horizontal">
-
-          <div class="control" *ngIf="colors?.length">
-            <label>COLOR:</label>
-            <br />
-            <div class="select" (change)="getVariantByAttribute('color', $event)">
-              <select>
-                <option *ngFor="let color of colors">{{color}}</option>
-              </select>
-            </div>
-          </div>
+        <div class="field pd-attributes">
 
           <div class="control" *ngIf="sizes?.length">
             <label>SIZE:</label>
@@ -52,6 +40,16 @@
             <div class="select" (change)="getVariantByAttribute('size', $event)">
               <select>
                 <option *ngFor="let size of sizes">{{size}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control" *ngIf="colors?.length">
+            <label>COLOR:</label>
+            <br />
+            <div class="select" (change)="getVariantByAttribute('color', $event)">
+              <select>
+                <option *ngFor="let color of colors">{{color}}</option>
               </select>
             </div>
           </div>

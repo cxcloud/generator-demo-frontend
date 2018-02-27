@@ -68,7 +68,7 @@
     }
 
     // display dropdown menu in several columns
-    @media (min-width: 768px) {
+    @media (min-width: $md-min) {
       .main-menu {
         display: flex;
       }
