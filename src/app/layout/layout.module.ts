@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { SharedModule } from '../shared';
-import { HeaderComponent, SearchPopoverComponent } from './header';
+import { HeaderComponent } from './header';
 import { BrandNavbarComponent } from './brand-navbar';
 import { MainMenuComponent } from './main-menu';
 import { FooterComponent } from './footer';
@@ -13,7 +13,6 @@ import { SearchModule } from '../search';
 
 const DECLARATIONS = [
   HeaderComponent,
-  SearchPopoverComponent,
   BrandNavbarComponent,
   MainMenuComponent,
   FooterComponent

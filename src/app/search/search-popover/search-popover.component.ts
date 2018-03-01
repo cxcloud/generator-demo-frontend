@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchService } from '../../../core/search/search.service';
+import { SearchService } from '../../core/search/search.service';
 
 @Component({
   selector: 'app-search-popover',

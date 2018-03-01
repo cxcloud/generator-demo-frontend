@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   category = 'All';
   defaultImage = './assets/images/comingsoon.png';
 
-  constructor(private router: Router, private searchService: SearchService) {}
+  constructor(private router: Router, public searchService: SearchService) {}
 
   ngOnInit() {}
 

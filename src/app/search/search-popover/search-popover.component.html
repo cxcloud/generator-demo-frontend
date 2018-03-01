@@ -3,7 +3,7 @@
     <span class="icon-search icon"></span>
     Search for '{{searchQuery}}'
   </div>
-  <ng-container *ngIf="searchResults?.length; else nomatch">
+  <ng-container *ngIf="searchResults?.length">
     <div class="section-title mt-half mb-1 p-half level">
       <div class="level-left">Products</div>
       <div class="is-uppercase level-right more" (click)="navigateToSearchPage();">More</div>
