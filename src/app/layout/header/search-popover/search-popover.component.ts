@@ -38,10 +38,12 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
       changes.searchEvent &&
       changes.searchEvent.currentValue instanceof Event
     ) {
-      this.getSearchResults(20).subscribe((resp: any) =>
-        this.searchService.results.next(resp)
-      );
-
+      // Avoid displaying results for empty string query
+      if (this.searchQuery.length > 0) {
+        this.getSearchResults(20).subscribe((resp: any) => {
+          this.searchService.results.next(resp);
+        });
+      }
       this.navigateToSearchPage();
     }
   }

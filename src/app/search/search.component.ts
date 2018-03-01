@@ -9,6 +9,7 @@ import { SearchService } from '../core/search/search.service';
 })
 export class SearchComponent implements OnInit {
   searchResults: any;
+  // TODO: get categories from search results
   categories = ['All', 'Products'];
   category = 'All';
   defaultImage = './assets/images/comingsoon.png';
