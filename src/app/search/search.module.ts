@@ -5,9 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared';
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './search.component';
-import { SearchPopoverComponent } from './search-popover';
 
-const DECLARATIONS = [SearchComponent, SearchPopoverComponent];
+const DECLARATIONS = [SearchComponent];
 
 @NgModule({
   imports: [

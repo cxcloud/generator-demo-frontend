@@ -71,8 +71,9 @@ export class HeaderComponent implements OnInit {
 
   setSearchQuery() {
     // Seach input value
-    this.searchQuery = this.searchForm.get('query').value;
-    this.searchService.updateSearchQuery(this.searchQuery);
+    // this.searchQuery = this.searchForm.get('query').value;
+    // Update searchService value
+    this.searchService.updateSearchQuery(this.searchForm.get('query').value);
   }
 
   onSearch(event) {

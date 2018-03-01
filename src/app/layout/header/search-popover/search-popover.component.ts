@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchService } from '../../core/search/search.service';
+import { SearchService } from '../../../core/search/search.service';
 
 @Component({
   selector: 'app-search-popover',
@@ -28,8 +28,8 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.searchQuery) {
       const currentValue = changes.searchQuery.currentValue;
-      this.isPopoverShown = currentValue.length > 0;
-      this.displayHits(currentValue);
+      this.isPopoverShown = currentValue && currentValue.length > 0;
+      this.displayHits();
     }
     if (
       changes.searchEvent &&
@@ -39,10 +39,10 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
     }
   }
 
-  displayHits(query) {
+  displayHits() {
     this.searchService
       .searchByQuery({
-        query: query,
+        query: this.searchService.searchQuery,
         hitsPerPage: '5',
         attributesToRetrieve: 'id,name.en,description.en,images'
       })
