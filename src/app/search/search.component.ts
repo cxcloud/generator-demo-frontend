@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SearchService } from '../core/search/search.service';
 
 @Component({
@@ -11,12 +12,16 @@ export class SearchComponent implements OnInit {
   categories = ['All', 'Products'];
   defaultImage = './assets/images/comingsoon.png';
 
-  constructor(private searchService: SearchService) {}
+  constructor(private router: Router, private searchService: SearchService) {}
 
   ngOnInit() {}
 
   filterSearchContent(category) {
     // TODO: filter content when several sources on place
     console.log('Filter by category', category);
+  }
+
+  navigateToSearchedItem(item) {
+    this.router.navigateByUrl(`product/${item.id}`);
   }
 }
