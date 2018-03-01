@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SEARCH_DATA } from '../mock/search-data';
+import { SearchService } from '../core/search/search.service';
 
 @Component({
   selector: 'app-search',
@@ -22,9 +23,13 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  constructor() {}
+  constructor(private searchService: SearchService) {}
 
   ngOnInit() {}
+
+  get searchQuery() {
+    return this.searchService.searchQuery;
+  }
 
   filterSearchContent(section) {
     this.section = section;
