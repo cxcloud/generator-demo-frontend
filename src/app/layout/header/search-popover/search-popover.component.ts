@@ -29,26 +29,29 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
     if (changes.searchQuery) {
       const currentValue = changes.searchQuery.currentValue;
       this.isPopoverShown = currentValue && currentValue.length > 0;
-      this.displayHits();
+
+      this.getSearchResults(5).subscribe(
+        (resp: any) => (this.searchResults = resp.hits)
+      );
     }
     if (
       changes.searchEvent &&
       changes.searchEvent.currentValue instanceof Event
     ) {
+      this.getSearchResults(20).subscribe((resp: any) =>
+        this.searchService.results.next(resp)
+      );
+
       this.navigateToSearchPage();
     }
   }
 
-  displayHits() {
-    this.searchService
-      .searchByQuery({
-        query: this.searchService.searchQuery,
-        hitsPerPage: '5',
-        attributesToRetrieve: 'id,name.en,description.en,images'
-      })
-      .subscribe((result: any) => {
-        this.searchResults = result.hits;
-      });
+  getSearchResults(hitPerPage) {
+    return this.searchService.searchByQuery({
+      query: this.searchQuery,
+      hitsPerPage: hitPerPage.toString(),
+      attributesToRetrieve: 'id,name.en,description.en,images'
+    });
   }
 
   navigateToSearchedItem(item) {

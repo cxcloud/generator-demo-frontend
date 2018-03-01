@@ -13,30 +13,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService) {}
 
-  ngOnInit() {
-    if (
-      this.searchService.searchQuery &&
-      this.searchService.searchQuery.length > 0
-    ) {
-      this.getSearchResults();
-    }
-  }
-
-  get searchQuery() {
-    return this.searchService.searchQuery;
-  }
-
-  getSearchResults() {
-    this.searchService
-      .searchByQuery({
-        query: this.searchService.searchQuery,
-        hitsPerPage: '20',
-        attributesToRetrieve: 'id,name.en,description.en,images'
-      })
-      .subscribe((result: any) => {
-        this.searchResults = result.hits;
-      });
-  }
+  ngOnInit() {}
 
   filterSearchContent(category) {
     // TODO: filter content when several sources on place

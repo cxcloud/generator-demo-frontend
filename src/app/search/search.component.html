@@ -11,22 +11,27 @@
         </div>
       </div>
       <div class="ml-2 mt-1 is-uppercase">{{section}}</div>
-      <ul *ngFor="let item of searchResults" class="mr-1 ml-1">
-        <li>
-          <div class="search-item ml-1 mr-1 pt-half pb-half">
-            <figure class="image">
-              <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
-            </figure>
-            <div class="ml-1 search-item-info">
-              <div class="search-item-name">
-                {{item['name.en']}}
+      <ng-container *ngIf="searchService.searchResults && searchService.searchResults?.hits.length > 0;else nomutch">
+        <ul *ngFor="let item of searchService.searchResults.hits" class="mr-1 ml-1">
+          <li>
+            <div class="search-item ml-1 mr-1 pt-half pb-half">
+              <figure class="image">
+                <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
+              </figure>
+              <div class="ml-1 search-item-info">
+                <div class="search-item-name">
+                  {{item['name.en']}}
+                </div>
+                <div class="mt-half search-item-description">{{item['description.en']}}</div>
               </div>
-              <div class="mt-half search-item-description">{{item['description.en']}}</div>
             </div>
-          </div>
 
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-template #nomutch>
+        <div>No matches were found </div>
+      </ng-template>
     </div>
   </div>
 </section>

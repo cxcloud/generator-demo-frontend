@@ -9,7 +9,6 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Category } from '@cxcloud/ct-types/categories';
 import { CommerceService } from '../../core/commerce/commerce.service';
-import { SearchService } from '../../core/search/search.service';
 
 @Component({
   selector: 'app-header',
@@ -28,7 +27,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private commerceService: CommerceService,
-    private searchService: SearchService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -71,9 +69,7 @@ export class HeaderComponent implements OnInit {
 
   setSearchQuery() {
     // Seach input value
-    // this.searchQuery = this.searchForm.get('query').value;
-    // Update searchService value
-    this.searchService.updateSearchQuery(this.searchForm.get('query').value);
+    this.searchQuery = this.searchForm.get('query').value;
   }
 
   onSearch(event) {

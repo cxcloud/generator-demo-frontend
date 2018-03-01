@@ -11,16 +11,12 @@ interface IQuery {
 
 @Injectable()
 export class SearchService {
-  public query = new BehaviorSubject<string>(null);
+  public results = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) {}
 
-  get searchQuery() {
-    return this.query.getValue();
-  }
-
-  updateSearchQuery(query) {
-    this.query.next(query);
+  get searchResults() {
+    return this.results.getValue();
   }
 
   searchByQuery(query: IQuery) {
