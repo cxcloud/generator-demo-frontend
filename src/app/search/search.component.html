@@ -3,23 +3,28 @@
     <h3 class="page-title is-3 m-1 mb-2">
       <span class="icon-books icon"></span>
       <div class="ml-1">Search results:</div>
-      {{searchQuery}}
     </h3>
     <div class="search-results">
       <div class="search-filter mt-1 mb-1 pb-1">
-        <div *ngFor="let section of searchSections" class="ml-2">
-          <a class="filter-section" (click)="filterSearchContent(section);">{{section}}</a>
+        <div *ngFor="let category of categories" class="ml-2">
+          <a class="category-filter" (click)="filterSearchContent(category)">{{category}}</a>
         </div>
       </div>
       <div class="ml-2 mt-1 is-uppercase">{{section}}</div>
-      <ul *ngFor="let search of searchResults" class="mr-1 ml-1">
-        <li *ngFor="let item of search.items">
-          <div class=" search-item ml-1 mr-1 pt-half pb-half">
-            <figure class="image ">
-              <img src="{{item.url}} ">
+      <ul *ngFor="let item of searchResults" class="mr-1 ml-1">
+        <li>
+          <div class="search-item ml-1 mr-1 pt-half pb-half">
+            <figure class="image">
+              <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
             </figure>
-            <div class="ml-1 ">{{item.title}}</div>
+            <div class="ml-1 search-item-info">
+              <div class="search-item-name">
+                {{item['name.en']}}
+              </div>
+              <div class="mt-half search-item-description">{{item['description.en']}}</div>
+            </div>
           </div>
+
         </li>
       </ul>
     </div>

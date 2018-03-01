@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SEARCH_DATA } from '../mock/search-data';
 import { SearchService } from '../core/search/search.service';
 
 @Component({
@@ -8,37 +7,39 @@ import { SearchService } from '../core/search/search.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  // TODO: temp data
-  searchResults = SEARCH_DATA;
-  default = 'All';
-  section = this.default;
-
-  get searchSections() {
-    return SEARCH_DATA.reduce(
-      (arr, item) => {
-        arr.push(item.section);
-        return arr;
-      },
-      [this.default]
-    );
-  }
+  searchResults: any;
+  categories = ['All', 'Products'];
+  defaultImage = './assets/images/comingsoon.png';
 
   constructor(private searchService: SearchService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (
+      this.searchService.searchQuery &&
+      this.searchService.searchQuery.length > 0
+    ) {
+      this.getSearchResults();
+    }
+  }
 
   get searchQuery() {
     return this.searchService.searchQuery;
   }
 
-  filterSearchContent(section) {
-    this.section = section;
-    this.searchResults = SEARCH_DATA.filter(
-      result => result.section === section
-    );
+  getSearchResults() {
+    this.searchService
+      .searchByQuery({
+        query: this.searchService.searchQuery,
+        hitsPerPage: '20',
+        attributesToRetrieve: 'id,name.en,description.en,images'
+      })
+      .subscribe((result: any) => {
+        this.searchResults = result.hits;
+      });
+  }
 
-    if (section === this.default) {
-      this.searchResults = SEARCH_DATA;
-    }
+  filterSearchContent(category) {
+    // TODO: filter content when several sources on place
+    console.log('Filter by category', category);
   }
 }
