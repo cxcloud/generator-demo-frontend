@@ -10,6 +10,7 @@ import { SearchService } from '../core/search/search.service';
 export class SearchComponent implements OnInit {
   searchResults: any;
   categories = ['All', 'Products'];
+  category = 'All';
   defaultImage = './assets/images/comingsoon.png';
 
   constructor(private router: Router, private searchService: SearchService) {}
@@ -17,8 +18,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   filterSearchContent(category) {
-    // TODO: filter content when several sources on place
-    console.log('Filter by category', category);
+    // TODO: filter content by category when several sources on place (ecommerce, contentful)
+    this.category = category;
   }
 
   navigateToSearchedItem(item) {

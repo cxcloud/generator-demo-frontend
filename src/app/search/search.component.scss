@@ -14,7 +14,9 @@ section {
     }
   }
 }
-
+.no-content {
+  color: $grey;
+}
 .search-results {
   background: $white;
   border: 1px solid rgba(0, 0, 0, 0.05);

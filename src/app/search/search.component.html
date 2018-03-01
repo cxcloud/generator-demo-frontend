@@ -10,8 +10,8 @@
           <a class="category-filter" (click)="filterSearchContent(category)">{{category}}</a>
         </div>
       </div>
-      <div class="ml-2 mt-1 is-uppercase">{{section}}</div>
-      <ng-container *ngIf="searchService.searchResults && searchService.searchResults?.hits.length > 0;else nomutch">
+      <div class="ml-2 mt-1 is-uppercase">{{category}}</div>
+      <ng-container *ngIf="searchService.searchResults && searchService.searchResults?.hits.length > 0; else nomutch">
         <ul *ngFor="let item of searchService.searchResults.hits" class="mr-1 ml-1">
           <li (click)="navigateToSearchedItem(item);">
             <div class="search-item ml-1 mr-1 pt-half pb-half">
@@ -29,7 +29,7 @@
         </ul>
       </ng-container>
       <ng-template #nomutch>
-        <div>No matches were found </div>
+        <div class="m-2 no-content">No matches were found </div>
       </ng-template>
     </div>
   </div>
