@@ -14,7 +14,9 @@ section {
     }
   }
 }
-
+.no-content {
+  color: $grey;
+}
 .search-results {
   background: $white;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -36,19 +38,29 @@ section {
     &:hover {
       background-color: $white-smoke;
     }
-    .search-item {
-      display: inline-flex;
-      .image {
-        width: 48px;
-        border: 1px solid $light-grey;
-      }
+  }
+
+  .search-item {
+    display: inline-flex;
+    .image {
+      width: 48px;
+      border: 1px solid $light-grey;
+    }
+
+    .search-item-info {
+      width: calc(100% - 48px);
+    }
+
+    .search-item-description {
+      font-size: 0.9em;
+      color: $silver;
     }
   }
 
   .search-filter {
     display: flex;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    .filter-section {
+    .category-filter {
       color: $ebony-clay;
       padding-bottom: 3px;
       &:hover {

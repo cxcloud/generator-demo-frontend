@@ -8,31 +8,42 @@
   display: none;
 }
 
-.search-section {
-  .section-title {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 1px solid $light-grey;
+.search-query {
+  color: $grey;
+  font-size: 0.9rem;
 
-    .more {
-      color: $miscka;
-      cursor: pointer;
-      &:hover {
-        color: $grey;
-      }
-    }
+  .icon-search {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
   }
-  li {
+}
+
+.section-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 1px solid $light-grey;
+
+  .more {
+    color: $miscka;
     cursor: pointer;
     &:hover {
-      background-color: $white-smoke;
+      color: $grey;
     }
-    .search-item {
-      display: inline-flex;
-      .image {
-        width: 48px;
-        border: 1px solid $light-grey;
-      }
+  }
+}
+
+li {
+  cursor: pointer;
+  &:hover {
+    background-color: $white-smoke;
+  }
+  .search-item {
+    display: inline-flex;
+    .image {
+      width: 48px;
+      border: 1px solid $light-grey;
     }
   }
 }

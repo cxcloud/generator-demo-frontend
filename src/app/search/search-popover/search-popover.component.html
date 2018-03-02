@@ -1,18 +1,22 @@
 <app-popover [ngClass]="(isPopoverShown) ? 'active' : 'hidden'">
-  <div class="search-section" *ngFor="let search of searchResults">
+  <div class="mt-half ml-half search-query">
+    <span class="icon-search icon"></span>
+    Search for '{{searchQuery}}'
+  </div>
+  <ng-container *ngIf="searchResults?.length">
     <div class="section-title mt-half mb-1 p-half level">
-      <div class="level-left">{{search.section}}</div>
-      <div class="is-uppercase level-right more">More</div>
+      <div class="level-left">Products</div>
+      <div class="is-uppercase level-right more" (click)="navigateToSearchPage();">More</div>
     </div>
     <ul>
-      <li *ngFor="let item of search.items" (click)="onSearch();">
+      <li *ngFor="let item of searchResults" (click)="navigateToSearchedItem(item);">
         <div class="search-item ml-half mr-1 pt-half pb-half">
           <figure class="image">
-            <img src="{{item.url}}">
+            <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
           </figure>
-          <div class="ml-1">{{item.title}}</div>
+          <div class="ml-1">{{item["name.en"]}}</div>
         </div>
       </li>
     </ul>
-  </div>
+  </ng-container>
 </app-popover>

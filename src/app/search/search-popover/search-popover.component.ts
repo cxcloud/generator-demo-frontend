@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { SEARCH_DATA } from '../../mock/search-data';
+import { SearchService } from '../../core/search/search.service';
 
 @Component({
   selector: 'app-search-popover',
@@ -18,26 +18,50 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
   @Input('searchEvent') searchEvent: string;
   isPopoverShown = false;
 
-  // TODO: temp data
-  searchResults = SEARCH_DATA;
+  searchResults: any;
+  defaultImage = './assets/images/comingsoon.png';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private searchService: SearchService) {}
 
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.searchQuery) {
-      this.isPopoverShown = changes.searchQuery.currentValue.length > 0;
+      const currentValue = changes.searchQuery.currentValue;
+      this.isPopoverShown = currentValue && currentValue.length > 0;
+
+      this.getSearchResults(5).subscribe(
+        (resp: any) => (this.searchResults = resp.hits)
+      );
     }
     if (
       changes.searchEvent &&
       changes.searchEvent.currentValue instanceof Event
     ) {
-      this.onSearch();
+      // Avoid displaying results for empty string query
+      if (this.searchQuery.length > 0) {
+        this.getSearchResults(20).subscribe((resp: any) => {
+          this.searchService.results.next(resp);
+        });
+      }
+      this.navigateToSearchPage();
     }
   }
 
-  onSearch() {
+  getSearchResults(hitPerPage) {
+    return this.searchService.searchByQuery({
+      query: this.searchQuery,
+      hitsPerPage: hitPerPage.toString(),
+      attributesToRetrieve: 'id,name.en,description.en,images'
+    });
+  }
+
+  navigateToSearchedItem(item) {
+    this.router.navigateByUrl(`product/${item.id}`);
+    this.isPopoverShown = false;
+  }
+
+  navigateToSearchPage() {
     this.router.navigateByUrl('search');
     this.isPopoverShown = false;
   }

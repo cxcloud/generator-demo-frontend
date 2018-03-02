@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SEARCH_DATA } from '../mock/search-data';
+import { Router } from '@angular/router';
+import { SearchService } from '../core/search/search.service';
 
 @Component({
   selector: 'app-search',
@@ -7,33 +8,22 @@ import { SEARCH_DATA } from '../mock/search-data';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  // TODO: temp data
-  searchResults = SEARCH_DATA;
-  default = 'All';
-  section = this.default;
+  searchResults: any;
+  // TODO: get categories from search results
+  categories = ['All', 'Products'];
+  category = 'All';
+  defaultImage = './assets/images/comingsoon.png';
 
-  get searchSections() {
-    return SEARCH_DATA.reduce(
-      (arr, item) => {
-        arr.push(item.section);
-        return arr;
-      },
-      [this.default]
-    );
-  }
-
-  constructor() {}
+  constructor(private router: Router, public searchService: SearchService) {}
 
   ngOnInit() {}
 
-  filterSearchContent(section) {
-    this.section = section;
-    this.searchResults = SEARCH_DATA.filter(
-      result => result.section === section
-    );
+  filterSearchContent(category) {
+    // TODO: filter content by category when several sources on place (ecommerce, contentful)
+    this.category = category;
+  }
 
-    if (section === this.default) {
-      this.searchResults = SEARCH_DATA;
-    }
+  navigateToSearchedItem(item) {
+    this.router.navigateByUrl(`product/${item.id}`);
   }
 }
