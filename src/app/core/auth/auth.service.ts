@@ -49,7 +49,7 @@ export class AuthService {
       .subscribe(result => {
         this.currentUserService.token.next(result.token);
         this.currentUserService.customer.next(null);
-        this.currentUserService.expired.next(
+        this.currentUserService.expiredAt.next(
           this.currentTime + result.token['expires_in']
         );
       });
@@ -59,7 +59,7 @@ export class AuthService {
     this.currentUserService.customer.next(resp.customer);
     this.currentUserService.token.next(resp.token);
     this.cartService.cart.next(resp.cart);
-    this.currentUserService.expired.next(
+    this.currentUserService.expiredAt.next(
       this.currentTime + resp.token['expires_in']
     );
   }

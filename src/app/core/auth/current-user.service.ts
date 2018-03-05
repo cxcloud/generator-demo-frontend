@@ -9,12 +9,12 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class CurrentUserService {
   public token = new BehaviorSubject<OAuthToken>(null);
   public customer = new BehaviorSubject<Customer>(null);
-  public expired = new BehaviorSubject<number>(null);
+  public expiredAt = new BehaviorSubject<number>(null);
 
   constructor(private storage: LocalStorageService, private router: Router) {
     const token = this.storage.retrieve('token');
     const customer = this.storage.retrieve('customer');
-    const expired = this.storage.retrieve('expired_at');
+    const expiredAt = this.storage.retrieve('expired_at');
 
     if (token) {
       this.token.next(token);
@@ -22,13 +22,15 @@ export class CurrentUserService {
     if (customer) {
       this.customer.next(customer);
     }
-    if (expired) {
-      this.expired.next(expired);
+    if (expiredAt) {
+      this.expiredAt.next(expiredAt);
     }
 
     this.token.subscribe(change => this.storage.store('token', change));
     this.customer.subscribe(change => this.storage.store('customer', change));
-    this.expired.subscribe(change => this.storage.store('expired_at', change));
+    this.expiredAt.subscribe(change =>
+      this.storage.store('expired_at', change)
+    );
   }
 
   get isLoggedIn() {
