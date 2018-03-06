@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,12 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'CX Cloud Demo';
+  public title = environment.siteName;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
+    window.document.title = this.title;
     this.router.events.subscribe(evt => {
       if (!(evt instanceof NavigationEnd)) {
         return;
