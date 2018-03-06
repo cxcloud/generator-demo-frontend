@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Category } from '@cxcloud/ct-types/categories';
 import { CommerceService } from '../../core/commerce/commerce.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ import { CommerceService } from '../../core/commerce/commerce.service';
   providers: [CommerceService]
 })
 export class HeaderComponent implements OnInit {
-  title = 'CX Cloud';
+  title = environment.siteName;
   categories: Category[];
 
   searchForm: FormGroup;
