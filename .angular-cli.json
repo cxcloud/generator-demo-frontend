@@ -7,7 +7,10 @@
     {
       "root": "src",
       "outDir": "dist",
-      "assets": ["assets", "favicon.ico"],
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -17,6 +20,7 @@
       "prefix": "app",
       "styles": [
         "../node_modules/mdi/scss/materialdesignicons.scss",
+        "../node_modules/bulma/bulma.sass",
         "assets/scss/styles.scss"
       ],
       "scripts": [],
@@ -50,6 +54,7 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+    }
   }
 }

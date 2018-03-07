@@ -6,7 +6,7 @@
     "ng": "ng",
     "dev": "ng serve",
     "start": "serve dist/ --single",
-    "build": "ng build --prod",
+    "build": "ng build --prod --build-optimizer --extract-css",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -41,7 +41,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "^1.6.6",
+    "@angular/cli": "^1.7.2",
     "@angular/compiler-cli": "^5.0.1",
     "@angular/language-service": "^5.0.1",
     "@cxcloud/ct-types": "^0.1.6",
