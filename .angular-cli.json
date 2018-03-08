@@ -17,13 +17,15 @@
       "prefix": "app",
       "styles": [
         "../node_modules/mdi/scss/materialdesignicons.scss",
+        "assets/scss/bulma.scss",
         "assets/scss/styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "dev": "environments/environment.development.ts",
+        "prod": "environments/environment.production.ts",
+        "docker": "environments/environment.docker.ts"
       }
     }
   ],
