@@ -19,7 +19,7 @@
           <form novalidate [formGroup]="searchForm">
             <div class="field has-addons">
               <div class="control is-expanded">
-                <input type="text" class="input" formControlName="query" placeholder="Search" (keyup)="setSearchQuery();" (keyup.enter)="onSearch($event);">
+                <input #searchInput type="text" class="input" formControlName="query" placeholder="Search" (keyup)="setSearchQuery();" (keyup.enter)="onSearch($event);">
               </div>
               <div class="control">
                 <a class="button" (click)="onSearch($event);">

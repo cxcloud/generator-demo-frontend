@@ -26,26 +26,25 @@ export class SearchPopoverComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.searchQuery) {
-      const currentValue = changes.searchQuery.currentValue;
-      this.isPopoverShown = currentValue && currentValue.length > 0;
-
-      this.getSearchResults(5).subscribe(
-        (resp: any) => (this.searchResults = resp.hits)
-      );
-    }
-    if (
-      changes.searchEvent &&
-      changes.searchEvent.currentValue instanceof Event
-    ) {
-      // Avoid displaying results for empty string query
-      if (this.searchQuery.length > 0) {
-        this.getSearchResults(20).subscribe((resp: any) => {
-          this.searchService.results.next(resp);
-        });
-      }
-      this.navigateToSearchPage();
-    }
+    // if (changes.searchQuery) {
+    //   const currentValue = changes.searchQuery.currentValue;
+    //   this.isPopoverShown = currentValue && currentValue.length > 0;
+    //   this.getSearchResults(5).subscribe(
+    //     (resp: any) => (this.searchResults = resp.hits)
+    //   );
+    // }
+    // if (
+    //   changes.searchEvent &&
+    //   changes.searchEvent.currentValue instanceof Event
+    // ) {
+    //   // Avoid displaying results for empty string query
+    //   if (this.searchQuery.length > 0) {
+    //     this.getSearchResults(20).subscribe((resp: any) => {
+    //       this.searchService.results.next(resp);
+    //     });
+    //   }
+    //   this.navigateToSearchPage();
+    // }
   }
 
   getSearchResults(hitPerPage) {

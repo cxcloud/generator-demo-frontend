@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -8,8 +14,10 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Category } from '@cxcloud/ct-types/categories';
+import * as autocomplete from 'autocomplete.js';
 import { CommerceService } from '../../core/commerce/commerce.service';
 import { environment } from '../../../environments/environment';
+import { SearchService } from '../../core/search/search.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +25,8 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./header.component.scss'],
   providers: [CommerceService]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
+  @ViewChild('searchInput') searchInput: ElementRef;
   title = environment.siteName;
   categories: Category[];
 
@@ -28,7 +37,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private commerceService: CommerceService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private searchService: SearchService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +50,29 @@ export class HeaderComponent implements OnInit {
 
     this.searchForm = this.formBuilder.group({
       query: ['']
+    });
+  }
+
+  ngAfterViewInit() {
+    autocomplete(this.searchInput.nativeElement, { hint: true }, [
+      {
+        source: (query, callback) => {
+          this.searchService
+            .searchByQuery({
+              query,
+              hitsPerPage: '3',
+              attributesToRetrieve: 'id,name.en,description.en,images'
+            })
+            .subscribe((resp: any) => callback(resp.hits));
+        },
+        displayKey: 'name.en',
+        templates: {
+          header: '<div class="aa-suggestions-category">Products</div>',
+          suggestion: suggestion => suggestion._highlightResult['name.en'].value
+        }
+      }
+    ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+      console.log(suggestion, dataset);
     });
   }
 
@@ -70,10 +103,10 @@ export class HeaderComponent implements OnInit {
 
   setSearchQuery() {
     // Seach input value
-    this.searchQuery = this.searchForm.get('query').value;
+    // this.searchQuery = this.searchForm.get('query').value;
   }
 
   onSearch(event) {
-    this.event = event;
+    // this.event = event;
   }
 }
