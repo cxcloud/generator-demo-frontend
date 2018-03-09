@@ -54,7 +54,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    autocomplete(this.searchInput.nativeElement, { hint: true }, [
+    const el = this.searchInput.nativeElement;
+    autocomplete(el, { hint: true }, [
       {
         source: (query, callback) => {
           this.searchService
@@ -71,8 +72,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           suggestion: suggestion => suggestion._highlightResult['name.en'].value
         }
       }
-    ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-      console.log(suggestion, dataset);
+    ]).on('autocomplete:selected', (event, suggestion) => {
+      el.value = '';
+      el.blur();
+      this.router.navigateByUrl(`product/${suggestion.id}`);
     });
   }
 
