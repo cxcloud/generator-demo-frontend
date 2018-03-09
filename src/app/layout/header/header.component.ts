@@ -31,8 +31,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   categories: Category[];
 
   searchForm: FormGroup;
-  searchQuery = '';
-  event: any;
+  autoCompleteResulted = false;
 
   constructor(
     private router: Router,
@@ -55,7 +54,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const el = this.searchInput.nativeElement;
-    autocomplete(el, { hint: true }, [
+    const searchComponent = autocomplete(el, { hint: true, autoselect: true }, [
       {
         source: (query, callback) => {
           this.searchService
@@ -71,12 +70,42 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           header: '<div class="aa-suggestions-category">Products</div>',
           suggestion: suggestion => suggestion._highlightResult['name.en'].value
         }
+      },
+      {
+        source: (query, callback) => {
+          this.searchService
+            .searchByQuery(
+              {
+                query,
+                hitsPerPage: '3',
+                attributesToRetrieve: 'slug,title'
+              },
+              'dev_CONTENT'
+            )
+            .subscribe((resp: any) => callback(resp.hits));
+        },
+        displayKey: 'title',
+        templates: {
+          header: '<div class="aa-suggestions-category">Content</div>',
+          suggestion: suggestion => suggestion._highlightResult.title.value
+        }
       }
-    ]).on('autocomplete:selected', (event, suggestion) => {
-      el.value = '';
-      el.blur();
-      this.router.navigateByUrl(`product/${suggestion.id}`);
-    });
+    ]);
+    searchComponent
+      .on('autocomplete:selected', (event, suggestion, dataset) => {
+        searchComponent.autocomplete.setVal('');
+        const destination =
+          dataset === 1
+            ? `product/${suggestion.id}`
+            : `pages/${suggestion.slug}`;
+        this.router.navigateByUrl(destination);
+      })
+      .on('autocomplete:shown', () => {
+        this.autoCompleteResulted = true;
+      })
+      .on('autocomplete:empty', () => {
+        this.autoCompleteResulted = false;
+      });
   }
 
   onToggleMenu() {
@@ -104,12 +133,23 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     });
   }
 
-  setSearchQuery() {
-    // Seach input value
-    // this.searchQuery = this.searchForm.get('query').value;
-  }
-
   onSearch(event) {
-    // this.event = event;
+    const { value } = this.searchInput.nativeElement;
+    if (
+      event.type !== 'click' &&
+      (this.autoCompleteResulted || value.trim().length === 0)
+    ) {
+      return;
+    }
+    this.searchService
+      .searchByQuery({
+        query: value,
+        hitsPerPage: '20',
+        attributesToRetrieve: 'id,name.en,description.en,images'
+      })
+      .subscribe((resp: any) => {
+        this.searchService.results.next(resp);
+        this.router.navigateByUrl('search');
+      });
   }
 }

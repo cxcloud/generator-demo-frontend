@@ -19,9 +19,8 @@ export class SearchService {
     return this.results.getValue();
   }
 
-  searchByQuery(query: IQuery) {
+  searchByQuery(query: IQuery, indexName: string = environment.indexName) {
     const qs = buildUrlQuery(query);
-    const indexName = environment.indexName;
     return this.http.get(`/search/byIndex/${indexName}?${qs}`);
   }
 }
