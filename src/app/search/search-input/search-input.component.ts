@@ -10,6 +10,13 @@ import * as autocomplete from 'autocomplete.js';
 import { SearchService } from '../../core/search/search.service';
 import { environment } from '../../../environments/environment';
 
+const makeHeader = (title, link = '#') => `
+  <div class="section-title mt-half mb-1 p-half level">
+    <div class="level-left">${title}</div>
+    <div class="is-uppercase level-right more"><a href="${link}">More</a></div>
+  </div>
+`;
+
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
@@ -27,7 +34,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
       },
       indexName: environment.commerceIndexName,
       displayKey: 'name.en',
-      header: '<div class="aa-suggestions-category">Products</div>'
+      header: makeHeader('Products')
     },
     {
       query: {
@@ -36,7 +43,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
       },
       indexName: environment.contentIndexName,
       displayKey: 'title',
-      header: '<div class="aa-suggestions-category">Content</div>'
+      header: makeHeader('Content')
     }
   ];
 
