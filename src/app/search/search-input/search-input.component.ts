@@ -124,15 +124,6 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
     ) {
       return;
     }
-    this.searchService
-      .searchByQuery({
-        query: value,
-        hitsPerPage: '20',
-        attributesToRetrieve: 'id,name.en,description.en,images'
-      })
-      .subscribe((resp: any) => {
-        this.searchService.results.next(resp);
-        this.router.navigateByUrl('search');
-      });
+    this.router.navigateByUrl(`search?query=${value}`);
   }
 }
