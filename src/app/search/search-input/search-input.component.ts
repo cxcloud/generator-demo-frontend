@@ -6,14 +6,9 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
 import * as autocomplete from 'autocomplete.js';
 import { SearchService } from '../../core/search/search.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-search-input',
@@ -22,60 +17,58 @@ import { SearchService } from '../../core/search/search.service';
 })
 export class SearchInputComponent implements OnInit, AfterViewInit {
   @ViewChild('searchInput') searchInput: ElementRef;
-  searchForm: FormGroup;
+
   autoCompleteResulted = false;
+  sources = [
+    {
+      query: {
+        hitsPerPage: '3',
+        attributesToRetrieve: 'id,name.en,description.en,images'
+      },
+      indexName: environment.commerceIndexName,
+      displayKey: 'name.en',
+      header: '<div class="aa-suggestions-category">Products</div>'
+    },
+    {
+      query: {
+        hitsPerPage: '3',
+        attributesToRetrieve: 'slug,title'
+      },
+      indexName: environment.contentIndexName,
+      displayKey: 'title',
+      header: '<div class="aa-suggestions-category">Content</div>'
+    }
+  ];
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private searchService: SearchService,
-    private router: Router
-  ) {}
+  constructor(private searchService: SearchService, private router: Router) {}
 
-  ngOnInit() {
-    this.searchForm = this.formBuilder.group({
-      query: ['']
-    });
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     const el = this.searchInput.nativeElement;
-    const searchComponent = autocomplete(el, { hint: true, autoselect: true }, [
-      {
-        source: (query, callback) => {
-          this.searchService
-            .searchByQuery({
-              query,
-              hitsPerPage: '3',
-              attributesToRetrieve: 'id,name.en,description.en,images'
-            })
-            .subscribe((resp: any) => callback(resp.hits));
-        },
-        displayKey: 'name.en',
-        templates: {
-          header: '<div class="aa-suggestions-category">Products</div>',
-          suggestion: suggestion => suggestion._highlightResult['name.en'].value
-        }
-      },
-      {
+    const searchComponent = autocomplete(
+      el,
+      { hint: true, autoselect: true },
+      this.sources.map(searchSource => ({
         source: (query, callback) => {
           this.searchService
             .searchByQuery(
               {
                 query,
-                hitsPerPage: '3',
-                attributesToRetrieve: 'slug,title'
+                ...searchSource.query
               },
-              'dev_CONTENT'
+              searchSource.indexName
             )
             .subscribe((resp: any) => callback(resp.hits));
         },
-        displayKey: 'title',
+        displayKey: searchSource.displayKey,
         templates: {
-          header: '<div class="aa-suggestions-category">Content</div>',
-          suggestion: suggestion => suggestion._highlightResult.title.value
+          header: searchSource.header,
+          suggestion: suggestion =>
+            suggestion._highlightResult[searchSource.displayKey].value
         }
-      }
-    ]);
+      }))
+    );
     searchComponent
       .on('autocomplete:selected', (event, suggestion, dataset) => {
         searchComponent.autocomplete.setVal('');
