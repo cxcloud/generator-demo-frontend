@@ -1,0 +1,109 @@
+@import '~assets/scss/styles';
+
+$arrow-height: 12px;
+
+.button {
+  background: transparent;
+  border: none;
+  height: 40px;
+  position: absolute;
+  right: 5px;
+  top: 0;
+
+  .icon {
+    color: rgba(170, 174, 178, 0.5);
+    font-size: 1.5rem;
+  }
+}
+
+input {
+  border-radius: 3px;
+  border-right: none !important;
+  margin: 0;
+  font-size: 16px;
+  height: 40px;
+  background: $romance;
+  padding: 0 1em;
+  box-shadow: none !important;
+  border: 1px solid $light-grey !important;
+}
+
+:host /deep/ .algolia-autocomplete {
+  width: 100%;
+
+  .section-title {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid $light-grey;
+
+    .more,
+    .more a {
+      color: $miscka;
+      cursor: pointer;
+      &:hover {
+        color: $grey;
+      }
+    }
+  }
+
+  .image {
+    overflow: hidden;
+  }
+
+  .aa-input,
+  .aa-hint {
+    width: 100%;
+  }
+
+  .aa-hint {
+    color: #999;
+  }
+
+  .aa-dropdown-menu {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid $light-grey;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 3px;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: -$arrow-height;
+      left: 50%;
+      border-left: $arrow-height solid transparent;
+      border-right: $arrow-height solid transparent;
+      border-bottom: $arrow-height solid $white;
+      width: 0;
+      height: 0;
+    }
+
+    &:before {
+      top: calc(#{-$arrow-height} - 1px);
+      border-bottom-color: $light-grey;
+    }
+  }
+
+  .aa-dropdown-menu .aa-suggestion {
+    cursor: pointer;
+    padding: 5px 4px;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+
+    .image {
+      width: 48px;
+    }
+  }
+
+  .aa-dropdown-menu .aa-suggestion.aa-cursor {
+    background-color: $white-smoke;
+  }
+
+  .aa-dropdown-menu .aa-suggestion em {
+    font-weight: bold;
+    font-style: normal;
+  }
+}

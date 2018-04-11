@@ -1,10 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Category } from '@cxcloud/ct-types/categories';
@@ -21,14 +15,9 @@ export class HeaderComponent implements OnInit {
   title = environment.siteName;
   categories: Category[];
 
-  searchForm: FormGroup;
-  searchQuery = '';
-  event: any;
-
   constructor(
     private router: Router,
-    private commerceService: CommerceService,
-    private formBuilder: FormBuilder
+    private commerceService: CommerceService
   ) {}
 
   ngOnInit(): void {
@@ -37,10 +26,6 @@ export class HeaderComponent implements OnInit {
     this.commerceService
       .getCategories()
       .subscribe(categories => (this.categories = categories));
-
-    this.searchForm = this.formBuilder.group({
-      query: ['']
-    });
   }
 
   onToggleMenu() {
@@ -66,14 +51,5 @@ export class HeaderComponent implements OnInit {
         });
       }
     });
-  }
-
-  setSearchQuery() {
-    // Seach input value
-    this.searchQuery = this.searchForm.get('query').value;
-  }
-
-  onSearch(event) {
-    this.event = event;
   }
 }

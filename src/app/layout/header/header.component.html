@@ -16,20 +16,7 @@
 
         <!-- Search -->
         <div class="column is-4 search mt-1">
-          <form novalidate [formGroup]="searchForm">
-            <div class="field has-addons">
-              <div class="control is-expanded">
-                <input type="text" class="input" formControlName="query" placeholder="Search" (keyup)="setSearchQuery();" (keyup.enter)="onSearch($event);">
-              </div>
-              <div class="control">
-                <a class="button" (click)="onSearch($event);">
-                  <span class="icon-search icon"></span>
-                </a>
-              </div>
-            </div>
-          </form>
-          <!-- Search popover -->
-          <app-search-popover [searchEvent]="event" [searchQuery]="searchQuery"></app-search-popover>
+          <app-search-input></app-search-input>
         </div>
       </div>
     </div>

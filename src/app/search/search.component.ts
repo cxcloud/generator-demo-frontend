@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { SearchService } from '../core/search/search.service';
 
 @Component({
@@ -14,9 +14,25 @@ export class SearchComponent implements OnInit {
   category = 'All';
   defaultImage = './assets/images/comingsoon.png';
 
-  constructor(private router: Router, public searchService: SearchService) {}
+  constructor(
+    private router: Router,
+    public searchService: SearchService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+      const { query } = params;
+
+      this.searchService
+        .searchByQuery({
+          query,
+          hitsPerPage: '20',
+          attributesToRetrieve: 'id,name.en,description.en,images'
+        })
+        .subscribe(resp => (this.searchResults = resp));
+    });
+  }
 
   filterSearchContent(category) {
     // TODO: filter content by category when several sources on place (ecommerce, contentful)

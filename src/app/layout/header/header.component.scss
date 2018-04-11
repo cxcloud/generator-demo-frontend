@@ -19,32 +19,6 @@
       }
     }
   }
-
-  .search {
-    position: relative;
-    input,
-    .button {
-      height: 40px;
-      background: $romance;
-      border: 1px solid rgba(170, 174, 178, 0.5);
-      padding: 0 1em;
-    }
-    input {
-      border-radius: 2px;
-      border-right: 0;
-      margin: 0;
-      font-size: 16px;
-      box-shadow: none;
-    }
-
-    .button {
-      border-left: 0;
-      .icon {
-        color: rgba(170, 174, 178, 0.5);
-        font-size: 1.5rem;
-      }
-    }
-  }
 }
 
 .hero-foot {
