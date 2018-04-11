@@ -17,6 +17,14 @@ const makeHeader = (title, link = '#') => `
   </div>
 `;
 
+const getCategory = categoriesStr => {
+  const catArray = categoriesStr.split(';');
+  if (catArray.length === 0) {
+    return '';
+  }
+  return catArray[0].replace(/>/g, ' &rarr; ');
+};
+
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
@@ -24,17 +32,31 @@ const makeHeader = (title, link = '#') => `
 })
 export class SearchInputComponent implements OnInit, AfterViewInit {
   @ViewChild('searchInput') searchInput: ElementRef;
-
+  defaultImage = './assets/images/comingsoon.png';
   autoCompleteResulted = false;
+
   sources = [
     {
       query: {
         hitsPerPage: '3',
-        attributesToRetrieve: 'id,name.en,description.en,images'
+        attributesToRetrieve: 'id,name.en,description.en,images,categories'
       },
       indexName: environment.commerceIndexName,
       displayKey: 'name.en',
-      header: makeHeader('Products')
+      header: makeHeader('Products'),
+      render: suggestion => `
+        <figure class="image">
+          <img src="${suggestion.images}" onerror="this.src='${
+        this.defaultImage
+      }'">
+        </figure>
+        <div class="ml-1">
+          ${suggestion._highlightResult['name.en'].value}
+          <div class="has-text-grey-light is-size-7">
+            ${getCategory(suggestion.categories)}
+          </div>
+        </div>
+      `
     },
     {
       query: {
@@ -43,7 +65,9 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
       },
       indexName: environment.contentIndexName,
       displayKey: 'title',
-      header: makeHeader('Content')
+      header: makeHeader('Content'),
+      render: suggestion =>
+        `<span>${suggestion._highlightResult.title.value}</span>`
     }
   ];
 
@@ -71,8 +95,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
         displayKey: searchSource.displayKey,
         templates: {
           header: searchSource.header,
-          suggestion: suggestion =>
-            suggestion._highlightResult[searchSource.displayKey].value
+          suggestion: searchSource.render
         }
       }))
     );

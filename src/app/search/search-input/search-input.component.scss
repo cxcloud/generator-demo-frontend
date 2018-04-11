@@ -46,6 +46,10 @@ input {
     }
   }
 
+  .image {
+    overflow: hidden;
+  }
+
   .aa-input,
   .aa-hint {
     width: 100%;
@@ -54,6 +58,7 @@ input {
   .aa-hint {
     color: #999;
   }
+
   .aa-dropdown-menu {
     width: 100%;
     background-color: #fff;
@@ -80,13 +85,23 @@ input {
       border-bottom-color: $light-grey;
     }
   }
+
   .aa-dropdown-menu .aa-suggestion {
     cursor: pointer;
     padding: 5px 4px;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+
+    .image {
+      width: 48px;
+    }
   }
+
   .aa-dropdown-menu .aa-suggestion.aa-cursor {
     background-color: $white-smoke;
   }
+
   .aa-dropdown-menu .aa-suggestion em {
     font-weight: bold;
     font-style: normal;
