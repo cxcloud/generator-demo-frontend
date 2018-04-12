@@ -25,3 +25,11 @@ export function buildUrlQuery(query) {
     .map(key => `${key}=${query[key]}`)
     .join('&');
 }
+
+export function getCategory(categoriesStr) {
+  const catArray = categoriesStr.split(';');
+  if (catArray.length === 0) {
+    return '';
+  }
+  return catArray[0].replace(/>/g, ' → ');
+}
