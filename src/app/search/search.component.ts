@@ -12,10 +12,6 @@ import { getCategory } from '../utils/helpers';
 export class SearchComponent implements OnInit {
   commerceResults: any;
   contentResults: any;
-
-  // TODO: get categories from search results
-  categories = ['All', 'Products'];
-  category = 'All';
   defaultImage = './assets/images/comingsoon.png';
 
   constructor(
@@ -49,15 +45,6 @@ export class SearchComponent implements OnInit {
         )
         .subscribe(resp => (this.contentResults = resp));
     });
-  }
-
-  filterSearchContent(category) {
-    // TODO: filter content by category when several sources on place (ecommerce, contentful)
-    this.category = category;
-  }
-
-  navigateToSearchedItem(item) {
-    this.router.navigateByUrl(`product/${item.id}`);
   }
 
   getCategory(item) {
