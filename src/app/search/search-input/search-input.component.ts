@@ -32,6 +32,7 @@ const getCategory = categoriesStr => {
 })
 export class SearchInputComponent implements OnInit, AfterViewInit {
   @ViewChild('searchInput') searchInput: ElementRef;
+  search: any; // Autocomplete instance
   defaultImage = './assets/images/comingsoon.png';
   autoCompleteResulted = false;
 
@@ -77,9 +78,9 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const el = this.searchInput.nativeElement;
-    const searchComponent = autocomplete(
+    this.search = autocomplete(
       el,
-      { hint: true, autoselect: true },
+      { hint: true, autoselect: false },
       this.sources.map(searchSource => ({
         source: (query, callback) => {
           this.searchService
@@ -99,17 +100,15 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
         }
       }))
     );
-    searchComponent
+    this.search
       .on('autocomplete:selected', (event, suggestion, dataset) => {
-        searchComponent.autocomplete.setVal('');
+        this.autoCompleteResulted = true;
+        this.search.autocomplete.setVal('');
         const destination =
           dataset === 1
             ? `product/${suggestion.id}`
             : `pages/${suggestion.slug}`;
         this.router.navigateByUrl(destination);
-      })
-      .on('autocomplete:shown', () => {
-        this.autoCompleteResulted = true;
       })
       .on('autocomplete:empty', () => {
         this.autoCompleteResulted = false;
@@ -124,6 +123,8 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
     ) {
       return;
     }
+    this.search.autocomplete.close();
+    this.searchInput.nativeElement.blur();
     this.router.navigateByUrl(`search?query=${value}`);
   }
 }
