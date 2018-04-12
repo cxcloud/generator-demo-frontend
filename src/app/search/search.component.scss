@@ -14,58 +14,29 @@ section {
     }
   }
 }
-.no-content {
-  color: $grey;
-}
+
 .search-results {
   background: $white;
   border: 1px solid rgba(0, 0, 0, 0.05);
 
-  > ul:nth-child(3) li:first-child {
-    margin-top: 0.5rem;
-  }
-
-  ul:last-child li:last-child {
-    margin-bottom: 0.5rem;
-  }
-
-  li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    &:hover {
-      background-color: $white-smoke;
-    }
-  }
-
   .search-item {
-    display: inline-flex;
+    display: flex;
+    cursor: pointer;
+    border-bottom: 1px solid $white-smoke;
+    align-items: center;
+
+    &:last-child {
+      border: none;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
     .image {
       width: 48px;
-      border: 1px solid $light-grey;
     }
 
-    .search-item-info {
-      width: calc(100% - 48px);
-    }
-
-    .search-item-description {
-      font-size: 0.9em;
-      color: $silver;
-    }
-  }
-
-  .search-filter {
-    display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    .category-filter {
-      color: $ebony-clay;
-      padding-bottom: 3px;
-      &:hover {
-        color: $silver;
-      }
+    .content {
+      flex: 1;
     }
   }
 }

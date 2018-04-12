@@ -4,32 +4,47 @@
       <span class="icon-books icon"></span>
       <div class="ml-1">Search results:</div>
     </h3>
-    <div class="search-results">
-      <div class="search-filter mt-1 mb-1 pb-1">
-        <div *ngFor="let category of categories" class="ml-2">
-          <a class="category-filter" (click)="filterSearchContent(category)">{{category}}</a>
-        </div>
-      </div>
-      <div class="ml-2 mt-1 is-uppercase">{{category}}</div>
-      <ng-container *ngIf="searchResults && searchResults?.hits.length > 0; else nomatch">
-        <ul *ngFor="let item of searchResults.hits" class="mr-1 ml-1">
-          <li (click)="navigateToSearchedItem(item);">
-            <div class="search-item ml-1 mr-1 pt-half pb-half">
-              <figure class="image">
+    <div class="search-results p-2">
+      <div class="columns">
+        <div class="column">
+          <h4 class="title is-4">Products</h4>
+          <ng-container *ngIf="commerceResults && commerceResults?.hits.length > 0; else nomatch">
+            <article *ngFor="let item of commerceResults.hits" class="search-item pb-2 mb-2" routerLink="/product/{{item.id}}">
+              <figure class="image mr-1">
                 <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
               </figure>
-              <div class="ml-1 search-item-info">
-                <div class="search-item-name">
+              <div class="content">
+                <div class="is-size-5">
                   {{item['name.en']}}
                 </div>
-                <div class="mt-half search-item-description">{{item['description.en']}}</div>
+                <div class="has-text-grey">
+                  {{getCategory(item)}}
+                </div>
               </div>
-            </div>
-          </li>
-        </ul>
-      </ng-container>
+            </article>
+          </ng-container>
+        </div>
+        <div class="column">
+          <h4 class="title is-4">Content</h4>
+          <ng-container *ngIf="contentResults && contentResults?.hits.length > 0; else nomatch">
+            <article *ngFor="let item of contentResults.hits" class="search-item pb-2 mb-2" routerLink="/pages/{{item.slug}}">
+              <figure class="image mr-1">
+                <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
+              </figure>
+              <div class="content">
+                <div class="is-size-5">
+                  {{item.title}}
+                </div>
+                <div class="has-text-grey">
+                  {{item.subTitle}}
+                </div>
+              </div>
+            </article>
+          </ng-container>
+        </div>
+      </div>
       <ng-template #nomatch>
-        <div class="m-2 no-content">No matches were found </div>
+        <div class="m-2 no-content has-text-centered has-text-grey-light">No matches were found </div>
       </ng-template>
     </div>
   </div>

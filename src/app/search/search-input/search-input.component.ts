@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import * as autocomplete from 'autocomplete.js';
 import { SearchService } from '../../core/search/search.service';
 import { environment } from '../../../environments/environment';
+import { getCategory } from '../../utils/helpers';
 
 const makeHeader = (title, link = '#') => `
   <div class="section-title mt-half mb-1 p-half level">
@@ -16,14 +17,6 @@ const makeHeader = (title, link = '#') => `
     <div class="is-uppercase level-right more"><a href="${link}">More</a></div>
   </div>
 `;
-
-const getCategory = categoriesStr => {
-  const catArray = categoriesStr.split(';');
-  if (catArray.length === 0) {
-    return '';
-  }
-  return catArray[0].replace(/>/g, ' &rarr; ');
-};
 
 @Component({
   selector: 'app-search-input',

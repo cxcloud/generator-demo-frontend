@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { SearchService } from '../core/search/search.service';
+import { environment } from '../../environments/environment';
+import { getCategory } from '../utils/helpers';
 
 @Component({
   selector: 'app-search',
@@ -8,10 +10,8 @@ import { SearchService } from '../core/search/search.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  searchResults: any;
-  // TODO: get categories from search results
-  categories = ['All', 'Products'];
-  category = 'All';
+  commerceResults: any;
+  contentResults: any;
   defaultImage = './assets/images/comingsoon.png';
 
   constructor(
@@ -25,21 +25,29 @@ export class SearchComponent implements OnInit {
       const { query } = params;
 
       this.searchService
-        .searchByQuery({
-          query,
-          hitsPerPage: '20',
-          attributesToRetrieve: 'id,name.en,description.en,images'
-        })
-        .subscribe(resp => (this.searchResults = resp));
+        .searchByQuery(
+          {
+            query,
+            hitsPerPage: '20',
+            attributesToRetrieve: 'id,name.en,images,categories'
+          },
+          environment.commerceIndexName
+        )
+        .subscribe(resp => (this.commerceResults = resp));
+      this.searchService
+        .searchByQuery(
+          {
+            query,
+            hitsPerPage: '20',
+            attributesToRetrieve: 'slug,title,subTitle'
+          },
+          environment.contentIndexName
+        )
+        .subscribe(resp => (this.contentResults = resp));
     });
   }
 
-  filterSearchContent(category) {
-    // TODO: filter content by category when several sources on place (ecommerce, contentful)
-    this.category = category;
-  }
-
-  navigateToSearchedItem(item) {
-    this.router.navigateByUrl(`product/${item.id}`);
+  getCategory(item) {
+    return getCategory(item.categories);
   }
 }
