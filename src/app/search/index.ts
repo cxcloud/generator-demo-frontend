@@ -1,2 +1,2 @@
-export * from './search-popover';
+export * from './search-input';
 export * from './search.module';
