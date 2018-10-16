@@ -43,7 +43,6 @@ import { SharedModule } from './shared';
     SearchModule
   ],
   declarations: [AppComponent],
-
   providers: [],
   bootstrap: [AppComponent]
 })
