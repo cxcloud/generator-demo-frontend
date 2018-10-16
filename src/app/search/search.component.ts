@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { SearchService } from '../core/search/search.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { SearchService } from '../core/search/search.service';
 import { getCategory } from '../utils/helpers';
 
 @Component({

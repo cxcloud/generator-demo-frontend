@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart, LineItem } from '@cxcloud/ct-types/carts';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cart, LineItem } from '@cxcloud/ct-types/carts';
 import { CartService } from '../core/cart/cart.service';
 
 @Component({

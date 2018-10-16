@@ -1,25 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  FormArray,
-  Validators
-} from '@angular/forms';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Address } from '@cxcloud/ct-types/common';
-import { ShippingMethod } from '@cxcloud/ct-types/shipping';
 import { Customer } from '@cxcloud/ct-types/customers';
+import { ShippingMethod } from '@cxcloud/ct-types/shipping';
+import { CurrentUserService } from '../../../core/auth/current-user.service';
 import { CartService } from '../../../core/cart/cart.service';
 import { CommerceService } from '../../../core/commerce/commerce.service';
-import { CurrentUserService } from '../../../core/auth/current-user.service';
-import {
-  getCountryList,
-  getCountryName
-} from '../../../utils/countries/countries';
-
-import 'rxjs/add/operator/debounceTime';
+import { getCountryList } from '../../../utils/countries/countries';
 
 @Component({
   selector: 'app-information',

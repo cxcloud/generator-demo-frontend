@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PopoverComponent } from './popover.component';
 
 describe('PopoverComponent', () => {

@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { SharedModule } from '../shared';
+import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './search.component';
-import { SearchInputComponent } from './search-input/search-input.component';
 
 const DECLARATIONS = [SearchComponent, SearchInputComponent];
 

@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { CoreModule } from '../core';
 import { SharedModule } from '../shared';
 import { LoginRoutingModule } from './login-routing.module';

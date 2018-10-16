@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '@cxcloud/ct-types/products';
 import { CommerceService } from '../../core/commerce/commerce.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',

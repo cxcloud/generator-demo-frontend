@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { throwError as observableThrowError } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 interface IQuery {
   [key: string]: string;
@@ -21,11 +22,13 @@ export class ContentService {
     return this.getContentByQuery({
       content_type: contentType,
       'fields.slug': slug
-    }).map((res: any) => {
-      if (res.total === 0) {
-        throw Observable.throw(new Error(`Page ${slug} has not been found.`));
-      }
-      return res.items[0].fields;
-    });
+    }).pipe(
+      map((res: any) => {
+        if (res.total === 0) {
+          throw observableThrowError(new Error(`Page ${slug} has not been found.`));
+        }
+        return res.items[0].fields;
+      })
+    );
   }
 }

@@ -1,14 +1,8 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  AfterViewInit
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as autocomplete from 'autocomplete.js';
-import { SearchService } from '../../core/search/search.service';
 import { environment } from '../../../environments/environment';
+import { SearchService } from '../../core/search/search.service';
 import { getCategory } from '../../utils/helpers';
 
 const makeHeader = (title, link = '#') => `

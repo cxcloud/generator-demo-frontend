@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
-import { SharedModule } from '../shared';
-import { HeaderComponent } from './header';
-import { BrandNavbarComponent } from './brand-navbar';
-import { MainMenuComponent } from './main-menu';
-import { FooterComponent } from './footer';
+import { RouterModule } from '@angular/router';
 import { SearchModule } from '../search';
+import { SharedModule } from '../shared';
+import { BrandNavbarComponent } from './brand-navbar';
+import { FooterComponent } from './footer';
+import { HeaderComponent } from './header';
+import { MainMenuComponent } from './main-menu';
 
 const DECLARATIONS = [
   HeaderComponent,

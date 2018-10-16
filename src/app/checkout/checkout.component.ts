@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-
-
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',

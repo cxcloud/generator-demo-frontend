@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Injectable } from '@angular/core';
 import { Cart } from '@cxcloud/ct-types/carts';
 import { Order } from '@cxcloud/ct-types/orders';
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { CartService } from '../cart/cart.service';
-
-import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class OrderService {
@@ -18,10 +17,12 @@ export class OrderService {
         cartId: cart.id,
         cartVersion: cart.version
       })
-      .do(order => {
-        this.order.next(order);
-        this.cartService.createCart();
-      });
+      .pipe(
+        tap(order => {
+          this.order.next(order);
+          this.cartService.createCart();
+        })
+      );
   }
 
   getOrder() {

@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { QuantityInputComponent } from './quantity-input.component';
 
 describe('QuantityInputComponent', () => {

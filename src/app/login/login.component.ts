@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../core/auth/auth.service';
 import { CustomerSignupDraft } from '@cxcloud/ct-types/customers';
-
-import 'rxjs/add/operator/debounceTime';
+import { AuthService } from '../core/auth/auth.service';
 
 @Component({
   selector: 'app-login',
