@@ -64,7 +64,7 @@ export class AuthService {
     return this.http
       .post<TokenizedSignInResult>('/auth/login', { username, password })
       .pipe(
-        tap(resp => this.handleSignIn(resp),),
+        tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)
       );
   }
@@ -73,7 +73,7 @@ export class AuthService {
     return this.http
       .post<TokenizedSignInResult>('/auth/register', draft)
       .pipe(
-        tap(resp => this.handleSignIn(resp),),
+        tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)
       );
   }

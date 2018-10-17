@@ -4,7 +4,7 @@ import { Cart } from '@cxcloud/ct-types/carts';
 import { Address } from '@cxcloud/ct-types/common';
 import { LocalStorageService } from 'ngx-webstorage';
 import { BehaviorSubject } from 'rxjs';
-import { filter, flatMap, map, tap } from 'rxjs/operators';
+import { filter, mergeMap, map, tap } from 'rxjs/operators';
 import { CurrentUserService } from '../auth/current-user.service';
 
 @Injectable()
@@ -109,8 +109,8 @@ export class CartService {
   ) {
     return this.setShippingAddress(shippingAddress)
       .pipe(
-        flatMap(cart => this.setBillingAddress(cart, billingAddress)),
-        flatMap(cart => this.setShippingMethod(cart, shippingMethodId)),
+        mergeMap(cart => this.setBillingAddress(cart, billingAddress)),
+        mergeMap(cart => this.setShippingMethod(cart, shippingMethodId)),
         tap(result => this.cart.next(result))
       );
   }
