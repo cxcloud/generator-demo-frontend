@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { Ng2Webstorage } from 'ngx-webstorage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartModule } from './cart';
@@ -21,7 +21,7 @@ import { SharedModule } from './shared';
 @NgModule({
   imports: [
     BrowserModule,
-    Ng2Webstorage.forRoot({
+    NgxWebstorageModule.forRoot({
       prefix: 'cxcloud-demo',
       separator: '.',
       caseSensitive: true
