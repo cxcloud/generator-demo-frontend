@@ -14,11 +14,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     window.document.title = this.title;
-    this.router.events.subscribe(evt => {
-      if (!(evt instanceof NavigationEnd)) {
-        return;
-      }
-      window.scrollTo(0, 0);
-    });
   }
 }
