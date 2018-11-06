@@ -5,6 +5,7 @@ import { Order } from '@cxcloud/ct-types/orders';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { CartService } from '../cart/cart.service';
+import { getApiUrl, COMMERCE } from '../../utils/helpers';
 
 @Injectable()
 export class OrderService {
@@ -13,7 +14,7 @@ export class OrderService {
 
   createOrder(cart: Cart) {
     return this.http
-      .post<Order>(`/orders`, {
+      .post<Order>(`${getApiUrl(COMMERCE)}/orders`, {
         cartId: cart.id,
         cartVersion: cart.version
       })

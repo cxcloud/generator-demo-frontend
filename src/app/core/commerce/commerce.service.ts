@@ -5,7 +5,7 @@ import { PaginatedProductResult, Product } from '@cxcloud/ct-types/products';
 import { ShippingMethod } from '@cxcloud/ct-types/shipping';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { sortByCustomValues } from '../../utils/helpers';
+import { sortByCustomValues, getApiUrl, COMMERCE } from '../../utils/helpers';
 
 @Injectable()
 export class CommerceService {
@@ -13,7 +13,7 @@ export class CommerceService {
 
   getCategories(): Observable<Category[]> {
     return this.http
-      .get<Category[]>('/categories')
+      .get<Category[]>(`${getApiUrl(COMMERCE)}/categories`)
       .pipe(
         tap(categories => this.sortCategories(categories))
       );
@@ -21,16 +21,16 @@ export class CommerceService {
 
   getProducts(categoryId: string): Observable<PaginatedProductResult> {
     return this.http.get<PaginatedProductResult>(
-      `/products/byCategory/${categoryId}`
+      `${getApiUrl(COMMERCE)}/products/byCategory/${categoryId}`
     );
   }
 
   getProduct(productId: string): Observable<Product> {
-    return this.http.get<Product>(`/products/${productId}`);
+    return this.http.get<Product>(`${getApiUrl(COMMERCE)}/products/${productId}`);
   }
 
   getShippingMethods(): Observable<ShippingMethod[]> {
-    return this.http.get<ShippingMethod[]>('/shipping/methods');
+    return this.http.get<ShippingMethod[]>(`${getApiUrl(COMMERCE)}/shipping/methods`);
   }
 
   sortCategories(categories) {

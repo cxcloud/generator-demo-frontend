@@ -1,7 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/observable';
-import { environment } from '../../../environments/environment';
 import { CurrentUserService } from './current-user.service';
 
 @Injectable()
@@ -14,16 +13,6 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // get the token from a service
     const token = this.currentUserService.token.getValue();
-
-    if (req.url.indexOf(environment.apiUrl) !== 0) {
-      req = req.clone({
-        url: `${environment.apiUrl.replace(/\/$/, '')}/${req.url.replace(
-          /^\//,
-          ''
-        )}`
-      });
-    }
-
     // add it if we have one
     if (token !== null) {
       req = req.clone({
