@@ -1,5 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '@cxcloud/ct-types/categories';
 
 @Component({

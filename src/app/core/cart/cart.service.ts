@@ -1,15 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Injectable } from '@angular/core';
 import { Cart } from '@cxcloud/ct-types/carts';
 import { Address } from '@cxcloud/ct-types/common';
-import { ShippingMethod } from '@cxcloud/ct-types/shipping';
 import { LocalStorageService } from 'ngx-webstorage';
+import { BehaviorSubject } from 'rxjs';
+import { filter, mergeMap, map, tap } from 'rxjs/operators';
 import { CurrentUserService } from '../auth/current-user.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class CartService {
@@ -21,7 +17,9 @@ export class CartService {
     private currentUser: CurrentUserService
   ) {
     this.currentUser.token
-      .filter(token => token !== null)
+      .pipe(
+        filter(token => token !== null)
+      )
       .subscribe(() => this.initCart());
   }
 
@@ -79,7 +77,9 @@ export class CartService {
       .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingAddress`, {
         ...address
       })
-      .map(result => result);
+      .pipe(
+        map(result => result)
+      );
   }
 
   setBillingAddress(cart: Cart, address: Address) {
@@ -87,7 +87,9 @@ export class CartService {
       .put<Cart>(`/carts/${cart.id}/${cart.version}/billingAddress`, {
         ...address
       })
-      .map(result => result);
+      .pipe(
+        map(result => result)
+      );
   }
 
   setShippingMethod(cart: Cart, shippingMethodId: string) {
@@ -95,7 +97,9 @@ export class CartService {
       .put<Cart>(`/carts/${cart.id}/${cart.version}/shippingMethod`, {
         shippingMethodId: shippingMethodId
       })
-      .map(result => result);
+      .pipe(
+        map(result => result)
+      );
   }
 
   setCartInfo(
@@ -104,8 +108,10 @@ export class CartService {
     shippingMethodId: string
   ) {
     return this.setShippingAddress(shippingAddress)
-      .flatMap(cart => this.setBillingAddress(cart, billingAddress))
-      .flatMap(cart => this.setShippingMethod(cart, shippingMethodId))
-      .do(result => this.cart.next(result));
+      .pipe(
+        mergeMap(cart => this.setBillingAddress(cart, billingAddress)),
+        mergeMap(cart => this.setShippingMethod(cart, shippingMethodId)),
+        tap(result => this.cart.next(result))
+      );
   }
 }

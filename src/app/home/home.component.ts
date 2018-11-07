@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../core/content/content.service';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   templateUrl: './home.component.html',

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Router } from '@angular/router';
-import { OAuthToken, Customer } from '@cxcloud/ct-types/customers';
+import { Customer, OAuthToken } from '@cxcloud/ct-types/customers';
 import { LocalStorageService } from 'ngx-webstorage';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class CurrentUserService {

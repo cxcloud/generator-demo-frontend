@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CommerceService } from '../../core/commerce/commerce.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product, Variant } from '@cxcloud/ct-types/products';
 import { Image, Price } from '@cxcloud/ct-types/common';
+import { Product, Variant } from '@cxcloud/ct-types/products';
 import { CartService } from '../../core/cart/cart.service';
+import { CommerceService } from '../../core/commerce/commerce.service';
 
 @Component({
   templateUrl: './product.component.html',

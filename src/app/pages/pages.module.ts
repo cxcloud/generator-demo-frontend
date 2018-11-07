@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { PagesRoutingModule } from './pages-routing.module';
-import { PageComponent } from './page';
+import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared';
+import { PageComponent } from './page';
+import { PagesRoutingModule } from './pages-routing.module';
 
 @NgModule({
   imports: [CommonModule, SharedModule, PagesRoutingModule],

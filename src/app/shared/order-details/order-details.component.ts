@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Cart } from '@cxcloud/ct-types/carts';
-import { Order } from '@cxcloud/ct-types/orders';
 import { Address } from '@cxcloud/ct-types/common';
-import { CountryPipe } from '../../utils/countries/country.pipe';
+import { Order } from '@cxcloud/ct-types/orders';
+
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',

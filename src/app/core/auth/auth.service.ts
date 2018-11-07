@@ -1,15 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AnonymousSignInResult, CustomerSignupDraft, TokenizedSignInResult } from '@cxcloud/ct-types/customers';
 import { LocalStorageService } from 'ngx-webstorage';
-import {
-  AnonymousSignInResult,
-  TokenizedSignInResult,
-  CustomerSignupDraft
-} from '@cxcloud/ct-types/customers';
+import { map, tap } from 'rxjs/operators';
 import { CartService } from '../cart/cart.service';
 import { CurrentUserService } from './current-user.service';
-import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthService {
@@ -67,15 +63,19 @@ export class AuthService {
   public login(username: string, password: string) {
     return this.http
       .post<TokenizedSignInResult>('/auth/login', { username, password })
-      .do(resp => this.handleSignIn(resp))
-      .map(resp => resp.customer);
+      .pipe(
+        tap(resp => this.handleSignIn(resp)),
+        map(resp => resp.customer)
+      );
   }
 
   public register(draft: CustomerSignupDraft) {
     return this.http
       .post<TokenizedSignInResult>('/auth/register', draft)
-      .do(resp => this.handleSignIn(resp))
-      .map(resp => resp.customer);
+      .pipe(
+        tap(resp => this.handleSignIn(resp)),
+        map(resp => resp.customer)
+      );
   }
 
   public logout() {

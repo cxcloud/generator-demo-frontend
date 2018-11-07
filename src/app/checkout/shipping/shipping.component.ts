@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Cart } from '@cxcloud/ct-types/carts';
 import { CartService } from '../../core/cart/cart.service';
 
-
 @Component({
   selector: 'app-shipping',
   templateUrl: './shipping.component.html',

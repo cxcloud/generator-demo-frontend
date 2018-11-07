@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BrandNavbarComponent } from './brand-navbar.component';
 
 describe('BrandNavbarComponent', () => {

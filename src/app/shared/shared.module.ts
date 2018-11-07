@@ -1,19 +1,18 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
-
 import { CountryPipe } from '../utils/countries/country.pipe';
-import { InfoCardComponent } from './info-card';
-import { GotoButtonComponent } from './goto-button';
 import { CartOrderContentComponent } from './cart-order-content';
-import { QuantityInputComponent } from './quantity-input';
-import { StepsComponent } from './steps';
 import { ErrorDisplayComponent } from './error-display';
-import { SpinnerComponent } from './spinner';
+import { GotoButtonComponent } from './goto-button';
+import { InfoCardComponent } from './info-card';
 import { OrderDetailsComponent } from './order-details';
 import { PopoverComponent } from './popover';
+import { QuantityInputComponent } from './quantity-input';
+import { SpinnerComponent } from './spinner';
 import { StarsComponent } from './stars/stars.component';
+import { StepsComponent } from './steps';
 
 const DECLARATIONS = [
   InfoCardComponent,

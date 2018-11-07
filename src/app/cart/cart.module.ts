@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
 import { CoreModule } from '../core';
 import { SharedModule } from '../shared';
 import { CartRoutingModule } from './cart-routing.module';

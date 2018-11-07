@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrentUserService } from '../../core/auth/current-user.service';
-import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/auth/auth.service';
+import { CurrentUserService } from '../../core/auth/current-user.service';
 
 @Component({
   selector: 'app-my-account',

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { CheckoutComponent } from './checkout.component';
-import { ShippingComponent } from './shipping/shipping.component';
-import { ShippingInfoComponent } from './shipping/shipping-info/shipping-info.component';
-import { PaymentComponent } from './shipping/payment/payment.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { PaymentComponent } from './shipping/payment/payment.component';
+import { ShippingInfoComponent } from './shipping/shipping-info/shipping-info.component';
+import { ShippingComponent } from './shipping/shipping.component';
+
 const routes: Routes = [
   {
     path: 'checkout',

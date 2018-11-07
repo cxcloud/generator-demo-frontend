@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Category } from '@cxcloud/ct-types/categories';
-import { CommerceService } from '../../core/commerce/commerce.service';
 import { environment } from '../../../environments/environment';
+import { CommerceService } from '../../core/commerce/commerce.service';
 
 @Component({
   selector: 'app-header',
