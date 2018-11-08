@@ -6,9 +6,13 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { map, tap } from 'rxjs/operators';
 import { CartService } from '../cart/cart.service';
 import { CurrentUserService } from './current-user.service';
+import { getApiUrl } from '../../utils/helpers';
+import { ServiceAlias } from '../../types/services';
 
 @Injectable()
 export class AuthService {
+  readonly apiUrl = getApiUrl(ServiceAlias.Auth);
+
   constructor(
     private http: HttpClient,
     private storage: LocalStorageService,
@@ -41,7 +45,7 @@ export class AuthService {
 
   private loginAnonymously() {
     this.http
-      .post<AnonymousSignInResult>('/auth/login/anonymous', {})
+      .post<AnonymousSignInResult>(`${this.apiUrl}/auth/login/anonymous`, {})
       .subscribe(result => {
         this.currentUserService.token.next(result.token);
         this.currentUserService.customer.next(null);
@@ -62,7 +66,7 @@ export class AuthService {
 
   public login(username: string, password: string) {
     return this.http
-      .post<TokenizedSignInResult>('/auth/login', { username, password })
+      .post<TokenizedSignInResult>(`${this.apiUrl}/auth/login`, { username, password })
       .pipe(
         tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)
@@ -71,7 +75,7 @@ export class AuthService {
 
   public register(draft: CustomerSignupDraft) {
     return this.http
-      .post<TokenizedSignInResult>('/auth/register', draft)
+      .post<TokenizedSignInResult>(`${this.apiUrl}/auth/register`, draft)
       .pipe(
         tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)

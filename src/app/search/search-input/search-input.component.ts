@@ -29,7 +29,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
         hitsPerPage: '3',
         attributesToRetrieve: 'id,name.en,description.en,images,categories'
       },
-      indexName: environment.commerceIndexName,
+      indexName: environment.commerce.indexName,
       displayKey: 'name.en',
       header: makeHeader('Products'),
       render: suggestion => `
@@ -51,7 +51,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
         hitsPerPage: '3',
         attributesToRetrieve: 'slug,title'
       },
-      indexName: environment.contentIndexName,
+      indexName: environment.content.indexName,
       displayKey: 'title',
       header: makeHeader('Content'),
       render: suggestion =>

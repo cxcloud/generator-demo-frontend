@@ -7,7 +7,18 @@ import 'zone.js/dist/zone-error';
 export const environment = {
   production: false,
   siteName: 'CXCloud DEV',
-  apiUrl: 'https://dev.cxcloud.com/api/v1',
-  commerceIndexName: 'dev_COMMERCE',
-  contentIndexName: 'dev_CONTENT'
+  commerce: {
+    apiUrl: 'https://dev.cxcloud.com/api/v1',
+    indexName: 'dev_COMMERCE'
+  },
+  content: {
+    apiUrl: 'https://dev.cxcloud.com/api/v1',
+    indexName: 'dev_CONTENT'
+  },
+  auth: {
+    apiUrl: 'https://dev.cxcloud.com/api/v1'
+  },
+  search: {
+    apiUrl: 'https://dev.cxcloud.com/api/v1'
+  }
 };

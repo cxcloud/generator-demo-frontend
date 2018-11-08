@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError as observableThrowError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { getApiUrl } from '../../utils/helpers';
+import { ServiceAlias } from '../../types/services';
 
 interface IQuery {
   [key: string]: string;
@@ -9,13 +11,15 @@ interface IQuery {
 
 @Injectable()
 export class ContentService {
+  readonly apiUrl = getApiUrl(ServiceAlias.Content);
+
   constructor(private http: HttpClient) {}
 
   getContentByQuery(query: IQuery) {
     const qs = Object.keys(query)
       .map(key => `${key}=${query[key]}`)
       .join('&');
-    return this.http.get(`/content?${qs}`);
+    return this.http.get(`${this.apiUrl}/content?${qs}`);
   }
 
   getContentBySlug(contentType: string, slug: string) {

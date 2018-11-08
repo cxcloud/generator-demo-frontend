@@ -1,3 +1,32 @@
+import { environment } from '../../../environments/environment';
+import { ServiceAlias } from '../../types/services';
+
+/**
+ *  Get API URL based on service alias
+ */
+
+export function getApiUrl(alias: string) {
+  switch(alias) {
+    case ServiceAlias.Commerce: {
+      return environment.commerce.apiUrl;
+      break;
+    }
+    case ServiceAlias.Content: {
+      return environment.content.apiUrl;
+      break;
+    }
+    case ServiceAlias.Auth: {
+      return environment.auth.apiUrl;
+      break;
+    }
+    case ServiceAlias.Search: {
+      return environment.search.apiUrl;
+      break;
+    }
+  }
+
+}
+
 /**
  *  Sort array by array of custom values
  */
