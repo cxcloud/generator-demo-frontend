@@ -9,6 +9,8 @@ import { CurrentUserService } from '../auth/current-user.service';
 import { getApiUrl } from '../../utils/helpers';
 import { ServiceAlias } from '../../types/services';
 
+const apiUrl = getApiUrl(ServiceAlias.Commerce);
+
 @Injectable()
 export class CartService {
   public cart = new BehaviorSubject<Cart>(null);
@@ -27,12 +29,12 @@ export class CartService {
 
   private initCart() {
     this.http
-      .get<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts/active`)
+      .get<Cart>(`${apiUrl}/carts/active`)
       .subscribe(cart => this.cart.next(cart), () => this.createCart());
   }
 
   public createCart() {
-    this.http.post<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts`, {}).subscribe(cart => this.cart.next(cart));
+    this.http.post<Cart>(`${apiUrl}/carts`, {}).subscribe(cart => this.cart.next(cart));
   }
 
   get totalCount() {
@@ -48,7 +50,7 @@ export class CartService {
   addLineItem(productId: string, variantId?: number, quantity?: number) {
     const cart = this.cart.getValue();
     this.http
-      .post<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts/${cart.id}/${cart.version}/lineItems`, {
+      .post<Cart>(`${apiUrl}/carts/${cart.id}/${cart.version}/lineItems`, {
         productId,
         variantId,
         quantity
@@ -59,7 +61,7 @@ export class CartService {
   changeQuantity(lineItemId: string, quantity: number) {
     const cart = this.cart.getValue();
     this.http
-      .put<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts/${cart.id}/${cart.version}/lineItems`, {
+      .put<Cart>(`${apiUrl}/carts/${cart.id}/${cart.version}/lineItems`, {
         lineItemId,
         quantity
       })
@@ -69,14 +71,14 @@ export class CartService {
   removeLineItem(lineItemId: string) {
     const cart = this.cart.getValue();
     this.http
-      .delete<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts/${cart.id}/${cart.version}/lineItems/${lineItemId}`)
+      .delete<Cart>(`${apiUrl}/carts/${cart.id}/${cart.version}/lineItems/${lineItemId}`)
       .subscribe(result => this.cart.next(result));
   }
 
   setShippingAddress(address: Address) {
     const cart = this.cart.getValue();
     return this.http
-      .put<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts/${cart.id}/${cart.version}/shippingAddress`, {
+      .put<Cart>(`${apiUrl}/carts/${cart.id}/${cart.version}/shippingAddress`, {
         ...address
       })
       .pipe(
@@ -86,7 +88,7 @@ export class CartService {
 
   setBillingAddress(cart: Cart, address: Address) {
     return this.http
-      .put<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts/${cart.id}/${cart.version}/billingAddress`, {
+      .put<Cart>(`${apiUrl}/carts/${cart.id}/${cart.version}/billingAddress`, {
         ...address
       })
       .pipe(
@@ -96,7 +98,7 @@ export class CartService {
 
   setShippingMethod(cart: Cart, shippingMethodId: string) {
     return this.http
-      .put<Cart>(`${getApiUrl(ServiceAlias.Commerce)}/carts/${cart.id}/${cart.version}/shippingMethod`, {
+      .put<Cart>(`${apiUrl}/carts/${cart.id}/${cart.version}/shippingMethod`, {
         shippingMethodId: shippingMethodId
       })
       .pipe(

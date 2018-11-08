@@ -9,6 +9,8 @@ import { CurrentUserService } from './current-user.service';
 import { getApiUrl } from '../../utils/helpers';
 import { ServiceAlias } from '../../types/services';
 
+const apiUrl = getApiUrl(ServiceAlias.Auth);
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -43,7 +45,7 @@ export class AuthService {
 
   private loginAnonymously() {
     this.http
-      .post<AnonymousSignInResult>(`${getApiUrl(ServiceAlias.Auth)}/auth/login/anonymous`, {})
+      .post<AnonymousSignInResult>(`${apiUrl}/auth/login/anonymous`, {})
       .subscribe(result => {
         this.currentUserService.token.next(result.token);
         this.currentUserService.customer.next(null);
@@ -64,7 +66,7 @@ export class AuthService {
 
   public login(username: string, password: string) {
     return this.http
-      .post<TokenizedSignInResult>(`${getApiUrl(ServiceAlias.Auth)}/auth/login`, { username, password })
+      .post<TokenizedSignInResult>(`${apiUrl}/auth/login`, { username, password })
       .pipe(
         tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)
@@ -73,7 +75,7 @@ export class AuthService {
 
   public register(draft: CustomerSignupDraft) {
     return this.http
-      .post<TokenizedSignInResult>(`${getApiUrl(ServiceAlias.Auth)}/auth/register`, draft)
+      .post<TokenizedSignInResult>(`${apiUrl}/auth/register`, draft)
       .pipe(
         tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)

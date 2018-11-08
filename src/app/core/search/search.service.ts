@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment';
 import { buildUrlQuery, getApiUrl } from '../../utils/helpers';
 import { ServiceAlias } from '../../types/services';
 
+const apiUrl = getApiUrl(ServiceAlias.Search);
+
 interface IQuery {
   [key: string]: string;
 }
@@ -17,6 +19,6 @@ export class SearchService {
     indexName: string = environment.commerce.indexName
   ) {
     const qs = buildUrlQuery(query);
-    return this.http.get(`${getApiUrl(ServiceAlias.Search)}/search/byIndex/${indexName}?${qs}`);
+    return this.http.get(`${apiUrl}/search/byIndex/${indexName}?${qs}`);
   }
 }

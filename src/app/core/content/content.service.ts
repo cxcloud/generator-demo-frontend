@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 import { getApiUrl } from '../../utils/helpers';
 import { ServiceAlias } from '../../types/services';
 
+const apiUrl = getApiUrl(ServiceAlias.Content);
+
 interface IQuery {
   [key: string]: string;
 }
@@ -17,7 +19,7 @@ export class ContentService {
     const qs = Object.keys(query)
       .map(key => `${key}=${query[key]}`)
       .join('&');
-    return this.http.get(`${getApiUrl(ServiceAlias.Content)}/content?${qs}`);
+    return this.http.get(`${apiUrl}/content?${qs}`);
   }
 
   getContentBySlug(contentType: string, slug: string) {
