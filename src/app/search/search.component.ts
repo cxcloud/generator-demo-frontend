@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
             hitsPerPage: '20',
             attributesToRetrieve: 'id,name.en,images,categories'
           },
-          environment.commerceIndexName
+          environment.commerce.indexName
         )
         .subscribe(resp => (this.commerceResults = resp));
       this.searchService
@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
             hitsPerPage: '20',
             attributesToRetrieve: 'slug,title,subTitle'
           },
-          environment.contentIndexName
+          environment.content.indexName
         )
         .subscribe(resp => (this.contentResults = resp));
     });

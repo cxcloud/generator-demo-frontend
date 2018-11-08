@@ -1,29 +1,26 @@
 import { environment } from '../../../environments/environment';
+import { ServiceAlias } from '../../types/services';
 
 /**
  *  Get API URL based on service alias
  */
-export const COMMERCE = "commerce";
-export const CONTENT = "content";
-export const AUTH = "auth";
-export const SEARCH = "search";
 
 export function getApiUrl(alias: string) {
   switch(alias) {
-    case COMMERCE: {
-      return environment.commerceApiUrl;
+    case ServiceAlias.Commerce: {
+      return environment.commerce.apiUrl;
       break;
     }
-    case CONTENT: {
-      return environment.contentfulApiUrl;
+    case ServiceAlias.Content: {
+      return environment.content.apiUrl;
       break;
     }
-    case AUTH: {
-      return environment.cognitoApiUrl;
+    case ServiceAlias.Auth: {
+      return environment.auth.apiUrl;
       break;
     }
-    case SEARCH: {
-      return environment.algoliaApiUrl;
+    case ServiceAlias.Search: {
+      return environment.search.apiUrl;
       break;
     }
   }

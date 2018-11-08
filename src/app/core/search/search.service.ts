@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { buildUrlQuery, getApiUrl, SEARCH } from '../../utils/helpers';
+import { buildUrlQuery, getApiUrl } from '../../utils/helpers';
+import { ServiceAlias } from '../../types/services';
 
 interface IQuery {
   [key: string]: string;
@@ -13,9 +14,9 @@ export class SearchService {
 
   searchByQuery(
     query: IQuery,
-    indexName: string = environment.commerceIndexName
+    indexName: string = environment.commerce.indexName
   ) {
     const qs = buildUrlQuery(query);
-    return this.http.get(`${getApiUrl(SEARCH)}/search/byIndex/${indexName}?${qs}`);
+    return this.http.get(`${getApiUrl(ServiceAlias.Search)}/search/byIndex/${indexName}?${qs}`);
   }
 }

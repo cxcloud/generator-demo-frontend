@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError as observableThrowError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { getApiUrl, CONTENT } from '../../utils/helpers';
+import { getApiUrl } from '../../utils/helpers';
+import { ServiceAlias } from '../../types/services';
 
 interface IQuery {
   [key: string]: string;
@@ -16,7 +17,7 @@ export class ContentService {
     const qs = Object.keys(query)
       .map(key => `${key}=${query[key]}`)
       .join('&');
-    return this.http.get(`${getApiUrl(CONTENT)}/content?${qs}`);
+    return this.http.get(`${getApiUrl(ServiceAlias.Content)}/content?${qs}`);
   }
 
   getContentBySlug(contentType: string, slug: string) {
