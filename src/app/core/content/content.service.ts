@@ -5,21 +5,21 @@ import { map } from 'rxjs/operators';
 import { getApiUrl } from '../../utils/helpers';
 import { ServiceAlias } from '../../types/services';
 
-const apiUrl = getApiUrl(ServiceAlias.Content);
-
 interface IQuery {
   [key: string]: string;
 }
 
 @Injectable()
 export class ContentService {
+  readonly apiUrl = getApiUrl(ServiceAlias.Content);
+
   constructor(private http: HttpClient) {}
 
   getContentByQuery(query: IQuery) {
     const qs = Object.keys(query)
       .map(key => `${key}=${query[key]}`)
       .join('&');
-    return this.http.get(`${apiUrl}/content?${qs}`);
+    return this.http.get(`${this.apiUrl}/content?${qs}`);
   }
 
   getContentBySlug(contentType: string, slug: string) {

@@ -8,16 +8,16 @@ import { CartService } from '../cart/cart.service';
 import { getApiUrl } from '../../utils/helpers';
 import { ServiceAlias } from '../../types/services';
 
-const apiUrl = getApiUrl(ServiceAlias.Commerce);
-
 @Injectable()
 export class OrderService {
+  readonly apiUrl = getApiUrl(ServiceAlias.Commerce);
   public order = new BehaviorSubject<Order>(null);
+
   constructor(private http: HttpClient, private cartService: CartService) {}
 
   createOrder(cart: Cart) {
     return this.http
-      .post<Order>(`${apiUrl}/orders`, {
+      .post<Order>(`${this.apiUrl}/orders`, {
         cartId: cart.id,
         cartVersion: cart.version
       })

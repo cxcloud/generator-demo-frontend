@@ -8,15 +8,15 @@ import { tap } from 'rxjs/operators';
 import { sortByCustomValues, getApiUrl } from '../../utils/helpers';
 import { ServiceAlias } from '../../types/services';
 
-const apiUrl = getApiUrl(ServiceAlias.Commerce);
-
 @Injectable()
 export class CommerceService {
+  readonly apiUrl = getApiUrl(ServiceAlias.Commerce);
+
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
     return this.http
-      .get<Category[]>(`${apiUrl}/categories`)
+      .get<Category[]>(`${this.apiUrl}/categories`)
       .pipe(
         tap(categories => this.sortCategories(categories))
       );
@@ -24,16 +24,16 @@ export class CommerceService {
 
   getProducts(categoryId: string): Observable<PaginatedProductResult> {
     return this.http.get<PaginatedProductResult>(
-      `${apiUrl}/products/byCategory/${categoryId}`
+      `${this.apiUrl}/products/byCategory/${categoryId}`
     );
   }
 
   getProduct(productId: string): Observable<Product> {
-    return this.http.get<Product>(`${apiUrl}/products/${productId}`);
+    return this.http.get<Product>(`${this.apiUrl}/products/${productId}`);
   }
 
   getShippingMethods(): Observable<ShippingMethod[]> {
-    return this.http.get<ShippingMethod[]>(`${apiUrl}/shipping/methods`);
+    return this.http.get<ShippingMethod[]>(`${this.apiUrl}/shipping/methods`);
   }
 
   sortCategories(categories) {
