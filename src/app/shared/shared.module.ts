@@ -24,7 +24,8 @@ const DECLARATIONS = [
   SpinnerComponent,
   OrderDetailsComponent,
   PopoverComponent,
-  StarsComponent
+  StarsComponent,
+  CountryPipe
 ];
 
 @NgModule({
@@ -34,7 +35,7 @@ const DECLARATIONS = [
     ReactiveFormsModule,
     MarkdownModule.forRoot()
   ],
-  declarations: [...DECLARATIONS, CountryPipe],
+  declarations: [...DECLARATIONS],
   exports: [...DECLARATIONS, MarkdownModule],
   providers: []
 })
