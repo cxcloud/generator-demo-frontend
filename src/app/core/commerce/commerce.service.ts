@@ -17,14 +17,12 @@ export class CommerceService {
   getCategories(): Observable<Category[]> {
     return this.http
       .get<Category[]>(`${this.apiUrl}/categories`)
-      .pipe(
-        tap(categories => this.sortCategories(categories))
-      );
+      .pipe(tap(categories => this.sortCategories(categories)));
   }
 
   getProducts(categoryId: string): Observable<PaginatedProductResult> {
     return this.http.get<PaginatedProductResult>(
-      `${this.apiUrl}/products/byCategory/${categoryId}`
+      `${this.apiUrl}/products/byCategoryId/${categoryId}`
     );
   }
 

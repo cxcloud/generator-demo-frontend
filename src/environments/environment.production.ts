@@ -10,7 +10,7 @@ export const environment = {
     indexName: 'prod_CONTENT'
   },
   auth: {
-    apiUrl: 'https://demo.cxcloud.com/api/auth/v1'
+    apiUrl: 'https://demo.cxcloud.com/api/commerce/v1/auth'
   },
   search: {
     apiUrl: 'https://demo.cxcloud.com/api/search/v1'
