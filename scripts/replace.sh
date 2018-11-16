@@ -14,5 +14,5 @@ fi
 while read var value
 do
   echo $var=$value
-  sed -i "s/$var:\"__PLACEHOLDER__\"/$var:$value/g" $BUNDLE
+  sed -i "s|$var:\"__PLACEHOLDER__\"|$var:$value|g" $BUNDLE
 done < $CONFIG
