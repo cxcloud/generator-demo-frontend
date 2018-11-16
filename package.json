@@ -6,7 +6,7 @@
     "ng": "ng",
     "dev": "ng serve",
     "start": "serve dist/ --single",
-    "build": "ng build --prod --build-optimizer --extract-css --configuration=production && npm run generate-config",
+    "build": "ng build --prod --build-optimizer --extract-css --configuration=${ENVIRONMENT:-production} && npm run generate-config",
     "generate-config": "ts-node scripts/extract-config.ts",
     "test": "ng test",
     "lint": "ng lint",
@@ -44,7 +44,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.10.0",
+    "@angular-devkit/build-angular": "^0.10.6",
     "@angular/cli": "7.0.3",
     "@angular/compiler": "7.0.1",
     "@angular/compiler-cli": "7.0.1",
@@ -57,7 +57,7 @@
     "husky": "^0.14.3",
     "jasmine-core": "^3.2.1",
     "jasmine-spec-reporter": "^4.2.1",
-    "karma": "^3.0.0",
+    "karma": "^3.1.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^1.0.1",
     "karma-coverage-istanbul-reporter": "^1.4.3",

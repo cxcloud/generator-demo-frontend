@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CONFIG=$DIR/$NODE_ENV.cfg
-BUNDLE=$DIR/../main.*.bundle.js
+BUNDLE=$DIR/../main.*.js
 
 echo $BUNDLE
 
@@ -14,5 +14,5 @@ fi
 while read var value
 do
   echo $var=$value
-  sed -i "s/$var:\"__PLACEHOLDER__\"/$var:$value/g" $BUNDLE
+  sed -i "s|$var:\"__PLACEHOLDER__\"|$var:$value|g" $BUNDLE
 done < $CONFIG

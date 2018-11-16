@@ -1,7 +1,11 @@
+declare const NG_CONFIG: { [key: string]: any };
+
 export const environment = {
-  production: '__PLACEHOLDER__',
-  siteName: '__PLACEHOLDER__',
-  apiUrl: '__PLACEHOLDER__',
-  commerceIndexName: '__PLACEHOLDER__',
-  contentIndexName: '__PLACEHOLDER__'
+  production: <any>'__PLACEHOLDER__',
+  siteName: <any>'__PLACEHOLDER__',
+  commerce: <any>'__PLACEHOLDER__',
+  content: <any>'__PLACEHOLDER__',
+  auth: <any>'__PLACEHOLDER__',
+  search: <any>'__PLACEHOLDER__',
+  ...(typeof NG_CONFIG === 'undefined' ? {} : NG_CONFIG)
 };

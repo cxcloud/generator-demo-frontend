@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnonymousSignInResult, CustomerSignupDraft, TokenizedSignInResult } from '@cxcloud/ct-types/customers';
+import {
+  AnonymousSignInResult,
+  CustomerSignupDraft,
+  TokenizedSignInResult
+} from '@cxcloud/ct-types/customers';
 import { LocalStorageService } from 'ngx-webstorage';
 import { map, tap } from 'rxjs/operators';
 import { CartService } from '../cart/cart.service';
@@ -45,7 +49,7 @@ export class AuthService {
 
   private loginAnonymously() {
     this.http
-      .post<AnonymousSignInResult>(`${this.apiUrl}/auth/login/anonymous`, {})
+      .post<AnonymousSignInResult>(`${this.apiUrl}/login/anonymous`, {})
       .subscribe(result => {
         this.currentUserService.token.next(result.token);
         this.currentUserService.customer.next(null);
@@ -66,7 +70,10 @@ export class AuthService {
 
   public login(username: string, password: string) {
     return this.http
-      .post<TokenizedSignInResult>(`${this.apiUrl}/auth/login`, { username, password })
+      .post<TokenizedSignInResult>(`${this.apiUrl}/login`, {
+        username,
+        password
+      })
       .pipe(
         tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)
@@ -75,7 +82,7 @@ export class AuthService {
 
   public register(draft: CustomerSignupDraft) {
     return this.http
-      .post<TokenizedSignInResult>(`${this.apiUrl}/auth/register`, draft)
+      .post<TokenizedSignInResult>(`${this.apiUrl}/register`, draft)
       .pipe(
         tap(resp => this.handleSignIn(resp)),
         map(resp => resp.customer)

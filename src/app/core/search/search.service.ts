@@ -19,6 +19,6 @@ export class SearchService {
     indexName: string = environment.commerce.indexName
   ) {
     const qs = buildUrlQuery(query);
-    return this.http.get(`${this.apiUrl}/search/byIndex/${indexName}?${qs}`);
+    return this.http.get(`${this.apiUrl}/byIndex/${indexName}?${qs}`);
   }
 }
