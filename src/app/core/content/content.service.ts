@@ -19,7 +19,7 @@ export class ContentService {
     const qs = Object.keys(query)
       .map(key => `${key}=${query[key]}`)
       .join('&');
-    return this.http.get(`${this.apiUrl}?${qs}`);
+    return this.http.get(`${this.apiUrl}/content?${qs}`);
   }
 
   getContentBySlug(contentType: string, slug: string) {
