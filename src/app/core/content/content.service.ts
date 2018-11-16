@@ -19,7 +19,7 @@ export class ContentService {
     const qs = Object.keys(query)
       .map(key => `${key}=${query[key]}`)
       .join('&');
-    return this.http.get(`${this.apiUrl}/content?${qs}`);
+    return this.http.get(`${this.apiUrl}?${qs}`);
   }
 
   getContentBySlug(contentType: string, slug: string) {
@@ -29,7 +29,9 @@ export class ContentService {
     }).pipe(
       map((res: any) => {
         if (res.total === 0) {
-          throw observableThrowError(new Error(`Page ${slug} has not been found.`));
+          throw observableThrowError(
+            new Error(`Page ${slug} has not been found.`)
+          );
         }
         return res.items[0].fields;
       })
