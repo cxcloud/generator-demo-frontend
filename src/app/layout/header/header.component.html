@@ -1,16 +1,14 @@
 <section class="hero">
-  <div class="hero-head">
-    <app-brand-navbar></app-brand-navbar>
-  </div>
+  <div class="hero-head"><app-brand-navbar></app-brand-navbar></div>
   <div class="hero-body">
     <div class="container">
       <div class="columns">
-
         <!-- Shop title -->
         <div class="column is-8">
           <h1 class="title">
             <a routerLink="/">
-              <i class="mdi mdi-cloud-outline mdi-48px"></i>{{title}}</a>
+              <span class="icon-cloud-outline"></span> {{ title }}
+            </a>
           </h1>
         </div>
 
@@ -29,13 +27,25 @@
         <div class="navbar-menu" id="navMainMenu">
           <div class="navbar-start">
             <!-- List of categories -->
-            <div class="navbar-item has-dropdown is-hoverable" *ngFor="let category of categories">
-              <a class="navbar-item category" [routerLink]="['categories/', category.id]">
-                {{category.name.en}}
+            <div
+              class="navbar-item has-dropdown is-hoverable"
+              *ngFor="let category of categories"
+            >
+              <a
+                class="navbar-item category"
+                [routerLink]="['categories/', category.id]"
+              >
+                {{ category.name.en }}
               </a>
               <!-- Dropdown with sub categories -->
-              <div class="navbar-dropdown is-boxed" *ngIf="category.subCategories">
-                <app-main-menu [categories]="category.subCategories" class="main-menu"></app-main-menu>
+              <div
+                class="navbar-dropdown is-boxed"
+                *ngIf="category.subCategories"
+              >
+                <app-main-menu
+                  [categories]="category.subCategories"
+                  class="main-menu"
+                ></app-main-menu>
               </div>
             </div>
           </div>
