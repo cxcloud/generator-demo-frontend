@@ -3,15 +3,14 @@
     <div class="level">
       <div class="level-left">
         <h4 class="subtitle is-uppercase is-4 level-left">
-          <i class="mdi mdi-credit-card mdi-36px"></i> Checkout - {{currentStep.name}}
+          <span class="icon-credit-card"></span> Checkout -
+          {{ currentStep.name }}
         </h4>
       </div>
       <app-steps [steps]="steps" [current]="currentStep.stage"></app-steps>
     </div>
     <div class="columns checkout">
-      <div class="column">
-        <router-outlet></router-outlet>
-      </div>
+      <div class="column"><router-outlet></router-outlet></div>
     </div>
   </div>
 </section>

@@ -7,14 +7,17 @@
         </h4>
       </div>
       <div class="level-item level-right">
-        <app-goto-button name="Continue Shopping" (click)="goToHomePage();"></app-goto-button>
+        <app-goto-button
+          name="Continue Shopping"
+          (click)="goToHomePage()"
+        ></app-goto-button>
       </div>
     </div>
     <div class="columns order-content">
       <div class="column">
         <div class="email-sent">
-          <p>An email has been sent to
-            <a>{{order?.customerEmail}}</a>
+          <p>
+            An email has been sent to <a>{{ order?.customerEmail }}</a>
           </p>
           <p>as a copy of this confirmation purchase</p>
         </div>
@@ -26,17 +29,24 @@
               <p class="is-capitalized">Order date</p>
             </div>
             <div class="column is-2">
-              <p>{{order?.orderNumber}}</p>
-              <p>{{order?.createdAt | date:'longDate'}}</p>
+              <p>{{ order?.orderNumber }}</p>
+              <p>{{ order?.createdAt | date: 'longDate' }}</p>
             </div>
           </div>
         </div>
         <!-- Order details -->
-        <app-order-details *ngIf="order" [source]="order" icon="mdi mdi-check"></app-order-details>
+        <app-order-details
+          *ngIf="order"
+          [source]="order"
+          icon="icon-check"
+        ></app-order-details>
         <div class="level">
           <!-- Continue button -->
           <div class="level-item level-right">
-            <app-goto-button name="Continue Shopping" (click)="goToHomePage();"></app-goto-button>
+            <app-goto-button
+              name="Continue Shopping"
+              (click)="goToHomePage()"
+            ></app-goto-button>
           </div>
         </div>
       </div>

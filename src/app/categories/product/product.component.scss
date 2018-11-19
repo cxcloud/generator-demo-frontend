@@ -61,7 +61,7 @@ button.add-to-cart {
 
 .pd-review {
   margin-bottom: 0;
-  .mdi-star {
+  .icon-star {
     color: $silver;
 
     &::before {
@@ -77,4 +77,8 @@ button.add-to-cart {
     text-decoration: underline;
     margin-left: 0.5em;
   }
+}
+
+.icon-cart {
+  font-size: 1.5rem;
 }

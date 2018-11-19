@@ -8,6 +8,10 @@
     text-transform: uppercase;
     font-weight: lighter;
     font-size: 1.8em;
+
+    .icon-account-outline {
+      font-size: 2.25rem;
+    }
   }
 
   .container {
@@ -73,10 +77,13 @@
         &:hover {
           color: $grey;
         }
+        .icon-account-edit {
+          font-size: 1.5rem;
+        }
 
-        i,
+        span,
         .text {
-          margin-right: 5px;
+          margin-right: 0.3125rem;
         }
       }
     }

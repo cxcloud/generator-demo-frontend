@@ -1,3 +1,8 @@
-<div class="mdi-set  mdi-24px">
-  <i class="mdi-star" *ngFor="let star of stars; let i = index;" (mouseout)="mouseLeaveStarEvent($event)" (mouseover)="mouseOverStarEvent($event)"></i>
+<div class="icon-set">
+  <span
+    class="icon-star"
+    *ngFor="let star of stars; let i = index"
+    (mouseout)="mouseLeaveStarEvent($event)"
+    (mouseover)="mouseOverStarEvent($event)"
+  ></span>
 </div>

@@ -1,11 +1,20 @@
 <div class="columns cart-page">
   <div class="column">
-    <app-order-details *ngIf="cart" [source]="cart" icon="mdi mdi-lead-pencil" label="Edit" isUrl="true"></app-order-details>
+    <app-order-details
+      *ngIf="cart"
+      [source]="cart"
+      icon="icon-lead-pencil"
+      label="Edit"
+      isUrl="true"
+    ></app-order-details>
     <!-- Button line -->
     <div class="level order">
       <!-- Checkout button -->
       <div class="level-item level-right">
-        <app-goto-button name="Complete my Order" (click)="completeCheckout();"></app-goto-button>
+        <app-goto-button
+          name="Complete my Order"
+          (click)="completeCheckout()"
+        ></app-goto-button>
       </div>
     </div>
   </div>

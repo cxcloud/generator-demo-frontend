@@ -1,22 +1,26 @@
 <div class="section" *ngIf="cart">
   <div class="columns cart-page">
     <div class="column is-10 is-offset-1">
-
       <div class="level">
         <!-- Total amount of items in the cart -->
         <div class="subtitle level-left">
-          <i class="mdi mdi-cart-outline mdi-36px"></i>
+          <span class="icon-cart-outline"></span>
           <span class="is-uppercase">Your cart: </span>
-          <span class="items-total">{{totalQuantity}} </span> items in total
+          <span class="items-total">{{ totalQuantity }} </span> items in total
         </div>
         <!-- Checkout button -->
-        <app-goto-button name="Checkout" (click)="goToCheckout();"></app-goto-button>
+        <app-goto-button
+          name="Checkout"
+          (click)="goToCheckout()"
+        ></app-goto-button>
       </div>
       <!-- Cart table -->
       <table class="table is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th class="is-uppercase" *ngFor="let title of columns">{{title}}</th>
+            <th class="is-uppercase" *ngFor="let title of columns">
+              {{ title }}
+            </th>
           </tr>
         </thead>
 
@@ -30,12 +34,18 @@
                   <div>Shipping</div>
                 </div>
                 <div class="column is-2">
-                  <div> {{ 0.01 * cart.totalPrice.centAmount | currency: cart.totalPrice.currencyCode}}</div>
-                  <div>{{ 0 | currency: cart.totalPrice.currencyCode}}</div>
+                  <div>
+                    {{
+                      0.01 * cart.totalPrice.centAmount
+                        | currency: cart.totalPrice.currencyCode
+                    }}
+                  </div>
+                  <div>{{ 0 | currency: cart.totalPrice.currencyCode }}</div>
                 </div>
               </div>
-
+            </th>
           </tr>
+
           <!-- Line with sales tax and total costs -->
           <tr class="total">
             <th colspan="4">
@@ -45,8 +55,13 @@
                   <div class="order-total">Total</div>
                 </div>
                 <div class="column is-2">
-                  <div>{{ 0 | currency: cart.totalPrice.currencyCode}}</div>
-                  <div class="order-total">{{ 0.01 * cart.totalPrice.centAmount | currency: cart.totalPrice.currencyCode}}</div>
+                  <div>{{ 0 | currency: cart.totalPrice.currencyCode }}</div>
+                  <div class="order-total">
+                    {{
+                      0.01 * cart.totalPrice.centAmount
+                        | currency: cart.totalPrice.currencyCode
+                    }}
+                  </div>
                 </div>
               </div>
             </th>
@@ -61,35 +76,54 @@
               </div>
 
               <!-- Delete button -->
-              <div class="column is-4 is-uppercase btn-delete" (click)="removeLineItem(item);">
+              <div
+                class="column is-4 is-uppercase btn-delete"
+                (click)="removeLineItem(item)"
+              >
                 <div class="level">
                   <div class="level-item">
-                    <i class="mdi mdi-window-close mdi-24px"></i>
-                    <span>Delete</span>
+                    <i class="icon-window-close"></i> <span>Delete</span>
                   </div>
                 </div>
               </div>
             </td>
             <td class="cart-item-quantity">
-              <app-quantity-input [quantity]="item.quantity" (quantityChange)="updateQuantityValue(item, $event)"></app-quantity-input>
+              <app-quantity-input
+                [quantity]="item.quantity"
+                (quantityChange)="updateQuantityValue(item, $event)"
+              ></app-quantity-input>
             </td>
-            <td class="cart-item-price">{{ 0.01 * item.price.value.centAmount | currency: item.price.value.currencyCode}}</td>
-            <td class="cart-item-price">{{ 0.01 * (item.quantity * item.price.value.centAmount) | currency: item.price.value.currencyCode}}</td>
+            <td class="cart-item-price">
+              {{
+                0.01 * item.price.value.centAmount
+                  | currency: item.price.value.currencyCode
+              }}
+            </td>
+            <td class="cart-item-price">
+              {{
+                0.01 * (item.quantity * item.price.value.centAmount)
+                  | currency: item.price.value.currencyCode
+              }}
+            </td>
           </tr>
         </tbody>
       </table>
       <!-- Button line -->
       <div class="level navigation">
         <!-- Total amount of items in the cart -->
-        <button class="button level-left is-uppercase btn-back" (click)="goBackToHomePage()">
-          <span class="icon">
-            <i class="mdi mdi-chevron-left mdi-36px"></i>
-          </span>
+        <button
+          class="button level-left is-uppercase btn-back"
+          (click)="goBackToHomePage()"
+        >
+          <span class="icon"> <i class="icon-chevron-left"></i> </span>
           <span>Continue shopping</span>
         </button>
 
         <!-- Checkout button -->
-        <app-goto-button name="Checkout" (click)="goToCheckout();"></app-goto-button>
+        <app-goto-button
+          name="Checkout"
+          (click)="goToCheckout()"
+        ></app-goto-button>
       </div>
     </div>
   </div>

@@ -1,25 +1,35 @@
 <div class="section">
   <div class="columns product-view">
-    <ng-container *ngIf="product else loading">
-
+    <ng-container *ngIf="product; else: loading">
       <!-- Image column -->
       <div class="column is-3 is-offset-2">
         <figure class="image product-image">
-          <img *ngIf="image" [src]="image?.url" class="is-hidden-desktop">
-          <!-- Image with magnifying lens (if desktop)-->
-          <img *ngIf="image" [imageZoom]="image.url" [src]="image?.url" [lensWidth]="300" [lensHeight]="500" class="is-hidden-touch"
-            (error)="setDefaultImage()">
+          <img *ngIf="image" [src]="image?.url" class="is-hidden-desktop" />
+          <!-- Image with magnifying lens (if desktop) -->
+          <img
+            *ngIf="image"
+            [imageZoom]="image.url"
+            [src]="image?.url"
+            [lensWidth]="300"
+            [lensHeight]="500"
+            class="is-hidden-touch"
+            (error)="setDefaultImage()"
+          />
         </figure>
         <ng-container *ngFor="let image of selectedVariant?.images">
-          <img class="thumbnail" src="{{image.url}}" (click)="changeSelectedImage(image)" *ngIf="image.url !== defaultImage">
+          <img
+            class="thumbnail"
+            src="{{image.url}}"
+            (click)="changeSelectedImage(image)"
+            *ngIf="image.url !== defaultImage"
+          />
         </ng-container>
       </div>
 
       <!-- Description column -->
       <div class="column is-offset-1">
-
-        <h2 class="pd-title">{{product?.name?.en}}</h2>
-        <h3 class="pd-sku">{{selectedVariant?.sku}}</h3>
+        <h2 class="pd-title">{{ product?.name?.en }}</h2>
+        <h3 class="pd-sku">{{ selectedVariant?.sku }}</h3>
 
         <!-- Review placeholder -->
         <div class="level pd-review">
@@ -29,47 +39,56 @@
           </div>
         </div>
 
-
-        <div class="pd-description column is-8">{{product?.description?.en}}</div>
+        <div class="pd-description column is-8">
+          {{ product?.description?.en }}
+        </div>
         <div class="subtitle pd-price">
-          {{ 0.01 * price?.value?.centAmount | currency: price?.value?.currencyCode}}
+          {{
+            0.01 * price?.value?.centAmount
+              | currency: price?.value?.currencyCode
+          }}
         </div>
 
         <div class="field pd-attributes">
-
           <div class="control" *ngIf="sizes?.length">
-            <label>SIZE:</label>
-            <br />
-            <div class="select" (change)="getVariantByAttribute('size', $event)">
+            <label>SIZE:</label> <br />
+            <div
+              class="select"
+              (change)="getVariantByAttribute('size', $event)"
+            >
               <select>
-                <option *ngFor="let size of sizes">{{size}}</option>
+                <option *ngFor="let size of sizes">{{ size }}</option>
               </select>
             </div>
           </div>
 
           <div class="control" *ngIf="colors?.length">
-            <label>COLOR:</label>
-            <br />
-            <div class="select" (change)="getVariantByAttribute('color', $event)">
+            <label>COLOR:</label> <br />
+            <div
+              class="select"
+              (change)="getVariantByAttribute('color', $event)"
+            >
               <select>
-                <option *ngFor="let color of colors">{{color}}</option>
+                <option *ngFor="let color of colors">{{ color }}</option>
               </select>
             </div>
           </div>
-
         </div>
 
         <div class="field is-grouped">
           <div class="control">
             <div class="select">
               <select #selectedQuantity>
-                <option *ngFor="let number of availability" [value]="number">{{number}}</option>
+                <option *ngFor="let number of availability" [value]="number">{{
+                  number
+                }}</option>
               </select>
             </div>
-            <button class="button add-to-cart" (click)="addItemToCart(selectedQuantity.value);">
-              <span class="icon">
-                <i class="mdi mdi-cart mdi-24px"></i>
-              </span>
+            <button
+              class="button add-to-cart"
+              (click)="addItemToCart(selectedQuantity.value)"
+            >
+              <span class="icon"> <span class="icon-cart"></span> </span>
               <span>Add to cart</span>
             </button>
           </div>
@@ -77,21 +96,19 @@
         <app-info-card title="Product Details">
           <ul class="content">
             <li class="attribute" *ngFor="let attr of productDetails">
-              <span class="attr-name is-uppercase">{{attr?.name}}:</span>
-              <span class="attr-value is-capitalized">{{attr?.value.label}}</span>
+              <span class="attr-name is-uppercase">{{ attr?.name }}:</span>
+              <span class="attr-value is-capitalized">{{
+                attr?.value.label
+              }}</span>
             </li>
           </ul>
         </app-info-card>
 
         <app-info-card title="Delivery & Returns">
-          <div class="content">
-            Free return for all orders.
-          </div>
+          <div class="content">Free return for all orders.</div>
         </app-info-card>
       </div>
     </ng-container>
   </div>
-  <ng-template #loading>
-    <app-spinner></app-spinner>
-  </ng-template>
+  <ng-template #loading> <app-spinner></app-spinner> </ng-template>
 </div>
