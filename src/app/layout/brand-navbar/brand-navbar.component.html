@@ -2,41 +2,38 @@
   <div class="container">
     <div class="navbar-start navbar-brand is-hidden-touch">
       <a class="navbar-item" routerLink="/">
-        <i class="mdi mdi-map-marker mdi-24px"></i> Stores
+        <span class="icon icon-map-marker"></span> Stores
       </a>
       <a class="navbar-item" routerLink="/">
-        <i class="mdi mdi-help-circle-outline mdi-24px"></i> Help
+        <span class="icon icon-help-circle-outline"></span> Help
       </a>
       <a class="navbar-item" routerLink="/">
-        <i class="mdi mdi-phone mdi-24px"></i> +358 40 123 45 67
+        <span class="icon icon-phone "></span> +358 40 123 45 67
       </a>
     </div>
     <div class="navbar-menu brand-menu is-inline-flex">
       <div class="navbar-end">
-        <ng-container *ngIf="currentUser; else anonymous">
+        <ng-container *ngIf="currentUser; else: anonymous">
           <a class="navbar-item" routerLink="/user">
-            <i class="mdi mdi-account mdi-24px"></i> {{currentUser.firstName}}
+            <span class="icon icon-account "></span> {{ currentUser.firstName }}
           </a>
           <a class="navbar-item" (click)="logOut()">
-            <i class="mdi mdi-logout mdi-24px"></i> Log out
+            <span class="icon icon-logout "></span> Log out
           </a>
         </ng-container>
         <ng-template #anonymous>
           <a class="navbar-item" routerLink="/user/login">
-            <i class="mdi mdi-account mdi-24px"></i> LogIn
+            <span class="icon icon-account "></span> LogIn
           </a>
         </ng-template>
         <a class="navbar-item" routerLink="/cart">
-          <i class="mdi mdi-cart mdi-24px"></i>
+          <span class="icon icon-cart "></span>
           <span class="badge" [attr.data-badge]="total">Cart</span>
         </a>
-
       </div>
     </div>
     <span class="navbar-burger burger is-flex-touch" data-target="navMainMenu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span> <span></span> <span></span>
     </span>
   </div>
 </nav>
