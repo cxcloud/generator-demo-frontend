@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/cxcloud/demo-frontend-angular.svg?branch=master)](https://travis-ci.org/cxcloud/frontend-accelerator)
 
-Demo Frontend implemented using Angular 7 and demonstrates CXCloud capabilities.
+Demo Frontend implemented using Angular 7 and demonstrates CX Cloud capabilities.
 Demo uses various API services such as Commerce Tools, Contentful and Algolia. Authentification for the demo is implemented via Commerce core module.
 
 ## Copy repository
@@ -50,7 +50,7 @@ $ cxcloud generate demo
 
 You will go through a set of simple questions and receive an end-to-end working demo
 
-### Confuguration
+### Configuration
 
 In order the frontend demo works with listed above APIs, configuration files should be modified. Configuration files you can be found in this folder of the project: `/src/environments/`.
 To connect with existing APIs, change value of `apiUrl`for each service (notice that evironments files should be modified depends on used environment).
