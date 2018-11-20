@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/cxcloud/demo-frontend-angular.svg?branch=master)](https://travis-ci.org/cxcloud/frontend-accelerator)
 
-Demo Frontend implemented using Angular 7 and demonstrates CX Cloud capabilities.
-Demo uses various API services such as Commerce Tools, Contentful and Algolia. Authentification for the demo is implemented via Commerce core module.
+Demo Frontend is implemented using Angular 7 and demonstrates CX Cloud capabilities.
+Demo uses various API services such as Commerce Tools, Contentful and Algolia. The authentification for the demo is implemented via Commerce core module.
 
 ## Copy repository
 
@@ -52,9 +52,27 @@ You will go through a set of simple questions and receive an end-to-end working 
 
 ### Configuration
 
-In order the frontend demo works with listed above APIs, configuration files should be modified. Configuration files you can be found in this folder of the project: `/src/environments/`.
-To connect with existing APIs, change value of `apiUrl`for each service (notice that evironments files should be modified depends on used environment).
-
+In order the frontend demo works with listed above APIs, configuration files should be modified. Configuration files can be found in this project directory `/src/environments/`. To connect with existing APIs, change the value of `apiUrl` for each service (notice that environments files should be modified depending on the used environment).
+```sh
+export const environment = {
+  production: false,
+  siteName: 'CXCloud DEV',
+  commerce: {
+    apiUrl: 'https://<YOUR_URL>/api/v1',
+    indexName: 'dev_COMMERCE'
+  },
+  content: {
+    apiUrl: 'https://<YOUR_URL>/api/v1/content',
+    indexName: 'dev_CONTENT'
+  },
+  auth: {
+    apiUrl: 'https://<YOUR_URL>/api/v1/auth'
+  },
+  search: {
+    apiUrl: 'https://<YOUR_URL>/api/v1/search'
+  }
+};
+```
 ### Run locally
 
 In order to explore/modify demo frontend locally, you would need to run following coomand:
