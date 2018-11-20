@@ -11,7 +11,7 @@
           <ng-container *ngIf="commerceResults && commerceResults?.hits.length > 0; else nomatch">
             <article *ngFor="let item of commerceResults.hits" class="search-item pb-2 mb-2" routerLink="/product/{{item.id}}">
               <figure class="image mr-1">
-                <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
+                <img alt="" src="{{item.images}}" (error)="img.src=defaultImage" #img>
               </figure>
               <div class="content">
                 <div class="is-size-5">
@@ -29,7 +29,7 @@
           <ng-container *ngIf="contentResults && contentResults?.hits.length > 0; else nomatch">
             <article *ngFor="let item of contentResults.hits" class="search-item pb-2 mb-2" routerLink="/pages/{{item.slug}}">
               <figure class="image mr-1">
-                <img src="{{item.images}}" (error)="img.src=defaultImage" #img>
+                <img alt="" src="{{item.images}}" (error)="img.src=defaultImage" #img>
               </figure>
               <div class="content">
                 <div class="is-size-5">

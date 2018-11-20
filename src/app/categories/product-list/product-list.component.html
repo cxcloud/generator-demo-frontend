@@ -6,8 +6,8 @@
       <div class="hero">
         <div class="hero-body has-text-centered page-title">
           <figure class="image">
-            <img src="./assets/images/banner_desktop.jpg" class="is-hidden-touch">
-            <img src="./assets/images/banner_mobile.jpg" class="is-hidden-desktop">
+            <img alt="" src="./assets/images/banner_desktop.jpg" class="is-hidden-touch">
+            <img alt="" src="./assets/images/banner_mobile.jpg" class="is-hidden-desktop">
             <figcaption class="figcaption-banner-text">
               <h2 class="title">Products</h2>
             </figcaption>
@@ -23,7 +23,7 @@
               <a [routerLink]="['/product', product.id]">
                 <div class="box has-text-centered">
                   <figure class="image product-image">
-                    <img src="{{product.masterVariant.images[0].url}}" *ngIf="product.masterVariant.images.length" (error)="img.src=defaultImage"
+                    <img alt="" src="{{product.masterVariant.images[0].url}}" *ngIf="product.masterVariant.images.length" (error)="img.src=defaultImage"
                       #img>
                   </figure>
                   <div class="product-description">
@@ -40,7 +40,7 @@
           <!-- No product found -->
           <div *ngIf="products.length == 0">
             <figure class="image mt-4 is-2by1">
-              <img src="./assets/images/empty-cart.png">
+              <img alt="" src="./assets/images/empty-cart.png">
             </figure>
             <figcaption class="no-found mt-3 mb-3"> No products found</figcaption>
           </div>
