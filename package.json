@@ -37,7 +37,6 @@
     "bulma-badge": "0.0.3",
     "core-js": "^2.5.7",
     "handlebars": "^4.0.12",
-    "mdi": "^2.2.43",
     "ngx-webstorage": "^3.0.0-beta.9",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",

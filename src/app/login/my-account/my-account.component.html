@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Page Title -->
     <div class="title level">
-      <i class="mdi mdi-account-outline mdi-36px"></i>
+      <span class="icon-account-outline"></span>
       <span class="level-left level-item">My Account</span>
     </div>
     <!-- My account content -->
@@ -13,34 +13,35 @@
           <div class="menu column is-3">
             <ul class="menu-list">
               <ng-container *ngFor="let tab of tabs">
-                <li class="tab" [ngClass]="{'active': tab.active === true}">
-                  <a *ngIf="tab.href === 'signout'; else tabs" (click)="logOut();">
-                    {{tab.name}}
+                <li class="tab" [ngClass]="{ active: tab.active === true }">
+                  <a
+                    *ngIf="tab.href === 'signout'; else: tabs"
+                    (click)="logOut()"
+                  >
+                    {{ tab.name }}
                   </a>
                   <ng-template #tabs>
-                    <a>{{tab.name}}</a>
+                    <a>{{ tab.name }}</a>
                   </ng-template>
                 </li>
               </ng-container>
-
             </ul>
           </div>
           <div class="column is-9">
             <div class="personal-details">
-              <p>Welcome back
-                <span class="username">{{user?.firstName}}</span>
+              <p>
+                Welcome back <span class="username">{{ user?.firstName }}</span>
               </p>
-              <p>for an even better customer service please provide your customer number
-                <span class="customer-id">{{customerNumber}}</span>
+              <p>
+                for an even better customer service please provide your customer
+                number <span class="customer-id">{{ customerNumber }}</span>
               </p>
-              <div class="personal-details-title">
-                Your persona details
-              </div>
+              <div class="personal-details-title">Your persona details</div>
               <div class="personal-details-content">
-                <div>{{user?.firstName}} {{user?.lastName}}</div>
-                <div>{{user?.email}}</div>
+                <div>{{ user?.firstName }} {{ user?.lastName }}</div>
+                <div>{{ user?.email }}</div>
                 <div class="edit level level-right">
-                  <i title="Edit" class="mdi mdi-account-edit mdi-24px"></i>
+                  <span title="Edit" class="icon-account-edit"></span>
                   <span class="text">Edit</span>
                 </div>
               </div>

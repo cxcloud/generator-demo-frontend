@@ -6,10 +6,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./info-card.component.scss']
 })
 export class InfoCardComponent implements OnInit {
-  @Input('title') title: string;
-  @Input('icon') icon = 'mdi mdi-chevron-down';
-  @Input('label') label: string;
-  @Input('url') url = '#';
+  @Input()
+  title: string;
+  @Input()
+  icon = 'icon-chevron-down';
+  @Input()
+  label: string;
+  @Input()
+  url = '#';
 
   constructor() {}
 

@@ -1,5 +1,14 @@
 @import '~assets/scss/styles';
 
+.columns {
+  margin: 0;
+}
+
+.column.is-8 {
+  display: flex;
+  align-items: center;
+}
+
 .hero-head {
   background-color: $ebony-clay;
 }
@@ -12,10 +21,13 @@
 
   .title {
     a {
+      display: flex;
+      align-items: center;
       color: $ebony-clay;
-      i {
+      span {
+        font-size: 3rem;
         color: $yellow;
-        padding: 10px;
+        margin-right: 0.5rem;
       }
     }
   }

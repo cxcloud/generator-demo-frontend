@@ -2,13 +2,12 @@
   <div class="container">
     <!-- Page Title -->
     <div class="title level">
-      <i class="mdi mdi-account-outline mdi-36px"></i>
+      <span class="icon-account-outline"></span>
       <span class="level-left level-item">Customer Sign in</span>
     </div>
 
     <!-- Forms -->
     <div class="columns">
-
       <!-- Sign in form -->
       <div class="column is-6">
         <div class="box-wrapper">
@@ -17,16 +16,26 @@
               <div class="title is-6">Customer Sign In</div>
             </div>
             <div class="field">
-              <p class="login-box-description">If you have an account, please sign in for a faster checkout</p>
+              <p class="login-box-description">
+                If you have an account, please sign in for a faster checkout
+              </p>
               <div class="control">
                 <label class="field-label is-normal">Email*</label>
-                <input class="input" type="text" formControlName="email">
-                <app-error-display [control]="signInForm.controls.email"></app-error-display>
+                <input class="input" type="text" formControlName="email" />
+                <app-error-display
+                  [control]="signInForm.controls.email"
+                ></app-error-display>
               </div>
               <div class="control">
                 <label class="field-label is-normal">Password*</label>
-                <input class="input" type="password" formControlName="password">
-                <app-error-display [control]="signInForm.controls.password"></app-error-display>
+                <input
+                  class="input"
+                  type="password"
+                  formControlName="password"
+                />
+                <app-error-display
+                  [control]="signInForm.controls.password"
+                ></app-error-display>
               </div>
             </div>
             <app-goto-button
@@ -50,32 +59,51 @@
 
             <div class="field">
               <p class="login-box-description">
-                Create an account to store your products, easy checkouts, customer discounts, benefits and more.
+                Create an account to store your products, easy checkouts,
+                customer discounts, benefits and more.
               </p>
               <div class="control">
                 <label class="field-label is-normal">First Name*</label>
-                <input class="input" type="text" formControlName="firstName">
-                <app-error-display [control]="signUpForm.controls.firstName"></app-error-display>
+                <input class="input" type="text" formControlName="firstName" />
+                <app-error-display
+                  [control]="signUpForm.controls.firstName"
+                ></app-error-display>
               </div>
               <div class="control">
                 <label class="field-label is-normal">Last Name*</label>
-                <input class="input" type="text" formControlName="lastName">
-                <app-error-display [control]="signUpForm.controls.lastName"></app-error-display>
+                <input class="input" type="text" formControlName="lastName" />
+                <app-error-display
+                  [control]="signUpForm.controls.lastName"
+                ></app-error-display>
               </div>
               <div class="control">
                 <label class="field-label is-normal">Email*</label>
-                <input class="input" type="text" formControlName="email">
-                <app-error-display [control]="signUpForm.controls.email"></app-error-display>
+                <input class="input" type="text" formControlName="email" />
+                <app-error-display
+                  [control]="signUpForm.controls.email"
+                ></app-error-display>
               </div>
               <div class="control">
                 <label class="field-label is-normal">Password*</label>
-                <input class="input" type="password" formControlName="password">
-                <app-error-display [control]="signUpForm.controls.password"></app-error-display>
+                <input
+                  class="input"
+                  type="password"
+                  formControlName="password"
+                />
+                <app-error-display
+                  [control]="signUpForm.controls.password"
+                ></app-error-display>
               </div>
               <div class="control">
                 <label class="field-label is-normal">Confirm password*</label>
-                <input class="input" type="password" formControlName="confirmPassword">
-                <app-error-display [control]="signUpForm.controls.confirmPassword"></app-error-display>
+                <input
+                  class="input"
+                  type="password"
+                  formControlName="confirmPassword"
+                />
+                <app-error-display
+                  [control]="signUpForm.controls.confirmPassword"
+                ></app-error-display>
               </div>
             </div>
             <app-goto-button
@@ -90,5 +118,4 @@
       </div>
     </div>
   </div>
-
 </div>
