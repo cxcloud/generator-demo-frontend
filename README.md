@@ -38,24 +38,12 @@ Reead more how to generate frontend demo using CX Cloud CLI [here](https://docs.
 
 > Before getting started you might need to [install Angular CLI](https://github.com/angular/angular-cli/wiki).
 
-In order to explore/modify demo frontend locally, it is required to follow next steps:
-
-1. Clone repository and navigate to it:
+In order to explore/modify demo frontend locally, it is required to clone repository, install required `npm` packages and run the project:
 
 ```sh
 $ git clone git@github.com:cxcloud/demo-frontend-angular.git
 $ cd demo-frontend-angular
-```
-
-2. Install npm packages required for the project:
-
-```sh
-npm install
-```
-
-3. Run demo locally:
-
-```sh
+$ npm install
 $ npm run dev
 ```
 
