@@ -34,7 +34,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
       header: makeHeader('Products'),
       render: suggestion => `
         <figure class="image">
-          <img src="${suggestion.images}" onerror="this.src='${
+          <img alt="" src="${suggestion.images}" onerror="this.src='${
         this.defaultImage
       }'">
         </figure>

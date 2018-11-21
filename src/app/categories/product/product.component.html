@@ -4,9 +4,9 @@
       <!-- Image column -->
       <div class="column is-3 is-offset-2">
         <figure class="image product-image">
-          <img *ngIf="image" [src]="image?.url" class="is-hidden-desktop" />
+          <img alt="" *ngIf="image" [src]="image?.url" class="is-hidden-desktop" />
           <!-- Image with magnifying lens (if desktop) -->
-          <img
+          <img alt=""
             *ngIf="image"
             [imageZoom]="image.url"
             [src]="image?.url"
@@ -17,7 +17,7 @@
           />
         </figure>
         <ng-container *ngFor="let image of selectedVariant?.images">
-          <img
+          <img alt=""
             class="thumbnail"
             src="{{image.url}}"
             (click)="changeSelectedImage(image)"
