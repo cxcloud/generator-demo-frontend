@@ -30,7 +30,7 @@ $ cd demo-frontend-angular
 npm install
 ```
 
-3. Run demo locally
+3. Run demo locally:
 
 ```sh
 $ npm run dev
