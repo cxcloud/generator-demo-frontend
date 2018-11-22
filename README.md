@@ -9,7 +9,7 @@ Demo Frontend is implemented using Angular 7 and demonstrates CX Cloud capabilit
 
 ## Generate demo with CX Cloud CLI
 
-CX Cloud CLI Tools allows you to generate a front-end demo to test the concept with end-to-end functionality. CLI also allows you to set up a Kubernetes cluster and deploy your front-end there. Read more how to generate and deploy frontend demo using CX Cloud CLI [here](https://docs.cxcloud.com/setting-up-a-cxcloud-project/generating-a-frontend).
+CX Cloud CLI Tools allows you to generate a frontend demo to test the concept with end-to-end functionality. CLI also allows you to set up a Kubernetes cluster and deploy your frontend there. Read more how to generate and deploy frontend demo using CX Cloud CLI [here](https://docs.cxcloud.com/setting-up-a-cxcloud-project/generating-a-frontend).
 
 
 ## Run demo locally
