@@ -11,7 +11,7 @@ For quick testing, you can also install and run the demo locally. In order to ex
 
 ```sh
 $ git clone git@github.com:cxcloud/generator-demo-frontend.git
-$ cd demo-frontend-angular
+$ cd generator-demo-frontend
 $ npm install
 $ npm run dev
 ```
